@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		E51A37852840F64B00DF074B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37842840F64B00DF074B /* AppDelegate.swift */; };
 		E51A37872840F64B00DF074B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37862840F64B00DF074B /* SceneDelegate.swift */; };
-		E51A37892840F64B00DF074B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37882840F64B00DF074B /* ViewController.swift */; };
-		E51A378C2840F64B00DF074B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E51A378A2840F64B00DF074B /* Main.storyboard */; };
+		E51A37892840F64B00DF074B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37882840F64B00DF074B /* MainViewController.swift */; };
 		E51A378E2840F64D00DF074B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E51A378D2840F64D00DF074B /* Assets.xcassets */; };
 		E51A37912840F64D00DF074B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E51A378F2840F64D00DF074B /* LaunchScreen.storyboard */; };
+		E51A37992840FA3200DF074B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37982840FA3200DF074B /* TabBarController.swift */; };
+		E51A379C2840FA4E00DF074B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E51A379B2840FA4E00DF074B /* SnapKit */; };
+		E51A379F2840FA7B00DF074B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A379E2840FA7B00DF074B /* SettingsViewController.swift */; };
+		E51A37A42840FDC400DF074B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37A32840FDC400DF074B /* UIColor+.swift */; };
+		E51A37A7284102E200DF074B /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = E51A37A6284102E200DF074B /* FSCalendar */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E51A37812840F64B00DF074B /* Minimum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minimum.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E51A37812840F64B00DF074B /* Bukku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bukku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51A37842840F64B00DF074B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E51A37862840F64B00DF074B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E51A37882840F64B00DF074B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E51A378B2840F64B00DF074B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E51A37882840F64B00DF074B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E51A378D2840F64D00DF074B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E51A37902840F64D00DF074B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E51A37922840F64D00DF074B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E51A37982840FA3200DF074B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E51A379E2840FA7B00DF074B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E51A37A32840FDC400DF074B /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E51A379C2840FA4E00DF074B /* SnapKit in Frameworks */,
+				E51A37A7284102E200DF074B /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,7 +48,7 @@
 		E51A37782840F64A00DF074B = {
 			isa = PBXGroup;
 			children = (
-				E51A37832840F64B00DF074B /* Minimum */,
+				E51A37832840F64B00DF074B /* Bukku */,
 				E51A37822840F64B00DF074B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,31 +56,49 @@
 		E51A37822840F64B00DF074B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E51A37812840F64B00DF074B /* Minimum.app */,
+				E51A37812840F64B00DF074B /* Bukku.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E51A37832840F64B00DF074B /* Minimum */ = {
+		E51A37832840F64B00DF074B /* Bukku */ = {
 			isa = PBXGroup;
 			children = (
 				E51A37842840F64B00DF074B /* AppDelegate.swift */,
 				E51A37862840F64B00DF074B /* SceneDelegate.swift */,
-				E51A37882840F64B00DF074B /* ViewController.swift */,
-				E51A378A2840F64B00DF074B /* Main.storyboard */,
+				E51A379D2840FA6300DF074B /* Controllers */,
+				E51A37A22840FDAE00DF074B /* Extensions+ */,
 				E51A378D2840F64D00DF074B /* Assets.xcassets */,
 				E51A378F2840F64D00DF074B /* LaunchScreen.storyboard */,
 				E51A37922840F64D00DF074B /* Info.plist */,
 			);
-			path = Minimum;
+			path = Bukku;
+			sourceTree = "<group>";
+		};
+		E51A379D2840FA6300DF074B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E51A37882840F64B00DF074B /* MainViewController.swift */,
+				E51A379E2840FA7B00DF074B /* SettingsViewController.swift */,
+				E51A37982840FA3200DF074B /* TabBarController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E51A37A22840FDAE00DF074B /* Extensions+ */ = {
+			isa = PBXGroup;
+			children = (
+				E51A37A32840FDC400DF074B /* UIColor+.swift */,
+			);
+			path = "Extensions+";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E51A37802840F64B00DF074B /* Minimum */ = {
+		E51A37802840F64B00DF074B /* Bukku */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E51A37952840F64D00DF074B /* Build configuration list for PBXNativeTarget "Minimum" */;
+			buildConfigurationList = E51A37952840F64D00DF074B /* Build configuration list for PBXNativeTarget "Bukku" */;
 			buildPhases = (
 				E51A377D2840F64B00DF074B /* Sources */,
 				E51A377E2840F64B00DF074B /* Frameworks */,
@@ -82,9 +108,13 @@
 			);
 			dependencies = (
 			);
-			name = Minimum;
+			name = Bukku;
+			packageProductDependencies = (
+				E51A379B2840FA4E00DF074B /* SnapKit */,
+				E51A37A6284102E200DF074B /* FSCalendar */,
+			);
 			productName = Minimum;
-			productReference = E51A37812840F64B00DF074B /* Minimum.app */;
+			productReference = E51A37812840F64B00DF074B /* Bukku.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +132,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E51A377C2840F64A00DF074B /* Build configuration list for PBXProject "Minimum" */;
+			buildConfigurationList = E51A377C2840F64A00DF074B /* Build configuration list for PBXProject "Bukku" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -111,11 +141,15 @@
 				Base,
 			);
 			mainGroup = E51A37782840F64A00DF074B;
+			packageReferences = (
+				E51A379A2840FA4E00DF074B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E51A37A5284102E200DF074B /* XCRemoteSwiftPackageReference "FSCalendar" */,
+			);
 			productRefGroup = E51A37822840F64B00DF074B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E51A37802840F64B00DF074B /* Minimum */,
+				E51A37802840F64B00DF074B /* Bukku */,
 			);
 		};
 /* End PBXProject section */
@@ -127,7 +161,6 @@
 			files = (
 				E51A37912840F64D00DF074B /* LaunchScreen.storyboard in Resources */,
 				E51A378E2840F64D00DF074B /* Assets.xcassets in Resources */,
-				E51A378C2840F64B00DF074B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +171,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E51A37892840F64B00DF074B /* ViewController.swift in Sources */,
+				E51A37892840F64B00DF074B /* MainViewController.swift in Sources */,
+				E51A37992840FA3200DF074B /* TabBarController.swift in Sources */,
 				E51A37852840F64B00DF074B /* AppDelegate.swift in Sources */,
+				E51A379F2840FA7B00DF074B /* SettingsViewController.swift in Sources */,
 				E51A37872840F64B00DF074B /* SceneDelegate.swift in Sources */,
+				E51A37A42840FDC400DF074B /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E51A378A2840F64B00DF074B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E51A378B2840F64B00DF074B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E51A378F2840F64D00DF074B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +320,6 @@
 				INFOPLIST_FILE = Minimum/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +347,6 @@
 				INFOPLIST_FILE = Minimum/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -339,7 +365,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E51A377C2840F64A00DF074B /* Build configuration list for PBXProject "Minimum" */ = {
+		E51A377C2840F64A00DF074B /* Build configuration list for PBXProject "Bukku" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E51A37932840F64D00DF074B /* Debug */,
@@ -348,7 +374,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E51A37952840F64D00DF074B /* Build configuration list for PBXNativeTarget "Minimum" */ = {
+		E51A37952840F64D00DF074B /* Build configuration list for PBXNativeTarget "Bukku" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E51A37962840F64D00DF074B /* Debug */,
@@ -358,6 +384,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E51A379A2840FA4E00DF074B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		E51A37A5284102E200DF074B /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E51A379B2840FA4E00DF074B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E51A379A2840FA4E00DF074B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		E51A37A6284102E200DF074B /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E51A37A5284102E200DF074B /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E51A37792840F64A00DF074B /* Project object */;
 }
