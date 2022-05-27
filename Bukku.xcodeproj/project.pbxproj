@@ -17,6 +17,7 @@
 		E51A379F2840FA7B00DF074B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A379E2840FA7B00DF074B /* SettingsViewController.swift */; };
 		E51A37A42840FDC400DF074B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37A32840FDC400DF074B /* UIColor+.swift */; };
 		E51A37A7284102E200DF074B /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = E51A37A6284102E200DF074B /* FSCalendar */; };
+		E5F2F1DA2841290B007CF7C6 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1D92841290B007CF7C6 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E51A37982840FA3200DF074B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E51A379E2840FA7B00DF074B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E51A37A32840FDC400DF074B /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		E5F2F1D92841290B007CF7C6 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				E51A37842840F64B00DF074B /* AppDelegate.swift */,
 				E51A37862840F64B00DF074B /* SceneDelegate.swift */,
 				E51A379D2840FA6300DF074B /* Controllers */,
+				E5F2F1D8284128F4007CF7C6 /* SubComponents */,
 				E51A37A22840FDAE00DF074B /* Extensions+ */,
 				E51A378D2840F64D00DF074B /* Assets.xcassets */,
 				E51A378F2840F64D00DF074B /* LaunchScreen.storyboard */,
@@ -91,6 +94,14 @@
 				E51A37A32840FDC400DF074B /* UIColor+.swift */,
 			);
 			path = "Extensions+";
+			sourceTree = "<group>";
+		};
+		E5F2F1D8284128F4007CF7C6 /* SubComponents */ = {
+			isa = PBXGroup;
+			children = (
+				E5F2F1D92841290B007CF7C6 /* DetailView.swift */,
+			);
+			path = SubComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +185,7 @@
 				E51A37892840F64B00DF074B /* MainViewController.swift in Sources */,
 				E51A37992840FA3200DF074B /* TabBarController.swift in Sources */,
 				E51A37852840F64B00DF074B /* AppDelegate.swift in Sources */,
+				E5F2F1DA2841290B007CF7C6 /* DetailView.swift in Sources */,
 				E51A379F2840FA7B00DF074B /* SettingsViewController.swift in Sources */,
 				E51A37872840F64B00DF074B /* SceneDelegate.swift in Sources */,
 				E51A37A42840FDC400DF074B /* UIColor+.swift in Sources */,
@@ -317,7 +329,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 95JTZ6AP78;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Minimum/Info.plist;
+				INFOPLIST_FILE = Bukku/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -327,7 +339,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = eungcheol.Minimum;
+				PRODUCT_BUNDLE_IDENTIFIER = eungcheol.Bukku;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -344,7 +356,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 95JTZ6AP78;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Minimum/Info.plist;
+				INFOPLIST_FILE = Bukku/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -354,7 +366,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = eungcheol.Minimum;
+				PRODUCT_BUNDLE_IDENTIFIER = eungcheol.Bukku;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
