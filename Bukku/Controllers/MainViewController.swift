@@ -47,27 +47,15 @@ class MainViewController: UIViewController {
         return button
     }()
     
-    lazy var calendar: FSCalendar = {
-        let calendar = FSCalendar()
-        calendar.dataSource = self
-        calendar.delegate = self
+    lazy var collectionView: UICollectionView = {
+        let layout = createLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(MainCollectionViewCell.self,
+                                forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
         
-        // MARK: Calendar Header
-        calendar.headerHeight = 80.0
-        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
-        calendar.appearance.headerDateFormat = "YYYY년 MM월"
-        calendar.appearance.headerTitleColor = UIColor.init(rgb: 0xE0E7F1)
-        calendar.appearance.headerTitleFont = .systemFont(ofSize: 28.0, weight: .thin)
-        
-        // MARK: Calendar Body
-        calendar.appearance.weekdayTextColor = UIColor.init(rgb: 0xAEBD77)
-        calendar.appearance.titleDefaultColor = UIColor.init(rgb: 0xE0E7F1)
-        calendar.appearance.todayColor = UIColor.init(rgb: 0xAEBD77)
-        calendar.appearance.selectionColor = UIColor.init(rgb: 0x1B4B36)
-        calendar.appearance.weekdayFont = .systemFont(ofSize: 20.0, weight: .thin)
-        calendar.appearance.titleFont = .systemFont(ofSize: 18, weight: .thin)
-        
-        return calendar
+        return collectionView
     }()
     
     override func viewDidLoad() {
@@ -75,11 +63,32 @@ class MainViewController: UIViewController {
         setupUI()
     }
     
+    func createLayout() -> UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { sectionNumber, _ -> NSCollectionLayoutSection in
+            return self.createMainSection()
+        }
+    }
+    
+    func createMainSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(200), heightDimension: .absolute(200))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.5))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPagingCentered
+        
+        return section
+    }
+    
+    // MARK: 오토레이아웃, 색상 설정
     func setupUI() {
         view.backgroundColor = UIColor.init(rgb: 0x538F6A)
         detailView.alpha = 0
         
-        [ mainLabel, goalLabel, changeGoalButton, lineView, calendar, detailView ]
+        [ mainLabel, goalLabel, changeGoalButton, lineView, collectionView ]
             .forEach { view.addSubview($0) }
         
         mainLabel.snp.makeConstraints { make in
@@ -102,31 +111,26 @@ class MainViewController: UIViewController {
             make.height.equalTo(0.5)
         }
         
-        calendar.snp.makeConstraints { make in
-            make.top.equalTo(lineView.snp.bottom).offset(16.0)
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(lineView.snp.bottom).offset(24)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(detailView.snp.top)
-        }
-        
-        detailView.snp.makeConstraints { make in
-            make.height.equalTo(220)
-            make.trailing.leading.equalToSuperview().inset(8)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(8)
+            make.height.equalTo(200)
         }
     }
 }
 
-extension MainViewController: FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance {
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
-            self.detailView.alpha = 1
-        }, completion: nil)
-        detailView.label.text = date.formatted()
+extension MainViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: MainCollectionViewCell.identifier,
+            for: indexPath
+        ) as? MainCollectionViewCell else { return UICollectionViewCell() }
+        cell.setupUI()
+        
+        return cell
     }
     
-    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
-            self.detailView.alpha = 0
-        }, completion: nil)
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 6
     }
 }
