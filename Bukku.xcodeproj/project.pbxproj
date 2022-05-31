@@ -17,6 +17,9 @@
 		E51A379F2840FA7B00DF074B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A379E2840FA7B00DF074B /* SettingsViewController.swift */; };
 		E51A37A42840FDC400DF074B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37A32840FDC400DF074B /* UIColor+.swift */; };
 		E51A37A7284102E200DF074B /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = E51A37A6284102E200DF074B /* FSCalendar */; };
+		E5A6915D284639CF009F6048 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E5A6915C284639CF009F6048 /* Alamofire */; };
+		E5A69160284639EE009F6048 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6915F284639EE009F6048 /* SearchService.swift */; };
+		E5A6916528463A7E009F6048 /* BookResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916428463A7E009F6048 /* BookResponseModel.swift */; };
 		E5F2F1DA2841290B007CF7C6 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1D92841290B007CF7C6 /* DetailView.swift */; };
 		E5F2F1DD28413202007CF7C6 /* DateFomatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1DC28413202007CF7C6 /* DateFomatter+.swift */; };
 		E5F2F1E02841B421007CF7C6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1DF2841B421007CF7C6 /* MainViewModel.swift */; };
@@ -35,6 +38,8 @@
 		E51A37982840FA3200DF074B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E51A379E2840FA7B00DF074B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E51A37A32840FDC400DF074B /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		E5A6915F284639EE009F6048 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		E5A6916428463A7E009F6048 /* BookResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResponseModel.swift; sourceTree = "<group>"; };
 		E5F2F1D92841290B007CF7C6 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		E5F2F1DC28413202007CF7C6 /* DateFomatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFomatter+.swift"; sourceTree = "<group>"; };
 		E5F2F1DF2841B421007CF7C6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5A6915D284639CF009F6048 /* Alamofire in Frameworks */,
 				E51A379C2840FA4E00DF074B /* SnapKit in Frameworks */,
 				E51A37A7284102E200DF074B /* FSCalendar in Frameworks */,
 			);
@@ -76,6 +82,8 @@
 			children = (
 				E51A37842840F64B00DF074B /* AppDelegate.swift */,
 				E51A37862840F64B00DF074B /* SceneDelegate.swift */,
+				E5A6915E284639DD009F6048 /* Service */,
+				E5A6916128463A4A009F6048 /* Model */,
 				E5F2F1DE2841B414007CF7C6 /* ViewModels */,
 				E51A379D2840FA6300DF074B /* Controllers */,
 				E5F2F1E42841C15E007CF7C6 /* Cells */,
@@ -106,6 +114,22 @@
 				E5F2F1DC28413202007CF7C6 /* DateFomatter+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E5A6915E284639DD009F6048 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E5A6915F284639EE009F6048 /* SearchService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		E5A6916128463A4A009F6048 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E5A6916428463A7E009F6048 /* BookResponseModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E5F2F1D8284128F4007CF7C6 /* SubComponents */ = {
@@ -159,6 +183,7 @@
 			packageProductDependencies = (
 				E51A379B2840FA4E00DF074B /* SnapKit */,
 				E51A37A6284102E200DF074B /* FSCalendar */,
+				E5A6915C284639CF009F6048 /* Alamofire */,
 			);
 			productName = Minimum;
 			productReference = E51A37812840F64B00DF074B /* Bukku.app */;
@@ -191,6 +216,7 @@
 			packageReferences = (
 				E51A379A2840FA4E00DF074B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				E51A37A5284102E200DF074B /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = E51A37822840F64B00DF074B /* Products */;
 			projectDirPath = "";
@@ -219,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E51A37892840F64B00DF074B /* MainViewController.swift in Sources */,
+				E5A6916528463A7E009F6048 /* BookResponseModel.swift in Sources */,
 				E51A37992840FA3200DF074B /* TabBarController.swift in Sources */,
 				E51A37852840F64B00DF074B /* AppDelegate.swift in Sources */,
 				E5F2F1DA2841290B007CF7C6 /* DetailView.swift in Sources */,
@@ -227,6 +254,7 @@
 				E5F2F1E32841BC24007CF7C6 /* Trash.swift in Sources */,
 				E5F2F1E62841C16E007CF7C6 /* MainCollectionViewCell.swift in Sources */,
 				E5F2F1DD28413202007CF7C6 /* DateFomatter+.swift in Sources */,
+				E5A69160284639EE009F6048 /* SearchService.swift in Sources */,
 				E51A37A42840FDC400DF074B /* UIColor+.swift in Sources */,
 				E5F2F1E02841B421007CF7C6 /* MainViewModel.swift in Sources */,
 			);
@@ -454,6 +482,14 @@
 				minimumVersion = 2.8.0;
 			};
 		};
+		E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -466,6 +502,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E51A37A5284102E200DF074B /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		E5A6915C284639CF009F6048 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

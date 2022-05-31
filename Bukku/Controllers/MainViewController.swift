@@ -7,9 +7,9 @@
 
 import UIKit
 import SnapKit
-import FSCalendar
 
 class MainViewController: UIViewController {
+    // MARK: - Properties
     let detailView = DetailView()
     
     let mainLabel: UILabel = {
@@ -37,13 +37,13 @@ class MainViewController: UIViewController {
         return view
     }()
     
-    let changeGoalButton: UIButton = {
-        var config = UIButton.Configuration.plain()
-        config.image = UIImage(systemName: "circle.dashed.inset.filled")
-        config.baseForegroundColor = .systemBackground
-        config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration.init(pointSize: 24)
+    lazy var changeGoalButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "circle.dashed.inset.filled"), for: .normal)
+        button.tintColor = .systemBackground
+        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 24), forImageIn: .normal)
+        button.addTarget(self, action: #selector(didTapChangeGoalButton), for: .touchUpInside)
         
-        let button = UIButton(configuration: config)
         return button
     }()
     
@@ -58,32 +58,21 @@ class MainViewController: UIViewController {
         return collectionView
     }()
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-    }
-    
-    func createLayout() -> UICollectionViewCompositionalLayout {
-        return UICollectionViewCompositionalLayout { sectionNumber, _ -> NSCollectionLayoutSection in
-            return self.createMainSection()
+        SearchService.fetchBooks("스위프트") { books in
+            print(books)
         }
     }
     
-    func createMainSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(200), heightDimension: .absolute(200))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.5))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPagingCentered
-        
-        return section
+    // MARK: - Selectors
+    @objc func didTapChangeGoalButton() {
     }
     
-    // MARK: 오토레이아웃, 색상 설정
+    
+    // MARK: - Helpers
     func setupUI() {
         view.backgroundColor = UIColor.init(rgb: 0x538F6A)
         detailView.alpha = 0
@@ -117,8 +106,29 @@ class MainViewController: UIViewController {
             make.height.equalTo(200)
         }
     }
+    
+    func createLayout() -> UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { sectionNumber, _ -> NSCollectionLayoutSection in
+            return self.createMainSection()
+        }
+    }
+    
+    func createMainSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(200), heightDimension: .absolute(200))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.5))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPagingCentered
+        
+        return section
+    }
 }
 
+// MARK: - CollectionView
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
