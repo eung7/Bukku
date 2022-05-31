@@ -10,5 +10,3 @@ import Foundation
 class MainViewModel {
     var eventsArr: [Date] = []
 }
-
-// APIKEY: 1a60cb934a4cd40e13a8c21222ab5397

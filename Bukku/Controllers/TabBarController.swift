@@ -29,9 +29,8 @@ class TabBarController: UITabBarController {
     }
     
     func setupUI() {
-        tabBar.unselectedItemTintColor = .secondarySystemBackground
-        tabBar.tintColor = UIColor.init(rgb: 0xAEBD77)
-        
+        tabBar.unselectedItemTintColor = .getBlack()
+        tabBar.tintColor = UIColor.getOrange()
         mainVC.tabBarItem = mainTabBarItem
         settingsVC.tabBarItem = settingsTabBarItem
         

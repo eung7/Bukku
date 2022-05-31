@@ -10,12 +10,10 @@ import SnapKit
 
 class MainViewController: UIViewController {
     // MARK: - Properties
-    let detailView = DetailView()
-    
     let mainLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 38.0, weight: .heavy)
-        label.textColor = .systemBackground
+        label.textColor = .getBlack()
         label.text = "당신의 목표는"
         
         return label
@@ -24,7 +22,7 @@ class MainViewController: UIViewController {
     let goalLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 38.0, weight: .thin)
-        label.textColor = .systemBackground
+        label.textColor = .getBlack()
         label.text = "하루에 한 페이지!"
         
         return label
@@ -32,17 +30,17 @@ class MainViewController: UIViewController {
     
     let lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .label
         
         return view
     }()
     
-    lazy var changeGoalButton: UIButton = {
+    lazy var searchButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "circle.dashed.inset.filled"), for: .normal)
-        button.tintColor = .systemBackground
-        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 24), forImageIn: .normal)
-        button.addTarget(self, action: #selector(didTapChangeGoalButton), for: .touchUpInside)
+        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        button.tintColor = .getBlack()
+        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 40.0), forImageIn: .normal)
+        button.addTarget(self, action: #selector(didTapSearchButton), for: .touchUpInside)
         
         return button
     }()
@@ -61,23 +59,21 @@ class MainViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        SearchService.fetchBooks("스위프트") { books in
-            print(books)
-        }
+        configureUI()
     }
     
     // MARK: - Selectors
-    @objc func didTapChangeGoalButton() {
+    @objc func didTapSearchButton() {
+        let nav = UINavigationController(rootViewController: SearchViewController())
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
-    
-    
+
     // MARK: - Helpers
-    func setupUI() {
-        view.backgroundColor = UIColor.init(rgb: 0x538F6A)
-        detailView.alpha = 0
+    func configureUI() {
+        view.backgroundColor = .getGray()
         
-        [ mainLabel, goalLabel, changeGoalButton, lineView, collectionView ]
+        [ mainLabel, goalLabel, searchButton, lineView, collectionView ]
             .forEach { view.addSubview($0) }
         
         mainLabel.snp.makeConstraints { make in
@@ -87,10 +83,10 @@ class MainViewController: UIViewController {
         goalLabel.snp.makeConstraints { make in
             make.top.equalTo(mainLabel.snp.bottom).offset(4)
             make.leading.equalToSuperview().inset(20)
-            make.trailing.equalTo(changeGoalButton.snp.leading).offset(4)
+            make.trailing.equalTo(searchButton.snp.leading).offset(4)
         }
         
-        changeGoalButton.snp.makeConstraints { make in
+        searchButton.snp.makeConstraints { make in
             make.trailing.top.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
         

@@ -20,7 +20,7 @@
 		E5A6915D284639CF009F6048 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E5A6915C284639CF009F6048 /* Alamofire */; };
 		E5A69160284639EE009F6048 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6915F284639EE009F6048 /* SearchService.swift */; };
 		E5A6916528463A7E009F6048 /* BookResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916428463A7E009F6048 /* BookResponseModel.swift */; };
-		E5F2F1DA2841290B007CF7C6 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1D92841290B007CF7C6 /* DetailView.swift */; };
+		E5A6916728464372009F6048 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916628464372009F6048 /* SearchViewController.swift */; };
 		E5F2F1DD28413202007CF7C6 /* DateFomatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1DC28413202007CF7C6 /* DateFomatter+.swift */; };
 		E5F2F1E02841B421007CF7C6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1DF2841B421007CF7C6 /* MainViewModel.swift */; };
 		E5F2F1E32841BC24007CF7C6 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1E22841BC24007CF7C6 /* Trash.swift */; };
@@ -40,7 +40,7 @@
 		E51A37A32840FDC400DF074B /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E5A6915F284639EE009F6048 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		E5A6916428463A7E009F6048 /* BookResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResponseModel.swift; sourceTree = "<group>"; };
-		E5F2F1D92841290B007CF7C6 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		E5A6916628464372009F6048 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E5F2F1DC28413202007CF7C6 /* DateFomatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFomatter+.swift"; sourceTree = "<group>"; };
 		E5F2F1DF2841B421007CF7C6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		E5F2F1E22841BC24007CF7C6 /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
@@ -101,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				E51A37882840F64B00DF074B /* MainViewController.swift */,
+				E5A6916628464372009F6048 /* SearchViewController.swift */,
 				E51A379E2840FA7B00DF074B /* SettingsViewController.swift */,
 				E51A37982840FA3200DF074B /* TabBarController.swift */,
 			);
@@ -135,7 +136,6 @@
 		E5F2F1D8284128F4007CF7C6 /* SubComponents */ = {
 			isa = PBXGroup;
 			children = (
-				E5F2F1D92841290B007CF7C6 /* DetailView.swift */,
 			);
 			path = SubComponents;
 			sourceTree = "<group>";
@@ -248,10 +248,10 @@
 				E5A6916528463A7E009F6048 /* BookResponseModel.swift in Sources */,
 				E51A37992840FA3200DF074B /* TabBarController.swift in Sources */,
 				E51A37852840F64B00DF074B /* AppDelegate.swift in Sources */,
-				E5F2F1DA2841290B007CF7C6 /* DetailView.swift in Sources */,
 				E51A379F2840FA7B00DF074B /* SettingsViewController.swift in Sources */,
 				E51A37872840F64B00DF074B /* SceneDelegate.swift in Sources */,
 				E5F2F1E32841BC24007CF7C6 /* Trash.swift in Sources */,
+				E5A6916728464372009F6048 /* SearchViewController.swift in Sources */,
 				E5F2F1E62841C16E007CF7C6 /* MainCollectionViewCell.swift in Sources */,
 				E5F2F1DD28413202007CF7C6 /* DateFomatter+.swift in Sources */,
 				E5A69160284639EE009F6048 /* SearchService.swift in Sources */,
