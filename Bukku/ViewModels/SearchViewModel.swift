@@ -11,3 +11,14 @@ class SearchViewModel {
     var books: [Book] = []
 }
 
+class BookListViewModel {
+    let book: Book
+    
+    init(book: Book) {
+        self.book = book
+    }
+}
+
+extension BookListViewModel {
+    var thumbnailURL: String { return book.thumbnail }
+}

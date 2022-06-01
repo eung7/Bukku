@@ -14,7 +14,7 @@ struct SearchService {
         let parameters: [String: Any] = [
             "target": "title",
             "query": query,
-            "size": 20
+            "size": 21
         ]
         let headers: HTTPHeaders = [ "Authorization": "KakaoAK 1a60cb934a4cd40e13a8c21222ab5397" ]
         

@@ -17,13 +17,13 @@
 		E51A379F2840FA7B00DF074B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A379E2840FA7B00DF074B /* SettingsViewController.swift */; };
 		E51A37A42840FDC400DF074B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37A32840FDC400DF074B /* UIColor+.swift */; };
 		E51A37A7284102E200DF074B /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = E51A37A6284102E200DF074B /* FSCalendar */; };
+		E56B60C0284787F1003679CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E56B60BF284787F1003679CC /* Kingfisher */; };
 		E5A6915D284639CF009F6048 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E5A6915C284639CF009F6048 /* Alamofire */; };
 		E5A69160284639EE009F6048 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6915F284639EE009F6048 /* SearchService.swift */; };
 		E5A6916528463A7E009F6048 /* BookResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916428463A7E009F6048 /* BookResponseModel.swift */; };
 		E5A6916728464372009F6048 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916628464372009F6048 /* SearchViewController.swift */; };
-		E5A6916B2846588E009F6048 /* TitleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916A2846588E009F6048 /* TitleListCell.swift */; };
+		E5A6916B2846588E009F6048 /* BookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916A2846588E009F6048 /* BookListCell.swift */; };
 		E5A6916D284659A7009F6048 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916C284659A7009F6048 /* SearchViewModel.swift */; };
-		E5F2F1DD28413202007CF7C6 /* DateFomatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1DC28413202007CF7C6 /* DateFomatter+.swift */; };
 		E5F2F1E02841B421007CF7C6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1DF2841B421007CF7C6 /* MainViewModel.swift */; };
 		E5F2F1E32841BC24007CF7C6 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1E22841BC24007CF7C6 /* Trash.swift */; };
 		E5F2F1E62841C16E007CF7C6 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1E52841C16E007CF7C6 /* MainCollectionViewCell.swift */; };
@@ -43,9 +43,8 @@
 		E5A6915F284639EE009F6048 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		E5A6916428463A7E009F6048 /* BookResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResponseModel.swift; sourceTree = "<group>"; };
 		E5A6916628464372009F6048 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		E5A6916A2846588E009F6048 /* TitleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleListCell.swift; sourceTree = "<group>"; };
+		E5A6916A2846588E009F6048 /* BookListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCell.swift; sourceTree = "<group>"; };
 		E5A6916C284659A7009F6048 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		E5F2F1DC28413202007CF7C6 /* DateFomatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFomatter+.swift"; sourceTree = "<group>"; };
 		E5F2F1DF2841B421007CF7C6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		E5F2F1E22841BC24007CF7C6 /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
 		E5F2F1E52841C16E007CF7C6 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E56B60C0284787F1003679CC /* Kingfisher in Frameworks */,
 				E5A6915D284639CF009F6048 /* Alamofire in Frameworks */,
 				E51A379C2840FA4E00DF074B /* SnapKit in Frameworks */,
 				E51A37A7284102E200DF074B /* FSCalendar in Frameworks */,
@@ -116,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				E51A37A32840FDC400DF074B /* UIColor+.swift */,
-				E5F2F1DC28413202007CF7C6 /* DateFomatter+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -165,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				E5F2F1E52841C16E007CF7C6 /* MainCollectionViewCell.swift */,
-				E5A6916A2846588E009F6048 /* TitleListCell.swift */,
+				E5A6916A2846588E009F6048 /* BookListCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -190,6 +189,7 @@
 				E51A379B2840FA4E00DF074B /* SnapKit */,
 				E51A37A6284102E200DF074B /* FSCalendar */,
 				E5A6915C284639CF009F6048 /* Alamofire */,
+				E56B60BF284787F1003679CC /* Kingfisher */,
 			);
 			productName = Minimum;
 			productReference = E51A37812840F64B00DF074B /* Bukku.app */;
@@ -223,6 +223,7 @@
 				E51A379A2840FA4E00DF074B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				E51A37A5284102E200DF074B /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				E56B60BE284787F1003679CC /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = E51A37822840F64B00DF074B /* Products */;
 			projectDirPath = "";
@@ -257,11 +258,10 @@
 				E51A379F2840FA7B00DF074B /* SettingsViewController.swift in Sources */,
 				E51A37872840F64B00DF074B /* SceneDelegate.swift in Sources */,
 				E5A6916D284659A7009F6048 /* SearchViewModel.swift in Sources */,
-				E5A6916B2846588E009F6048 /* TitleListCell.swift in Sources */,
+				E5A6916B2846588E009F6048 /* BookListCell.swift in Sources */,
 				E5F2F1E32841BC24007CF7C6 /* Trash.swift in Sources */,
 				E5A6916728464372009F6048 /* SearchViewController.swift in Sources */,
 				E5F2F1E62841C16E007CF7C6 /* MainCollectionViewCell.swift in Sources */,
-				E5F2F1DD28413202007CF7C6 /* DateFomatter+.swift in Sources */,
 				E5A69160284639EE009F6048 /* SearchService.swift in Sources */,
 				E51A37A42840FDC400DF074B /* UIColor+.swift in Sources */,
 				E5F2F1E02841B421007CF7C6 /* MainViewModel.swift in Sources */,
@@ -490,6 +490,14 @@
 				minimumVersion = 2.8.0;
 			};
 		};
+		E56B60BE284787F1003679CC /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 7.2.0;
+			};
+		};
 		E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -510,6 +518,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E51A37A5284102E200DF074B /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		E56B60BF284787F1003679CC /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E56B60BE284787F1003679CC /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		E5A6915C284639CF009F6048 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
