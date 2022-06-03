@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5145C622848683300B9555F /* LoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5145C612848683300B9555F /* LoadingFooterView.swift */; };
 		E51A37852840F64B00DF074B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37842840F64B00DF074B /* AppDelegate.swift */; };
 		E51A37872840F64B00DF074B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37862840F64B00DF074B /* SceneDelegate.swift */; };
 		E51A37892840F64B00DF074B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37882840F64B00DF074B /* MainViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E5145C612848683300B9555F /* LoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingFooterView.swift; sourceTree = "<group>"; };
 		E51A37812840F64B00DF074B /* Bukku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bukku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51A37842840F64B00DF074B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E51A37862840F64B00DF074B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		E5F2F1D8284128F4007CF7C6 /* SubComponents */ = {
 			isa = PBXGroup;
 			children = (
+				E5145C612848683300B9555F /* LoadingFooterView.swift */,
 			);
 			path = SubComponents;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				E5A6916D284659A7009F6048 /* SearchViewModel.swift in Sources */,
 				E5A6916B2846588E009F6048 /* BookListCell.swift in Sources */,
 				E5F2F1E32841BC24007CF7C6 /* Trash.swift in Sources */,
+				E5145C622848683300B9555F /* LoadingFooterView.swift in Sources */,
 				E5A6916728464372009F6048 /* SearchViewController.swift in Sources */,
 				E5F2F1E62841C16E007CF7C6 /* MainCollectionViewCell.swift in Sources */,
 				E5A69160284639EE009F6048 /* SearchService.swift in Sources */,

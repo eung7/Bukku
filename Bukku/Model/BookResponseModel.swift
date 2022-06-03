@@ -9,6 +9,7 @@ import Foundation
 
 struct BookResponseModel: Codable {
     let documents: [Book]
+    let meta: Meta
 }
 
 struct Book: Codable {
@@ -22,3 +23,6 @@ struct Book: Codable {
     let url: String
 }
 
+struct Meta: Codable {
+    let is_end: Bool
+}

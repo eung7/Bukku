@@ -18,8 +18,43 @@ class BookListCell: UICollectionViewCell {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.tintColor = .getBlack()
+        iv.layer.borderWidth = 0.5
         
         return iv
+    }()
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .getBlack()
+        label.font = .systemFont(ofSize: 24.0, weight: .bold)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    let authorsLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .getBlack()
+        label.font = .systemFont(ofSize: 16.0, weight: .light)
+        
+        return label
+    }()
+    
+    let contentsLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .getBlack()
+        label.font = .systemFont(ofSize: 14.0, weight: .medium)
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    let publisherLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .getBlack()
+        label.font = .systemFont(ofSize: 14.0, weight: .ultraLight)
+        
+        return label
     }()
     
     // MARK: - Life Cycle
@@ -40,20 +75,33 @@ class BookListCell: UICollectionViewCell {
             return
         }
         thumbnailImage.kf.setImage(with: URL(string: bookListVM.thumbnailURL))
+        titleLabel.text = bookListVM.title
+        authorsLabel.text = bookListVM.author
+        contentsLabel.text = bookListVM.contents
+        publisherLabel.text = bookListVM.publisher
     }
     
     func configureUI() {
         contentView.backgroundColor = .getWhite()
-        contentView.layer.borderWidth = 0.5
-        contentView.layer.borderColor = UIColor.getBlack().cgColor
         
-        contentView.addSubview(thumbnailImage)
+        let verticalStack = UIStackView(arrangedSubviews: [ titleLabel, authorsLabel, publisherLabel ])
+        verticalStack.axis = .vertical
+        verticalStack.spacing = 4
+        verticalStack.alignment = .leading
+        
+        [ thumbnailImage, verticalStack ]
+            .forEach { contentView.addSubview($0) }
         
         thumbnailImage.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().inset(8)
+            make.width.equalTo(120); make.height.equalTo(174)
+        }
+        
+        verticalStack.snp.makeConstraints { make in
+            make.leading.equalTo(thumbnailImage.snp.trailing).offset(8)
+            make.trailing.equalToSuperview().inset(4)
+            make.centerY.equalToSuperview()
         }
     }
 }
-
-// TODO: [] 검색 무한 스크롤 만들기
-

@@ -9,12 +9,13 @@ import Foundation
 import Alamofire
 
 struct SearchService {
-    static func fetchBooks(_ query: String, completion: @escaping ([Book]) -> Void) {
+    static func fetchBooks(_ query: String, page: Int, completion: @escaping (BookResponseModel, Int) -> Void) {
         let url = URL(string: "https://dapi.kakao.com/v3/search/book")!
         let parameters: [String: Any] = [
             "target": "title",
+            "size": 27,
             "query": query,
-            "size": 21
+            "page": page
         ]
         let headers: HTTPHeaders = [ "Authorization": "KakaoAK 1a60cb934a4cd40e13a8c21222ab5397" ]
         
@@ -26,7 +27,7 @@ struct SearchService {
                     print("RESPONSE ERROR!: \(error.localizedDescription)"); return
                 case .success(let response):
                     DispatchQueue.main.async {
-                        completion(response.documents)
+                        completion(response, page + 1)
                     }
                 }
             }
