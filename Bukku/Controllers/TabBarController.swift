@@ -1,6 +1,6 @@
 //
 //  TabBarController.swift
-//  Minimum
+//  Bukku
 //
 //  Created by 김응철 on 2022/05/27.
 //

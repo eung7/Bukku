@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 // TODO: [] 새로운 검색을 할 때 최상단으로 포커스 가기
-// TODO: [] 검색할 때 0.3초간 인디케이터 나오게 하기
 
 class SearchViewController: UIViewController {
     // MARK: - States
@@ -91,7 +90,6 @@ class SearchViewController: UIViewController {
         }
     }
     
-    // TODO: [x] 스크롤하면 인디케이터 푸터 사라졌다 나타났다 버그 고치기
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if bookListCollectionView.contentOffset.y > (bookListCollectionView.contentSize.height - bookListCollectionView.bounds.size.height) {
             if !isLoading {
