@@ -37,11 +37,11 @@ class MainViewController: UIViewController {
         return view
     }()
     
-    lazy var searchButton: UIButton = {
+    lazy var settingButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "gearshape"), for: .normal)
         button.tintColor = .getBlack()
-        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 40.0), forImageIn: .normal)
+        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 32.0), forImageIn: .normal)
         button.addTarget(self, action: #selector(didTapSearchButton), for: .touchUpInside)
         
         return button
@@ -78,7 +78,7 @@ class MainViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .getGray()
         
-        [ mainLabel, goalLabel, searchButton, lineView, collectionView ]
+        [ mainLabel, goalLabel, settingButton, lineView, collectionView ]
             .forEach { view.addSubview($0) }
         
         mainLabel.snp.makeConstraints { make in
@@ -88,10 +88,10 @@ class MainViewController: UIViewController {
         goalLabel.snp.makeConstraints { make in
             make.top.equalTo(mainLabel.snp.bottom).offset(4)
             make.leading.equalToSuperview().inset(20)
-            make.trailing.equalTo(searchButton.snp.leading).offset(4)
+            make.trailing.equalTo(settingButton.snp.leading).offset(4)
         }
         
-        searchButton.snp.makeConstraints { make in
+        settingButton.snp.makeConstraints { make in
             make.trailing.top.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
         
