@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  MemoViewController.swift
 //  Bukku
 //
 //  Created by 김응철 on 2022/05/27.
@@ -8,9 +8,10 @@
 import UIKit
 import SnapKit
 
-class MainViewController: UIViewController {
+class MemoViewController: UIViewController {
     // MARK: - Properties
     let viewModel = MainViewModel()
+    let manager = LibraryManager.shared
     
     let mainLabel: UILabel = {
         let label = UILabel()
@@ -32,7 +33,7 @@ class MainViewController: UIViewController {
     
     let lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = .label
+        view.backgroundColor = .getBlack()
         
         return view
     }()
@@ -65,6 +66,11 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
     }
     
     // MARK: - Selectors
@@ -163,7 +169,7 @@ class MainViewController: UIViewController {
 }
 
 // MARK: - CollectionView DataSource
-extension MainViewController: UICollectionViewDataSource {
+extension MemoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReadingCollectionViewCell.identifier, for: indexPath) as? ReadingCollectionViewCell else { return UICollectionViewCell() }
         cell.backgroundColor = .getBlack()
@@ -179,13 +185,13 @@ extension MainViewController: UICollectionViewDataSource {
                 for: indexPath
             ) as? CollectionViewHeader else { return UICollectionReusableView() }
             switch indexPath.section {
-            case Section.reading.rawValue:
+            case LibraryType.reading.rawValue:
                 header.label.text = viewModel.configureHeaderTitle(.reading)
                 return header
-            case Section.willRead.rawValue:
+            case LibraryType.willRead.rawValue:
                 header.label.text = viewModel.configureHeaderTitle(.willRead)
                 return header
-            case Section.doneRead.rawValue:
+            case LibraryType.doneRead.rawValue:
                 header.label.text = viewModel.configureHeaderTitle(.doneRead)
                 return header
             default:
@@ -204,16 +210,25 @@ extension MainViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        switch section {
+        case LibraryType.reading.rawValue:
+            return manager.readingBooks.count
+        case LibraryType.willRead.rawValue:
+            return manager.willReadBooks.count
+        case LibraryType.doneRead.rawValue:
+            return manager.doneReadBooks.count
+        default:
+            return 0
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return Section.allCases.count
+        return LibraryType.allCases.count
     }
 }
 
 // MARK: - CollectionView Delegate
-extension MainViewController: UICollectionViewDelegate {
+extension MemoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }

@@ -10,7 +10,13 @@ import SnapKit
 import PanModal
 
 class SelectLibraryViewController: UIViewController {
+    // MARK: - States
+    var selectedBook: Book
+    
     // MARK: - Properties
+    let manager = LibraryManager.shared
+    var dismissCompletion: () -> Void = {}
+    
     let mainLabel: UILabel = {
         let label = UILabel()
         label.text = "서재함을 선택해주세요"
@@ -56,17 +62,32 @@ class SelectLibraryViewController: UIViewController {
         configureUI()
     }
     
+    init(book: Book) {
+        self.selectedBook = book
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Selectors
     @objc func didTapReadingButton() {
+        manager.storeBook(.reading, book: selectedBook)
         dismiss(animated: true)
+        dismissCompletion()
     }
     
     @objc func didTapWillReadButton() {
+        manager.storeBook(.willRead, book: selectedBook)
         dismiss(animated: true)
+        dismissCompletion()
     }
 
     @objc func didTapDoneReadButton() {
+        manager.storeBook(.doneRead, book: selectedBook)
         dismiss(animated: true)
+        dismissCompletion()
     }
     
     // MARK: - Helpers
@@ -111,3 +132,4 @@ extension SelectLibraryViewController: PanModalPresentable {
         return .contentHeight(200)
     }
 }
+

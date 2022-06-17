@@ -11,6 +11,12 @@ class SearchViewModel {
     var books: [Book] = []
 }
 
+extension SearchViewModel {
+    func getBookFromIndex(_ index: Int) -> BookListViewModel {
+        return BookListViewModel(book: books[index])
+    }
+}
+
 class BookListViewModel {
     let book: Book
     

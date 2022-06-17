@@ -6,15 +6,24 @@
 //
 
 import UIKit
+import Kingfisher
 import SnapKit
 import PanModal
 
 class BookDetailViewController: UIViewController {
+    // MARK: - States
+    var bookListVM: BookListViewModel
+    
     // MARK: - Properties
     let bookImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .getBlack()
-        
+        iv.layer.shadowColor = UIColor.getBlack().cgColor
+        iv.layer.shadowOpacity = 0.2
+        iv.layer.shadowRadius = 10.0
+        iv.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        iv.layer.borderWidth = 0.5
+    
         return iv
     }()
     
@@ -23,17 +32,6 @@ class BookDetailViewController: UIViewController {
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: 32.0, weight: .heavy)
         label.textAlignment = .center
-        label.text = "초특급 Swift를 경험해보세요"
-        
-        return label
-    }()
-    
-    let contentsLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 18.0, weight: .thin)
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.text = "안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요"
         
         return label
     }()
@@ -41,7 +39,6 @@ class BookDetailViewController: UIViewController {
     let publisherLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14.0, weight: .thin)
-        label.text = "대원미디어"
         label.textAlignment = .center
         label.textColor = .secondaryLabel
         
@@ -52,16 +49,8 @@ class BookDetailViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
         label.textAlignment = .center
-        label.text = "김응철"
         
         return label
-    }()
-    
-    let lineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .label
-        
-        return view
     }()
     
     lazy var xmarkButton: UIButton = {
@@ -95,6 +84,16 @@ class BookDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureData()
+    }
+    
+    init(bookListVM: BookListViewModel) {
+        self.bookListVM = bookListVM
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Selectors
@@ -103,23 +102,27 @@ class BookDetailViewController: UIViewController {
     }
     
     @objc func didTapConfirmButton() {
-        let selectLibraryVC = SelectLibraryViewController()
+        let selectLibraryVC = SelectLibraryViewController(book: bookListVM.book)
+        selectLibraryVC.dismissCompletion = { [weak self] in
+            self?.dismiss(animated: true)
+        }
         presentPanModal(selectLibraryVC)
     }
     
     // MARK: - Helpers
     private func configureUI() {
+        view.backgroundColor = .getGray()
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: xmarkButton)
         navigationItem.title = "책"
         
-        [ bookImageView, titleLabel, contentsLabel, publisherLabel, authorsLabel, lineView, confirmButton ]
+        [ bookImageView, titleLabel, publisherLabel, authorsLabel, confirmButton ]
             .forEach { view.addSubview($0) }
         
         bookImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(8)
-            make.width.equalTo(200)
-            make.height.equalTo(300)
+            make.top.equalToSuperview().inset(24)
+            make.width.equalTo(150)
+            make.height.equalTo(200)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -140,22 +143,32 @@ class BookDetailViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(16)
         }
         
-        lineView.snp.makeConstraints { make in
-            make.top.equalTo(publisherLabel.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(0.5)
-        }
-        
-        contentsLabel.snp.makeConstraints { make in
-            make.top.equalTo(lineView.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().inset(16)
-        }
-        
         confirmButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
+            make.top.equalTo(publisherLabel.snp.bottom).offset(16)
             make.width.equalTo(200)
             make.height.equalTo(50)
-            make.bottom.equalToSuperview().inset(50)
         }
+    }
+    
+    private func configureData() {
+        titleLabel.text = bookListVM.title
+        authorsLabel.text = bookListVM.author
+        publisherLabel.text = bookListVM.publisher
+        bookImageView.kf.setImage(with: URL(string: bookListVM.thumbnailURL))
+    }
+}
+
+extension BookDetailViewController: PanModalPresentable {
+    var panScrollable: UIScrollView? {
+        return nil
+    }
+    
+    var shortFormHeight: PanModalHeight {
+        return .contentHeight(450)
+    }
+    
+    var longFormHeight: PanModalHeight {
+        return .contentHeight(450)
     }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import PanModal
 
 // TODO: [] 새로운 검색을 할 때 최상단으로 포커스 가기
 
@@ -14,7 +15,7 @@ class SearchViewController: UIViewController {
     // MARK: - States
     var currentPage: Int = 1
     var currentQuery: String = ""
-    var isLoading: Bool = false
+    var isLoading: Bool = true
     var loadingFooterView: LoadingFooterView?
     
     // MARK: - Properties
@@ -125,6 +126,7 @@ extension SearchViewController: UISearchBarDelegate {
             self?.currentPage = currentPage
             self?.isLoading = false
             self?.bookListCollectionView.reloadData()
+            self?.bookListCollectionView.contentOffset.y = 0
         }
     }
     
@@ -174,6 +176,9 @@ extension SearchViewController: UICollectionViewDataSource {
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     /// Cell Did Select
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let bookListVM = viewModel.getBookFromIndex(indexPath.row)
+        let bookDetailVC = BookDetailViewController(bookListVM: bookListVM)
+        presentPanModal(bookDetailVC)
     }
     
     /// Cell Size
@@ -194,7 +199,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }
-
+    
     /// CollectionView Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
