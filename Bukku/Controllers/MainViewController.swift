@@ -1,6 +1,6 @@
 //
 //  MainViewController.swift
-//  Minimum
+//  Bukku
 //
 //  Created by 김응철 on 2022/05/27.
 //
@@ -10,6 +10,8 @@ import SnapKit
 
 class MainViewController: UIViewController {
     // MARK: - Properties
+    let viewModel = MainViewModel()
+    
     let mainLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 38.0, weight: .heavy)
@@ -37,7 +39,7 @@ class MainViewController: UIViewController {
     
     lazy var searchButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        button.setImage(UIImage(systemName: "gearshape"), for: .normal)
         button.tintColor = .getBlack()
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 40.0), forImageIn: .normal)
         button.addTarget(self, action: #selector(didTapSearchButton), for: .touchUpInside)
@@ -48,10 +50,13 @@ class MainViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = createLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(MainCollectionViewCell.self,
-                                forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
+        collectionView.register(ReadingCollectionViewCell.self, forCellWithReuseIdentifier: ReadingCollectionViewCell.identifier)
+        collectionView.register(CollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionViewHeader.identifier)
+        collectionView.register(CollectionViewFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CollectionViewFooter.identifier)
+        collectionView.backgroundColor = .getGray()
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
+        collectionView.delegate = self
         
         return collectionView
     }()
@@ -68,9 +73,9 @@ class MainViewController: UIViewController {
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true)
     }
-
+    
     // MARK: - Helpers
-    func configureUI() {
+    private func configureUI() {
         view.backgroundColor = .getGray()
         
         [ mainLabel, goalLabel, searchButton, lineView, collectionView ]
@@ -99,44 +104,117 @@ class MainViewController: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(lineView.snp.bottom).offset(24)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(200)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
-    func createLayout() -> UICollectionViewCompositionalLayout {
-        return UICollectionViewCompositionalLayout { sectionNumber, _ -> NSCollectionLayoutSection in
-            return self.createMainSection()
+    private func createLayout() -> UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { [weak self] sectionNumber, _ -> NSCollectionLayoutSection? in
+            switch sectionNumber {
+            case 0:
+                return self?.createReadingLayoutSection()
+            default:
+                return self?.createBasicLayoutSection()
+            }
         }
     }
     
-    func createMainSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(200), heightDimension: .absolute(200))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(0.5))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
-        
+    private func createReadingLayoutSection() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1.0)))
+        item.contentInsets = .init(top: 0, leading: 5, bottom: 5, trailing: 5)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.9), heightDimension: .fractionalWidth(0.9)), subitem: item, count: 1)
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .groupPagingCentered
+        section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
+        let header = createCollectionViewHeader()
+        let footer = createCollectionViewFooter()
+        section.boundarySupplementaryItems = [ header, footer ]
+        section.orthogonalScrollingBehavior = .groupPaging
         
         return section
     }
+    
+    private func createBasicLayoutSection() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(120.0), heightDimension: .absolute(174.0)))
+        item.contentInsets = .init(top: 0, leading: 4, bottom: 0, trailing: 4)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(180.0)), subitem: item, count: 3)
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+        let header = createCollectionViewHeader()
+        let footer = createCollectionViewFooter()
+        section.boundarySupplementaryItems = [ header, footer ]
+        section.orthogonalScrollingBehavior = .continuous
+        
+        return section
+    }
+    
+    private func createCollectionViewHeader() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50.0))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .topLeading)
+        
+        return header
+    }
+    
+    private func createCollectionViewFooter() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(10))
+        let footer = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: UICollectionView.elementKindSectionFooter, alignment: .bottomLeading)
+        
+        return footer
+    }
 }
 
-// MARK: - CollectionView
+// MARK: - CollectionView DataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: MainCollectionViewCell.identifier,
-            for: indexPath
-        ) as? MainCollectionViewCell else { return UICollectionViewCell() }
-        cell.setupUI()
-        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReadingCollectionViewCell.identifier, for: indexPath) as? ReadingCollectionViewCell else { return UICollectionViewCell() }
+        cell.backgroundColor = .getBlack()
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            guard let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: UICollectionView.elementKindSectionHeader,
+                withReuseIdentifier: CollectionViewHeader.identifier,
+                for: indexPath
+            ) as? CollectionViewHeader else { return UICollectionReusableView() }
+            switch indexPath.section {
+            case Section.reading.rawValue:
+                header.label.text = viewModel.configureHeaderTitle(.reading)
+                return header
+            case Section.willRead.rawValue:
+                header.label.text = viewModel.configureHeaderTitle(.willRead)
+                return header
+            case Section.doneRead.rawValue:
+                header.label.text = viewModel.configureHeaderTitle(.doneRead)
+                return header
+            default:
+                return UICollectionReusableView()
+            }
+        case UICollectionView.elementKindSectionFooter:
+            guard let footer = collectionView.dequeueReusableSupplementaryView(
+                ofKind: UICollectionView.elementKindSectionFooter,
+                withReuseIdentifier: CollectionViewFooter.identifier,
+                for: indexPath
+            ) as? CollectionViewFooter else { return UICollectionReusableView() }
+            return footer
+        default:
+            return UICollectionReusableView()
+        }
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return 10
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return Section.allCases.count
+    }
+}
+
+// MARK: - CollectionView Delegate
+extension MainViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
 }

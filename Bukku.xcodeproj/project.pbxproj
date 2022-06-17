@@ -16,18 +16,24 @@
 		E51A37992840FA3200DF074B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37982840FA3200DF074B /* TabBarController.swift */; };
 		E51A379C2840FA4E00DF074B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E51A379B2840FA4E00DF074B /* SnapKit */; };
 		E51A379F2840FA7B00DF074B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A379E2840FA7B00DF074B /* SettingsViewController.swift */; };
-		E51A37A42840FDC400DF074B /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37A32840FDC400DF074B /* UIColor+.swift */; };
+		E51A37A42840FDC400DF074B /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37A32840FDC400DF074B /* UIColor+Extensions.swift */; };
 		E51A37A7284102E200DF074B /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = E51A37A6284102E200DF074B /* FSCalendar */; };
 		E56B60C0284787F1003679CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E56B60BF284787F1003679CC /* Kingfisher */; };
+		E592B5D8285B91E000E60FAC /* CollectionViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E592B5D7285B91E000E60FAC /* CollectionViewFooter.swift */; };
+		E59760CC285C163500BA3DB0 /* BasicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59760CB285C163500BA3DB0 /* BasicCollectionViewCell.swift */; };
+		E59760CE285C171E00BA3DB0 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */; };
 		E5A6915D284639CF009F6048 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E5A6915C284639CF009F6048 /* Alamofire */; };
 		E5A69160284639EE009F6048 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6915F284639EE009F6048 /* SearchService.swift */; };
 		E5A6916528463A7E009F6048 /* BookResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916428463A7E009F6048 /* BookResponseModel.swift */; };
 		E5A6916728464372009F6048 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916628464372009F6048 /* SearchViewController.swift */; };
 		E5A6916B2846588E009F6048 /* BookListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916A2846588E009F6048 /* BookListCell.swift */; };
 		E5A6916D284659A7009F6048 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916C284659A7009F6048 /* SearchViewModel.swift */; };
+		E5C75BAC285B2DCD00EF917E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E5C75BAB285B2DCD00EF917E /* RxCocoa */; };
+		E5C75BAE285B2DCD00EF917E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E5C75BAD285B2DCD00EF917E /* RxSwift */; };
+		E5C75BB2285B32A600EF917E /* ReadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C75BB1285B32A600EF917E /* ReadingCollectionViewCell.swift */; };
 		E5F2F1E02841B421007CF7C6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1DF2841B421007CF7C6 /* MainViewModel.swift */; };
 		E5F2F1E32841BC24007CF7C6 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1E22841BC24007CF7C6 /* Trash.swift */; };
-		E5F2F1E62841C16E007CF7C6 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1E52841C16E007CF7C6 /* MainCollectionViewCell.swift */; };
+		E5F2F1E62841C16E007CF7C6 /* CollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F2F1E52841C16E007CF7C6 /* CollectionViewHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,15 +47,19 @@
 		E51A37922840F64D00DF074B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E51A37982840FA3200DF074B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E51A379E2840FA7B00DF074B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		E51A37A32840FDC400DF074B /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		E51A37A32840FDC400DF074B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		E592B5D7285B91E000E60FAC /* CollectionViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFooter.swift; sourceTree = "<group>"; };
+		E59760CB285C163500BA3DB0 /* BasicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewCell.swift; sourceTree = "<group>"; };
+		E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		E5A6915F284639EE009F6048 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		E5A6916428463A7E009F6048 /* BookResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResponseModel.swift; sourceTree = "<group>"; };
 		E5A6916628464372009F6048 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E5A6916A2846588E009F6048 /* BookListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCell.swift; sourceTree = "<group>"; };
 		E5A6916C284659A7009F6048 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		E5C75BB1285B32A600EF917E /* ReadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5F2F1DF2841B421007CF7C6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		E5F2F1E22841BC24007CF7C6 /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
-		E5F2F1E52841C16E007CF7C6 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		E5F2F1E52841C16E007CF7C6 /* CollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +67,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5C75BAE285B2DCD00EF917E /* RxSwift in Frameworks */,
 				E56B60C0284787F1003679CC /* Kingfisher in Frameworks */,
 				E5A6915D284639CF009F6048 /* Alamofire in Frameworks */,
+				E5C75BAC285B2DCD00EF917E /* RxCocoa in Frameworks */,
 				E51A379C2840FA4E00DF074B /* SnapKit in Frameworks */,
 				E51A37A7284102E200DF074B /* FSCalendar in Frameworks */,
 			);
@@ -108,6 +120,7 @@
 			children = (
 				E51A37882840F64B00DF074B /* MainViewController.swift */,
 				E5A6916628464372009F6048 /* SearchViewController.swift */,
+				E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */,
 				E51A379E2840FA7B00DF074B /* SettingsViewController.swift */,
 				E51A37982840FA3200DF074B /* TabBarController.swift */,
 			);
@@ -117,7 +130,7 @@
 		E51A37A22840FDAE00DF074B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E51A37A32840FDC400DF074B /* UIColor+.swift */,
+				E51A37A32840FDC400DF074B /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -141,6 +154,8 @@
 		E5F2F1D8284128F4007CF7C6 /* SubComponents */ = {
 			isa = PBXGroup;
 			children = (
+				E5F2F1E52841C16E007CF7C6 /* CollectionViewHeader.swift */,
+				E592B5D7285B91E000E60FAC /* CollectionViewFooter.swift */,
 				E5145C612848683300B9555F /* LoadingFooterView.swift */,
 			);
 			path = SubComponents;
@@ -166,7 +181,8 @@
 		E5F2F1E42841C15E007CF7C6 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				E5F2F1E52841C16E007CF7C6 /* MainCollectionViewCell.swift */,
+				E5C75BB1285B32A600EF917E /* ReadingCollectionViewCell.swift */,
+				E59760CB285C163500BA3DB0 /* BasicCollectionViewCell.swift */,
 				E5A6916A2846588E009F6048 /* BookListCell.swift */,
 			);
 			path = Cells;
@@ -193,6 +209,8 @@
 				E51A37A6284102E200DF074B /* FSCalendar */,
 				E5A6915C284639CF009F6048 /* Alamofire */,
 				E56B60BF284787F1003679CC /* Kingfisher */,
+				E5C75BAB285B2DCD00EF917E /* RxCocoa */,
+				E5C75BAD285B2DCD00EF917E /* RxSwift */,
 			);
 			productName = Minimum;
 			productReference = E51A37812840F64B00DF074B /* Bukku.app */;
@@ -227,6 +245,7 @@
 				E51A37A5284102E200DF074B /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				E56B60BE284787F1003679CC /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				E5C75BAA285B2DCD00EF917E /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = E51A37822840F64B00DF074B /* Products */;
 			projectDirPath = "";
@@ -255,6 +274,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E51A37892840F64B00DF074B /* MainViewController.swift in Sources */,
+				E592B5D8285B91E000E60FAC /* CollectionViewFooter.swift in Sources */,
+				E59760CE285C171E00BA3DB0 /* LibraryViewController.swift in Sources */,
 				E5A6916528463A7E009F6048 /* BookResponseModel.swift in Sources */,
 				E51A37992840FA3200DF074B /* TabBarController.swift in Sources */,
 				E51A37852840F64B00DF074B /* AppDelegate.swift in Sources */,
@@ -262,12 +283,14 @@
 				E51A37872840F64B00DF074B /* SceneDelegate.swift in Sources */,
 				E5A6916D284659A7009F6048 /* SearchViewModel.swift in Sources */,
 				E5A6916B2846588E009F6048 /* BookListCell.swift in Sources */,
+				E5C75BB2285B32A600EF917E /* ReadingCollectionViewCell.swift in Sources */,
 				E5F2F1E32841BC24007CF7C6 /* Trash.swift in Sources */,
 				E5145C622848683300B9555F /* LoadingFooterView.swift in Sources */,
 				E5A6916728464372009F6048 /* SearchViewController.swift in Sources */,
-				E5F2F1E62841C16E007CF7C6 /* MainCollectionViewCell.swift in Sources */,
+				E59760CC285C163500BA3DB0 /* BasicCollectionViewCell.swift in Sources */,
+				E5F2F1E62841C16E007CF7C6 /* CollectionViewHeader.swift in Sources */,
 				E5A69160284639EE009F6048 /* SearchService.swift in Sources */,
-				E51A37A42840FDC400DF074B /* UIColor+.swift in Sources */,
+				E51A37A42840FDC400DF074B /* UIColor+Extensions.swift in Sources */,
 				E5F2F1E02841B421007CF7C6 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,6 +533,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		E5C75BAA285B2DCD00EF917E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -532,6 +563,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		E5C75BAB285B2DCD00EF917E /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5C75BAA285B2DCD00EF917E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		E5C75BAD285B2DCD00EF917E /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5C75BAA285B2DCD00EF917E /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

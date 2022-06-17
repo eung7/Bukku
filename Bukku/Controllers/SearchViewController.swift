@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 // TODO: [] 새로운 검색을 할 때 최상단으로 포커스 가기
-// TODO: [] 검색할 때 0.3초간 인디케이터 나오게 하기
 
 class SearchViewController: UIViewController {
     // MARK: - States
@@ -35,13 +34,11 @@ class SearchViewController: UIViewController {
         return searchBar
     }()
     
-    lazy var leftArrowButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(
-            image: UIImage(systemName: "arrow.backward"),
-            style: .done,
-            target: self,
-            action: #selector(didTapLeftArrowButton)
-        )
+    lazy var cameraTabBarItem: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "camera.viewfinder"), for: .normal)
+        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 24.0), forImageIn: .normal)
+        button.addTarget(self, action: #selector(didTapCameraButton), for: .touchUpInside)
         button.tintColor = .getBlack()
         
         return button
@@ -71,15 +68,15 @@ class SearchViewController: UIViewController {
     }
     
     // MARK: - Selectors
-    @objc func didTapLeftArrowButton() {
-        self.dismiss(animated: true)
+    @objc func didTapCameraButton() {
+        
     }
     
     // MARK: - Helpers
     func configureUI() {
         view.backgroundColor = .getGray()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
-        navigationItem.leftBarButtonItem = leftArrowButton
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cameraTabBarItem)
         
         bookListCollectionView.isHidden = true
         
@@ -91,7 +88,6 @@ class SearchViewController: UIViewController {
         }
     }
     
-    // TODO: [x] 스크롤하면 인디케이터 푸터 사라졌다 나타났다 버그 고치기
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if bookListCollectionView.contentOffset.y > (bookListCollectionView.contentSize.height - bookListCollectionView.bounds.size.height) {
             if !isLoading {
