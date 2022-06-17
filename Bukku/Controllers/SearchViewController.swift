@@ -34,13 +34,11 @@ class SearchViewController: UIViewController {
         return searchBar
     }()
     
-    lazy var leftArrowButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(
-            image: UIImage(systemName: "arrow.backward"),
-            style: .done,
-            target: self,
-            action: #selector(didTapLeftArrowButton)
-        )
+    lazy var cameraTabBarItem: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "camera.viewfinder"), for: .normal)
+        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 24.0), forImageIn: .normal)
+        button.addTarget(self, action: #selector(didTapCameraButton), for: .touchUpInside)
         button.tintColor = .getBlack()
         
         return button
@@ -70,15 +68,15 @@ class SearchViewController: UIViewController {
     }
     
     // MARK: - Selectors
-    @objc func didTapLeftArrowButton() {
-        self.dismiss(animated: true)
+    @objc func didTapCameraButton() {
+        
     }
     
     // MARK: - Helpers
     func configureUI() {
         view.backgroundColor = .getGray()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
-        navigationItem.leftBarButtonItem = leftArrowButton
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cameraTabBarItem)
         
         bookListCollectionView.isHidden = true
         

@@ -39,7 +39,7 @@ class MainViewController: UIViewController {
     
     lazy var searchButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        button.setImage(UIImage(systemName: "gearshape"), for: .normal)
         button.tintColor = .getBlack()
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 40.0), forImageIn: .normal)
         button.addTarget(self, action: #selector(didTapSearchButton), for: .touchUpInside)

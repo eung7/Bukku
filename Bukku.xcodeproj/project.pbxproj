@@ -20,6 +20,8 @@
 		E51A37A7284102E200DF074B /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = E51A37A6284102E200DF074B /* FSCalendar */; };
 		E56B60C0284787F1003679CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E56B60BF284787F1003679CC /* Kingfisher */; };
 		E592B5D8285B91E000E60FAC /* CollectionViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E592B5D7285B91E000E60FAC /* CollectionViewFooter.swift */; };
+		E59760CC285C163500BA3DB0 /* BasicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59760CB285C163500BA3DB0 /* BasicCollectionViewCell.swift */; };
+		E59760CE285C171E00BA3DB0 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */; };
 		E5A6915D284639CF009F6048 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E5A6915C284639CF009F6048 /* Alamofire */; };
 		E5A69160284639EE009F6048 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6915F284639EE009F6048 /* SearchService.swift */; };
 		E5A6916528463A7E009F6048 /* BookResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916428463A7E009F6048 /* BookResponseModel.swift */; };
@@ -47,6 +49,8 @@
 		E51A379E2840FA7B00DF074B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E51A37A32840FDC400DF074B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		E592B5D7285B91E000E60FAC /* CollectionViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFooter.swift; sourceTree = "<group>"; };
+		E59760CB285C163500BA3DB0 /* BasicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewCell.swift; sourceTree = "<group>"; };
+		E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		E5A6915F284639EE009F6048 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		E5A6916428463A7E009F6048 /* BookResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResponseModel.swift; sourceTree = "<group>"; };
 		E5A6916628464372009F6048 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 			children = (
 				E51A37882840F64B00DF074B /* MainViewController.swift */,
 				E5A6916628464372009F6048 /* SearchViewController.swift */,
+				E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */,
 				E51A379E2840FA7B00DF074B /* SettingsViewController.swift */,
 				E51A37982840FA3200DF074B /* TabBarController.swift */,
 			);
@@ -177,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				E5C75BB1285B32A600EF917E /* ReadingCollectionViewCell.swift */,
+				E59760CB285C163500BA3DB0 /* BasicCollectionViewCell.swift */,
 				E5A6916A2846588E009F6048 /* BookListCell.swift */,
 			);
 			path = Cells;
@@ -269,6 +275,7 @@
 			files = (
 				E51A37892840F64B00DF074B /* MainViewController.swift in Sources */,
 				E592B5D8285B91E000E60FAC /* CollectionViewFooter.swift in Sources */,
+				E59760CE285C171E00BA3DB0 /* LibraryViewController.swift in Sources */,
 				E5A6916528463A7E009F6048 /* BookResponseModel.swift in Sources */,
 				E51A37992840FA3200DF074B /* TabBarController.swift in Sources */,
 				E51A37852840F64B00DF074B /* AppDelegate.swift in Sources */,
@@ -280,6 +287,7 @@
 				E5F2F1E32841BC24007CF7C6 /* Trash.swift in Sources */,
 				E5145C622848683300B9555F /* LoadingFooterView.swift in Sources */,
 				E5A6916728464372009F6048 /* SearchViewController.swift in Sources */,
+				E59760CC285C163500BA3DB0 /* BasicCollectionViewCell.swift in Sources */,
 				E5F2F1E62841C16E007CF7C6 /* CollectionViewHeader.swift in Sources */,
 				E5A69160284639EE009F6048 /* SearchService.swift in Sources */,
 				E51A37A42840FDC400DF074B /* UIColor+Extensions.swift in Sources */,
