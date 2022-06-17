@@ -9,24 +9,24 @@ import UIKit
 
 class TabBarController: UITabBarController {
     // MARK: - Properties
-    let mainVC = MainViewController()
     let libraryVC = LibraryViewController()
-    let searchVC = UINavigationController(rootViewController: SearchViewController()) 
-    
-    let mainTabBarItem = UITabBarItem(
-        title: nil,
-        image: UIImage(systemName: "house"),
-        selectedImage: UIImage(systemName: "house.fill")
-    )
+    let memoVC = MemoViewController()
+    let searchVC = UINavigationController(rootViewController: SearchViewController())
     
     let libraryTabBarItem = UITabBarItem(
-        title: nil,
+        title: "서재",
         image: UIImage(systemName: "books.vertical"),
         selectedImage: UIImage(systemName: "books.vertical.fill")
     )
     
+    let memoTabBarItem = UITabBarItem(
+        title: "메모",
+        image: UIImage(systemName: "note"),
+        selectedImage: UIImage(systemName: "note")
+    )
+    
     let searchTabBarItem = UITabBarItem(
-        title: nil,
+        title: "검색",
         image: UIImage(systemName: "magnifyingglass"),
         selectedImage: UIImage(systemName: "magnifyingglass")
     )
@@ -34,17 +34,19 @@ class TabBarController: UITabBarController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        configureUI()
     }
     
-    func setupUI() {
+    // MARK: - Helpers
+    private func configureUI() {
         tabBar.unselectedItemTintColor = .getBlack()
         tabBar.tintColor = UIColor.getOrange()
-        mainVC.tabBarItem = mainTabBarItem
+        tabBar.barTintColor = .getGray()
+        
+        memoVC.tabBarItem = memoTabBarItem
         libraryVC.tabBarItem = libraryTabBarItem
         searchVC.tabBarItem = searchTabBarItem
         
-        viewControllers = [ mainVC, libraryVC , searchVC ]
+        viewControllers = [ libraryVC, memoVC, searchVC ]
     }
 }
-

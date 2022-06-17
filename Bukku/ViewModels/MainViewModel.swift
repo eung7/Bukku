@@ -7,11 +7,6 @@
 
 import Foundation
 
-enum Section: Int, CaseIterable {
-    case reading
-    case willRead
-    case doneRead
-}
 
 class MainViewModel {
     var eventsArr: [Date] = []
@@ -19,7 +14,7 @@ class MainViewModel {
 }
 
 extension MainViewModel {
-    func configureHeaderTitle(_ section: Section) -> String {
+    func configureHeaderTitle(_ section: LibraryType) -> String {
         switch section {
         case .reading:
             return "읽고 있는 책들이에요"
