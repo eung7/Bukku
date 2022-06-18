@@ -37,7 +37,7 @@ class LibraryDetailViewController: UIViewController {
     let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
-        button.tintColor = .getWhite()
+        button.tintColor = .getBlack()
         
         return button
     }()
@@ -45,7 +45,7 @@ class LibraryDetailViewController: UIViewController {
     let trashButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "trash"), for: .normal)
-        button.tintColor = .getWhite()
+        button.tintColor = .getBlack()
         
         return button
     }()
@@ -72,6 +72,14 @@ class LibraryDetailViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: trashButton)
+        navigationItem.title = "도서"
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.getBlack()]
+        appearance.backgroundColor = .getGray()
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.standardAppearance = appearance
+
         
         [ bookImageView, titleLabel, bookStateLabel ]
             .forEach { view.addSubview($0) }
