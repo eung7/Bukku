@@ -34,6 +34,8 @@
 		E59760EB285CABE200BA3DB0 /* LibraryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59760EA285CABE200BA3DB0 /* LibraryCollectionViewCell.swift */; };
 		E5A3623D285D6F830023BE49 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3623C285D6F830023BE49 /* UserDefaultsManager.swift */; };
 		E5A3623F285D72D30023BE49 /* LibraryBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3623E285D72D30023BE49 /* LibraryBook.swift */; };
+		E5A36241285D94E60023BE49 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A36240285D94E60023BE49 /* WriteReviewViewController.swift */; };
+		E5A36243285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A36242285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift */; };
 		E5A6915D284639CF009F6048 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E5A6915C284639CF009F6048 /* Alamofire */; };
 		E5A69160284639EE009F6048 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6915F284639EE009F6048 /* SearchService.swift */; };
 		E5A6916528463A7E009F6048 /* BookResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916428463A7E009F6048 /* BookResponseModel.swift */; };
@@ -73,6 +75,8 @@
 		E59760EA285CABE200BA3DB0 /* LibraryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5A3623C285D6F830023BE49 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		E5A3623E285D72D30023BE49 /* LibraryBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryBook.swift; sourceTree = "<group>"; };
+		E5A36240285D94E60023BE49 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
+		E5A36242285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDetailBookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5A6915F284639EE009F6048 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		E5A6916428463A7E009F6048 /* BookResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResponseModel.swift; sourceTree = "<group>"; };
 		E5A6916628464372009F6048 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -161,8 +165,10 @@
 			isa = PBXGroup;
 			children = (
 				E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */,
-				E5F3A9B4285CE0DC000E0E7D /* LibraryDetailViewController.swift */,
 				E59760EA285CABE200BA3DB0 /* LibraryCollectionViewCell.swift */,
+				E5F3A9B4285CE0DC000E0E7D /* LibraryDetailViewController.swift */,
+				E5A36242285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift */,
+				E5A36240285D94E60023BE49 /* WriteReviewViewController.swift */,
 				E5F3A9B9285CE9EB000E0E7D /* SubViewControllers */,
 			);
 			path = Library;
@@ -347,8 +353,10 @@
 				E5A6916728464372009F6048 /* SearchViewController.swift in Sources */,
 				E59760D0285C228A00BA3DB0 /* BookDetailViewController.swift in Sources */,
 				E59760E7285C86C400BA3DB0 /* DoneReadViewController.swift in Sources */,
+				E5A36241285D94E60023BE49 /* WriteReviewViewController.swift in Sources */,
 				E59760CC285C163500BA3DB0 /* BasicCollectionViewCell.swift in Sources */,
 				E59760E3285C86B100BA3DB0 /* ReadingViewController.swift in Sources */,
+				E5A36243285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift in Sources */,
 				E5F2F1E62841C16E007CF7C6 /* CollectionViewHeader.swift in Sources */,
 				E59760E9285CA40D00BA3DB0 /* LibraryManager.swift in Sources */,
 				E59760E5285C86BC00BA3DB0 /* WillReadViewController.swift in Sources */,

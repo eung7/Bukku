@@ -41,14 +41,14 @@ class LibraryCollectionViewCell: UICollectionViewCell {
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         layer.shadowColor = UIColor.getBlack().cgColor
         layer.shadowOpacity = 0.5
-        
+    
         contentView.addSubview(bookImageView)
-        
+    
         bookImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
-
+    
     func configureImage(_ url: String) {
         if let url = URL(string: url) {
             bookImageView.kf.setImage(with: url)
