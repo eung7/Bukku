@@ -17,16 +17,15 @@ class LibraryViewController: TabmanViewController {
     let willVC = WillReadViewController()
     let doneVC = DoneReadViewController()
     
+    let bar = TMBar.ButtonBar()
+    private var viewControllers: [UIViewController] = []
+    
     lazy var searchButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         
         return button
     }()
-
-    private var viewControllers: [UIViewController] = []
-    
-    let bar = TMBar.ButtonBar()
     
     // MARK: - LifeCycle
     override func viewDidLoad() {

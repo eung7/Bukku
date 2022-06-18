@@ -37,14 +37,20 @@ extension LibraryManager {
 
 extension LibraryManager {
     func createLibraryBook(_ libraryType: LibraryType, book: Book) -> LibraryBook {
-        return LibraryBook(type: libraryType, authors: book.authors, datetime: book.datetime, contents: book.contents, publisher: book.publisher, thumbnail: book.thumbnail, title: book.title, url: book.url)
+        return LibraryBook(review: nil, bookmark: nil, type: libraryType, authors: book.authors, contents: book.contents, publisher: book.publisher, thumbnail: book.thumbnail, title: book.title)
     }
     
     func storeBook(_ book: LibraryBook) {
         allBooks.insert(book, at: 0)
     }
     
-    func removeBook(_ libraryType: LibraryType, book: LibraryBook) {
-        
+    func removeBook(_ book: LibraryBook) {
+        guard let index = allBooks.firstIndex(where: { $0.title == book.title }) else { return }
+        allBooks.remove(at: index)
+    }
+    
+    func updateBook(_ book: LibraryBook) {
+        guard let index = allBooks.firstIndex(where: { $0.title == book.title }) else { return }
+        allBooks[index] = book
     }
 }

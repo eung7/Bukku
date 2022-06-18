@@ -8,13 +8,15 @@
 import UIKit
 import SnapKit
 
-class LibraryDetailBookmarkCollectionViewCell: UICollectionViewCell {
+class LibraryDetailBookmarkCollectionViewCell: UITableViewCell {
     // MARK: - Properties
     static let identifier = "LibraryDetailBookmarkCollectionViewCell"
     
     let pageLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .getBlack()
         label.text = "P.544"
+        label.font = .systemFont(ofSize: 16.0, weight: .medium)
         
         return label
     }()
@@ -29,21 +31,29 @@ class LibraryDetailBookmarkCollectionViewCell: UICollectionViewCell {
     
     let contentsLabel: UILabel = {
         let label = UILabel()
-        label.text = "contentscontentscontentscontentscontentscontentscontents"
+        label.numberOfLines = 0
+        label.text = "안녕하세요이번책은정말잘뽑았네 요 안녕하세 요이번책은정 말 잘뽑았네요 안녕 하세. 요이번 책은 정말 잘뽑았 네요 안녕하세요이번책은정말잘 뽑았네요 안녕하세 요이번책 은정 말잘뽑 았네요 "
+        label.font = .systemFont(ofSize: 18.0, weight: .thin)
         
         return label
     }()
     
-    let verticalLine: UIView = {
+    let ultraView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getBlack()
+        view.backgroundColor = .getGray()
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.getBlack().cgColor
+        view.layer.cornerRadius = 10
+        view.layer.shadowOffset = CGSize(width: 0, height: 0)
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowColor = UIColor.getBlack().cgColor
         
         return view
     }()
     
     // MARK: - LifeCycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureUI()
     }
     
@@ -53,10 +63,32 @@ class LibraryDetailBookmarkCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Helpers
     private func configureUI() {
-        contentView.backgroundColor = .getWhite()
+        contentView.backgroundColor = .getGray()
         
-        [ pageLabel, bookmarkImage, contentsLabel ]
-            .forEach { contentView.addSubview($0) }
+        contentView.addSubview(ultraView)
+        
+        ultraView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.bottom.equalToSuperview().inset(8)
+        }
+        
+        let stackView = UIStackView(arrangedSubviews: [ bookmarkImage, pageLabel ])
+        stackView.axis = .horizontal
+        stackView.spacing = 4.0
+        
+        [ stackView, contentsLabel ]
+            .forEach { ultraView.addSubview($0) }
+        
+        stackView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(16)
+            make.top.equalToSuperview().inset(8)
+        }
+        
+        contentsLabel.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(2)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.bottom.equalToSuperview().inset(8)
+        }
     }
     
     private func configureData() {

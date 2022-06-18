@@ -17,6 +17,7 @@
 		E51A379C2840FA4E00DF074B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E51A379B2840FA4E00DF074B /* SnapKit */; };
 		E51A379F2840FA7B00DF074B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A379E2840FA7B00DF074B /* SettingsViewController.swift */; };
 		E51A37A42840FDC400DF074B /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37A32840FDC400DF074B /* UIColor+Extensions.swift */; };
+		E5569B3F285E4D56007D927B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5569B3E285E4D56007D927B /* Utilities.swift */; };
 		E56B60C0284787F1003679CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E56B60BF284787F1003679CC /* Kingfisher */; };
 		E592B5D8285B91E000E60FAC /* CollectionViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E592B5D7285B91E000E60FAC /* CollectionViewFooter.swift */; };
 		E59760CC285C163500BA3DB0 /* BasicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59760CB285C163500BA3DB0 /* BasicCollectionViewCell.swift */; };
@@ -36,6 +37,9 @@
 		E5A3623F285D72D30023BE49 /* LibraryBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3623E285D72D30023BE49 /* LibraryBook.swift */; };
 		E5A36241285D94E60023BE49 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A36240285D94E60023BE49 /* WriteReviewViewController.swift */; };
 		E5A36243285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A36242285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift */; };
+		E5A36252285DD22D0023BE49 /* RSKPlaceholderTextView in Frameworks */ = {isa = PBXBuildFile; productRef = E5A36251285DD22D0023BE49 /* RSKPlaceholderTextView */; };
+		E5A36255285DD3EF0023BE49 /* JVFloatLabeledTextField in Frameworks */ = {isa = PBXBuildFile; productRef = E5A36254285DD3EF0023BE49 /* JVFloatLabeledTextField */; };
+		E5A36257285DE9470023BE49 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A36256285DE9470023BE49 /* Bookmark.swift */; };
 		E5A6915D284639CF009F6048 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E5A6915C284639CF009F6048 /* Alamofire */; };
 		E5A69160284639EE009F6048 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6915F284639EE009F6048 /* SearchService.swift */; };
 		E5A6916528463A7E009F6048 /* BookResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6916428463A7E009F6048 /* BookResponseModel.swift */; };
@@ -62,6 +66,7 @@
 		E51A37982840FA3200DF074B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E51A379E2840FA7B00DF074B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E51A37A32840FDC400DF074B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		E5569B3E285E4D56007D927B /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		E592B5D7285B91E000E60FAC /* CollectionViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFooter.swift; sourceTree = "<group>"; };
 		E59760CB285C163500BA3DB0 /* BasicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewCell.swift; sourceTree = "<group>"; };
 		E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +82,7 @@
 		E5A3623E285D72D30023BE49 /* LibraryBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryBook.swift; sourceTree = "<group>"; };
 		E5A36240285D94E60023BE49 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
 		E5A36242285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDetailBookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
+		E5A36256285DE9470023BE49 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		E5A6915F284639EE009F6048 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		E5A6916428463A7E009F6048 /* BookResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResponseModel.swift; sourceTree = "<group>"; };
 		E5A6916628464372009F6048 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -94,12 +100,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5C75BAE285B2DCD00EF917E /* RxSwift in Frameworks */,
+				E5A36255285DD3EF0023BE49 /* JVFloatLabeledTextField in Frameworks */,
 				E59760DE285C834200BA3DB0 /* Tabman in Frameworks */,
 				E56B60C0284787F1003679CC /* Kingfisher in Frameworks */,
 				E5A6915D284639CF009F6048 /* Alamofire in Frameworks */,
 				E59760D9285C763600BA3DB0 /* PanModal in Frameworks */,
 				E5C75BAC285B2DCD00EF917E /* RxCocoa in Frameworks */,
 				E51A379C2840FA4E00DF074B /* SnapKit in Frameworks */,
+				E5A36252285DD22D0023BE49 /* RSKPlaceholderTextView in Frameworks */,
 				E59760D3285C675A00BA3DB0 /* Toast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +147,7 @@
 				E51A378D2840F64D00DF074B /* Assets.xcassets */,
 				E51A378F2840F64D00DF074B /* LaunchScreen.storyboard */,
 				E51A37922840F64D00DF074B /* Info.plist */,
+				E5569B3E285E4D56007D927B /* Utilities.swift */,
 			);
 			path = Bukku;
 			sourceTree = "<group>";
@@ -287,6 +296,7 @@
 			children = (
 				E5A6916428463A7E009F6048 /* BookResponseModel.swift */,
 				E5A3623E285D72D30023BE49 /* LibraryBook.swift */,
+				E5A36256285DE9470023BE49 /* Bookmark.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -325,6 +335,8 @@
 				E59760D2285C675A00BA3DB0 /* Toast */,
 				E59760D8285C763600BA3DB0 /* PanModal */,
 				E59760DD285C834200BA3DB0 /* Tabman */,
+				E5A36251285DD22D0023BE49 /* RSKPlaceholderTextView */,
+				E5A36254285DD3EF0023BE49 /* JVFloatLabeledTextField */,
 			);
 			productName = Minimum;
 			productReference = E51A37812840F64B00DF074B /* Bukku.app */;
@@ -362,6 +374,8 @@
 				E59760D1285C675A00BA3DB0 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				E59760D7285C763600BA3DB0 /* XCRemoteSwiftPackageReference "PanModal" */,
 				E59760DC285C834200BA3DB0 /* XCRemoteSwiftPackageReference "Tabman" */,
+				E5A36250285DD22D0023BE49 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView" */,
+				E5A36253285DD3EF0023BE49 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField" */,
 			);
 			productRefGroup = E51A37822840F64B00DF074B /* Products */;
 			projectDirPath = "";
@@ -413,6 +427,7 @@
 				E59760CC285C163500BA3DB0 /* BasicCollectionViewCell.swift in Sources */,
 				E59760E3285C86B100BA3DB0 /* ReadingViewController.swift in Sources */,
 				E5A36243285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift in Sources */,
+				E5569B3F285E4D56007D927B /* Utilities.swift in Sources */,
 				E5F2F1E62841C16E007CF7C6 /* CollectionViewHeader.swift in Sources */,
 				E59760E9285CA40D00BA3DB0 /* LibraryManager.swift in Sources */,
 				E59760E5285C86BC00BA3DB0 /* WillReadViewController.swift in Sources */,
@@ -420,6 +435,7 @@
 				E51A37A42840FDC400DF074B /* UIColor+Extensions.swift in Sources */,
 				E5F2F1E02841B421007CF7C6 /* MainViewModel.swift in Sources */,
 				E5F3A9B5285CE0DC000E0E7D /* LibraryDetailViewController.swift in Sources */,
+				E5A36257285DE9470023BE49 /* Bookmark.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,6 +685,22 @@
 				minimumVersion = 2.9.0;
 			};
 		};
+		E5A36250285DD22D0023BE49 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ruslanskorb/RSKPlaceholderTextView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		E5A36253285DD3EF0023BE49 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jverdi/JVFloatLabeledTextField.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -712,6 +744,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E59760DC285C834200BA3DB0 /* XCRemoteSwiftPackageReference "Tabman" */;
 			productName = Tabman;
+		};
+		E5A36251285DD22D0023BE49 /* RSKPlaceholderTextView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5A36250285DD22D0023BE49 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView" */;
+			productName = RSKPlaceholderTextView;
+		};
+		E5A36254285DD3EF0023BE49 /* JVFloatLabeledTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5A36253285DD3EF0023BE49 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField" */;
+			productName = JVFloatLabeledTextField;
 		};
 		E5A6915C284639CF009F6048 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

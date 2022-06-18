@@ -8,12 +8,12 @@
 import Foundation
 
 struct LibraryBook: Codable {
-    let type: LibraryType
+    var review: String?
+    var bookmark: [Bookmark]?
+    var type: LibraryType
     let authors: [String]
-    let datetime: String
     let contents: String
     let publisher: String
     let thumbnail: String
     let title: String
-    let url: String
 }
