@@ -1,5 +1,5 @@
 //
-//  AllVC.swift
+//  WillReadViewController.swift
 //  Bukku
 //
 //  Created by 김응철 on 2022/06/17.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class AllViewController: UIViewController {
+class WillReadViewController: UIViewController {
     // MARK: - Properties
     let manager = LibraryManager.shared
     
@@ -45,24 +45,25 @@ class AllViewController: UIViewController {
     }
 }
 
-extension AllViewController: UICollectionViewDataSource {
+extension WillReadViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.identifier, for: indexPath) as? LibraryCollectionViewCell else { return UICollectionViewCell() }
-        let imageURL = manager.allBooks[indexPath.row].thumbnail
+        let imageURL = manager.willReadBooks[indexPath.row].thumbnail
         cell.configureImage(imageURL)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return manager.allBooks.count
+        return manager.willReadBooks.count
     }
 }
 
-extension AllViewController: UICollectionViewDelegateFlowLayout {
+extension WillReadViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let libraryDetailVC = LibraryDetailViewController(manager.allBooks[indexPath.row])
-//        present(UINavigationController(rootViewController: libraryDetailVC), animated: true)
+        let libraryDetailVC = UINavigationController(rootViewController: LibraryDetailViewController(manager.willReadBooks[indexPath.row]))
+        libraryDetailVC.modalPresentationStyle = .fullScreen
+        present(libraryDetailVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -8,11 +8,10 @@
 import UIKit
 import SnapKit
 import Kingfisher
-import AudioToolbox
 
 class LibraryDetailViewController: UIViewController {
     // MARK: - Properties
-//    let book: LibraryBook
+    let book: LibraryBook
     
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -31,6 +30,7 @@ class LibraryDetailViewController: UIViewController {
         iv.layer.shadowOffset = CGSize(width: 0, height: 0)
         iv.layer.shadowOpacity = 0.5
         iv.layer.shadowColor = UIColor.getBlack().cgColor
+        iv.layer.masksToBounds = true
         
         return iv
     }()
@@ -38,7 +38,6 @@ class LibraryDetailViewController: UIViewController {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 3
-        label.text = "SwiftSwiftSwiftSwiftSwiftSwiftSwiftSwiftSwiftSwiftSwiftSwiftSwift"
         label.font = .systemFont(ofSize: 34.0, weight: .semibold)
         
         return label
@@ -46,7 +45,6 @@ class LibraryDetailViewController: UIViewController {
     
     let authorLabel: UILabel = {
         let label = UILabel()
-        label.text = "김응철"
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
         
         return label
@@ -54,7 +52,6 @@ class LibraryDetailViewController: UIViewController {
     
     let publisherLabel: UILabel = {
         let label = UILabel()
-        label.text = "대원미디어"
         label.font = .systemFont(ofSize: 14.0, weight: .thin)
         label.textColor = .gray
         
@@ -207,14 +204,14 @@ class LibraryDetailViewController: UIViewController {
         configureData()
     }
     
-//    init(_ book: LibraryBook) {
-//        self.book = book
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    init(_ book: LibraryBook) {
+        self.book = book
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Selectors
     @objc func didTapBackButton() {
@@ -226,11 +223,10 @@ class LibraryDetailViewController: UIViewController {
     }
     
     @objc func didTapReviewButton() {
-        print("tapped!")
+
     }
     
     @objc func didTapBookmarkButton() {
-        print("tapped!")
     }
     
     // MARK: - Helpers
@@ -344,7 +340,12 @@ class LibraryDetailViewController: UIViewController {
     }
     
     private func configureData() {
-        
+        titleLabel.text = book.title
+        authorLabel.text = book.authors.first
+        publisherLabel.text = book.publisher
+        if let url = URL(string: book.thumbnail) {
+            bookImageView.kf.setImage(with: url)
+        }
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
@@ -355,8 +356,8 @@ class LibraryDetailViewController: UIViewController {
     
     private func createBookmarkCollectionLayout() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50)))
-        item.contentInsets = .init(top: 0, leading: 5, bottom: 5, trailing: 5)
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(220.0)), subitem: item, count: 4)
+        item.contentInsets = .init(top: 0, leading: 5, bottom: 10, trailing: 5)
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(0.95), heightDimension: .absolute(220.0)), subitem: item, count: 3)
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 0, leading: 4, bottom: 0, trailing: 4)
         section.orthogonalScrollingBehavior = .groupPaging

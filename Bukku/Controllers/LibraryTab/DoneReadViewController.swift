@@ -1,5 +1,5 @@
 //
-//  ReadingViewController.swift
+//  DoneReadViewController.swift
 //  Bukku
 //
 //  Created by 김응철 on 2022/06/17.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ReadingViewController: UIViewController {
+class DoneReadViewController: UIViewController {
     // MARK: - Properties
     let manager = LibraryManager.shared
     
@@ -45,21 +45,27 @@ class ReadingViewController: UIViewController {
     }
 }
 
-extension ReadingViewController: UICollectionViewDataSource {
+extension DoneReadViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.identifier, for: indexPath) as? LibraryCollectionViewCell else { return UICollectionViewCell() }
-        let imageURL = manager.readingBooks[indexPath.row].thumbnail
+        let imageURL = manager.doneReadBooks[indexPath.row].thumbnail
         cell.configureImage(imageURL)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return manager.readingBooks.count
+        return manager.doneReadBooks.count
     }
 }
 
-extension ReadingViewController: UICollectionViewDelegateFlowLayout {
+extension DoneReadViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let libraryDetailVC = UINavigationController(rootViewController: LibraryDetailViewController(manager.doneReadBooks[indexPath.row]))
+        libraryDetailVC.modalPresentationStyle = .fullScreen
+        present(libraryDetailVC, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (UIScreen.main.bounds.width - 32) / 3, height: 180)
     }

@@ -128,15 +128,13 @@
 			children = (
 				E51A37842840F64B00DF074B /* AppDelegate.swift */,
 				E51A37862840F64B00DF074B /* SceneDelegate.swift */,
-				E5A3623C285D6F830023BE49 /* UserDefaultsManager.swift */,
 				E5A6915E284639DD009F6048 /* Service */,
 				E5A6916128463A4A009F6048 /* Model */,
+				E5A36247285DCE230023BE49 /* Managers */,
 				E5F2F1DE2841B414007CF7C6 /* ViewModels */,
-				E59760DF285C867800BA3DB0 /* Library */,
-				E5F3A9B6285CE9B0000E0E7D /* Search */,
-				E5F3A9B7285CE9C9000E0E7D /* Memo */,
-				E5F3A9B8285CE9D5000E0E7D /* Setting */,
 				E51A379D2840FA6300DF074B /* Controllers */,
+				E5A36248285DCE370023BE49 /* Cells */,
+				E5A3624C285DCE730023BE49 /* Views */,
 				E51A37A22840FDAE00DF074B /* Extensions */,
 				E51A378D2840F64D00DF074B /* Assets.xcassets */,
 				E51A378F2840F64D00DF074B /* LaunchScreen.storyboard */,
@@ -148,7 +146,11 @@
 		E51A379D2840FA6300DF074B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E51A379E2840FA7B00DF074B /* SettingsViewController.swift */,
 				E51A37982840FA3200DF074B /* TabBarController.swift */,
+				E5A36246285DCDEC0023BE49 /* MemoTab */,
+				E5A36245285DCDD00023BE49 /* SearchTab */,
+				E5A36244285DCDBF0023BE49 /* LibraryTab */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -161,17 +163,115 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		E59760DF285C867800BA3DB0 /* Library */ = {
+		E5A36244285DCDBF0023BE49 /* LibraryTab */ = {
 			isa = PBXGroup;
 			children = (
-				E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */,
-				E59760EA285CABE200BA3DB0 /* LibraryCollectionViewCell.swift */,
-				E5F3A9B4285CE0DC000E0E7D /* LibraryDetailViewController.swift */,
-				E5A36242285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift */,
 				E5A36240285D94E60023BE49 /* WriteReviewViewController.swift */,
-				E5F3A9B9285CE9EB000E0E7D /* SubViewControllers */,
+				E5F3A9B4285CE0DC000E0E7D /* LibraryDetailViewController.swift */,
+				E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */,
+				E59760E0285C869100BA3DB0 /* AllViewController.swift */,
+				E59760E2285C86B100BA3DB0 /* ReadingViewController.swift */,
+				E59760E4285C86BC00BA3DB0 /* WillReadViewController.swift */,
+				E59760E6285C86C400BA3DB0 /* DoneReadViewController.swift */,
 			);
-			path = Library;
+			path = LibraryTab;
+			sourceTree = "<group>";
+		};
+		E5A36245285DCDD00023BE49 /* SearchTab */ = {
+			isa = PBXGroup;
+			children = (
+				E5A6916628464372009F6048 /* SearchViewController.swift */,
+				E59760CF285C228A00BA3DB0 /* BookDetailViewController.swift */,
+				E59760DA285C774700BA3DB0 /* SelectLibraryViewController.swift */,
+			);
+			path = SearchTab;
+			sourceTree = "<group>";
+		};
+		E5A36246285DCDEC0023BE49 /* MemoTab */ = {
+			isa = PBXGroup;
+			children = (
+				E51A37882840F64B00DF074B /* MemoViewController.swift */,
+			);
+			path = MemoTab;
+			sourceTree = "<group>";
+		};
+		E5A36247285DCE230023BE49 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E5A3623C285D6F830023BE49 /* UserDefaultsManager.swift */,
+				E59760E8285CA40D00BA3DB0 /* LibraryManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		E5A36248285DCE370023BE49 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E5A3624B285DCE600023BE49 /* MemoTab */,
+				E5A3624A285DCE510023BE49 /* LibraryTab */,
+				E5A36249285DCE400023BE49 /* SearchTab */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E5A36249285DCE400023BE49 /* SearchTab */ = {
+			isa = PBXGroup;
+			children = (
+				E5A6916A2846588E009F6048 /* BookListCell.swift */,
+			);
+			path = SearchTab;
+			sourceTree = "<group>";
+		};
+		E5A3624A285DCE510023BE49 /* LibraryTab */ = {
+			isa = PBXGroup;
+			children = (
+				E59760EA285CABE200BA3DB0 /* LibraryCollectionViewCell.swift */,
+				E5A36242285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift */,
+			);
+			path = LibraryTab;
+			sourceTree = "<group>";
+		};
+		E5A3624B285DCE600023BE49 /* MemoTab */ = {
+			isa = PBXGroup;
+			children = (
+				E5C75BB1285B32A600EF917E /* ReadingCollectionViewCell.swift */,
+				E59760CB285C163500BA3DB0 /* BasicCollectionViewCell.swift */,
+			);
+			path = MemoTab;
+			sourceTree = "<group>";
+		};
+		E5A3624C285DCE730023BE49 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5A3624F285DCE960023BE49 /* LibraryTab */,
+				E5A3624E285DCE8F0023BE49 /* MemoTab */,
+				E5A3624D285DCE890023BE49 /* SearchTab */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E5A3624D285DCE890023BE49 /* SearchTab */ = {
+			isa = PBXGroup;
+			children = (
+				E5145C612848683300B9555F /* LoadingFooterView.swift */,
+			);
+			path = SearchTab;
+			sourceTree = "<group>";
+		};
+		E5A3624E285DCE8F0023BE49 /* MemoTab */ = {
+			isa = PBXGroup;
+			children = (
+				E5F2F1E52841C16E007CF7C6 /* CollectionViewHeader.swift */,
+				E592B5D7285B91E000E60FAC /* CollectionViewFooter.swift */,
+			);
+			path = MemoTab;
+			sourceTree = "<group>";
+		};
+		E5A3624F285DCE960023BE49 /* LibraryTab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LibraryTab;
 			sourceTree = "<group>";
 		};
 		E5A6915E284639DD009F6048 /* Service */ = {
@@ -186,7 +286,6 @@
 			isa = PBXGroup;
 			children = (
 				E5A6916428463A7E009F6048 /* BookResponseModel.swift */,
-				E59760E8285CA40D00BA3DB0 /* LibraryManager.swift */,
 				E5A3623E285D72D30023BE49 /* LibraryBook.swift */,
 			);
 			path = Model;
@@ -199,49 +298,6 @@
 				E5A6916C284659A7009F6048 /* SearchViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		E5F3A9B6285CE9B0000E0E7D /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				E5A6916628464372009F6048 /* SearchViewController.swift */,
-				E59760CF285C228A00BA3DB0 /* BookDetailViewController.swift */,
-				E59760DA285C774700BA3DB0 /* SelectLibraryViewController.swift */,
-				E5A6916A2846588E009F6048 /* BookListCell.swift */,
-				E5145C612848683300B9555F /* LoadingFooterView.swift */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		E5F3A9B7285CE9C9000E0E7D /* Memo */ = {
-			isa = PBXGroup;
-			children = (
-				E51A37882840F64B00DF074B /* MemoViewController.swift */,
-				E5C75BB1285B32A600EF917E /* ReadingCollectionViewCell.swift */,
-				E59760CB285C163500BA3DB0 /* BasicCollectionViewCell.swift */,
-				E5F2F1E52841C16E007CF7C6 /* CollectionViewHeader.swift */,
-				E592B5D7285B91E000E60FAC /* CollectionViewFooter.swift */,
-			);
-			path = Memo;
-			sourceTree = "<group>";
-		};
-		E5F3A9B8285CE9D5000E0E7D /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				E51A379E2840FA7B00DF074B /* SettingsViewController.swift */,
-			);
-			path = Setting;
-			sourceTree = "<group>";
-		};
-		E5F3A9B9285CE9EB000E0E7D /* SubViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				E59760E0285C869100BA3DB0 /* AllViewController.swift */,
-				E59760E2285C86B100BA3DB0 /* ReadingViewController.swift */,
-				E59760E4285C86BC00BA3DB0 /* WillReadViewController.swift */,
-				E59760E6285C86C400BA3DB0 /* DoneReadViewController.swift */,
-			);
-			path = SubViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
