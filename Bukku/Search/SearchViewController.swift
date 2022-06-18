@@ -73,11 +73,16 @@ class SearchViewController: UIViewController {
         
     }
     
+    @objc func dismissKeyboard() {
+        searchBar.searchTextField.resignFirstResponder()
+    }
+    
     // MARK: - Helpers
     func configureUI() {
         view.backgroundColor = .getGray()
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cameraTabBarItem)
+        navigationController?.navigationBar.barTintColor = .getGray()
         
         bookListCollectionView.isHidden = true
         
@@ -90,6 +95,7 @@ class SearchViewController: UIViewController {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchBar.searchTextField.resignFirstResponder()
         if bookListCollectionView.contentOffset.y > (bookListCollectionView.contentSize.height - bookListCollectionView.bounds.size.height) {
             if !isLoading {
                 isLoading = true
@@ -194,7 +200,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
             return CGSize.zero
         }
     }
-
+    
     /// CollectionView Item Spacing
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8

@@ -17,7 +17,6 @@ struct Book: Codable {
     let contents: String
     let datetime: String
     let publisher: String
-    let price: Int
     let thumbnail: String
     let title: String
     let url: String

@@ -73,19 +73,22 @@ class SelectLibraryViewController: UIViewController {
     
     // MARK: - Selectors
     @objc func didTapReadingButton() {
-        manager.storeBook(.reading, book: selectedBook)
+        let newBook = manager.createLibraryBook(.reading, book: selectedBook)
+        manager.storeBook(newBook)
         dismiss(animated: true)
         dismissCompletion()
     }
     
     @objc func didTapWillReadButton() {
-        manager.storeBook(.willRead, book: selectedBook)
+        let newBook = manager.createLibraryBook(.willRead, book: selectedBook)
+        manager.storeBook(newBook)
         dismiss(animated: true)
         dismissCompletion()
     }
 
     @objc func didTapDoneReadButton() {
-        manager.storeBook(.doneRead, book: selectedBook)
+        let newBook = manager.createLibraryBook(.doneRead, book: selectedBook)
+        manager.storeBook(newBook)
         dismiss(animated: true)
         dismissCompletion()
     }

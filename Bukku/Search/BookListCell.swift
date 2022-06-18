@@ -40,15 +40,6 @@ class BookListCell: UICollectionViewCell {
         return label
     }()
     
-    let contentsLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .getBlack()
-        label.font = .systemFont(ofSize: 14.0, weight: .medium)
-        label.numberOfLines = 0
-        
-        return label
-    }()
-    
     let publisherLabel: UILabel = {
         let label = UILabel()
         label.textColor = .getBlack()
@@ -77,7 +68,6 @@ class BookListCell: UICollectionViewCell {
         thumbnailImage.kf.setImage(with: URL(string: bookListVM.thumbnailURL))
         titleLabel.text = bookListVM.title
         authorsLabel.text = bookListVM.author
-        contentsLabel.text = bookListVM.contents
         publisherLabel.text = bookListVM.publisher
     }
     
@@ -105,4 +95,3 @@ class BookListCell: UICollectionViewCell {
         }
     }
 }
-

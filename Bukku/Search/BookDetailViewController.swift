@@ -19,10 +19,10 @@ class BookDetailViewController: UIViewController {
         let iv = UIImageView()
         iv.backgroundColor = .getBlack()
         iv.layer.shadowColor = UIColor.getBlack().cgColor
-        iv.layer.shadowOpacity = 0.2
+        iv.layer.shadowOpacity = 0.5
         iv.layer.shadowRadius = 10.0
         iv.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        iv.layer.borderWidth = 0.5
+        iv.layer.borderWidth = 1
     
         return iv
     }()

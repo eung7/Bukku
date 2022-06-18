@@ -15,6 +15,9 @@ class LibraryCollectionViewCell: UICollectionViewCell {
     
     let bookImageView: UIImageView = {
         let iv = UIImageView()
+        iv.backgroundColor = .clear
+        iv.clipsToBounds = true
+        iv.layer.cornerRadius = 10
         
         return iv
     }()
@@ -31,8 +34,13 @@ class LibraryCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Helpers
     private func configureUI() {
+        backgroundColor = .clear
         layer.borderWidth = 1
         layer.borderColor = UIColor.getBlack().cgColor
+        layer.cornerRadius = 10
+        layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        layer.shadowColor = UIColor.getBlack().cgColor
+        layer.shadowOpacity = 0.5
         
         contentView.addSubview(bookImageView)
         
@@ -40,7 +48,7 @@ class LibraryCollectionViewCell: UICollectionViewCell {
             make.edges.equalToSuperview()
         }
     }
-    
+
     func configureImage(_ url: String) {
         if let url = URL(string: url) {
             bookImageView.kf.setImage(with: url)

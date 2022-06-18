@@ -61,14 +61,14 @@ extension WillReadViewController: UICollectionViewDataSource {
 
 extension WillReadViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (UIScreen.main.bounds.width - 64) / 3, height: 180)
+        return CGSize(width: (UIScreen.main.bounds.width - 32) / 3, height: 180)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
 }

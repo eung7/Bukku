@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LibraryType: Int, CaseIterable {
+enum LibraryType: Int, CaseIterable, Codable {
     case reading
     case willRead
     case doneRead
@@ -15,44 +15,36 @@ enum LibraryType: Int, CaseIterable {
 
 class LibraryManager {
     static let shared = LibraryManager()
-    var readingBooks: [Book] = []
-    var willReadBooks: [Book] = []
-    var doneReadBooks: [Book] = []
     
-    var allBooks: [Book] {
-        return readingBooks + willReadBooks + doneReadBooks
+    var allBooks: [LibraryBook] = [] {
+        didSet {
+            UserDefaultsManager.shared.saveBooks(allBooks)
+        }
     }
 }
 
 extension LibraryManager {
-    func storeBook(_ libraryType: LibraryType, book: Book) {
-        switch libraryType {
-        case .reading:
-            readingBooks.append(book)
-        case .willRead:
-            willReadBooks.append(book)
-        case .doneRead:
-            doneReadBooks.append(book)
-        }
+    var readingBooks: [LibraryBook] {
+        return allBooks.filter { $0.type == .reading }
+    }
+    var willReadBooks: [LibraryBook] {
+        return allBooks.filter { $0.type == .willRead }
+    }
+    var doneReadBooks: [LibraryBook] {
+        return allBooks.filter { $0.type == .doneRead }
+    }
+}
+
+extension LibraryManager {
+    func createLibraryBook(_ libraryType: LibraryType, book: Book) -> LibraryBook {
+        return LibraryBook(type: libraryType, authors: book.authors, datetime: book.datetime, contents: book.contents, publisher: book.publisher, thumbnail: book.thumbnail, title: book.title, url: book.url)
     }
     
-    func removeBook(_ libraryType: LibraryType, book: Book) {
-        switch libraryType {
-        case .reading:
-            let index = readingBooks.firstIndex(where: { book.title == $0.title })
-            if let index = index {
-                readingBooks.remove(at: index)
-            }
-        case .willRead:
-            let index = willReadBooks.firstIndex(where: { book.title == $0.title })
-            if let index = index {
-                willReadBooks.remove(at: index)
-            }
-        case .doneRead:
-            let index = doneReadBooks.firstIndex(where: { book.title == $0.title })
-            if let index = index {
-                doneReadBooks.remove(at: index)
-            }
-        }
+    func storeBook(_ book: LibraryBook) {
+        allBooks.insert(book, at: 0)
+    }
+    
+    func removeBook(_ libraryType: LibraryType, book: LibraryBook) {
+        
     }
 }

@@ -1,5 +1,5 @@
 //
-//  AllVC.swift
+//  ReadingViewController.swift
 //  Bukku
 //
 //  Created by 김응철 on 2022/06/17.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class AllViewController: UIViewController {
+class ReadingViewController: UIViewController {
     // MARK: - Properties
     let manager = LibraryManager.shared
     
@@ -45,30 +45,30 @@ class AllViewController: UIViewController {
     }
 }
 
-extension AllViewController: UICollectionViewDataSource {
+extension ReadingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.identifier, for: indexPath) as? LibraryCollectionViewCell else { return UICollectionViewCell() }
-        let imageURL = manager.allBooks[indexPath.row].thumbnail
+        let imageURL = manager.readingBooks[indexPath.row].thumbnail
         cell.configureImage(imageURL)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return manager.allBooks.count
+        return manager.readingBooks.count
     }
 }
 
-extension AllViewController: UICollectionViewDelegateFlowLayout {
+extension ReadingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (UIScreen.main.bounds.width - 64) / 3, height: 180)
+        return CGSize(width: (UIScreen.main.bounds.width - 32) / 3, height: 180)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
 }

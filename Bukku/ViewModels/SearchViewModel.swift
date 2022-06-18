@@ -29,6 +29,5 @@ extension BookListViewModel {
     var thumbnailURL: String { return book.thumbnail }
     var title: String { return book.title }
     var author: String { return book.authors.first! }
-    var contents: String { return book.contents }
     var publisher: String { return book.publisher }
 }
