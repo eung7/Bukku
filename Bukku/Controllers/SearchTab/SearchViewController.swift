@@ -30,8 +30,9 @@ class SearchViewController: UIViewController {
         searchBar.placeholder = "책 이름을 알려주세요!"
         searchBar.returnKeyType = .search
         searchBar.searchTextField.leftView?.tintColor = .getBlack()
+        searchBar.searchTextField.enablesReturnKeyAutomatically = true
         searchBar.delegate = self
-
+        
         return searchBar
     }()
     

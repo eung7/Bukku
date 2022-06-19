@@ -35,9 +35,10 @@ extension LibraryManager {
     }
 }
 
+// MARK: - 만들기, 삭제하기, 업데이트
 extension LibraryManager {
     func createLibraryBook(_ libraryType: LibraryType, book: Book) -> LibraryBook {
-        return LibraryBook(review: nil, bookmark: nil, type: libraryType, authors: book.authors, contents: book.contents, publisher: book.publisher, thumbnail: book.thumbnail, title: book.title)
+        return LibraryBook(review: nil, bookmark: [], type: libraryType, authors: book.authors, contents: book.contents, publisher: book.publisher, thumbnail: book.thumbnail, title: book.title)
     }
     
     func storeBook(_ book: LibraryBook) {
@@ -52,5 +53,27 @@ extension LibraryManager {
     func updateBook(_ book: LibraryBook) {
         guard let index = allBooks.firstIndex(where: { $0.title == book.title }) else { return }
         allBooks[index] = book
+    }
+    
+    func getIndexFromAllBooks(_ book: LibraryBook) -> Int {
+        if let index = allBooks.firstIndex(where: { $0.title == book.title }) {
+            return index
+        }
+        return 0
+    }
+    
+    func getBookFromIndex(_ index: Int) -> LibraryBook {
+        let book = allBooks[index]
+        return book
+    }
+}
+
+// MARK: - BookmarkManager
+extension LibraryManager {
+    func createBookmark(_ book: LibraryBook, page: String, contents: String) {
+        var updatedBook = book
+        let bookmark = Bookmark(page: page, contents: contents)
+        updatedBook.bookmark.insert(bookmark, at: 0)
+        updateBook(updatedBook)
     }
 }

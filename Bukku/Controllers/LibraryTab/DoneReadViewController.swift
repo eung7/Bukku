@@ -61,7 +61,10 @@ extension DoneReadViewController: UICollectionViewDataSource {
 
 extension DoneReadViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let libraryDetailVC = UINavigationController(rootViewController: LibraryDetailViewController(manager.doneReadBooks[indexPath.row]))
+        let book = manager.doneReadBooks[indexPath.row]
+        let index = manager.getIndexFromAllBooks(book)
+        
+        let libraryDetailVC = UINavigationController(rootViewController: LibraryDetailViewController(index))
         libraryDetailVC.modalPresentationStyle = .fullScreen
         present(libraryDetailVC, animated: true)
     }

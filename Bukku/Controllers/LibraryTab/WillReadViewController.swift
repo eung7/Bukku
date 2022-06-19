@@ -61,7 +61,10 @@ extension WillReadViewController: UICollectionViewDataSource {
 
 extension WillReadViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let libraryDetailVC = UINavigationController(rootViewController: LibraryDetailViewController(manager.willReadBooks[indexPath.row]))
+        let book = manager.willReadBooks[indexPath.row]
+        let index = manager.getIndexFromAllBooks(book)
+
+        let libraryDetailVC = UINavigationController(rootViewController: LibraryDetailViewController(index))
         libraryDetailVC.modalPresentationStyle = .fullScreen
         present(libraryDetailVC, animated: true)
     }

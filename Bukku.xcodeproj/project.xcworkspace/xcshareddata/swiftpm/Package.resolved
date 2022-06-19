@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "nextgrowingtextview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/muukii/NextGrowingTextView.git",
+      "state" : {
+        "revision" : "dd442180b0e8f1e2889b88ab52474ccb77b608e5",
+        "version" : "2.2.0"
+      }
+    },
+    {
       "identity" : "pageboy",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/uias/Pageboy",

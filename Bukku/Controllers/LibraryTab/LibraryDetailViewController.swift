@@ -11,9 +11,14 @@ import Kingfisher
 import SystemConfiguration
 
 class LibraryDetailViewController: UIViewController {
-    // MARK: - Properties
-    var selectedBook: LibraryBook
+    // MARK: - States
+    let index: Int
+    var currentBook: LibraryBook?
     let width = UIScreen.main.bounds.width
+    
+    // MARK: - Properties
+    let manager = LibraryManager.shared
+    let viewModel = LibraryDetailViewModel()
     
     let bookImageView: UIImageView = {
         let iv = UIImageView()
@@ -113,13 +118,14 @@ class LibraryDetailViewController: UIViewController {
         return label
     }()
     
-    let reviewLabel: BasePaddingLabel = {
+    lazy var reviewLabel: BasePaddingLabel = {
         let label = BasePaddingLabel(padding: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
         label.textColor = .getBlack()
         label.numberOfLines = 0
         label.text = "서평을 입력해주세요!"
-        label.textAlignment = .center
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
         label.backgroundColor = .getWhite()
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 10
@@ -187,12 +193,12 @@ class LibraryDetailViewController: UIViewController {
         tableView.delegate = self
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedSectionHeaderHeight = 100
         tableView.estimatedRowHeight = 100
         tableView.separatorColor = .getBlack()
         tableView.separatorStyle = .none
-        tableView.estimatedSectionHeaderHeight = 25
         tableView.backgroundColor = .getGray()
-        tableView.register(LibraryDetailBookmarkCollectionViewCell.self, forCellReuseIdentifier: LibraryDetailBookmarkCollectionViewCell.identifier)
+        tableView.register(BookmarkTableViewCell.self, forCellReuseIdentifier: BookmarkTableViewCell.identifier)
         
         return tableView
     }()
@@ -207,13 +213,14 @@ class LibraryDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureData()
+        tableView.reloadData()
     }
     
-    init(_ book: LibraryBook) {
-        self.selectedBook = book
+    init(_ index: Int) {
+        self.index = index
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -228,16 +235,27 @@ class LibraryDetailViewController: UIViewController {
     }
     
     @objc func didTapWriteReviewButton() {
-        let writeReviewVC = WriteReviewViewController(selectedBook)
-        let navVC = UINavigationController(rootViewController: writeReviewVC)
-        navVC.modalPresentationStyle = .fullScreen
-        writeReviewVC.saveCompletion = { [weak self] updatedBook in
-            self?.selectedBook = updatedBook
+        if let currentBook = currentBook {
+            let writeReviewVC = WriteReviewViewController(currentBook)
+            let navVC = UINavigationController(rootViewController: writeReviewVC)
+            navVC.modalPresentationStyle = .fullScreen
+            writeReviewVC.saveCompletion = { [weak self] updatedBook in
+                self?.currentBook = updatedBook
+            }
+            present(navVC, animated: true)
         }
-        present(navVC, animated: true)
     }
     
     @objc func didTapWriteBookmarkButton() {
+        if let currentBook = currentBook {
+            let writeBookmarkVC = WriteBookmarkViewController(currentBook)
+            let navVC = UINavigationController(rootViewController: writeBookmarkVC)
+            navVC.modalPresentationStyle = .fullScreen
+            writeBookmarkVC.saveCompletion = { [weak self] updatedBook in
+                self?.currentBook = updatedBook
+            }
+            present(navVC, animated: true)
+        }
     }
     
     // MARK: - Helpers
@@ -258,11 +276,17 @@ class LibraryDetailViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 4.0
         
-        [ bookImageView, stackView, lineView, tableView ]
-            .forEach { view.addSubview($0) }
+        view.addSubview(tableView)
+        
+        tableView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        [ bookImageView, stackView, lineView, reviewTitleLabel, writeReviewButton, reviewLabel, lineView2, bookmarkTitleLabel, lineView3, writeBookmarkButton, lineView4 ]
+            .forEach { headerView.addSubview($0) }
         
         bookImageView.snp.makeConstraints { make in
-            make.leading.top.equalTo(view.safeAreaLayoutGuide).inset(8)
+            make.leading.top.equalToSuperview().inset(8)
             make.width.equalTo((UIScreen.main.bounds.width - 32) / 3)
             make.height.equalTo(180)
         }
@@ -270,7 +294,7 @@ class LibraryDetailViewController: UIViewController {
         stackView.snp.makeConstraints { make in
             make.centerY.equalTo(bookImageView)
             make.leading.equalTo(bookImageView.snp.trailing).offset(8)
-            make.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.trailing.equalToSuperview()
         }
         
         lineView.snp.makeConstraints { make in
@@ -279,34 +303,20 @@ class LibraryDetailViewController: UIViewController {
             make.height.equalTo(0.5)
         }
         
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(lineView.snp.bottom)
-            make.bottom.leading.trailing.equalToSuperview()
-        }
-        
-        [ reviewTitleLabel, lineView1, writeReviewButton, reviewLabel, lineView2, bookmarkTitleLabel, lineView3, writeBookmarkButton, lineView4 ]
-            .forEach { headerView.addSubview($0) }
-        
         reviewTitleLabel.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(16)
-        }
-        
-        lineView1.snp.makeConstraints { make in
-            make.top.equalTo(reviewTitleLabel.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(0.5)
+            make.top.equalTo(lineView.snp.bottom).offset(16)
+            make.leading.equalToSuperview().inset(16)
+            make.height.equalTo(30.0)
         }
         
         writeReviewButton.snp.makeConstraints { make in
-            make.bottom.equalTo(lineView1.snp.top).offset(-8)
+            make.centerY.equalTo(reviewTitleLabel)
             make.trailing.equalToSuperview().inset(16)
         }
         
         reviewLabel.snp.makeConstraints { make in
-            make.top.equalTo(lineView1.snp.bottom).offset(8)
+            make.top.equalTo(reviewTitleLabel.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(16)
-            make.height.greaterThanOrEqualTo(200)
-            make.height.lessThanOrEqualTo(500)
         }
         
         bookmarkTitleLabel.snp.makeConstraints { make in
@@ -319,7 +329,7 @@ class LibraryDetailViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(0.5)
         }
-
+        
         writeBookmarkButton.snp.makeConstraints { make in
             make.centerY.equalTo(bookmarkTitleLabel)
             make.trailing.equalToSuperview().inset(16)
@@ -328,41 +338,39 @@ class LibraryDetailViewController: UIViewController {
     }
     
     private func configureData() {
-        titleLabel.text = selectedBook.title
-        authorLabel.text = selectedBook.authors.first
-        publisherLabel.text = selectedBook.publisher
-        if let review = selectedBook.review { reviewLabel.text = review }
-        if let url = URL(string: selectedBook.thumbnail) { bookImageView.kf.setImage(with: url) }
-    }
-    
-    private func createLayout() -> UICollectionViewCompositionalLayout {
-        return UICollectionViewCompositionalLayout { [weak self] sectionNumber, _ -> NSCollectionLayoutSection? in
-            return self?.createBookmarkCollectionLayout()
-        }
-    }
-    
-    private func createBookmarkCollectionLayout() -> NSCollectionLayoutSection {
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50)))
-        item.contentInsets = .init(top: 0, leading: 5, bottom: 10, trailing: 5)
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(0.95), heightDimension: .absolute(220.0)), subitem: item, count: 3)
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 4, leading: 4, bottom: 0, trailing: 4)
-        section.orthogonalScrollingBehavior = .groupPaging
+        let book = manager.getBookFromIndex(index)
+        currentBook = book
+        viewModel.bookmarks = book.bookmark
         
-        return section
+        titleLabel.text = book.title
+        authorLabel.text = book.authors.first
+        publisherLabel.text = book.publisher
+        if let review = book.review {
+            reviewLabel.text = review
+        }
+        if let url = URL(string: book.thumbnail) {
+            bookImageView.kf.setImage(with: url)
+        }
     }
 }
 
 // MARK: - TableView DataSource
 extension LibraryDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: LibraryDetailBookmarkCollectionViewCell.identifier, for: indexPath) as? LibraryDetailBookmarkCollectionViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarkTableViewCell.identifier, for: indexPath) as? BookmarkTableViewCell else { return UITableViewCell() }
+        if let book = currentBook {
+            cell.configureData(book.bookmark[indexPath.row])
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        if currentBook?.bookmark.count > 0 {
+            return viewModel.numberOfRowsInSection()
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -372,5 +380,7 @@ extension LibraryDetailViewController: UITableViewDataSource {
 
 // MARK: - TableView Delegate
 extension LibraryDetailViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }

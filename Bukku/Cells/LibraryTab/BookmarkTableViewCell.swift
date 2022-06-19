@@ -8,14 +8,13 @@
 import UIKit
 import SnapKit
 
-class LibraryDetailBookmarkCollectionViewCell: UITableViewCell {
+class BookmarkTableViewCell: UITableViewCell {
     // MARK: - Properties
     static let identifier = "LibraryDetailBookmarkCollectionViewCell"
     
     let pageLabel: UILabel = {
         let label = UILabel()
         label.textColor = .getBlack()
-        label.text = "P.544"
         label.font = .systemFont(ofSize: 16.0, weight: .medium)
         
         return label
@@ -32,9 +31,9 @@ class LibraryDetailBookmarkCollectionViewCell: UITableViewCell {
     let contentsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "안녕하세요이번책은정말잘뽑았네 요 안녕하세 요이번책은정 말 잘뽑았네요 안녕 하세. 요이번 책은 정말 잘뽑았 네요 안녕하세요이번책은정말잘 뽑았네요 안녕하세 요이번책 은정 말잘뽑 았네요 "
+        label.adjustsFontSizeToFitWidth = true
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
-        
+    
         return label
     }()
     
@@ -64,7 +63,6 @@ class LibraryDetailBookmarkCollectionViewCell: UITableViewCell {
     // MARK: - Helpers
     private func configureUI() {
         contentView.backgroundColor = .getGray()
-        
         contentView.addSubview(ultraView)
         
         ultraView.snp.makeConstraints { make in
@@ -87,11 +85,13 @@ class LibraryDetailBookmarkCollectionViewCell: UITableViewCell {
         contentsLabel.snp.makeConstraints { make in
             make.top.equalTo(stackView.snp.bottom).offset(2)
             make.leading.trailing.equalToSuperview().inset(16)
+            make.height.greaterThanOrEqualTo(50)
             make.bottom.equalToSuperview().inset(8)
         }
     }
     
-    private func configureData() {
-        
+    func configureData(_ bookmark: Bookmark) {
+        pageLabel.text = "P.\(bookmark.page)"
+        contentsLabel.text = bookmark.contents
     }
 }

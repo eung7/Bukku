@@ -61,7 +61,7 @@ extension AllViewController: UICollectionViewDataSource {
 
 extension AllViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let libraryDetailVC = UINavigationController(rootViewController: LibraryDetailViewController(manager.allBooks[indexPath.row]))
+        let libraryDetailVC = UINavigationController(rootViewController: LibraryDetailViewController(indexPath.row))
         libraryDetailVC.modalPresentationStyle = .fullScreen
         present(libraryDetailVC, animated: true)
     }

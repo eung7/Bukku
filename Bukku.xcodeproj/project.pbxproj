@@ -19,6 +19,10 @@
 		E51A37A42840FDC400DF074B /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37A32840FDC400DF074B /* UIColor+Extensions.swift */; };
 		E5569B3F285E4D56007D927B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5569B3E285E4D56007D927B /* Utilities.swift */; };
 		E56B60C0284787F1003679CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E56B60BF284787F1003679CC /* Kingfisher */; };
+		E58203F9285F3B9D007513D7 /* WriteBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58203F8285F3B9D007513D7 /* WriteBookmarkViewController.swift */; };
+		E58203FC285F3D5D007513D7 /* NextGrowingTextView in Frameworks */ = {isa = PBXBuildFile; productRef = E58203FB285F3D5D007513D7 /* NextGrowingTextView */; };
+		E5820402285F57F3007513D7 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E5820401285F57F3007513D7 /* Toast */; };
+		E5820404285F63C3007513D7 /* LibraryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5820403285F63C3007513D7 /* LibraryDetailViewModel.swift */; };
 		E592B5D8285B91E000E60FAC /* CollectionViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E592B5D7285B91E000E60FAC /* CollectionViewFooter.swift */; };
 		E59760CC285C163500BA3DB0 /* BasicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59760CB285C163500BA3DB0 /* BasicCollectionViewCell.swift */; };
 		E59760CE285C171E00BA3DB0 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */; };
@@ -36,7 +40,7 @@
 		E5A3623D285D6F830023BE49 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3623C285D6F830023BE49 /* UserDefaultsManager.swift */; };
 		E5A3623F285D72D30023BE49 /* LibraryBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A3623E285D72D30023BE49 /* LibraryBook.swift */; };
 		E5A36241285D94E60023BE49 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A36240285D94E60023BE49 /* WriteReviewViewController.swift */; };
-		E5A36243285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A36242285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift */; };
+		E5A36243285DAFD50023BE49 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A36242285DAFD50023BE49 /* BookmarkTableViewCell.swift */; };
 		E5A36252285DD22D0023BE49 /* RSKPlaceholderTextView in Frameworks */ = {isa = PBXBuildFile; productRef = E5A36251285DD22D0023BE49 /* RSKPlaceholderTextView */; };
 		E5A36255285DD3EF0023BE49 /* JVFloatLabeledTextField in Frameworks */ = {isa = PBXBuildFile; productRef = E5A36254285DD3EF0023BE49 /* JVFloatLabeledTextField */; };
 		E5A36257285DE9470023BE49 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A36256285DE9470023BE49 /* Bookmark.swift */; };
@@ -67,6 +71,8 @@
 		E51A379E2840FA7B00DF074B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E51A37A32840FDC400DF074B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		E5569B3E285E4D56007D927B /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		E58203F8285F3B9D007513D7 /* WriteBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteBookmarkViewController.swift; sourceTree = "<group>"; };
+		E5820403285F63C3007513D7 /* LibraryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDetailViewModel.swift; sourceTree = "<group>"; };
 		E592B5D7285B91E000E60FAC /* CollectionViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFooter.swift; sourceTree = "<group>"; };
 		E59760CB285C163500BA3DB0 /* BasicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewCell.swift; sourceTree = "<group>"; };
 		E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +87,7 @@
 		E5A3623C285D6F830023BE49 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		E5A3623E285D72D30023BE49 /* LibraryBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryBook.swift; sourceTree = "<group>"; };
 		E5A36240285D94E60023BE49 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
-		E5A36242285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDetailBookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
+		E5A36242285DAFD50023BE49 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
 		E5A36256285DE9470023BE49 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		E5A6915F284639EE009F6048 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		E5A6916428463A7E009F6048 /* BookResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResponseModel.swift; sourceTree = "<group>"; };
@@ -99,6 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5820402285F57F3007513D7 /* Toast in Frameworks */,
+				E58203FC285F3D5D007513D7 /* NextGrowingTextView in Frameworks */,
 				E5C75BAE285B2DCD00EF917E /* RxSwift in Frameworks */,
 				E5A36255285DD3EF0023BE49 /* JVFloatLabeledTextField in Frameworks */,
 				E59760DE285C834200BA3DB0 /* Tabman in Frameworks */,
@@ -176,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				E5A36240285D94E60023BE49 /* WriteReviewViewController.swift */,
+				E58203F8285F3B9D007513D7 /* WriteBookmarkViewController.swift */,
 				E5F3A9B4285CE0DC000E0E7D /* LibraryDetailViewController.swift */,
 				E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */,
 				E59760E0285C869100BA3DB0 /* AllViewController.swift */,
@@ -235,7 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				E59760EA285CABE200BA3DB0 /* LibraryCollectionViewCell.swift */,
-				E5A36242285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift */,
+				E5A36242285DAFD50023BE49 /* BookmarkTableViewCell.swift */,
 			);
 			path = LibraryTab;
 			sourceTree = "<group>";
@@ -306,6 +315,7 @@
 			children = (
 				E5F2F1DF2841B421007CF7C6 /* MainViewModel.swift */,
 				E5A6916C284659A7009F6048 /* SearchViewModel.swift */,
+				E5820403285F63C3007513D7 /* LibraryDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -337,6 +347,8 @@
 				E59760DD285C834200BA3DB0 /* Tabman */,
 				E5A36251285DD22D0023BE49 /* RSKPlaceholderTextView */,
 				E5A36254285DD3EF0023BE49 /* JVFloatLabeledTextField */,
+				E58203FB285F3D5D007513D7 /* NextGrowingTextView */,
+				E5820401285F57F3007513D7 /* Toast */,
 			);
 			productName = Minimum;
 			productReference = E51A37812840F64B00DF074B /* Bukku.app */;
@@ -376,6 +388,8 @@
 				E59760DC285C834200BA3DB0 /* XCRemoteSwiftPackageReference "Tabman" */,
 				E5A36250285DD22D0023BE49 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView" */,
 				E5A36253285DD3EF0023BE49 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField" */,
+				E58203FA285F3D5D007513D7 /* XCRemoteSwiftPackageReference "NextGrowingTextView" */,
+				E5820400285F57F3007513D7 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = E51A37822840F64B00DF074B /* Products */;
 			projectDirPath = "";
@@ -415,18 +429,20 @@
 				E51A37872840F64B00DF074B /* SceneDelegate.swift in Sources */,
 				E5A3623F285D72D30023BE49 /* LibraryBook.swift in Sources */,
 				E5A6916D284659A7009F6048 /* SearchViewModel.swift in Sources */,
+				E5820404285F63C3007513D7 /* LibraryDetailViewModel.swift in Sources */,
 				E5A6916B2846588E009F6048 /* BookListCell.swift in Sources */,
 				E5A3623D285D6F830023BE49 /* UserDefaultsManager.swift in Sources */,
 				E5C75BB2285B32A600EF917E /* ReadingCollectionViewCell.swift in Sources */,
 				E5145C622848683300B9555F /* LoadingFooterView.swift in Sources */,
 				E59760E1285C869100BA3DB0 /* AllViewController.swift in Sources */,
 				E5A6916728464372009F6048 /* SearchViewController.swift in Sources */,
+				E58203F9285F3B9D007513D7 /* WriteBookmarkViewController.swift in Sources */,
 				E59760D0285C228A00BA3DB0 /* BookDetailViewController.swift in Sources */,
 				E59760E7285C86C400BA3DB0 /* DoneReadViewController.swift in Sources */,
 				E5A36241285D94E60023BE49 /* WriteReviewViewController.swift in Sources */,
 				E59760CC285C163500BA3DB0 /* BasicCollectionViewCell.swift in Sources */,
 				E59760E3285C86B100BA3DB0 /* ReadingViewController.swift in Sources */,
-				E5A36243285DAFD50023BE49 /* LibraryDetailBookmarkCollectionViewCell.swift in Sources */,
+				E5A36243285DAFD50023BE49 /* BookmarkTableViewCell.swift in Sources */,
 				E5569B3F285E4D56007D927B /* Utilities.swift in Sources */,
 				E5F2F1E62841C16E007CF7C6 /* CollectionViewHeader.swift in Sources */,
 				E59760E9285CA40D00BA3DB0 /* LibraryManager.swift in Sources */,
@@ -661,6 +677,22 @@
 				minimumVersion = 7.2.0;
 			};
 		};
+		E58203FA285F3D5D007513D7 /* XCRemoteSwiftPackageReference "NextGrowingTextView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/muukii/NextGrowingTextView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		E5820400285F57F3007513D7 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		E59760D1285C675A00BA3DB0 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
@@ -729,6 +761,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E56B60BE284787F1003679CC /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		E58203FB285F3D5D007513D7 /* NextGrowingTextView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E58203FA285F3D5D007513D7 /* XCRemoteSwiftPackageReference "NextGrowingTextView" */;
+			productName = NextGrowingTextView;
+		};
+		E5820401285F57F3007513D7 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5820400285F57F3007513D7 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 		E59760D2285C675A00BA3DB0 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;

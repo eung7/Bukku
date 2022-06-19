@@ -9,7 +9,7 @@ import Foundation
 
 struct LibraryBook: Codable {
     var review: String?
-    var bookmark: [Bookmark]?
+    var bookmark: [Bookmark]
     var type: LibraryType
     let authors: [String]
     let contents: String

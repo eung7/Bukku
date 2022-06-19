@@ -15,9 +15,10 @@ class WriteReviewViewController: UIViewController {
     let manager = LibraryManager.shared
     var saveCompletion: ((LibraryBook) -> Void)?
     
-    let textView: RSKPlaceholderTextView = {
+    lazy var textView: RSKPlaceholderTextView = {
         let textView = RSKPlaceholderTextView()
         textView.placeholder = "서평을 입력해주세요."
+        textView.delegate = self
         textView.font = .systemFont(ofSize: 18.0, weight: .thin)
         textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         textView.layer.borderWidth = 1
@@ -47,6 +48,12 @@ class WriteReviewViewController: UIViewController {
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         
         return button
+    }()
+    
+    let contentsCountLabel: UILabel = {
+        let label = UILabel()
+        
+        return label
     }()
     
     // MARK: - LifeCycle
@@ -85,16 +92,32 @@ class WriteReviewViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backArrowButton)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
         
-        view.addSubview(textView)
+        view.addSubview(textView); view.addSubview(contentsCountLabel)
         
         textView.snp.makeConstraints { make in
             make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(400)
+            make.height.equalTo(300)
+        }
+        
+        contentsCountLabel.snp.makeConstraints { make in
+            make.top.equalTo(textView.snp.bottom).offset(8)
+            make.trailing.equalToSuperview().inset(16)
         }
     }
-
+    
     private func configureData() {
         guard let review = book.review else { return }
         textView.text = review
+    }
+}
+
+extension WriteReviewViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let changedText = currentText.replacingCharacters(in: stringRange, with: text)
+        
+        contentsCountLabel.text = "\(changedText.count)/1000"
+        return changedText.count <= 999
     }
 }
