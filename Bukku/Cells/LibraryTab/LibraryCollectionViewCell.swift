@@ -13,11 +13,11 @@ class LibraryCollectionViewCell: UICollectionViewCell {
     // MARK: - Properties
     static let identifier = "LibraryCollectionViewCell"
     
-    let bookImageView: UIImageView = {
+    lazy var bookImageView: UIImageView = {
         let iv = UIImageView()
+        iv.contentMode = .scaleToFill
         iv.backgroundColor = .clear
         iv.clipsToBounds = true
-        iv.layer.cornerRadius = 10
         
         return iv
     }()
@@ -37,13 +37,12 @@ class LibraryCollectionViewCell: UICollectionViewCell {
         backgroundColor = .clear
         layer.borderWidth = 1
         layer.borderColor = UIColor.getBlack().cgColor
-        layer.cornerRadius = 10
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         layer.shadowColor = UIColor.getBlack().cgColor
         layer.shadowOpacity = 0.5
-    
+        
         contentView.addSubview(bookImageView)
-    
+        
         bookImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

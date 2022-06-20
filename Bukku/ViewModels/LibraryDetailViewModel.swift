@@ -8,13 +8,21 @@
 import Foundation
 
 class LibraryDetailViewModel {
-    var bookmarks: [Bookmark] = []
+    var book: LibraryBook
+
+    init(_ book: LibraryBook) {
+        self.book = book
+    }
+}
+
+extension LibraryDetailViewModel {
+    var bookmarks: [Bookmark] {
+        return book.bookmark
+    }
 }
 
 extension LibraryDetailViewModel {
     func numberOfRowsInSection() -> Int {
         return bookmarks.count
     }
-    
-    
 }

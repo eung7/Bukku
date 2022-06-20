@@ -8,28 +8,23 @@
 import UIKit
 import SnapKit
 import Kingfisher
-import SystemConfiguration
 
 class LibraryDetailViewController: UIViewController {
     // MARK: - States
     let index: Int
-    var currentBook: LibraryBook?
-    let width = UIScreen.main.bounds.width
     
     // MARK: - Properties
     let manager = LibraryManager.shared
-    let viewModel = LibraryDetailViewModel()
-    
+    var viewModel: LibraryDetailViewModel!
+
     let bookImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .getBlack()
         iv.layer.borderWidth = 1
         iv.layer.borderColor = UIColor.getBlack().cgColor
-        iv.layer.cornerRadius = 10
         iv.layer.shadowOffset = CGSize(width: 0, height: 0)
         iv.layer.shadowOpacity = 0.5
         iv.layer.shadowColor = UIColor.getBlack().cgColor
-        iv.layer.masksToBounds = true
         
         return iv
     }()
@@ -43,21 +38,27 @@ class LibraryDetailViewController: UIViewController {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 3
-        label.font = .systemFont(ofSize: 34.0, weight: .semibold)
+        label.textColor = .getBlack()
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 32.0, weight: .heavy)
         
         return label
     }()
     
     let authorLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .getBlack()
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
+        label.textAlignment = .center
         
         return label
     }()
     
     let publisherLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .getBlack()
         label.font = .systemFont(ofSize: 14.0, weight: .thin)
+        label.textAlignment = .center
         label.textColor = .gray
         
         return label
@@ -112,7 +113,7 @@ class LibraryDetailViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 30.0, weight: .semibold)
         label.textColor = .getBlack()
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.text = "내 책갈피"
         
         return label
@@ -124,7 +125,7 @@ class LibraryDetailViewController: UIViewController {
         label.textColor = .getBlack()
         label.numberOfLines = 0
         label.text = "서평을 입력해주세요!"
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.backgroundColor = .getWhite()
         label.layer.borderWidth = 1
@@ -176,6 +177,19 @@ class LibraryDetailViewController: UIViewController {
         return button
     }()
     
+    lazy var changeLibraryButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("서재함 옮기기", for: .normal)
+        button.setTitleColor(UIColor.getBlack(), for: .normal)
+        button.addTarget(self, action: #selector(didTapChangeLibraryButton), for: .touchUpInside)
+        button.backgroundColor = .getGray()
+        button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .medium)
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 10
+        
+        return button
+    }()
+    
     lazy var deleteAlert: UIAlertController = {
         let alert = UIAlertController(title: "주의", message: "정말 삭제하시겠습니까?", preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
@@ -196,8 +210,8 @@ class LibraryDetailViewController: UIViewController {
         tableView.estimatedSectionHeaderHeight = 100
         tableView.estimatedRowHeight = 100
         tableView.separatorColor = .getBlack()
-        tableView.separatorStyle = .none
         tableView.backgroundColor = .getGray()
+        tableView.separatorStyle = .none
         tableView.register(BookmarkTableViewCell.self, forCellReuseIdentifier: BookmarkTableViewCell.identifier)
         
         return tableView
@@ -227,7 +241,7 @@ class LibraryDetailViewController: UIViewController {
     
     // MARK: - Selectors
     @objc func didTapBackButton() {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func didTapTrashButton() {
@@ -235,46 +249,42 @@ class LibraryDetailViewController: UIViewController {
     }
     
     @objc func didTapWriteReviewButton() {
-        if let currentBook = currentBook {
-            let writeReviewVC = WriteReviewViewController(currentBook)
-            let navVC = UINavigationController(rootViewController: writeReviewVC)
-            navVC.modalPresentationStyle = .fullScreen
-            writeReviewVC.saveCompletion = { [weak self] updatedBook in
-                self?.currentBook = updatedBook
-            }
-            present(navVC, animated: true)
+        let writeReviewVC = WriteReviewViewController(viewModel.book)
+        let navVC = UINavigationController(rootViewController: writeReviewVC)
+        navVC.modalPresentationStyle = .fullScreen
+        writeReviewVC.saveCompletion = { [weak self] updatedBook in
+            self?.viewModel.book = updatedBook
         }
+        present(navVC, animated: true)
     }
     
     @objc func didTapWriteBookmarkButton() {
-        if let currentBook = currentBook {
-            let writeBookmarkVC = WriteBookmarkViewController(currentBook)
-            let navVC = UINavigationController(rootViewController: writeBookmarkVC)
-            navVC.modalPresentationStyle = .fullScreen
-            writeBookmarkVC.saveCompletion = { [weak self] updatedBook in
-                self?.currentBook = updatedBook
-            }
-            present(navVC, animated: true)
+        let writeBookmarkVC = WriteBookmarkViewController(viewModel.book)
+        let navVC = UINavigationController(rootViewController: writeBookmarkVC)
+        navVC.modalPresentationStyle = .fullScreen
+        writeBookmarkVC.saveCompletion = { [weak self] updatedBook in
+            self?.viewModel.book = updatedBook
         }
+        present(navVC, animated: true)
+    }
+    
+    @objc func didTapChangeLibraryButton() {
+        
     }
     
     // MARK: - Helpers
     private func configureUI() {
         view.backgroundColor = .getGray()
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        navigationItem.backButtonTitle = "서재"
+        navigationItem.backBarButtonItem = UIBarButtonItem(customView: backButton)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: trashButton)
+        navigationController?.navigationBar.tintColor = .getBlack()
         navigationItem.title = "도서"
-        let appearance = UINavigationBarAppearance()
-        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.getBlack()]
-        appearance.backgroundColor = .getGray()
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.standardAppearance = appearance
         
         let stackView = UIStackView(arrangedSubviews: [ titleLabel, authorLabel, publisherLabel ])
         stackView.axis = .vertical
         stackView.spacing = 4.0
+        stackView.alignment = .center
         
         view.addSubview(tableView)
         
@@ -282,25 +292,32 @@ class LibraryDetailViewController: UIViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
-        [ bookImageView, stackView, lineView, reviewTitleLabel, writeReviewButton, reviewLabel, lineView2, bookmarkTitleLabel, lineView3, writeBookmarkButton, lineView4 ]
+        [ bookImageView, stackView, changeLibraryButton, lineView, reviewTitleLabel, writeReviewButton, reviewLabel, lineView2, bookmarkTitleLabel, lineView3, writeBookmarkButton, lineView4 ]
             .forEach { headerView.addSubview($0) }
         
         bookImageView.snp.makeConstraints { make in
             make.leading.top.equalToSuperview().inset(8)
             make.width.equalTo((UIScreen.main.bounds.width - 32) / 3)
-            make.height.equalTo(180)
-        }
-        
-        stackView.snp.makeConstraints { make in
-            make.centerY.equalTo(bookImageView)
-            make.leading.equalTo(bookImageView.snp.trailing).offset(8)
-            make.trailing.equalToSuperview()
+            make.height.equalTo(Utilties.getHeightFromWidth(UIScreen.main.bounds.width - 32) / 3)
         }
         
         lineView.snp.makeConstraints { make in
             make.top.equalTo(bookImageView.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(0.5)
+        }
+        
+        changeLibraryButton.snp.makeConstraints { make in
+            make.bottom.equalTo(lineView.snp.top).offset(-8)
+            make.leading.equalTo(bookImageView.snp.trailing).offset(4)
+            make.trailing.equalToSuperview().inset(8)
+            make.height.equalTo(40)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.centerY.equalTo(bookImageView)
+            make.leading.equalTo(bookImageView.snp.trailing).offset(4)
+            make.trailing.equalToSuperview().inset(4)
         }
         
         reviewTitleLabel.snp.makeConstraints { make in
@@ -324,23 +341,16 @@ class LibraryDetailViewController: UIViewController {
             make.leading.equalToSuperview().inset(16)
         }
         
-        lineView4.snp.makeConstraints { make in
-            make.top.equalTo(bookmarkTitleLabel.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(0.5)
-        }
-        
         writeBookmarkButton.snp.makeConstraints { make in
             make.centerY.equalTo(bookmarkTitleLabel)
             make.trailing.equalToSuperview().inset(16)
-            make.bottom.equalToSuperview().inset(16)
+            make.bottom.equalToSuperview().inset(8)
         }
     }
     
     private func configureData() {
         let book = manager.getBookFromIndex(index)
-        currentBook = book
-        viewModel.bookmarks = book.bookmark
+        self.viewModel = LibraryDetailViewModel(book)
         
         titleLabel.text = book.title
         authorLabel.text = book.authors.first
@@ -358,15 +368,16 @@ class LibraryDetailViewController: UIViewController {
 extension LibraryDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarkTableViewCell.identifier, for: indexPath) as? BookmarkTableViewCell else { return UITableViewCell() }
-        if let book = currentBook {
-            cell.configureData(book.bookmark[indexPath.row])
+        
+        if viewModel.bookmarks.isEmpty == false {
+            cell.configureData(viewModel.bookmarks[indexPath.row])
         }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if currentBook?.bookmark.count > 0 {
+        if viewModel.bookmarks.count > 0 {
             return viewModel.numberOfRowsInSection()
         } else {
             return 1

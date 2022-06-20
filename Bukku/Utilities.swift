@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+class Utilties {
+    static func getHeightFromWidth(_ width: CGFloat) -> CGFloat {
+        return (43 / 30) * width
+    }
+}
+
 class BasePaddingLabel: UILabel {
     private var padding = UIEdgeInsets(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0)
 
@@ -28,3 +34,4 @@ class BasePaddingLabel: UILabel {
         return contentSize
     }
 }
+

@@ -11,7 +11,7 @@ class TabBarController: UITabBarController {
     // MARK: - Properties
     let libraryVC = LibraryViewController()
     let memoVC = MemoViewController()
-    let searchVC = UINavigationController(rootViewController: SearchViewController())
+    let searchVC = SearchViewController()
     
     let libraryTabBarItem = UITabBarItem(
         title: "서재",
@@ -43,10 +43,18 @@ class TabBarController: UITabBarController {
         tabBar.tintColor = UIColor.getOrange()
         tabBar.barTintColor = .getGray()
         
-        memoVC.tabBarItem = memoTabBarItem
-        libraryVC.tabBarItem = libraryTabBarItem
-        searchVC.tabBarItem = searchTabBarItem
+        let libraryNavVC = UINavigationController(rootViewController: libraryVC)
+        let memoNavVC = UINavigationController(rootViewController: memoVC)
+        let searchNavVC = UINavigationController(rootViewController: searchVC)
         
-        viewControllers = [ libraryVC, memoVC, searchVC ]
+        libraryNavVC.navigationBar.tintColor = .getBlack()
+        memoNavVC.navigationBar.tintColor = .getBlack()
+        searchNavVC.navigationBar.tintColor = .getBlack()
+        
+        memoNavVC.tabBarItem = memoTabBarItem
+        libraryNavVC.tabBarItem = libraryTabBarItem
+        searchNavVC.tabBarItem = searchTabBarItem
+        
+        viewControllers = [ libraryNavVC, memoNavVC, searchNavVC ]
     }
 }

@@ -31,6 +31,7 @@ class SearchViewController: UIViewController {
         searchBar.returnKeyType = .search
         searchBar.searchTextField.leftView?.tintColor = .getBlack()
         searchBar.searchTextField.enablesReturnKeyAutomatically = true
+        searchBar.searchTextField.textColor = .getBlack()
         searchBar.delegate = self
         
         return searchBar
@@ -71,7 +72,8 @@ class SearchViewController: UIViewController {
     
     // MARK: - Selectors
     @objc func didTapCameraButton() {
-        
+        let vc = SettingsViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func dismissKeyboard() {

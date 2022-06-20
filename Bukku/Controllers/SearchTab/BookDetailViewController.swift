@@ -32,6 +32,7 @@ class BookDetailViewController: UIViewController {
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: 32.0, weight: .heavy)
         label.textAlignment = .center
+        label.textColor = .getBlack()
         
         return label
     }()
@@ -40,7 +41,7 @@ class BookDetailViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14.0, weight: .thin)
         label.textAlignment = .center
-        label.textColor = .secondaryLabel
+        label.textColor = .getBlack()
         
         return label
     }()
@@ -49,6 +50,7 @@ class BookDetailViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
         label.textAlignment = .center
+        label.textColor = .getBlack()
         
         return label
     }()
@@ -122,7 +124,7 @@ class BookDetailViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().inset(24)
             make.width.equalTo(150)
-            make.height.equalTo(200)
+            make.height.equalTo(Utilties.getHeightFromWidth(150))
         }
         
         titleLabel.snp.makeConstraints { make in

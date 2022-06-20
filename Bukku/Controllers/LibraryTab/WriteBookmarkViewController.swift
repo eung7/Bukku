@@ -20,10 +20,11 @@ class WriteBookmarkViewController: UIViewController {
     lazy var pageTextField: JVFloatLabeledTextField = {
         let tf = JVFloatLabeledTextField()
         tf.placeholder = "Page:"
+        tf.placeholderColor = .getBlack()
         tf.floatingLabelActiveTextColor = .getOrange()
         tf.textColor = .getBlack()
         tf.keyboardType = .numberPad
-        tf.textAlignment = .right
+        tf.textAlignment = .left
         tf.delegate = self
         
         return tf
@@ -33,6 +34,8 @@ class WriteBookmarkViewController: UIViewController {
         let textView = RSKPlaceholderTextView()
         textView.placeholder = "내용을 입력해주세요."
         textView.delegate = self
+        textView.backgroundColor = .getWhite()
+        textView.textColor = .getBlack()
         textView.font = .systemFont(ofSize: 18.0, weight: .thin)
         textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         textView.layer.borderWidth = 1
@@ -66,6 +69,7 @@ class WriteBookmarkViewController: UIViewController {
     
     let contentsCountLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .getBlack()
         
         return label
     }()
@@ -100,6 +104,7 @@ class WriteBookmarkViewController: UIViewController {
             view.makeToast("빈 곳을 채워주세요.")
         }
     }
+    
     // MARK: - Helpers
     private func configureUI() {
         view.backgroundColor = .getGray()
@@ -114,7 +119,7 @@ class WriteBookmarkViewController: UIViewController {
         
         pageTextField.snp.makeConstraints { make in
             make.top.leading.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.width.equalTo(50)
+            make.width.equalTo(100)
         }
         
         contentsTextView.snp.makeConstraints { make in

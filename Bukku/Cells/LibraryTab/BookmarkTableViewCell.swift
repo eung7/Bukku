@@ -16,6 +16,7 @@ class BookmarkTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .getBlack()
         label.font = .systemFont(ofSize: 16.0, weight: .medium)
+        label.text = "P.123"
         
         return label
     }()
@@ -31,8 +32,10 @@ class BookmarkTableViewCell: UITableViewCell {
     let contentsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.textColor = .getBlack()
         label.adjustsFontSizeToFitWidth = true
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
+        label.text = "책갈피를 입력해주세요!"
     
         return label
     }()

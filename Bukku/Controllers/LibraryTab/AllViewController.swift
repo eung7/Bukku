@@ -11,6 +11,7 @@ import SnapKit
 class AllViewController: UIViewController {
     // MARK: - Properties
     let manager = LibraryManager.shared
+    var pushCompletion: ((Int) -> Void)?
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -19,7 +20,7 @@ class AllViewController: UIViewController {
         collectionView.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+    
         return collectionView
     }()
     
@@ -36,9 +37,9 @@ class AllViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureUI() {
-        view.backgroundColor = .getGray()
+        navigationController?.isNavigationBarHidden = true
         view.addSubview(collectionView)
-        
+
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
@@ -50,7 +51,6 @@ extension AllViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.identifier, for: indexPath) as? LibraryCollectionViewCell else { return UICollectionViewCell() }
         let imageURL = manager.allBooks[indexPath.row].thumbnail
         cell.configureImage(imageURL)
-        
         return cell
     }
     
@@ -61,13 +61,15 @@ extension AllViewController: UICollectionViewDataSource {
 
 extension AllViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let libraryDetailVC = UINavigationController(rootViewController: LibraryDetailViewController(indexPath.row))
-        libraryDetailVC.modalPresentationStyle = .fullScreen
-        present(libraryDetailVC, animated: true)
+        pushCompletion?(indexPath.row)
+//        let libraryDetailVC = UINavigationController(rootViewController: LibraryDetailViewController(indexPath.row))
+//        libraryDetailVC.modalPresentationStyle = .fullScreen
+//        present(libraryDetailVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (UIScreen.main.bounds.width - 32) / 3, height: 180)
+        let width = (UIScreen.main.bounds.width - 32) / 3
+        return CGSize(width: width, height: (43 / 30) * width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

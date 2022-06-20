@@ -20,8 +20,8 @@ class SelectLibraryViewController: UIViewController {
     let mainLabel: UILabel = {
         let label = UILabel()
         label.text = "서재함을 선택해주세요"
+        label.textColor = .getBlack()
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
-        label.textColor = .secondaryLabel
         
         return label
     }()
@@ -29,8 +29,8 @@ class SelectLibraryViewController: UIViewController {
     lazy var readingButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("읽는 중이에요", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .semibold)
         button.setTitleColor(UIColor.getBlack(), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .thin)
         button.addTarget(self, action: #selector(didTapReadingButton), for: .touchUpInside)
         
         return button
@@ -39,8 +39,8 @@ class SelectLibraryViewController: UIViewController {
     lazy var willReadButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("읽을 예정이에요", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .semibold)
         button.setTitleColor(UIColor.getBlack(), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .thin)
         button.addTarget(self, action: #selector(didTapWillReadButton), for: .touchUpInside)
         
         return button
@@ -49,8 +49,8 @@ class SelectLibraryViewController: UIViewController {
     lazy var doneReadButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("읽은 책이에요", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .semibold)
         button.setTitleColor(UIColor.getBlack(), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .thin)
         button.addTarget(self, action: #selector(didTapDoneReadButton), for: .touchUpInside)
         
         return button

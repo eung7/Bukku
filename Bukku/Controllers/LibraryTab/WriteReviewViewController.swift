@@ -21,6 +21,8 @@ class WriteReviewViewController: UIViewController {
         textView.delegate = self
         textView.font = .systemFont(ofSize: 18.0, weight: .thin)
         textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        textView.backgroundColor = .getWhite()
+        textView.textColor = .getBlack()
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor.getBlack().cgColor
         textView.layer.cornerRadius = 10
@@ -52,6 +54,7 @@ class WriteReviewViewController: UIViewController {
     
     let contentsCountLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .getBlack()
         
         return label
     }()
