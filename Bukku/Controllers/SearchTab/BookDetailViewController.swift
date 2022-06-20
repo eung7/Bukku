@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 import SnapKit
 import PanModal
+import MarqueeLabel
 
 class BookDetailViewController: UIViewController {
     // MARK: - States
@@ -27,11 +28,12 @@ class BookDetailViewController: UIViewController {
         return iv
     }()
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 2
+    let titleLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
         label.font = .systemFont(ofSize: 32.0, weight: .heavy)
+        label.trailingBuffer = 30.0
         label.textAlignment = .center
+        label.animationCurve = .easeInOut
         label.textColor = .getBlack()
         
         return label
@@ -123,8 +125,8 @@ class BookDetailViewController: UIViewController {
         bookImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().inset(24)
-            make.width.equalTo(150)
-            make.height.equalTo(Utilties.getHeightFromWidth(150))
+            make.width.equalTo(Utilties.width)
+            make.height.equalTo(Utilties.height)
         }
         
         titleLabel.snp.makeConstraints { make in

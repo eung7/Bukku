@@ -13,6 +13,7 @@ import Tabman
 class LibraryViewController: UIViewController {
     // MARK: - Properties
     let tabmanRootVC = TabmanRootViewController()
+    let manager = LibraryManager.shared
     
     lazy var containerView: UIView = {
         let view = UIView()
@@ -62,5 +63,21 @@ class LibraryViewController: UIViewController {
             let libraryDetailVC = LibraryDetailViewController(index)
             self?.navigationController?.pushViewController(libraryDetailVC, animated: true)
         }
+        
+        tabmanRootVC.readingVC.pushCompletion = { [unowned self] book in
+            let libraryDetailVC = LibraryDetailViewController(self.manager.getIndexFromAllBooks(book))
+            self.navigationController?.pushViewController(libraryDetailVC, animated: true)
+        }
+
+        tabmanRootVC.willVC.pushCompletion = { [unowned self] book in
+            let libraryDetailVC = LibraryDetailViewController(self.manager.getIndexFromAllBooks(book))
+            self.navigationController?.pushViewController(libraryDetailVC, animated: true)
+        }
+
+        tabmanRootVC.doneVC.pushCompletion = { [unowned self] book in
+            let libraryDetailVC = LibraryDetailViewController(self.manager.getIndexFromAllBooks(book))
+            self.navigationController?.pushViewController(libraryDetailVC, animated: true)
+        }
+
     }
 }

@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 class Utilties {
-    static func getHeightFromWidth(_ width: CGFloat) -> CGFloat {
-        return (43 / 30) * width
-    }
+    static let width = (UIScreen.main.bounds.width - 32) / 3
+    static let height = (43 / 30) * ((UIScreen.main.bounds.width - 32) / 3)
+    
 }
 
 class BasePaddingLabel: UILabel {

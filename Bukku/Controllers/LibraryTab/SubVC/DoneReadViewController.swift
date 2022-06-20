@@ -11,6 +11,7 @@ import SnapKit
 class DoneReadViewController: UIViewController {
     // MARK: - Properties
     let manager = LibraryManager.shared
+    var pushCompletion: ((LibraryBook) -> Void)?
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -61,12 +62,7 @@ extension DoneReadViewController: UICollectionViewDataSource {
 
 extension DoneReadViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let book = manager.doneReadBooks[indexPath.row]
-        let index = manager.getIndexFromAllBooks(book)
-        
-        let libraryDetailVC = UINavigationController(rootViewController: LibraryDetailViewController(index))
-        libraryDetailVC.modalPresentationStyle = .fullScreen
-        present(libraryDetailVC, animated: true)
+        pushCompletion?(manager.doneReadBooks[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

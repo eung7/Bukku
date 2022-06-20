@@ -1,5 +1,5 @@
 //
-//  WillReadViewController.swift
+//  ReadingViewController.swift
 //  Bukku
 //
 //  Created by 김응철 on 2022/06/17.
@@ -8,9 +8,10 @@
 import UIKit
 import SnapKit
 
-class WillReadViewController: UIViewController {
+class ReadingViewController: UIViewController {
     // MARK: - Properties
     let manager = LibraryManager.shared
+    var pushCompletion: ((LibraryBook) -> Void)?
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -45,28 +46,23 @@ class WillReadViewController: UIViewController {
     }
 }
 
-extension WillReadViewController: UICollectionViewDataSource {
+extension ReadingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.identifier, for: indexPath) as? LibraryCollectionViewCell else { return UICollectionViewCell() }
-        let imageURL = manager.willReadBooks[indexPath.row].thumbnail
+        let imageURL = manager.readingBooks[indexPath.row].thumbnail
         cell.configureImage(imageURL)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return manager.willReadBooks.count
+        return manager.readingBooks.count
     }
 }
 
-extension WillReadViewController: UICollectionViewDelegateFlowLayout {
+extension ReadingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let book = manager.willReadBooks[indexPath.row]
-        let index = manager.getIndexFromAllBooks(book)
-
-        let libraryDetailVC = UINavigationController(rootViewController: LibraryDetailViewController(index))
-        libraryDetailVC.modalPresentationStyle = .fullScreen
-        present(libraryDetailVC, animated: true)
+        pushCompletion?(manager.readingBooks[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -82,4 +78,3 @@ extension WillReadViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
 }
-

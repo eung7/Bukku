@@ -7,7 +7,9 @@
 
 import UIKit
 import SnapKit
+import PanModal
 import Kingfisher
+import MarqueeLabel
 
 class LibraryDetailViewController: UIViewController {
     // MARK: - States
@@ -18,7 +20,7 @@ class LibraryDetailViewController: UIViewController {
     var viewModel: LibraryDetailViewModel!
 
     let bookImageView: UIImageView = {
-        let iv = UIImageView()
+        let iv = UIImageView(frame: CGRect(x: 0, y: 0, width: Utilties.width, height: Utilties.height))
         iv.backgroundColor = .getBlack()
         iv.layer.borderWidth = 1
         iv.layer.borderColor = UIColor.getBlack().cgColor
@@ -35,9 +37,10 @@ class LibraryDetailViewController: UIViewController {
         return view
     }()
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 3
+    let titleLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
+        label.trailingBuffer = 30.0
+        label.animationCurve = .easeInOut
         label.textColor = .getBlack()
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 32.0, weight: .heavy)
@@ -139,15 +142,6 @@ class LibraryDetailViewController: UIViewController {
         return label
     }()
     
-    lazy var backButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
-        button.tintColor = .getBlack()
-        button.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
-        
-        return button
-    }()
-    
     lazy var trashButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "trash"), for: .normal)
@@ -240,10 +234,6 @@ class LibraryDetailViewController: UIViewController {
     }
     
     // MARK: - Selectors
-    @objc func didTapBackButton() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     @objc func didTapTrashButton() {
         present(deleteAlert, animated: true)
     }
@@ -269,22 +259,20 @@ class LibraryDetailViewController: UIViewController {
     }
     
     @objc func didTapChangeLibraryButton() {
-        
+        let changeLibraryVC = ChangeLibraryViewController(book: viewModel.book)
+        presentPanModal(changeLibraryVC)
     }
     
     // MARK: - Helpers
     private func configureUI() {
         view.backgroundColor = .getGray()
-        navigationItem.backButtonTitle = "서재"
-        navigationItem.backBarButtonItem = UIBarButtonItem(customView: backButton)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: trashButton)
         navigationController?.navigationBar.tintColor = .getBlack()
         navigationItem.title = "도서"
         
-        let stackView = UIStackView(arrangedSubviews: [ titleLabel, authorLabel, publisherLabel ])
-        stackView.axis = .vertical
+        let stackView = UIStackView(arrangedSubviews: [ authorLabel, publisherLabel ])
+        stackView.axis = .horizontal
         stackView.spacing = 4.0
-        stackView.alignment = .center
         
         view.addSubview(tableView)
         
@@ -292,32 +280,35 @@ class LibraryDetailViewController: UIViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
-        [ bookImageView, stackView, changeLibraryButton, lineView, reviewTitleLabel, writeReviewButton, reviewLabel, lineView2, bookmarkTitleLabel, lineView3, writeBookmarkButton, lineView4 ]
+        [ bookImageView, titleLabel, stackView, changeLibraryButton, lineView, reviewTitleLabel, writeReviewButton, reviewLabel, lineView2, bookmarkTitleLabel, lineView3, writeBookmarkButton, lineView4 ]
             .forEach { headerView.addSubview($0) }
         
         bookImageView.snp.makeConstraints { make in
-            make.leading.top.equalToSuperview().inset(8)
-            make.width.equalTo((UIScreen.main.bounds.width - 32) / 3)
-            make.height.equalTo(Utilties.getHeightFromWidth(UIScreen.main.bounds.width - 32) / 3)
+            make.top.equalToSuperview().inset(8)
+            make.centerX.equalToSuperview()
         }
         
-        lineView.snp.makeConstraints { make in
+        titleLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(8)
             make.top.equalTo(bookImageView.snp.bottom).offset(8)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(0.5)
-        }
-        
-        changeLibraryButton.snp.makeConstraints { make in
-            make.bottom.equalTo(lineView.snp.top).offset(-8)
-            make.leading.equalTo(bookImageView.snp.trailing).offset(4)
-            make.trailing.equalToSuperview().inset(8)
-            make.height.equalTo(40)
         }
         
         stackView.snp.makeConstraints { make in
-            make.centerY.equalTo(bookImageView)
-            make.leading.equalTo(bookImageView.snp.trailing).offset(4)
-            make.trailing.equalToSuperview().inset(4)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(titleLabel.snp.bottom).offset(4)
+        }
+        
+        changeLibraryButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(stackView.snp.bottom).offset(4)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(40)
+        }
+        
+        lineView.snp.makeConstraints { make in
+            make.top.equalTo(changeLibraryButton.snp.bottom).offset(16)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(0.5)
         }
         
         reviewTitleLabel.snp.makeConstraints { make in
