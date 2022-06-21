@@ -19,14 +19,22 @@ class LibraryDetailViewController: UIViewController {
     let manager = LibraryManager.shared
     var viewModel: LibraryDetailViewModel!
 
+    lazy var trashButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "trash"), for: .normal)
+        button.tintColor = .getDarkGreen()
+        button.addTarget(self, action: #selector(didTapTrashButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
     let bookImageView: UIImageView = {
-        let iv = UIImageView(frame: CGRect(x: 0, y: 0, width: Utilties.width, height: Utilties.height))
-        iv.backgroundColor = .getBlack()
+        let iv = UIImageView()
+        iv.backgroundColor = .getDarkGreen()
         iv.layer.borderWidth = 1
-        iv.layer.borderColor = UIColor.getBlack().cgColor
-        iv.layer.shadowOffset = CGSize(width: 0, height: 0)
+        iv.layer.borderColor = UIColor.getDarkGreen().cgColor
         iv.layer.shadowOpacity = 0.5
-        iv.layer.shadowColor = UIColor.getBlack().cgColor
+        iv.layer.shadowColor = UIColor.getDarkGreen().cgColor
         
         return iv
     }()
@@ -41,7 +49,7 @@ class LibraryDetailViewController: UIViewController {
         let label = MarqueeLabel()
         label.trailingBuffer = 30.0
         label.animationCurve = .easeInOut
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 32.0, weight: .heavy)
         
@@ -50,7 +58,7 @@ class LibraryDetailViewController: UIViewController {
     
     let authorLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
         label.textAlignment = .center
         
@@ -59,7 +67,7 @@ class LibraryDetailViewController: UIViewController {
     
     let publisherLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.font = .systemFont(ofSize: 14.0, weight: .thin)
         label.textAlignment = .center
         label.textColor = .gray
@@ -69,35 +77,7 @@ class LibraryDetailViewController: UIViewController {
     
     let lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getBlack()
-        
-        return view
-    }()
-    
-    let lineView1: UIView = {
-        let view = UIView()
-        view.backgroundColor = .getBlack()
-        
-        return view
-    }()
-    
-    let lineView2: UIView = {
-        let view = UIView()
-        view.backgroundColor = .getBlack()
-        
-        return view
-    }()
-
-    let lineView3: UIView = {
-        let view = UIView()
-        view.backgroundColor = .getBlack()
-        
-        return view
-    }()
-    
-    let lineView4: UIView = {
-        let view = UIView()
-        view.backgroundColor = .getBlack()
+        view.backgroundColor = .getDarkGreen()
         
         return view
     }()
@@ -105,7 +85,7 @@ class LibraryDetailViewController: UIViewController {
     let reviewTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 30.0, weight: .semibold)
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.textAlignment = .center
         label.text = "내 서평"
         
@@ -115,40 +95,38 @@ class LibraryDetailViewController: UIViewController {
     let bookmarkTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 30.0, weight: .semibold)
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.textAlignment = .left
         label.text = "내 책갈피"
         
         return label
     }()
     
+    let reviewSuperView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .getOrange()
+        view.layer.cornerRadius = 10
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.getDarkGreen().cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowColor = UIColor.getDarkGreen().cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 0)
+        
+        return view
+    }()
+    
     lazy var reviewLabel: BasePaddingLabel = {
         let label = BasePaddingLabel(padding: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.numberOfLines = 0
         label.text = "서평을 입력해주세요!"
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
-        label.backgroundColor = .getWhite()
-        label.layer.borderWidth = 1
-        label.layer.cornerRadius = 10
-        label.layer.borderColor = UIColor.getBlack().cgColor
-        label.layer.shadowOpacity = 0.5
-        label.layer.shadowColor = UIColor.getBlack().cgColor
-        label.layer.shadowOffset = CGSize(width: 0, height: 0)
-        label.layer.masksToBounds = true
+        label.backgroundColor = .clear
+        label.clipsToBounds = true
         
         return label
-    }()
-    
-    lazy var trashButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "trash"), for: .normal)
-        button.tintColor = .getBlack()
-        button.addTarget(self, action: #selector(didTapTrashButton), for: .touchUpInside)
-        
-        return button
     }()
     
     lazy var writeReviewButton: UIButton = {
@@ -156,7 +134,7 @@ class LibraryDetailViewController: UIViewController {
         button.addTarget(self, action: #selector(didTapWriteReviewButton), for: .touchUpInside)
         button.setImage(UIImage(systemName: "pencil"), for: .normal)
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 30.0), forImageIn: .normal)
-        button.tintColor = .getBlack()
+        button.tintColor = .getDarkGreen()
         
         return button
     }()
@@ -166,7 +144,7 @@ class LibraryDetailViewController: UIViewController {
         button.addTarget(self, action: #selector(didTapWriteBookmarkButton), for: .touchUpInside)
         button.setImage(UIImage(systemName: "pencil"), for: .normal)
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 30.0), forImageIn: .normal)
-        button.tintColor = .getBlack()
+        button.tintColor = .getDarkGreen()
         
         return button
     }()
@@ -174,9 +152,9 @@ class LibraryDetailViewController: UIViewController {
     lazy var changeLibraryButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("서재함 옮기기", for: .normal)
-        button.setTitleColor(UIColor.getBlack(), for: .normal)
+        button.setTitleColor(UIColor.getDarkGreen(), for: .normal)
         button.addTarget(self, action: #selector(didTapChangeLibraryButton), for: .touchUpInside)
-        button.backgroundColor = .getGray()
+        button.backgroundColor = .getWhite()
         button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .medium)
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 10
@@ -185,7 +163,7 @@ class LibraryDetailViewController: UIViewController {
     }()
     
     lazy var deleteAlert: UIAlertController = {
-        let alert = UIAlertController(title: "주의", message: "정말 삭제하시겠습니까?", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: "정말 삭제하시겠습니까?", preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
             // TODO: [] 삭제 버튼 시 삭제하기
         })
@@ -199,12 +177,8 @@ class LibraryDetailViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.sectionHeaderHeight = UITableView.automaticDimension
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedSectionHeaderHeight = 100
-        tableView.estimatedRowHeight = 100
-        tableView.separatorColor = .getBlack()
-        tableView.backgroundColor = .getGray()
+        tableView.separatorColor = .getDarkGreen()
+        tableView.backgroundColor = .getWhite()
         tableView.separatorStyle = .none
         tableView.register(BookmarkTableViewCell.self, forCellReuseIdentifier: BookmarkTableViewCell.identifier)
         
@@ -265,14 +239,10 @@ class LibraryDetailViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureUI() {
-        view.backgroundColor = .getGray()
+        view.backgroundColor = .getWhite()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: trashButton)
-        navigationController?.navigationBar.tintColor = .getBlack()
+        navigationController?.navigationBar.tintColor = .getDarkGreen()
         navigationItem.title = "도서"
-        
-        let stackView = UIStackView(arrangedSubviews: [ authorLabel, publisherLabel ])
-        stackView.axis = .horizontal
-        stackView.spacing = 4.0
         
         view.addSubview(tableView)
         
@@ -280,75 +250,83 @@ class LibraryDetailViewController: UIViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
-        [ bookImageView, titleLabel, stackView, changeLibraryButton, lineView, reviewTitleLabel, writeReviewButton, reviewLabel, lineView2, bookmarkTitleLabel, lineView3, writeBookmarkButton, lineView4 ]
-            .forEach { headerView.addSubview($0) }
+        let stackView = UIStackView(arrangedSubviews: [ authorLabel, publisherLabel ])
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.spacing = 4.0
         
+        [ bookImageView, titleLabel, stackView, changeLibraryButton, lineView, reviewTitleLabel, writeReviewButton, reviewSuperView, bookmarkTitleLabel, writeBookmarkButton ]
+            .forEach { headerView.addSubview($0) }
+
+        reviewSuperView.addSubview(reviewLabel)
+
+        reviewLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
         bookImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(8)
             make.centerX.equalToSuperview()
+            make.width.equalTo(120)
+            make.height.equalTo(174)
         }
-        
+
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(8)
             make.top.equalTo(bookImageView.snp.bottom).offset(8)
         }
-        
+
         stackView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(titleLabel.snp.bottom).offset(4)
         }
-        
+
         changeLibraryButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
             make.top.equalTo(stackView.snp.bottom).offset(4)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(40)
         }
-        
+
         lineView.snp.makeConstraints { make in
             make.top.equalTo(changeLibraryButton.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(0.5)
         }
-        
+
         reviewTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(lineView.snp.bottom).offset(16)
             make.leading.equalToSuperview().inset(16)
-            make.height.equalTo(30.0)
         }
-        
+
         writeReviewButton.snp.makeConstraints { make in
             make.centerY.equalTo(reviewTitleLabel)
             make.trailing.equalToSuperview().inset(16)
         }
-        
-        reviewLabel.snp.makeConstraints { make in
+
+        reviewSuperView.snp.makeConstraints { make in
             make.top.equalTo(reviewTitleLabel.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(16)
         }
-        
+
         bookmarkTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(reviewLabel.snp.bottom).offset(16)
+            make.top.equalTo(reviewSuperView.snp.bottom).offset(16)
             make.leading.equalToSuperview().inset(16)
+            make.bottom.equalToSuperview().inset(8)
         }
-        
+
         writeBookmarkButton.snp.makeConstraints { make in
             make.centerY.equalTo(bookmarkTitleLabel)
             make.trailing.equalToSuperview().inset(16)
-            make.bottom.equalToSuperview().inset(8)
         }
     }
     
     private func configureData() {
         let book = manager.getBookFromIndex(index)
         self.viewModel = LibraryDetailViewModel(book)
-        
+
         titleLabel.text = book.title
         authorLabel.text = book.authors.first
         publisherLabel.text = book.publisher
-        if let review = book.review {
-            reviewLabel.text = review
-        }
         if let url = URL(string: book.thumbnail) {
             bookImageView.kf.setImage(with: url)
         }
@@ -358,7 +336,7 @@ class LibraryDetailViewController: UIViewController {
 // MARK: - TableView DataSource
 extension LibraryDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarkTableViewCell.identifier, for: indexPath) as? BookmarkTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarkTableViewCell.identifier,  for: indexPath) as? BookmarkTableViewCell else { return UITableViewCell() }
         
         if viewModel.bookmarks.isEmpty == false {
             cell.configureData(viewModel.bookmarks[indexPath.row])
@@ -375,6 +353,22 @@ extension LibraryDetailViewController: UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return 200
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return headerView
     }
@@ -383,6 +377,5 @@ extension LibraryDetailViewController: UITableViewDataSource {
 // MARK: - TableView Delegate
 extension LibraryDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
 }

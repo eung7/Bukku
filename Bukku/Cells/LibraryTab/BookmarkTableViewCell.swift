@@ -14,7 +14,7 @@ class BookmarkTableViewCell: UITableViewCell {
     
     let pageLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.font = .systemFont(ofSize: 16.0, weight: .medium)
         label.text = "P.123"
         
@@ -24,7 +24,7 @@ class BookmarkTableViewCell: UITableViewCell {
     let bookmarkImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "bookmark.fill")
-        iv.tintColor = .getBlack()
+        iv.tintColor = .getDarkGreen()
         
         return iv
     }()
@@ -32,7 +32,7 @@ class BookmarkTableViewCell: UITableViewCell {
     let contentsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.adjustsFontSizeToFitWidth = true
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
         label.text = "책갈피를 입력해주세요!"
@@ -42,13 +42,13 @@ class BookmarkTableViewCell: UITableViewCell {
     
     let ultraView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getGray()
+        view.backgroundColor = .getOrange()
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.getBlack().cgColor
+        view.layer.borderColor = UIColor.getDarkGreen().cgColor
         view.layer.cornerRadius = 10
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowColor = UIColor.getBlack().cgColor
+        view.layer.shadowOpacity = 1.0
+        view.layer.shadowColor = UIColor.getDarkGreen().cgColor
         
         return view
     }()
@@ -65,7 +65,7 @@ class BookmarkTableViewCell: UITableViewCell {
     
     // MARK: - Helpers
     private func configureUI() {
-        contentView.backgroundColor = .getGray()
+        contentView.backgroundColor = .getWhite()
         contentView.addSubview(ultraView)
         
         ultraView.snp.makeConstraints { make in

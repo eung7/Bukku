@@ -39,17 +39,17 @@ class TabBarController: UITabBarController {
     
     // MARK: - Helpers
     private func configureUI() {
-        tabBar.unselectedItemTintColor = .getBlack()
+        tabBar.unselectedItemTintColor = .getDarkGreen()
         tabBar.tintColor = UIColor.getOrange()
-        tabBar.barTintColor = .getGray()
+        tabBar.barTintColor = .getWhite()
         
         let libraryNavVC = UINavigationController(rootViewController: libraryVC)
         let memoNavVC = UINavigationController(rootViewController: memoVC)
         let searchNavVC = UINavigationController(rootViewController: searchVC)
-        
-        libraryNavVC.navigationBar.tintColor = .getBlack()
-        memoNavVC.navigationBar.tintColor = .getBlack()
-        searchNavVC.navigationBar.tintColor = .getBlack()
+                            
+        libraryNavVC.navigationBar.tintColor = .getDarkGreen()
+        memoNavVC.navigationBar.tintColor = .getDarkGreen()
+        searchNavVC.navigationBar.tintColor = .getDarkGreen()
         
         memoNavVC.tabBarItem = memoTabBarItem
         libraryNavVC.tabBarItem = libraryTabBarItem

@@ -25,6 +25,7 @@ class LibraryViewController: UIViewController {
     
     lazy var searchButton: UIButton = {
         let button = UIButton(type: .system)
+        button.tintColor = .getDarkGreen()
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         
         return button
@@ -39,11 +40,12 @@ class LibraryViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureUI() {
-        view.backgroundColor = .getGray()
+        view.backgroundColor = .getWhite()
         view.addSubview(containerView)
-        
-        navigationItem.title = "내 서재함"
+                
+        navigationItem.title = "내 서재"
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton)
+        navigationItem.leftBarButtonItem?.tintColor = .getDarkGreen()
         
         containerView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
@@ -68,7 +70,7 @@ class LibraryViewController: UIViewController {
             let libraryDetailVC = LibraryDetailViewController(self.manager.getIndexFromAllBooks(book))
             self.navigationController?.pushViewController(libraryDetailVC, animated: true)
         }
-
+        
         tabmanRootVC.willVC.pushCompletion = { [unowned self] book in
             let libraryDetailVC = LibraryDetailViewController(self.manager.getIndexFromAllBooks(book))
             self.navigationController?.pushViewController(libraryDetailVC, animated: true)

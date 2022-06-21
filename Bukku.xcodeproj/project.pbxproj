@@ -22,7 +22,6 @@
 		E56B60C0284787F1003679CC /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E56B60BF284787F1003679CC /* Kingfisher */; };
 		E58203F9285F3B9D007513D7 /* WriteBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58203F8285F3B9D007513D7 /* WriteBookmarkViewController.swift */; };
 		E58203FC285F3D5D007513D7 /* NextGrowingTextView in Frameworks */ = {isa = PBXBuildFile; productRef = E58203FB285F3D5D007513D7 /* NextGrowingTextView */; };
-		E5820402285F57F3007513D7 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E5820401285F57F3007513D7 /* Toast */; };
 		E5820404285F63C3007513D7 /* LibraryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5820403285F63C3007513D7 /* LibraryDetailViewModel.swift */; };
 		E592A3B2286093DC0037491E /* MarqueeLabel in Frameworks */ = {isa = PBXBuildFile; productRef = E592A3B1286093DC0037491E /* MarqueeLabel */; };
 		E592A3B72860A2820037491E /* ChangeLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E592A3B62860A2820037491E /* ChangeLibraryViewController.swift */; };
@@ -110,7 +109,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5820402285F57F3007513D7 /* Toast in Frameworks */,
 				E58203FC285F3D5D007513D7 /* NextGrowingTextView in Frameworks */,
 				E5C75BAE285B2DCD00EF917E /* RxSwift in Frameworks */,
 				E5A36255285DD3EF0023BE49 /* JVFloatLabeledTextField in Frameworks */,
@@ -150,6 +148,7 @@
 			children = (
 				E51A37842840F64B00DF074B /* AppDelegate.swift */,
 				E51A37862840F64B00DF074B /* SceneDelegate.swift */,
+				E5569B3E285E4D56007D927B /* Utilities.swift */,
 				E5A6915E284639DD009F6048 /* Service */,
 				E5A6916128463A4A009F6048 /* Model */,
 				E5A36247285DCE230023BE49 /* Managers */,
@@ -161,7 +160,6 @@
 				E51A378D2840F64D00DF074B /* Assets.xcassets */,
 				E51A378F2840F64D00DF074B /* LaunchScreen.storyboard */,
 				E51A37922840F64D00DF074B /* Info.plist */,
-				E5569B3E285E4D56007D927B /* Utilities.swift */,
 			);
 			path = Bukku;
 			sourceTree = "<group>";
@@ -212,8 +210,8 @@
 			children = (
 				E592A3B42860A2490037491E /* Write */,
 				E592A3B52860A2580037491E /* SubVC */,
-				E5F3A9B4285CE0DC000E0E7D /* LibraryDetailViewController.swift */,
 				E592A3B62860A2820037491E /* ChangeLibraryViewController.swift */,
+				E5F3A9B4285CE0DC000E0E7D /* LibraryDetailViewController.swift */,
 				E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */,
 			);
 			path = LibraryTab;
@@ -372,7 +370,6 @@
 				E5A36251285DD22D0023BE49 /* RSKPlaceholderTextView */,
 				E5A36254285DD3EF0023BE49 /* JVFloatLabeledTextField */,
 				E58203FB285F3D5D007513D7 /* NextGrowingTextView */,
-				E5820401285F57F3007513D7 /* Toast */,
 				E592A3B1286093DC0037491E /* MarqueeLabel */,
 			);
 			productName = Minimum;
@@ -414,8 +411,8 @@
 				E5A36250285DD22D0023BE49 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView" */,
 				E5A36253285DD3EF0023BE49 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField" */,
 				E58203FA285F3D5D007513D7 /* XCRemoteSwiftPackageReference "NextGrowingTextView" */,
-				E5820400285F57F3007513D7 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				E592A3B0286093DC0037491E /* XCRemoteSwiftPackageReference "MarqueeLabel" */,
+				E5DF93542861CE2000D3796C /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = E51A37822840F64B00DF074B /* Products */;
 			projectDirPath = "";
@@ -713,14 +710,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		E5820400285F57F3007513D7 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		E592A3B0286093DC0037491E /* XCRemoteSwiftPackageReference "MarqueeLabel" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/cbpowell/MarqueeLabel.git";
@@ -785,6 +774,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		E5DF93542861CE2000D3796C /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -802,11 +799,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E58203FA285F3D5D007513D7 /* XCRemoteSwiftPackageReference "NextGrowingTextView" */;
 			productName = NextGrowingTextView;
-		};
-		E5820401285F57F3007513D7 /* Toast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E5820400285F57F3007513D7 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
-			productName = Toast;
 		};
 		E592A3B1286093DC0037491E /* MarqueeLabel */ = {
 			isa = XCSwiftPackageProductDependency;

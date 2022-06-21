@@ -14,7 +14,7 @@ class CollectionViewFooter: UICollectionReusableView {
     
     let lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getBlack()
+        view.backgroundColor = .getDarkGreen()
         
         return view
     }()

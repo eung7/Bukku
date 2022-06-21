@@ -10,6 +10,8 @@ import Foundation
 class UserDefaultsManager {
     static let shared = UserDefaultsManager()
     
+    private init() {}
+    
     func saveBooks(_ books: [LibraryBook]) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(try? PropertyListEncoder().encode(books), forKey: "AllBooks")

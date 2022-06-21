@@ -16,7 +16,7 @@ class MemoViewController: UIViewController {
     let mainLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 38.0, weight: .heavy)
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.text = "당신의 목표는"
         
         return label
@@ -25,7 +25,7 @@ class MemoViewController: UIViewController {
     let goalLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 38.0, weight: .thin)
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.text = "하루에 한 페이지!"
         
         return label
@@ -33,7 +33,7 @@ class MemoViewController: UIViewController {
     
     let lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getBlack()
+        view.backgroundColor = .getDarkGreen()
         
         return view
     }()
@@ -41,7 +41,7 @@ class MemoViewController: UIViewController {
     lazy var settingButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "gearshape"), for: .normal)
-        button.tintColor = .getBlack()
+        button.tintColor = .getDarkGreen()
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 32.0), forImageIn: .normal)
         button.addTarget(self, action: #selector(didTapSearchButton), for: .touchUpInside)
         
@@ -172,7 +172,7 @@ class MemoViewController: UIViewController {
 extension MemoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReadingCollectionViewCell.identifier, for: indexPath) as? ReadingCollectionViewCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .getBlack()
+        cell.backgroundColor = .getDarkGreen()
         return cell
     }
     

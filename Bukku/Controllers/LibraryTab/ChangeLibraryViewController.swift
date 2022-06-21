@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import PanModal
+import Toast
 
 class ChangeLibraryViewController: UIViewController {
     // MARK: - States
@@ -20,7 +21,7 @@ class ChangeLibraryViewController: UIViewController {
     let mainLabel: UILabel = {
         let label = UILabel()
         label.text = "서재함을 선택해주세요"
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
         
         return label
@@ -30,7 +31,7 @@ class ChangeLibraryViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("읽는 중이에요", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .semibold)
-        button.setTitleColor(UIColor.getBlack(), for: .normal)
+        button.setTitleColor(UIColor.getDarkGreen(), for: .normal)
         button.addTarget(self, action: #selector(didTapReadingButton), for: .touchUpInside)
         
         return button
@@ -40,7 +41,7 @@ class ChangeLibraryViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("읽을 예정이에요", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .semibold)
-        button.setTitleColor(UIColor.getBlack(), for: .normal)
+        button.setTitleColor(UIColor.getDarkGreen(), for: .normal)
         button.addTarget(self, action: #selector(didTapWillReadButton), for: .touchUpInside)
         
         return button
@@ -50,7 +51,7 @@ class ChangeLibraryViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("읽은 책이에요", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .semibold)
-        button.setTitleColor(UIColor.getBlack(), for: .normal)
+        button.setTitleColor(UIColor.getDarkGreen(), for: .normal)
         button.addTarget(self, action: #selector(didTapDoneReadButton), for: .touchUpInside)
         
         return button
@@ -89,7 +90,7 @@ class ChangeLibraryViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureUI() {
-        view.backgroundColor = .getGray()
+        view.backgroundColor = .getWhite()
         
         [ mainLabel, readingButton, willReadButton, doneReadButton ]
             .forEach { view.addSubview($0) }

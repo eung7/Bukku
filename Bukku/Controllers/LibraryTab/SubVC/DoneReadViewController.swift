@@ -16,7 +16,7 @@ class DoneReadViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .getGray()
+        collectionView.backgroundColor = .getWhite()
         collectionView.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self

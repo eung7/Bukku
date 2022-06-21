@@ -36,10 +36,10 @@ class LibraryCollectionViewCell: UICollectionViewCell {
     private func configureUI() {
         backgroundColor = .clear
         layer.borderWidth = 1
-        layer.borderColor = UIColor.getBlack().cgColor
+        layer.borderColor = UIColor.getDarkGreen().cgColor
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        layer.shadowColor = UIColor.getBlack().cgColor
-        layer.shadowOpacity = 0.5
+        layer.shadowColor = UIColor.getDarkGreen().cgColor
+        layer.shadowOpacity = 1.0
         
         contentView.addSubview(bookImageView)
         

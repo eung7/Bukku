@@ -36,20 +36,20 @@ extension UIColor {
 }
 
 extension UIColor {
-    static func getBlack() -> UIColor {
-        return UIColor.init(rgb: 0x06113C)
+    static func getDarkGreen() -> UIColor {
+        return UIColor.init(rgb: 0x062C30)
     }
     
     static func getGray() -> UIColor {
-        return UIColor.init(rgb: 0xDDDDDD)
+        return UIColor.init(rgb: 0x05595B)
     }
     
     static func getOrange() -> UIColor {
-        return UIColor.init(rgb: 0xFF8C32)
+        return UIColor.init(rgb: 0xE2D784)
     }
 
     static func getWhite() -> UIColor {
-        return UIColor.init(rgb: 0xEEEEEE)
+        return UIColor.init(rgb: 0xF5F5F5)
     }
 
 }

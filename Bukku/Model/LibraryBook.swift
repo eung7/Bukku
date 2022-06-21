@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct LibraryBook: Codable {
+struct LibraryBook: Codable, Identifiable {
+    var id = UUID()
     var review: String?
     var bookmark: [Bookmark]
     var type: LibraryType

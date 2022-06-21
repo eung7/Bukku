@@ -16,7 +16,7 @@ class AllViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .getGray()
+        collectionView.backgroundColor = .getWhite()
         collectionView.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -37,7 +37,6 @@ class AllViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureUI() {
-        navigationController?.isNavigationBarHidden = true
         view.addSubview(collectionView)
 
         collectionView.snp.makeConstraints { make in

@@ -15,6 +15,7 @@ enum LibraryType: Int, CaseIterable, Codable {
 
 class LibraryManager {
     static let shared = LibraryManager()
+    var currentId: Int = 0
     
     var allBooks: [LibraryBook] = [] {
         didSet {
@@ -46,17 +47,17 @@ extension LibraryManager {
     }
     
     func removeBook(_ book: LibraryBook) {
-        guard let index = allBooks.firstIndex(where: { $0.title == book.title }) else { return }
+        guard let index = allBooks.firstIndex(where: { $0.id == book.id }) else { return }
         allBooks.remove(at: index)
     }
     
     func updateBook(_ book: LibraryBook) {
-        guard let index = allBooks.firstIndex(where: { $0.title == book.title }) else { return }
+        guard let index = allBooks.firstIndex(where: { $0.id == book.id }) else { return }
         allBooks[index] = book
     }
     
     func getIndexFromAllBooks(_ book: LibraryBook) -> Int {
-        if let index = allBooks.firstIndex(where: { $0.title == book.title }) {
+        if let index = allBooks.firstIndex(where: { $0.id == book.id }) {
             return index
         }
         return 0

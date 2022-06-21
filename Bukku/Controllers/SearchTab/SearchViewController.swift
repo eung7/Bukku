@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import PanModal
+import Toast
 
 // TODO: [] 새로운 검색을 할 때 최상단으로 포커스 가기
 
@@ -29,9 +30,9 @@ class SearchViewController: UIViewController {
         )
         searchBar.placeholder = "책 이름을 알려주세요!"
         searchBar.returnKeyType = .search
-        searchBar.searchTextField.leftView?.tintColor = .getBlack()
+        searchBar.searchTextField.leftView?.tintColor = .getDarkGreen()
         searchBar.searchTextField.enablesReturnKeyAutomatically = true
-        searchBar.searchTextField.textColor = .getBlack()
+        searchBar.searchTextField.textColor = .getDarkGreen()
         searchBar.delegate = self
         
         return searchBar
@@ -42,7 +43,7 @@ class SearchViewController: UIViewController {
         button.setImage(UIImage(systemName: "camera.viewfinder"), for: .normal)
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 24.0), forImageIn: .normal)
         button.addTarget(self, action: #selector(didTapCameraButton), for: .touchUpInside)
-        button.tintColor = .getBlack()
+        button.tintColor = .getDarkGreen()
         
         return button
     }()
@@ -50,7 +51,7 @@ class SearchViewController: UIViewController {
     lazy var bookListCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .getGray()
+        collectionView.backgroundColor = .getWhite()
         collectionView.register(BookListCell.self, forCellWithReuseIdentifier: BookListCell.identifier)
         collectionView.register(
             LoadingFooterView.self,
@@ -70,6 +71,10 @@ class SearchViewController: UIViewController {
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
+
     // MARK: - Selectors
     @objc func didTapCameraButton() {
         let vc = SettingsViewController()
@@ -82,10 +87,9 @@ class SearchViewController: UIViewController {
     
     // MARK: - Helpers
     func configureUI() {
-        view.backgroundColor = .getGray()
+        view.backgroundColor = .getWhite()
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cameraTabBarItem)
-        navigationController?.navigationBar.barTintColor = .getGray()
         
         bookListCollectionView.isHidden = true
         
@@ -192,7 +196,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     /// Cell Size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 180)
+        return CGSize(width: UIScreen.main.bounds.width - 16, height: 160)
     }
     
     /// Footer Size
@@ -206,12 +210,12 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     /// CollectionView Item Spacing
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+        return 16
     }
     
     /// CollectionView Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        return UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {

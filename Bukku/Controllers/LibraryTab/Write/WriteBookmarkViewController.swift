@@ -20,9 +20,9 @@ class WriteBookmarkViewController: UIViewController {
     lazy var pageTextField: JVFloatLabeledTextField = {
         let tf = JVFloatLabeledTextField()
         tf.placeholder = "Page:"
-        tf.placeholderColor = .getBlack()
-        tf.floatingLabelActiveTextColor = .getOrange()
-        tf.textColor = .getBlack()
+        tf.placeholderColor = .getDarkGreen()
+        tf.floatingLabelActiveTextColor = .getDarkGreen()
+        tf.textColor = .getDarkGreen()
         tf.keyboardType = .numberPad
         tf.textAlignment = .left
         tf.delegate = self
@@ -35,14 +35,14 @@ class WriteBookmarkViewController: UIViewController {
         textView.placeholder = "내용을 입력해주세요."
         textView.delegate = self
         textView.backgroundColor = .getWhite()
-        textView.textColor = .getBlack()
+        textView.textColor = .getDarkGreen()
         textView.font = .systemFont(ofSize: 18.0, weight: .thin)
         textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         textView.layer.borderWidth = 1
-        textView.layer.borderColor = UIColor.getBlack().cgColor
+        textView.layer.borderColor = UIColor.getDarkGreen().cgColor
         textView.layer.cornerRadius = 10
         textView.layer.shadowOpacity = 0.5
-        textView.layer.shadowColor = UIColor.getBlack().cgColor
+        textView.layer.shadowColor = UIColor.getDarkGreen().cgColor
         textView.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         return textView
@@ -50,17 +50,17 @@ class WriteBookmarkViewController: UIViewController {
     
     lazy var leftArrowButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = .getBlack()
+        button.tintColor = .getDarkGreen()
         button.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
         button.addTarget(self, action: #selector(didTapLeftArrowButton), for: .touchUpInside)
-        
+       
         return button
     }()
     
     lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .semibold)
-        button.tintColor = .getBlack()
+        button.tintColor = .getDarkGreen()
         button.setTitle("저장", for: .normal)
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         
@@ -69,7 +69,7 @@ class WriteBookmarkViewController: UIViewController {
     
     let contentsCountLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         
         return label
     }()
@@ -107,12 +107,12 @@ class WriteBookmarkViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureUI() {
-        view.backgroundColor = .getGray()
+        view.backgroundColor = .getWhite()
         navigationItem.title = "책갈피 남기기"
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftArrowButton)
-        navigationController?.navigationBar.barTintColor = .getBlack()
-        navigationController?.navigationBar.tintColor = .getBlack()
+        navigationController?.navigationBar.barTintColor = .getDarkGreen()
+        navigationController?.navigationBar.tintColor = .getDarkGreen()
         
         [ pageTextField, contentsTextView, contentsCountLabel ]
             .forEach { view.addSubview($0) }

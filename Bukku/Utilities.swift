@@ -11,7 +11,6 @@ import UIKit
 class Utilties {
     static let width = (UIScreen.main.bounds.width - 32) / 3
     static let height = (43 / 30) * ((UIScreen.main.bounds.width - 32) / 3)
-    
 }
 
 class BasePaddingLabel: UILabel {

@@ -14,7 +14,7 @@ class CollectionViewHeader: UICollectionReusableView {
     
     let label: UILabel = {
         let label = UILabel()
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.font = .systemFont(ofSize: 36.0, weight: .ultraLight)
         
         return label

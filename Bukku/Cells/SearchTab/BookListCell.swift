@@ -16,16 +16,16 @@ class BookListCell: UICollectionViewCell {
 
     let thumbnailImage: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
-        iv.tintColor = .getBlack()
+        iv.tintColor = .getDarkGreen()
         iv.layer.borderWidth = 0.5
+        iv.clipsToBounds = true
         
         return iv
     }()
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.font = .systemFont(ofSize: 24.0, weight: .bold)
         label.numberOfLines = 0
         
@@ -34,7 +34,7 @@ class BookListCell: UICollectionViewCell {
     
     let authorsLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.font = .systemFont(ofSize: 16.0, weight: .light)
         
         return label
@@ -42,10 +42,16 @@ class BookListCell: UICollectionViewCell {
     
     let publisherLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         label.font = .systemFont(ofSize: 14.0, weight: .ultraLight)
         
         return label
+    }()
+    
+    let ultraView: UIView = {
+        let view = UIView()
+        
+        return view
     }()
     
     // MARK: - Life Cycle
@@ -73,7 +79,12 @@ class BookListCell: UICollectionViewCell {
     
     func configureUI() {
         contentView.backgroundColor = .getWhite()
-        
+        contentView.layer.borderColor = UIColor.getDarkGreen().cgColor
+        contentView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        contentView.layer.shadowColor = UIColor.getDarkGreen().cgColor
+        contentView.layer.shadowOpacity = 1.0
+        contentView.layer.cornerRadius = 10
+
         let verticalStack = UIStackView(arrangedSubviews: [ titleLabel, authorsLabel, publisherLabel ])
         verticalStack.axis = .vertical
         verticalStack.spacing = 4
@@ -85,7 +96,7 @@ class BookListCell: UICollectionViewCell {
         thumbnailImage.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().inset(8)
-            make.width.equalTo(120); make.height.equalTo(174)
+            make.width.equalTo(100); make.height.equalTo(143)
         }
         
         verticalStack.snp.makeConstraints { make in

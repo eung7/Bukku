@@ -22,12 +22,12 @@ class WriteReviewViewController: UIViewController {
         textView.font = .systemFont(ofSize: 18.0, weight: .thin)
         textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         textView.backgroundColor = .getWhite()
-        textView.textColor = .getBlack()
+        textView.textColor = .getDarkGreen()
         textView.layer.borderWidth = 1
-        textView.layer.borderColor = UIColor.getBlack().cgColor
+        textView.layer.borderColor = UIColor.getDarkGreen().cgColor
         textView.layer.cornerRadius = 10
         textView.layer.shadowOpacity = 0.5
-        textView.layer.shadowColor = UIColor.getBlack().cgColor
+        textView.layer.shadowColor = UIColor.getDarkGreen().cgColor
         textView.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         return textView
@@ -36,7 +36,7 @@ class WriteReviewViewController: UIViewController {
     lazy var backArrowButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
-        button.tintColor = .getBlack()
+        button.tintColor = .getDarkGreen()
         button.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
         
         return button
@@ -46,7 +46,7 @@ class WriteReviewViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("저장", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .semibold)
-        button.tintColor = .getBlack()
+        button.tintColor = .getDarkGreen()
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         
         return button
@@ -54,7 +54,7 @@ class WriteReviewViewController: UIViewController {
     
     let contentsCountLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         
         return label
     }()
@@ -89,7 +89,7 @@ class WriteReviewViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureUI() {
-        view.backgroundColor = .getGray()
+        view.backgroundColor = .getWhite()
         
         navigationItem.title = "서평 남기기"
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backArrowButton)

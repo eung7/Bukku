@@ -18,8 +18,8 @@ class BookDetailViewController: UIViewController {
     // MARK: - Properties
     let bookImageView: UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .getBlack()
-        iv.layer.shadowColor = UIColor.getBlack().cgColor
+        iv.backgroundColor = .getDarkGreen()
+        iv.layer.shadowColor = UIColor.getDarkGreen().cgColor
         iv.layer.shadowOpacity = 0.5
         iv.layer.shadowRadius = 10.0
         iv.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
@@ -34,7 +34,7 @@ class BookDetailViewController: UIViewController {
         label.trailingBuffer = 30.0
         label.textAlignment = .center
         label.animationCurve = .easeInOut
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         
         return label
     }()
@@ -43,7 +43,7 @@ class BookDetailViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14.0, weight: .thin)
         label.textAlignment = .center
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         
         return label
     }()
@@ -52,14 +52,14 @@ class BookDetailViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
         label.textAlignment = .center
-        label.textColor = .getBlack()
+        label.textColor = .getDarkGreen()
         
         return label
     }()
     
     lazy var xmarkButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = .getBlack()
+        button.tintColor = .getDarkGreen()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
         button.addTarget(self, action: #selector(didTapXmarkButton), for: .touchUpInside)
         
@@ -68,14 +68,14 @@ class BookDetailViewController: UIViewController {
     
     lazy var confirmButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .getGray()
-        button.setTitleColor(UIColor.getBlack(), for: .normal)
-        button.layer.shadowColor = UIColor.getBlack().cgColor
+        button.backgroundColor = .getWhite()
+        button.setTitleColor(UIColor.getDarkGreen(), for: .normal)
+        button.layer.shadowColor = UIColor.getDarkGreen().cgColor
         button.layer.shadowOpacity = 0.2
         button.layer.shadowRadius = 10.0
         button.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.getBlack().cgColor
+        button.layer.borderColor = UIColor.getDarkGreen().cgColor
         button.layer.cornerRadius = 20
         button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .heavy)
         button.setTitle("내 서재에 담기", for: .normal)
@@ -115,7 +115,7 @@ class BookDetailViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureUI() {
-        view.backgroundColor = .getGray()
+        view.backgroundColor = .getWhite()
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: xmarkButton)
         navigationItem.title = "책"
         

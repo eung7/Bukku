@@ -26,16 +26,17 @@ class TabmanRootViewController: TabmanViewController {
     
     lazy var tabmanBar: TMBar.ButtonBar = {
         let bar = TMBar.ButtonBar()
-        bar.layout.separatorColor = .getBlack()
+        bar.layout.separatorColor = .getDarkGreen()
         bar.layout.contentMode = .fit
         bar.backgroundView.style = .clear
-        bar.backgroundColor = .getBlack()
+        bar.backgroundColor = .getWhite()
         bar.layout.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        bar.indicator.tintColor = .getOrange()
+        bar.indicator.tintColor = .getDarkGreen()
         bar.indicator.overscrollBehavior = .compress
         bar.buttons.customize { button in
-            button.tintColor = .getWhite()
-            button.selectedTintColor = .getOrange()
+            button.tintColor = .getDarkGreen()
+            button.selectedTintColor = .getDarkGreen()
+            button.font = .systemFont(ofSize: 18.0, weight: .thin)
         }
         
         return bar
@@ -55,7 +56,7 @@ class TabmanRootViewController: TabmanViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = .getGray()
+        view.backgroundColor = .getWhite()
         view.addSubview(tempView)
         
         [ allVC, readingVC, willVC, doneVC ]
