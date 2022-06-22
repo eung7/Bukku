@@ -61,23 +61,23 @@ class LibraryViewController: UIViewController {
     }
     
     private func pushNavigationBinding() {
-        tabmanRootVC.allVC.pushCompletion = { [weak self] index in
-            let libraryDetailVC = LibraryDetailViewController(index)
+        tabmanRootVC.allVC.pushCompletion = { [weak self] book in
+            let libraryDetailVC = LibraryDetailViewController(book)
             self?.navigationController?.pushViewController(libraryDetailVC, animated: true)
         }
         
         tabmanRootVC.readingVC.pushCompletion = { [unowned self] book in
-            let libraryDetailVC = LibraryDetailViewController(self.viewModel.indexFromAllBooks(book))
+            let libraryDetailVC = LibraryDetailViewController(book)
             self.navigationController?.pushViewController(libraryDetailVC, animated: true)
         }
         
         tabmanRootVC.willVC.pushCompletion = { [unowned self] book in
-            let libraryDetailVC = LibraryDetailViewController(self.viewModel.indexFromAllBooks(book))
+            let libraryDetailVC = LibraryDetailViewController(book)
             self.navigationController?.pushViewController(libraryDetailVC, animated: true)
         }
 
         tabmanRootVC.doneVC.pushCompletion = { [unowned self] book in
-            let libraryDetailVC = LibraryDetailViewController(self.viewModel.indexFromAllBooks(book))
+            let libraryDetailVC = LibraryDetailViewController(book)
             self.navigationController?.pushViewController(libraryDetailVC, animated: true)
         }
     }

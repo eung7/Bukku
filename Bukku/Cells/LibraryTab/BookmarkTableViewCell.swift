@@ -11,6 +11,8 @@ import SnapKit
 class BookmarkTableViewCell: UITableViewCell {
     // MARK: - Properties
     static let identifier = "LibraryDetailBookmarkCollectionViewCell"
+    var bookmark: Bookmark?
+    var xmarkCompletion: ((Bookmark) -> Void)?
     
     let pageLabel: UILabel = {
         let label = UILabel()
@@ -53,6 +55,16 @@ class BookmarkTableViewCell: UITableViewCell {
         return view
     }()
     
+    lazy var trashButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.tintColor = .getDarkGreen()
+        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 16.0), forImageIn: .normal)
+        button.addTarget(self, action: #selector(didTapXmarkButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
     // MARK: - LifeCycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -61,6 +73,12 @@ class BookmarkTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Selectors
+    @objc func didTapXmarkButton() {
+        guard let bookmark = bookmark else { return }
+        xmarkCompletion?(bookmark)
     }
     
     // MARK: - Helpers
@@ -77,7 +95,7 @@ class BookmarkTableViewCell: UITableViewCell {
         stackView.axis = .horizontal
         stackView.spacing = 4.0
         
-        [ stackView, contentsLabel ]
+        [ stackView, contentsLabel, trashButton ]
             .forEach { ultraView.addSubview($0) }
         
         stackView.snp.makeConstraints { make in
@@ -91,9 +109,15 @@ class BookmarkTableViewCell: UITableViewCell {
             make.height.greaterThanOrEqualTo(50)
             make.bottom.equalToSuperview().inset(8)
         }
+        
+        trashButton.snp.makeConstraints { make in
+            make.centerY.equalTo(stackView)
+            make.trailing.equalToSuperview().inset(16)
+        }
     }
     
     func configureData(_ bookmark: Bookmark) {
+        self.bookmark = bookmark
         pageLabel.text = "P.\(bookmark.page)"
         contentsLabel.text = bookmark.contents
     }

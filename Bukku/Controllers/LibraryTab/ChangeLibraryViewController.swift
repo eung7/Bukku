@@ -12,10 +12,9 @@ import Toast
 
 class ChangeLibraryViewController: UIViewController {
     // MARK: - States
-    let selectedBook: LibraryBook
+    let viewModel: WriteReviewViewModel
     
     // MARK: - Properties
-    let manager = LibraryManager.shared
     var dismissCompletion: () -> Void = {}
     
     let mainLabel: UILabel = {
@@ -64,7 +63,7 @@ class ChangeLibraryViewController: UIViewController {
     }
     
     init(book: LibraryBook) {
-        self.selectedBook = book
+        self.viewModel = WriteReviewViewModel(book)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -74,17 +73,17 @@ class ChangeLibraryViewController: UIViewController {
     
     // MARK: - Selectors
     @objc func didTapReadingButton() {
-        changeLibrary(.reading, book: selectedBook)
+        viewModel.changeLibrary(.reading)
         dismiss(animated: true)
     }
     
     @objc func didTapWillReadButton() {
-        changeLibrary(.willRead, book: selectedBook)
+        viewModel.changeLibrary(.willRead)
         dismiss(animated: true)
     }
     
     @objc func didTapDoneReadButton() {
-        changeLibrary(.doneRead, book: selectedBook)
+        viewModel.changeLibrary(.doneRead)
         dismiss(animated: true)
     }
     
@@ -113,21 +112,6 @@ class ChangeLibraryViewController: UIViewController {
         doneReadButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(willReadButton.snp.bottom).offset(16)
-        }
-    }
-    
-    private func changeLibrary(_ type: LibraryType, book: LibraryBook) {
-        var updateBook = book
-        switch type {
-        case .reading:
-            updateBook.type = .reading
-            manager.updateBook(updateBook)
-        case .willRead:
-            updateBook.type = .willRead
-            manager.updateBook(updateBook)
-        case .doneRead:
-            updateBook.type = .doneRead
-            manager.updateBook(updateBook)
         }
     }
 }

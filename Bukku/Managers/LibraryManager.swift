@@ -14,9 +14,9 @@ enum LibraryType: Int, CaseIterable, Codable {
 }
 
 class LibraryManager {
-    static let shared = LibraryManager()
+    private init() {}
     
-    var allBooks: [LibraryBook] = [] {
+    static var allBooks: [LibraryBook] = [] {
         didSet {
             UserDefaultsManager.shared.saveBooks(allBooks)
         }
@@ -24,57 +24,34 @@ class LibraryManager {
 }
 
 extension LibraryManager {
-    var readingBooks: [LibraryBook] {
+    static var readingBooks: [LibraryBook] {
         return allBooks.filter { $0.type == .reading }
     }
-    var willReadBooks: [LibraryBook] {
+    static var willReadBooks: [LibraryBook] {
         return allBooks.filter { $0.type == .willRead }
     }
-    var doneReadBooks: [LibraryBook] {
+    static var doneReadBooks: [LibraryBook] {
         return allBooks.filter { $0.type == .doneRead }
     }
 }
 
-// MARK: - 만들기, 삭제하기, 업데이트
+// MARK: - 추가하기
 extension LibraryManager {
-    func createLibraryBook(_ libraryType: LibraryType, book: Book) -> LibraryBook {
-        return LibraryBook(review: nil, bookmark: [], type: libraryType, authors: book.authors, contents: book.contents, publisher: book.publisher, thumbnail: book.thumbnail, title: book.title)
-    }
-    
-    func createBookmark(_ book: LibraryBook, page: String, contents: String) {
-        var updatedBook = book
-        let bookmark = Bookmark(page: page, contents: contents)
-        updatedBook.bookmark.insert(bookmark, at: 0)
-        updateBook(updatedBook)
-    }
-    
-    func storeBook(_ book: LibraryBook) {
+    /// 서재에 책 추가
+    static func createBook(_ libraryType: LibraryType, book: Book) {
+        let book = LibraryBook(review: nil, bookmark: [], type: libraryType, authors: book.authors, contents: book.contents, publisher: book.publisher, thumbnail: book.thumbnail, title: book.title)
         allBooks.insert(book, at: 0)
     }
     
-    func removeBook(_ book: LibraryBook) {
+    /// 서재로 부터 책 제거
+    static func removeBook(_ book: LibraryBook) {
         guard let index = allBooks.firstIndex(where: { $0.id == book.id }) else { return }
         allBooks.remove(at: index)
     }
     
-    func updateBook(_ book: LibraryBook) {
+    /// 서재에서 책 업데이트
+    static func updateBook(_ book: LibraryBook) {
         guard let index = allBooks.firstIndex(where: { $0.id == book.id }) else { return }
         allBooks[index] = book
     }
-    
-    func getIndexFromAllBooks(_ book: LibraryBook) -> Int {
-        if let index = allBooks.firstIndex(where: { $0.id == book.id }) {
-            return index
-        }
-        return 0
-    }
-    
-    func getBookFromIndex(_ index: Int) -> LibraryBook {
-        let book = allBooks[index]
-        return book
-    }
-}
-
-// MARK: - BookmarkManager
-extension LibraryManager {
 }

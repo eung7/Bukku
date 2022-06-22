@@ -62,7 +62,7 @@ extension WillReadViewController: UICollectionViewDataSource {
 
 extension WillReadViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        pushCompletion?(viewModel.manager.willReadBooks[indexPath.row])
+        pushCompletion?(LibraryManager.willReadBooks[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

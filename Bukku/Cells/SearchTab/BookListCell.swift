@@ -17,9 +17,7 @@ class BookListCell: UICollectionViewCell {
     let thumbnailImage: UIImageView = {
         let iv = UIImageView()
         iv.tintColor = .getDarkGreen()
-        iv.layer.shadowColor = UIColor.getDarkGreen().cgColor
-        iv.layer.shadowOpacity = 0.5
-        iv.layer.shadowOffset = CGSize(width: 0, height: 0)
+        iv.layer.borderWidth = 1
         
         return iv
     }()
@@ -81,6 +79,8 @@ class BookListCell: UICollectionViewCell {
     func configureUI() {
         contentView.backgroundColor = .getWhite()
         contentView.layer.borderColor = UIColor.getDarkGreen().cgColor
+        contentView.layer.cornerRadius = 10
+        contentView.layer.borderWidth = 1
         contentView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         contentView.layer.shadowColor = UIColor.getDarkGreen().cgColor
         contentView.layer.shadowOpacity = 0.5

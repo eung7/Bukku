@@ -8,6 +8,7 @@
 import Foundation
 
 struct Bookmark: Codable {
+    var id = UUID()
     let page: String
     let contents: String
 }

@@ -8,12 +8,11 @@
 import Foundation
 
 
-class MainViewModel {
-    var eventsArr: [Date] = []
-    
+class MemoViewModel {
+    let manager = LibraryManager.shared
 }
 
-extension MainViewModel {
+extension MemoViewModel {
     func configureHeaderTitle(_ section: LibraryType) -> String {
         switch section {
         case .reading:

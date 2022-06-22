@@ -11,7 +11,7 @@ import SnapKit
 class AllViewController: UIViewController {
     // MARK: - Properties
     let viewModel = LibraryViewModel()
-    var pushCompletion: ((Int) -> Void)?
+    var pushCompletion: ((LibraryBook) -> Void)?
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -60,7 +60,7 @@ extension AllViewController: UICollectionViewDataSource {
 
 extension AllViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        pushCompletion?(indexPath.row)
+        pushCompletion?(LibraryManager.allBooks[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

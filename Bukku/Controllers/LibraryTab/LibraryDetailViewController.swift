@@ -12,12 +12,8 @@ import Kingfisher
 import MarqueeLabel
 
 class LibraryDetailViewController: UIViewController {
-    // MARK: - States
-    let index: Int
-    
     // MARK: - Properties
-    let manager = LibraryManager.shared
-    var viewModel: LibraryDetailViewModel!
+    let viewModel: LibraryDetailViewModel
 
     lazy var trashButton: UIButton = {
         let button = UIButton(type: .system)
@@ -156,7 +152,7 @@ class LibraryDetailViewController: UIViewController {
         let alert = UIAlertController(title: "정말 삭제하시겠습니까?", message: nil, preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
             guard let book = self?.viewModel.book else { return }
-            self?.manager.removeBook(book)
+            self?.viewModel.manager.removeBook(book)
             self?.navigationController?.popViewController(animated: true)
         })
         let cancelAction = UIAlertAction(title: "취소", style: .cancel)
@@ -190,8 +186,8 @@ class LibraryDetailViewController: UIViewController {
         tableView.reloadData()
     }
     
-    init(_ index: Int) {
-        self.index = index
+    init(_ book: LibraryBook) {
+        self.viewModel = LibraryDetailViewModel(book)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -308,15 +304,12 @@ class LibraryDetailViewController: UIViewController {
     }
     
     private func configureData() {
-        let book = manager.getBookFromIndex(index)
-        self.viewModel = LibraryDetailViewModel(book)
-
-        titleLabel.text = book.title
-        authorLabel.text = book.authors.first
-        if let url = URL(string: book.thumbnail) {
+        titleLabel.text = viewModel.title
+        authorLabel.text = viewModel.author
+        if let url = URL(string: viewModel.thumbnail) {
             bookImageView.kf.setImage(with: url)
         }
-        if let review = book.review {
+        if let review = viewModel.review {
             reviewLabel.text = review
         }
     }
@@ -329,6 +322,11 @@ extension LibraryDetailViewController: UITableViewDataSource {
         
         if viewModel.bookmarks.isEmpty == false {
             cell.configureData(viewModel.bookmarks[indexPath.row])
+        }
+        
+        cell.xmarkCompletion = { [weak self] bookmark in
+            self?.viewModel.removeBookmark(bookmark)
+            self?.tableView.reloadData()
         }
         
         return cell

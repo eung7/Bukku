@@ -10,8 +10,7 @@ import SnapKit
 
 class MemoViewController: UIViewController {
     // MARK: - Properties
-    let viewModel = MainViewModel()
-    let manager = LibraryManager.shared
+    let viewModel = MemoViewModel()
     
     let mainLabel: UILabel = {
         let label = UILabel()
@@ -171,6 +170,10 @@ class MemoViewController: UIViewController {
 
 // MARK: - CollectionView DataSource
 extension MemoViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2 
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReadingCollectionViewCell.identifier, for: indexPath) as? ReadingCollectionViewCell else { return UICollectionViewCell() }
         cell.backgroundColor = .getDarkGreen()
@@ -208,23 +211,6 @@ extension MemoViewController: UICollectionViewDataSource {
         default:
             return UICollectionReusableView()
         }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case LibraryType.reading.rawValue:
-            return manager.readingBooks.count
-        case LibraryType.willRead.rawValue:
-            return manager.willReadBooks.count
-        case LibraryType.doneRead.rawValue:
-            return manager.doneReadBooks.count
-        default:
-            return 0
-        }
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return LibraryType.allCases.count
     }
 }
 

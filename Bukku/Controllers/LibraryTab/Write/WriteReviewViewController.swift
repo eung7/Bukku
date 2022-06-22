@@ -11,8 +11,7 @@ import RSKPlaceholderTextView
 
 class WriteReviewViewController: UIViewController {
     // MARK: - Properties
-    var book: LibraryBook
-    let manager = LibraryManager.shared
+    let viewModel: WriteReviewViewModel
     var saveCompletion: ((LibraryBook) -> Void)?
     
     lazy var textView: RSKPlaceholderTextView = {
@@ -67,7 +66,7 @@ class WriteReviewViewController: UIViewController {
     }
     
     init(_ book: LibraryBook) {
-        self.book = book
+        self.viewModel = WriteReviewViewModel(book)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -81,9 +80,12 @@ class WriteReviewViewController: UIViewController {
     }
     
     @objc func didTapSaveButton() {
-        book.review = textView.text
-        manager.updateBook(book)
-        saveCompletion?(book)
+        if let text = textView.text {
+            viewModel.book.review = text
+            viewModel.manager.updateBook(viewModel.book)
+            saveCompletion?(viewModel.book)
+            dismiss(animated: true)
+        }
         dismiss(animated: true)
     }
     
@@ -109,7 +111,7 @@ class WriteReviewViewController: UIViewController {
     }
     
     private func configureData() {
-        guard let review = book.review else { return }
+        guard let review = viewModel.review else { return }
         textView.text = review
     }
 }
