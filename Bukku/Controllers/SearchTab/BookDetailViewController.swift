@@ -31,7 +31,7 @@ class BookDetailViewController: UIViewController {
     let titleLabel: MarqueeLabel = {
         let label = MarqueeLabel()
         label.font = .systemFont(ofSize: 32.0, weight: .heavy)
-        label.trailingBuffer = 30.0
+        label.trailingBuffer = 100.0
         label.textAlignment = .center
         label.animationCurve = .easeInOut
         label.textColor = .getDarkGreen()
@@ -125,8 +125,7 @@ class BookDetailViewController: UIViewController {
         bookImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().inset(24)
-            make.width.equalTo(Utilties.width)
-            make.height.equalTo(Utilties.height)
+            make.width.equalTo(120); make.height.equalTo(174)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -169,10 +168,10 @@ extension BookDetailViewController: PanModalPresentable {
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(450)
+        return .contentHeight(400)
     }
     
     var longFormHeight: PanModalHeight {
-        return .contentHeight(450)
+        return .contentHeight(400)
     }
 }

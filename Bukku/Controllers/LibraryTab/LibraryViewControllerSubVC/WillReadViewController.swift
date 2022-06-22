@@ -10,7 +10,7 @@ import SnapKit
 
 class WillReadViewController: UIViewController {
     // MARK: - Properties
-    let manager = LibraryManager.shared
+    let viewModel = LibraryViewModel()
     var pushCompletion: ((LibraryBook) -> Void)?
     
     lazy var collectionView: UICollectionView = {
@@ -49,33 +49,37 @@ class WillReadViewController: UIViewController {
 extension WillReadViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.identifier, for: indexPath) as? LibraryCollectionViewCell else { return UICollectionViewCell() }
-        let imageURL = manager.willReadBooks[indexPath.row].thumbnail
+        let imageURL = viewModel.imageURLStr(.willRead, index: indexPath.row)
         cell.configureImage(imageURL)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return manager.willReadBooks.count
+        return viewModel.numberOfItemsInSection(.willRead)
     }
 }
 
 extension WillReadViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        pushCompletion?(manager.willReadBooks[indexPath.row])
+        pushCompletion?(viewModel.manager.willReadBooks[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (UIScreen.main.bounds.width - 32) / 3
+        let width = (UIScreen.main.bounds.width - 64) / 3
         return CGSize(width: width, height: (43 / 30) * width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+        return 16
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     }
 }
 

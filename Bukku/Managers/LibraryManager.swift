@@ -15,7 +15,6 @@ enum LibraryType: Int, CaseIterable, Codable {
 
 class LibraryManager {
     static let shared = LibraryManager()
-    var currentId: Int = 0
     
     var allBooks: [LibraryBook] = [] {
         didSet {
@@ -40,6 +39,13 @@ extension LibraryManager {
 extension LibraryManager {
     func createLibraryBook(_ libraryType: LibraryType, book: Book) -> LibraryBook {
         return LibraryBook(review: nil, bookmark: [], type: libraryType, authors: book.authors, contents: book.contents, publisher: book.publisher, thumbnail: book.thumbnail, title: book.title)
+    }
+    
+    func createBookmark(_ book: LibraryBook, page: String, contents: String) {
+        var updatedBook = book
+        let bookmark = Bookmark(page: page, contents: contents)
+        updatedBook.bookmark.insert(bookmark, at: 0)
+        updateBook(updatedBook)
     }
     
     func storeBook(_ book: LibraryBook) {
@@ -71,10 +77,4 @@ extension LibraryManager {
 
 // MARK: - BookmarkManager
 extension LibraryManager {
-    func createBookmark(_ book: LibraryBook, page: String, contents: String) {
-        var updatedBook = book
-        let bookmark = Bookmark(page: page, contents: contents)
-        updatedBook.bookmark.insert(bookmark, at: 0)
-        updateBook(updatedBook)
-    }
 }

@@ -83,6 +83,7 @@ class MemoViewController: UIViewController {
     // MARK: - Helpers
     private func configureUI() {
         view.backgroundColor = .getGray()
+        navigationItem.title = "메모"
         
         [ mainLabel, goalLabel, settingButton, lineView, collectionView ]
             .forEach { view.addSubview($0) }

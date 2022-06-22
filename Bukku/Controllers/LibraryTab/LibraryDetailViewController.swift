@@ -47,7 +47,7 @@ class LibraryDetailViewController: UIViewController {
     
     let titleLabel: MarqueeLabel = {
         let label = MarqueeLabel()
-        label.trailingBuffer = 30.0
+        label.trailingBuffer = 100.0
         label.animationCurve = .easeInOut
         label.textColor = .getDarkGreen()
         label.textAlignment = .center
@@ -61,16 +61,6 @@ class LibraryDetailViewController: UIViewController {
         label.textColor = .getDarkGreen()
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
         label.textAlignment = .center
-        
-        return label
-    }()
-    
-    let publisherLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .getDarkGreen()
-        label.font = .systemFont(ofSize: 14.0, weight: .thin)
-        label.textAlignment = .center
-        label.textColor = .gray
         
         return label
     }()
@@ -163,9 +153,11 @@ class LibraryDetailViewController: UIViewController {
     }()
     
     lazy var deleteAlert: UIAlertController = {
-        let alert = UIAlertController(title: nil, message: "정말 삭제하시겠습니까?", preferredStyle: .actionSheet)
-        let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
-            // TODO: [] 삭제 버튼 시 삭제하기
+        let alert = UIAlertController(title: "정말 삭제하시겠습니까?", message: nil, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
+            guard let book = self?.viewModel.book else { return }
+            self?.manager.removeBook(book)
+            self?.navigationController?.popViewController(animated: true)
         })
         let cancelAction = UIAlertAction(title: "취소", style: .cancel)
         [ deleteAction, cancelAction ].forEach { alert.addAction($0) }
@@ -250,12 +242,7 @@ class LibraryDetailViewController: UIViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
-        let stackView = UIStackView(arrangedSubviews: [ authorLabel, publisherLabel ])
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.spacing = 4.0
-        
-        [ bookImageView, titleLabel, stackView, changeLibraryButton, lineView, reviewTitleLabel, writeReviewButton, reviewSuperView, bookmarkTitleLabel, writeBookmarkButton ]
+        [ bookImageView, titleLabel, authorLabel, changeLibraryButton, lineView, reviewTitleLabel, writeReviewButton, reviewSuperView, bookmarkTitleLabel, writeBookmarkButton ]
             .forEach { headerView.addSubview($0) }
 
         reviewSuperView.addSubview(reviewLabel)
@@ -276,13 +263,13 @@ class LibraryDetailViewController: UIViewController {
             make.top.equalTo(bookImageView.snp.bottom).offset(8)
         }
 
-        stackView.snp.makeConstraints { make in
+        authorLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(titleLabel.snp.bottom).offset(4)
         }
 
         changeLibraryButton.snp.makeConstraints { make in
-            make.top.equalTo(stackView.snp.bottom).offset(4)
+            make.top.equalTo(authorLabel.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(40)
         }
@@ -326,9 +313,11 @@ class LibraryDetailViewController: UIViewController {
 
         titleLabel.text = book.title
         authorLabel.text = book.authors.first
-        publisherLabel.text = book.publisher
         if let url = URL(string: book.thumbnail) {
             bookImageView.kf.setImage(with: url)
+        }
+        if let review = book.review {
+            reviewLabel.text = review
         }
     }
 }

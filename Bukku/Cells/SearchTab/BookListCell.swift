@@ -17,8 +17,9 @@ class BookListCell: UICollectionViewCell {
     let thumbnailImage: UIImageView = {
         let iv = UIImageView()
         iv.tintColor = .getDarkGreen()
-        iv.layer.borderWidth = 0.5
-        iv.clipsToBounds = true
+        iv.layer.shadowColor = UIColor.getDarkGreen().cgColor
+        iv.layer.shadowOpacity = 0.5
+        iv.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         return iv
     }()
@@ -26,8 +27,8 @@ class BookListCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .getDarkGreen()
-        label.font = .systemFont(ofSize: 24.0, weight: .bold)
-        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 18.0, weight: .semibold)
+        label.numberOfLines = 3
         
         return label
     }()
@@ -82,8 +83,7 @@ class BookListCell: UICollectionViewCell {
         contentView.layer.borderColor = UIColor.getDarkGreen().cgColor
         contentView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         contentView.layer.shadowColor = UIColor.getDarkGreen().cgColor
-        contentView.layer.shadowOpacity = 1.0
-        contentView.layer.cornerRadius = 10
+        contentView.layer.shadowOpacity = 0.5
 
         let verticalStack = UIStackView(arrangedSubviews: [ titleLabel, authorsLabel, publisherLabel ])
         verticalStack.axis = .vertical

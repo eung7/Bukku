@@ -13,7 +13,7 @@ import Tabman
 class LibraryViewController: UIViewController {
     // MARK: - Properties
     let tabmanRootVC = TabmanRootViewController()
-    let manager = LibraryManager.shared
+    let viewModel = LibraryViewModel()
     
     lazy var containerView: UIView = {
         let view = UIView()
@@ -42,7 +42,7 @@ class LibraryViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .getWhite()
         view.addSubview(containerView)
-                
+        
         navigationItem.title = "내 서재"
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton)
         navigationItem.leftBarButtonItem?.tintColor = .getDarkGreen()
@@ -67,19 +67,18 @@ class LibraryViewController: UIViewController {
         }
         
         tabmanRootVC.readingVC.pushCompletion = { [unowned self] book in
-            let libraryDetailVC = LibraryDetailViewController(self.manager.getIndexFromAllBooks(book))
+            let libraryDetailVC = LibraryDetailViewController(self.viewModel.indexFromAllBooks(book))
             self.navigationController?.pushViewController(libraryDetailVC, animated: true)
         }
         
         tabmanRootVC.willVC.pushCompletion = { [unowned self] book in
-            let libraryDetailVC = LibraryDetailViewController(self.manager.getIndexFromAllBooks(book))
+            let libraryDetailVC = LibraryDetailViewController(self.viewModel.indexFromAllBooks(book))
             self.navigationController?.pushViewController(libraryDetailVC, animated: true)
         }
 
         tabmanRootVC.doneVC.pushCompletion = { [unowned self] book in
-            let libraryDetailVC = LibraryDetailViewController(self.manager.getIndexFromAllBooks(book))
+            let libraryDetailVC = LibraryDetailViewController(self.viewModel.indexFromAllBooks(book))
             self.navigationController?.pushViewController(libraryDetailVC, animated: true)
         }
-
     }
 }
