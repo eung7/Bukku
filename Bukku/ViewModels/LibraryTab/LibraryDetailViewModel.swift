@@ -9,7 +9,6 @@ import Foundation
 
 class LibraryDetailViewModel {
     var book: LibraryBook
-    let manager = LibraryManager.shared
     
     init(_ book: LibraryBook) {
         self.book = book
@@ -18,10 +17,10 @@ class LibraryDetailViewModel {
 
 extension LibraryDetailViewModel {
     var title: String { book.title }
-    var author: String { book.authors.first! }
+    var author: String? { book.authors.first }
     var thumbnail: String { book.thumbnail }
-    var review: String? { book.review }
-    var bookmarks: [Bookmark] { book.bookmark}
+    var review: String { book.review }
+    var bookmarks: [Bookmark] { book.bookmark }
 }
 
 extension LibraryDetailViewModel {
@@ -30,8 +29,8 @@ extension LibraryDetailViewModel {
     }
     
     func removeBookmark(_ bookmark: Bookmark) {
-        if let index = bookmarks.firstIndex(where: { $0.id == bookmark.id }) {
-            
-        }
+        guard let index = book.bookmark.firstIndex(where: { $0.id == bookmark.id }) else { return }
+        book.bookmark.remove(at: index)
+        LibraryManager.updateBook(book)
     }
 }

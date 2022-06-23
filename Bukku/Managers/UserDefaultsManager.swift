@@ -21,7 +21,7 @@ class UserDefaultsManager {
     func loadBooks() {
         let userDefaults = UserDefaults.standard
         if let data = userDefaults.value(forKey: "AllBooks") as? Data {
-            LibraryManager.shared.allBooks = try! PropertyListDecoder().decode([LibraryBook].self, from: data)
+            LibraryManager.allBooks = try! PropertyListDecoder().decode([LibraryBook].self, from: data)
             userDefaults.synchronize()
         }
     }

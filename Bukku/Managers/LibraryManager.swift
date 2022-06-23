@@ -23,6 +23,7 @@ class LibraryManager {
     }
 }
 
+// MARK: - 조회하기
 extension LibraryManager {
     static var readingBooks: [LibraryBook] {
         return allBooks.filter { $0.type == .reading }
@@ -35,11 +36,11 @@ extension LibraryManager {
     }
 }
 
-// MARK: - 추가하기
+// MARK: - 추가, 제거, 업데이트
 extension LibraryManager {
     /// 서재에 책 추가
     static func createBook(_ libraryType: LibraryType, book: Book) {
-        let book = LibraryBook(review: nil, bookmark: [], type: libraryType, authors: book.authors, contents: book.contents, publisher: book.publisher, thumbnail: book.thumbnail, title: book.title)
+        let book = LibraryBook(review: "", bookmark: [], type: libraryType, authors: book.authors, contents: book.contents, publisher: book.publisher, thumbnail: book.thumbnail, title: book.title)
         allBooks.insert(book, at: 0)
     }
     

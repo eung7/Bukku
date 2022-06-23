@@ -9,7 +9,7 @@ import Foundation
 
 struct LibraryBook: Codable, Identifiable {
     var id = UUID()
-    var review: String?
+    var review: String
     var bookmark: [Bookmark]
     var type: LibraryType
     let authors: [String]

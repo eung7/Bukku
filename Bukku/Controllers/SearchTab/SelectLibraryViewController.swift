@@ -11,10 +11,9 @@ import PanModal
 
 class SelectLibraryViewController: UIViewController {
     // MARK: - States
-    var selectedBook: Book
+    let viewModel: SelectLibraryViewModel
     
     // MARK: - Properties
-    let manager = LibraryManager.shared
     var dismissCompletion: () -> Void = {}
     
     let mainLabel: UILabel = {
@@ -63,7 +62,7 @@ class SelectLibraryViewController: UIViewController {
     }
     
     init(book: Book) {
-        self.selectedBook = book
+        self.viewModel = SelectLibraryViewModel(book)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -73,22 +72,19 @@ class SelectLibraryViewController: UIViewController {
     
     // MARK: - Selectors
     @objc func didTapReadingButton() {
-        let newBook = manager.createLibraryBook(.reading, book: selectedBook)
-        manager.storeBook(newBook)
+        LibraryManager.createBook(.reading, book: viewModel.book)
         dismiss(animated: true)
         dismissCompletion()
     }
     
     @objc func didTapWillReadButton() {
-        let newBook = manager.createLibraryBook(.willRead, book: selectedBook)
-        manager.storeBook(newBook)
+        LibraryManager.createBook(.willRead, book: viewModel.book)
         dismiss(animated: true)
         dismissCompletion()
     }
 
     @objc func didTapDoneReadButton() {
-        let newBook = manager.createLibraryBook(.doneRead, book: selectedBook)
-        manager.storeBook(newBook)
+        LibraryManager.createBook(.doneRead, book: viewModel.book)
         dismiss(animated: true)
         dismissCompletion()
     }

@@ -31,11 +31,26 @@ class LibraryViewController: UIViewController {
         return button
     }()
     
+    lazy var addButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("직접 추가", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .heavy)
+        button.tintColor = .getDarkGreen()
+        button.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         pushNavigationBinding()
+    }
+    
+    // MARK: - Selectors
+    @objc func didTapAddButton() {
+        
     }
     
     // MARK: - Helpers
@@ -45,7 +60,7 @@ class LibraryViewController: UIViewController {
         
         navigationItem.title = "내 서재"
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton)
-        navigationItem.leftBarButtonItem?.tintColor = .getDarkGreen()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: addButton)
         
         containerView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)

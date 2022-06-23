@@ -13,9 +13,8 @@ import Toast
 
 class WriteBookmarkViewController: UIViewController {
     // MARK: - Properties
-    var selectedBook: LibraryBook
+    let viewModel: WriteBookmarkViewModel
     var saveCompletion: ((LibraryBook) -> Void)?
-    let manager = LibraryManager.shared
     
     lazy var pageTextField: JVFloatLabeledTextField = {
         let tf = JVFloatLabeledTextField()
@@ -80,8 +79,8 @@ class WriteBookmarkViewController: UIViewController {
         configureUI()
     }
     
-    init(_ selectedBook: LibraryBook) {
-        self.selectedBook = selectedBook
+    init(_ book: LibraryBook) {
+        self.viewModel = WriteBookmarkViewModel(book)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -95,14 +94,14 @@ class WriteBookmarkViewController: UIViewController {
     }
     
     @objc func didTapSaveButton() {
-        if let page = pageTextField.text,
-           let contents = contentsTextView.text {
-            manager.createBookmark(selectedBook, page: page, contents: contents)
-            dismiss(animated: true)
-        } else {
-            view.endEditing(true)
-            view.makeToast("빈 곳을 채워주세요.")
+        guard let contents = contentsTextView.text,
+              contents != "" else {
+            view.makeToast("내용을 입력해주세요.", duration: 1, position: .top, title: nil, image: nil, style: .init(), completion: nil)
+            return
         }
+        viewModel.createBookmark(pageTextField.text ?? "", contents: contents)
+        saveCompletion?(viewModel.book)
+        dismiss(animated: true)
     }
     
     // MARK: - Helpers

@@ -25,7 +25,7 @@ class SearchViewController: UIViewController {
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(
             frame: CGRect(x: 0, y: 0,
-            width: UIScreen.main.bounds.width - 75,
+            width: UIScreen.main.bounds.width,
             height: 0)
         )
         searchBar.placeholder = "책 이름을 알려주세요!"
@@ -33,19 +33,10 @@ class SearchViewController: UIViewController {
         searchBar.searchTextField.leftView?.tintColor = .getDarkGreen()
         searchBar.searchTextField.enablesReturnKeyAutomatically = true
         searchBar.searchTextField.textColor = .getDarkGreen()
+        searchBar.showsCancelButton = true
         searchBar.delegate = self
         
         return searchBar
-    }()
-    
-    lazy var cameraTabBarItem: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "camera.viewfinder"), for: .normal)
-        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 24.0), forImageIn: .normal)
-        button.addTarget(self, action: #selector(didTapCameraButton), for: .touchUpInside)
-        button.tintColor = .getDarkGreen()
-        
-        return button
     }()
     
     lazy var bookListCollectionView: UICollectionView = {
@@ -76,11 +67,6 @@ class SearchViewController: UIViewController {
     }
 
     // MARK: - Selectors
-    @objc func didTapCameraButton() {
-        let vc = SettingsViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
     @objc func dismissKeyboard() {
         searchBar.searchTextField.resignFirstResponder()
     }
@@ -89,7 +75,6 @@ class SearchViewController: UIViewController {
     func configureUI() {
         view.backgroundColor = .getWhite()
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cameraTabBarItem)
         
         bookListCollectionView.isHidden = true
         
@@ -148,6 +133,10 @@ extension SearchViewController: UISearchBarDelegate {
         isLoading = false
         bookListCollectionView.reloadData()
         return true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
     }
 }
 

@@ -82,7 +82,7 @@ class WriteReviewViewController: UIViewController {
     @objc func didTapSaveButton() {
         if let text = textView.text {
             viewModel.book.review = text
-            viewModel.manager.updateBook(viewModel.book)
+            LibraryManager.updateBook(viewModel.book)
             saveCompletion?(viewModel.book)
             dismiss(animated: true)
         }

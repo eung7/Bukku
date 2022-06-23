@@ -1,23 +1,22 @@
 //
-//  LibraryDetailBookmarkCollectionViewCell.swift
+//  MemoTableViewCell.swift
 //  Bukku
 //
-//  Created by 김응철 on 2022/06/18.
+//  Created by 김응철 on 2022/06/22.
 //
 
 import UIKit
 import SnapKit
 
-class BookmarkTableViewCell: UITableViewCell {
-    // MARK: - Properties
-    static let identifier = "LibraryDetailBookmarkCollectionViewCell"
+class MemoTableViewCell: UITableViewCell {
+    static let identifier = "MemoTableViewCell"
     var bookmark: Bookmark?
-    var xmarkCompletion: ((Bookmark) -> Void)?
     
     let pageLabel: UILabel = {
         let label = UILabel()
         label.textColor = .getDarkGreen()
         label.font = .systemFont(ofSize: 16.0, weight: .medium)
+        label.text = "P.123"
         
         return label
     }()
@@ -36,6 +35,7 @@ class BookmarkTableViewCell: UITableViewCell {
         label.textColor = .getDarkGreen()
         label.adjustsFontSizeToFitWidth = true
         label.font = .systemFont(ofSize: 18.0, weight: .thin)
+        label.text = "책갈피를 입력해주세요!"
     
         return label
     }()
@@ -75,8 +75,8 @@ class BookmarkTableViewCell: UITableViewCell {
     
     // MARK: - Selectors
     @objc func didTapXmarkButton() {
-        guard let bookmark = bookmark else { return }
-        xmarkCompletion?(bookmark)
+//        guard let bookmark = bookmark else { return }
+//        xmarkCompletion?(bookmark)
     }
     
     // MARK: - Helpers
@@ -114,13 +114,14 @@ class BookmarkTableViewCell: UITableViewCell {
         }
     }
     
-    func configureData(_ bookmark: Bookmark) {
-        self.bookmark = bookmark
-        if bookmark.page == "" {
-            pageLabel.text = ""
-        } else {
+    func configureData() {
+        guard let bookmark = bookmark else { return }
+        if bookmark.page != "" {
             pageLabel.text = "P.\(bookmark.page)"
+        } else {
+            pageLabel.text = ""
         }
         contentsLabel.text = bookmark.contents
     }
+
 }
