@@ -73,19 +73,19 @@ class SelectLibraryViewController: UIViewController {
     
     // MARK: - Selectors
     @objc func didTapReadingButton() {
-        LibraryManager.createBook(.reading, book: viewModel.book, imageBase64: imageBase64)
+        LibraryManager.createBook(.reading, book: viewModel.book)
         dismiss(animated: true)
         dismissCompletion()
     }
     
     @objc func didTapWillReadButton() {
-        LibraryManager.createBook(.willRead, book: viewModel.book, imageBase64: imageBase64)
+        LibraryManager.createBook(.willRead, book: viewModel.book)
         dismiss(animated: true)
         dismissCompletion()
     }
 
     @objc func didTapDoneReadButton() {
-        LibraryManager.createBook(.doneRead, book: viewModel.book, imageBase64: imageBase64)
+        LibraryManager.createBook(.doneRead, book: viewModel.book)
         dismiss(animated: true)
         dismissCompletion()
     }

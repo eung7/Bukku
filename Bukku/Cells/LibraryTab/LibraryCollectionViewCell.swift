@@ -48,10 +48,6 @@ class LibraryCollectionViewCell: UICollectionViewCell {
     }
     
     func configureImage(_ book: LibraryBook) {
-        if let imageBase64 = book.imageBase64 {
-            bookImageView.image = UIImage(base64: imageBase64, withPrefix: false)
-        } else {
-            bookImageView.kf.setImage(with: URL(string: book.thumbnail))
-        }
+        bookImageView.kf.setImage(with: URL(string: book.thumbnail))
     }
 }
