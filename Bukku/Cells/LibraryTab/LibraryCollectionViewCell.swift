@@ -15,7 +15,6 @@ class LibraryCollectionViewCell: UICollectionViewCell {
     
     lazy var bookImageView: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleToFill
         iv.backgroundColor = .clear
         iv.clipsToBounds = true
         
@@ -48,9 +47,11 @@ class LibraryCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configureImage(_ url: String) {
-        if let url = URL(string: url) {
-            bookImageView.kf.setImage(with: url)
+    func configureImage(_ book: LibraryBook) {
+        if let imageBase64 = book.imageBase64 {
+            bookImageView.image = UIImage(base64: imageBase64, withPrefix: false)
+        } else {
+            bookImageView.kf.setImage(with: URL(string: book.thumbnail))
         }
     }
 }

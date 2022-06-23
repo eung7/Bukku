@@ -12,6 +12,7 @@ struct LibraryBook: Codable, Identifiable {
     var review: String
     var bookmark: [Bookmark]
     var type: LibraryType
+    let imageBase64: String?
     let authors: [String]
     let contents: String
     let publisher: String

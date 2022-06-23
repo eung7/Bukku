@@ -49,8 +49,8 @@ class DoneReadViewController: UIViewController {
 extension DoneReadViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.identifier, for: indexPath) as? LibraryCollectionViewCell else { return UICollectionViewCell() }
-        let imageURL = viewModel.imageURLStr(.doneRead, index: indexPath.row)
-        cell.configureImage(imageURL)
+        let book = viewModel.getBookFromIndex(.doneRead, index: indexPath.row)
+        cell.configureImage(book)
         
         return cell
     }

@@ -49,8 +49,8 @@ class WillReadViewController: UIViewController {
 extension WillReadViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.identifier, for: indexPath) as? LibraryCollectionViewCell else { return UICollectionViewCell() }
-        let imageURL = viewModel.imageURLStr(.willRead, index: indexPath.row)
-        cell.configureImage(imageURL)
+        let book = viewModel.getBookFromIndex(.willRead, index: indexPath.row)
+        cell.configureImage(book)
         
         return cell
     }

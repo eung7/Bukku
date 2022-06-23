@@ -7,6 +7,6 @@ target 'Bukku' do
 
   # Pods for Bukku
 
-  pod 'DropDown'
+  pod 'RealmSwift', '~>10'
 
 end

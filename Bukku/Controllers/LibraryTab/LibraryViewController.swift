@@ -32,10 +32,15 @@ class LibraryViewController: UIViewController {
     }()
     
     lazy var addButton: UIButton = {
-        let button = UIButton(type: .system)
+        var config = UIButton.Configuration.plain()
+        config.titlePadding = 10
+        let button = UIButton(configuration: config)
         button.setTitle("직접 추가", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .heavy)
+        button.titleLabel?.font = .systemFont(ofSize: 16.0, weight: .thin)
+        button.backgroundColor = .getWhite()
         button.tintColor = .getDarkGreen()
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
         
         return button
@@ -50,7 +55,10 @@ class LibraryViewController: UIViewController {
     
     // MARK: - Selectors
     @objc func didTapAddButton() {
-        
+        let addBookVC = AddBookViewController()
+        let navVC = UINavigationController(rootViewController: addBookVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
     }
     
     // MARK: - Helpers

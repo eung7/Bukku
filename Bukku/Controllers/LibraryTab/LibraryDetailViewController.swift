@@ -134,6 +134,7 @@ extension LibraryDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: LibraryDetailHeaderView.identifier) as? LibraryDetailHeaderView else { return UIView() }
+        header.delegate = self
         header.configureData(viewModel.book)
         
         return header

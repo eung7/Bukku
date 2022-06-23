@@ -13,16 +13,16 @@ class LibraryViewModel {
 
 // MARK: - SubVC
 extension LibraryViewModel {
-    func imageURLStr(_ type: LibraryType?, index: Int) -> String {
+    func getBookFromIndex(_ type: LibraryType?, index: Int) -> LibraryBook {
         switch type {
         case .reading:
-            return LibraryManager.readingBooks[index].thumbnail
+            return LibraryManager.readingBooks[index]
         case .willRead:
-            return LibraryManager.willReadBooks[index].thumbnail
+            return LibraryManager.willReadBooks[index]
         case .doneRead:
-            return LibraryManager.doneReadBooks[index].thumbnail
+            return LibraryManager.doneReadBooks[index]
         default:
-            return LibraryManager.allBooks[index].thumbnail
+            return LibraryManager.allBooks[index]
         }
     }
     

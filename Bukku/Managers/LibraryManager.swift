@@ -39,8 +39,8 @@ extension LibraryManager {
 // MARK: - 추가, 제거, 업데이트
 extension LibraryManager {
     /// 서재에 책 추가
-    static func createBook(_ libraryType: LibraryType, book: Book) {
-        let book = LibraryBook(review: "", bookmark: [], type: libraryType, authors: book.authors, contents: book.contents, publisher: book.publisher, thumbnail: book.thumbnail, title: book.title)
+    static func createBook(_ libraryType: LibraryType, book: Book, imageBase64: String?) {
+        let book = LibraryBook(review: "", bookmark: [], type: libraryType, imageBase64: imageBase64, authors: book.authors, contents: book.contents, publisher: book.publisher, thumbnail: book.thumbnail, title: book.title)
         allBooks.insert(book, at: 0)
     }
     
