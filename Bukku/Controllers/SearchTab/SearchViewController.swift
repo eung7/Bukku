@@ -10,7 +10,6 @@ import SnapKit
 import PanModal
 import Toast
 
-// TODO: [] 새로운 검색을 할 때 최상단으로 포커스 가기
 class SearchViewController: UIViewController {
     // MARK: - States
     var currentPage: Int = 1
@@ -34,7 +33,7 @@ class SearchViewController: UIViewController {
         searchBar.searchTextField.textColor = .getDarkGreen()
         searchBar.showsCancelButton = true
         searchBar.delegate = self
-        
+            
         return searchBar
     }()
     
@@ -94,13 +93,17 @@ class SearchViewController: UIViewController {
                 SearchService.fetchBooks(currentQuery, page: currentPage) { [weak self] response, updatedPage in
                     if response.meta.is_end == false {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                            self?.viewModel.books.append(contentsOf: response.documents)
+                            for book in response.documents {
+                                if book.thumbnail != "" {
+                                    self?.viewModel.books.append(book)
+                                }
+                            }
                             self?.bookListCollectionView.reloadData()
                             self?.isLoading = false
                             self?.currentPage = updatedPage
                         })
                     } else {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             self?.isLoading = false
                             self?.bookListCollectionView.reloadData()
                         }
@@ -115,11 +118,18 @@ class SearchViewController: UIViewController {
 // MARK: - SearchBar Methods
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.books = []
         searchBar.searchTextField.resignFirstResponder()
         guard let query = searchBar.searchTextField.text else { return }
         self.currentQuery = query
         SearchService.fetchBooks(query, page: 1) { [weak self] response, currentPage in
-            self?.viewModel.books = response.documents
+            for book in response.documents {
+                if book.thumbnail == "" {
+                    continue
+                } else {
+                    self?.viewModel.books.append(book)
+                }
+            }
             self?.currentPage = currentPage
             self?.isLoading = false
             self?.bookListCollectionView.reloadData()
@@ -135,7 +145,8 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
+        viewModel.books = []
+        bookListCollectionView.reloadData()
     }
 }
 

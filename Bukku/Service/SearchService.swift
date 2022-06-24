@@ -12,7 +12,7 @@ struct SearchService {
     static func fetchBooks(_ query: String, page: Int, completion: @escaping (BookResponseModel, Int) -> Void) {
         let url = URL(string: "https://dapi.kakao.com/v3/search/book")!
         let parameters: [String: Any] = [
-            "target": "title",
+            "target": "[title, person]",
             "size": 27,
             "query": query,
             "page": page

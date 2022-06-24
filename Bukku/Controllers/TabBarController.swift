@@ -58,3 +58,4 @@ class TabBarController: UITabBarController {
         viewControllers = [ libraryNavVC, memoNavVC, searchNavVC ]
     }
 }
+

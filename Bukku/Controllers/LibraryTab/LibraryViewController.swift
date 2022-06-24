@@ -27,6 +27,7 @@ class LibraryViewController: UIViewController {
         let button = UIButton(type: .system)
         button.tintColor = .getDarkGreen()
         button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        button.addTarget(self, action: #selector(didTapSearchButton), for: .touchUpInside)
         
         return button
     }()
@@ -53,17 +54,17 @@ class LibraryViewController: UIViewController {
         pushNavigationBinding()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print(viewModel.manager.allBooks)
-    }
-    
     // MARK: - Selectors
-    @objc func didTapAddButton() {
+    @objc private func didTapAddButton() {
         let addBookVC = AddBookViewController()
         let navVC = UINavigationController(rootViewController: addBookVC)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
+    }
+    
+    @objc private func didTapSearchButton() {
+        let searchLibraryVC = SearchLibraryViewController()
+        navigationController?.pushViewController(searchLibraryVC, animated: true)
     }
     
     // MARK: - Helpers

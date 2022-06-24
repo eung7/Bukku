@@ -50,7 +50,7 @@ extension LibraryManager {
     }
     
     func createBook_WriteAddVC(_ libraryType: LibraryType, title: String, author: String, image: UIImage) {
-        guard let imageData = image.pngData() else { return }
+        guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
         let book = LibraryBook(title: title, review: "", author: author, image: imageData, bookmark: [], type: libraryType)
         allBooks.insert(book, at: 0)
         saveBook()

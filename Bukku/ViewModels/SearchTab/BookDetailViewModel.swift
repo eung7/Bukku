@@ -29,8 +29,8 @@ extension BookDetailViewModel {
         return book.publisher
     }
     
-    var image: URL {
-        return URL(string: book.thumbnail)!
+    var image: URL? {
+        return URL(string: book.thumbnail)
     }
 }
 
