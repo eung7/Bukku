@@ -19,6 +19,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - Properties
     let viewModel = SearchListViewModel()
+    lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap))
     
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(
@@ -31,7 +32,6 @@ class SearchViewController: UIViewController {
         searchBar.searchTextField.leftView?.tintColor = .getDarkGreen()
         searchBar.searchTextField.enablesReturnKeyAutomatically = true
         searchBar.searchTextField.textColor = .getDarkGreen()
-        searchBar.showsCancelButton = true
         searchBar.delegate = self
             
         return searchBar
@@ -65,7 +65,11 @@ class SearchViewController: UIViewController {
     }
 
     // MARK: - Selectors
-    @objc func dismissKeyboard() {
+    @objc private func dismissKeyboard() {
+        searchBar.searchTextField.resignFirstResponder()
+    }
+    
+    @objc private func handleBackgroundTap() {
         searchBar.searchTextField.resignFirstResponder()
     }
     
@@ -78,6 +82,9 @@ class SearchViewController: UIViewController {
         
         [ bookListCollectionView ]
             .forEach { view.addSubview($0) }
+        
+        bookListCollectionView.addGestureRecognizer(tapGesture)
+        tapGesture.cancelsTouchesInView = false
         
         bookListCollectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
@@ -142,11 +149,6 @@ extension SearchViewController: UISearchBarDelegate {
         isLoading = false
         bookListCollectionView.reloadData()
         return true
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.books = []
-        bookListCollectionView.reloadData()
     }
 }
 

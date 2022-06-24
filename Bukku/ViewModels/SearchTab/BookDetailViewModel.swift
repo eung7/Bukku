@@ -38,4 +38,8 @@ extension BookDetailViewModel {
     func insertMyLibrary(_ type: LibraryType, book: Book) {
         manager.createBook(type, book: book)
     }
+    
+    func verifyLibrary(_ book: Book) -> Bool {
+        return manager.allBooks.contains(where: { $0.id == book.isbn })
+    }
 }

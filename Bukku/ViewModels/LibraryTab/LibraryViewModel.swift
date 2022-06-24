@@ -38,5 +38,9 @@ extension LibraryViewModel {
             return manager.allBooks.count
         }
     }
+    
+    func saveBooks() {
+        manager.saveBook()
+    }
 }
 

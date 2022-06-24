@@ -8,7 +8,7 @@
 import Foundation
 
 struct LibraryBook: Codable, Identifiable, Equatable {
-    var id = UUID()
+    let id: String
     let title: String
     var review: String
     let author: String

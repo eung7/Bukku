@@ -13,6 +13,7 @@ struct BookResponseModel: Codable {
 }
 
 struct Book: Codable {
+    let isbn: String
     let authors: [String]
     let contents: String
     let datetime: String

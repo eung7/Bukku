@@ -10,6 +10,7 @@ import Kingfisher
 import SnapKit
 import PanModal
 import MarqueeLabel
+import Toast
 
 class BookDetailViewController: UIViewController {
     // MARK: - States
@@ -106,12 +107,16 @@ class BookDetailViewController: UIViewController {
     }
     
     @objc func didTapConfirmButton() {
-        let selectLibraryVC = SelectLibraryViewController()
-        selectLibraryVC.dismissCompletion = { [unowned self] type in
-            self.viewModel.insertMyLibrary(type, book: self.viewModel.book)
-            self.dismiss(animated: true)
+        if viewModel.verifyLibrary(viewModel.book) {
+            view.makeToast("이미 추가한 책이에요!", duration: 1.0, position: .top, title: nil, image: nil, style: .init(), completion: nil)
+        } else {
+            let selectLibraryVC = SelectLibraryViewController()
+            selectLibraryVC.dismissCompletion = { [unowned self] type in
+                self.viewModel.insertMyLibrary(type, book: self.viewModel.book)
+                self.dismiss(animated: true)
+            }
+            presentPanModal(selectLibraryVC)
         }
-        presentPanModal(selectLibraryVC)
     }
     
     // MARK: - Helpers
