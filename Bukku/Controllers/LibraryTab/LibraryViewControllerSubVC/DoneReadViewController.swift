@@ -62,7 +62,7 @@ extension DoneReadViewController: UICollectionViewDataSource {
 
 extension DoneReadViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        pushCompletion?(LibraryManager.doneReadBooks[indexPath.row])
+        pushCompletion?(viewModel.manager.doneReadBooks[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

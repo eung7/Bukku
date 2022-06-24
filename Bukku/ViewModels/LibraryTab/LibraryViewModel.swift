@@ -8,7 +8,7 @@
 import Foundation
 
 class LibraryViewModel {
-    
+    let manager = LibraryManager.shared
 }
 
 // MARK: - SubVC
@@ -16,26 +16,26 @@ extension LibraryViewModel {
     func getBookFromIndex(_ type: LibraryType?, index: Int) -> LibraryBook {
         switch type {
         case .reading:
-            return LibraryManager.readingBooks[index]
+            return manager.readingBooks[index]
         case .willRead:
-            return LibraryManager.willReadBooks[index]
+            return manager.willReadBooks[index]
         case .doneRead:
-            return LibraryManager.doneReadBooks[index]
+            return manager.doneReadBooks[index]
         default:
-            return LibraryManager.allBooks[index]
+            return manager.allBooks[index]
         }
     }
     
     func numberOfItemsInSection(_ type: LibraryType?) -> Int {
         switch type {
         case .reading:
-            return LibraryManager.readingBooks.count
+            return manager.readingBooks.count
         case .willRead:
-            return LibraryManager.willReadBooks.count
+            return manager.willReadBooks.count
         case .doneRead:
-            return LibraryManager.doneReadBooks.count
+            return manager.doneReadBooks.count
         default:
-            return LibraryManager.allBooks.count
+            return manager.allBooks.count
         }
     }
 }

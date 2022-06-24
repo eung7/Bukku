@@ -7,12 +7,13 @@
 
 import UIKit
 import SnapKit
+import Toast
 import RSKPlaceholderTextView
 
 class WriteReviewViewController: UIViewController {
     // MARK: - Properties
     let viewModel: WriteReviewViewModel
-    var saveCompletion: ((LibraryBook) -> Void)?
+    var saveCompletion: (() -> Void)?
     
     lazy var textView: RSKPlaceholderTextView = {
         let textView = RSKPlaceholderTextView()
@@ -80,13 +81,11 @@ class WriteReviewViewController: UIViewController {
     }
     
     @objc func didTapSaveButton() {
-        if let text = textView.text {
-            viewModel.book.review = text
-            LibraryManager.updateBook(viewModel.book)
-            saveCompletion?(viewModel.book)
+        if textView.text != "" {
+            viewModel.updateReview(textView.text)
             dismiss(animated: true)
         }
-        dismiss(animated: true)
+        view.makeToast("빈 곳을 입력해주세요.", duration: 1.0, position: .top, title: nil, image: nil, style: .init(), completion: nil)
     }
     
     // MARK: - Helpers

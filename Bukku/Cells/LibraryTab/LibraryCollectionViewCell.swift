@@ -48,6 +48,7 @@ class LibraryCollectionViewCell: UICollectionViewCell {
     }
     
     func configureImage(_ book: LibraryBook) {
-        bookImageView.kf.setImage(with: URL(string: book.thumbnail))
+        let image = UIImage(data: book.image) ?? UIImage()
+        bookImageView.image = image
     }
 }

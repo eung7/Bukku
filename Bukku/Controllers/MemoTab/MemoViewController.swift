@@ -71,14 +71,14 @@ class MemoViewController: UIViewController {
 extension MemoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as? MemoTableViewCell else { return UITableViewCell() }
-        cell.bookmark = viewModel.booksIncludedBookmark[indexPath.section].bookmark[indexPath.row]
+        cell.bookmark = viewModel.bookmarkBooks[indexPath.section].bookmark[indexPath.row]
         cell.configureData()
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.booksIncludedBookmark[section].bookmark.count
+        return viewModel.bookmarkBooks[section].bookmark.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -87,7 +87,7 @@ extension MemoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = MemoTableViewHeader()
-        header.book = viewModel.booksIncludedBookmark[section]
+        header.book = viewModel.bookmarkBooks[section]
         header.configureData()
         
         return header

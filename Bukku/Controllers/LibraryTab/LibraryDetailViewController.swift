@@ -8,11 +8,18 @@
 import UIKit
 import SnapKit
 import PanModal
+import Toast
 import Kingfisher
+
+enum State {
+    case new
+    case update
+}
 
 class LibraryDetailViewController: UIViewController {
     // MARK: - Properties
     let viewModel: LibraryDetailViewModel
+    var bookmarkIndex: Int?
     
     lazy var trashButton: UIButton = {
         let button = UIButton(type: .system)
@@ -27,8 +34,22 @@ class LibraryDetailViewController: UIViewController {
         let alert = UIAlertController(title: "정말 삭제하시겠습니까?", message: nil, preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
             guard let book = self?.viewModel.book else { return }
-            LibraryManager.removeBook(book)
+            self?.viewModel.removeBook(book)
             self?.navigationController?.popViewController(animated: true)
+        })
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        [ deleteAction, cancelAction ].forEach { alert.addAction($0) }
+        
+        return alert
+    }()
+    
+    lazy var bookmarkDeleteAlert: UIAlertController = {
+        let alert = UIAlertController(title: "정말 삭제하시겠습니까?", message: nil, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
+            guard let self = self else { return }
+            guard let bookmarkIndex = self.bookmarkIndex else { return }
+            self.viewModel.removeBookmark(self.viewModel.book, index: bookmarkIndex)
+            self.tableView.reloadData()
         })
         let cancelAction = UIAlertAction(title: "취소", style: .cancel)
         [ deleteAction, cancelAction ].forEach { alert.addAction($0) }
@@ -96,8 +117,9 @@ extension LibraryDetailViewController: UITableViewDataSource {
               let defaultCell = tableView.dequeueReusableCell(withIdentifier: BookmarkDefaultTableViewCell.identifier) as? BookmarkDefaultTableViewCell else { return UITableViewCell() }
         
         cell.xmarkCompletion = { [weak self] bookmark in
-            self?.viewModel.removeBookmark(bookmark)
-            self?.tableView.reloadData()
+            guard let self = self else { return }
+            self.bookmarkIndex = indexPath.row
+            self.present(self.bookmarkDeleteAlert, animated: true)
         }
         
         if viewModel.bookmarks.isEmpty {
@@ -144,6 +166,11 @@ extension LibraryDetailViewController: UITableViewDataSource {
 // MARK: - TableView Delegate
 extension LibraryDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let writeBookmarkVC = WriteBookmarkViewController(viewModel.book)
+        writeBookmarkVC.configureData(viewModel.bookmarks[indexPath.row])
+        let navVC = UINavigationController(rootViewController: writeBookmarkVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
     }
 }
 
@@ -153,8 +180,8 @@ extension LibraryDetailViewController: LibraryDetailHeaderViewDelegate {
         let writeReviewVC = WriteReviewViewController(book)
         let navVC = UINavigationController(rootViewController: writeReviewVC)
         navVC.modalPresentationStyle = .fullScreen
-        writeReviewVC.saveCompletion = { [weak self] updatedBook in
-            self?.viewModel.book = updatedBook
+        writeReviewVC.saveCompletion = { [weak self] in
+            self?.tableView.reloadData()
         }
         present(navVC, animated: true)
     }
@@ -163,14 +190,17 @@ extension LibraryDetailViewController: LibraryDetailHeaderViewDelegate {
         let writeBookmarkVC = WriteBookmarkViewController(book)
         let navVC = UINavigationController(rootViewController: writeBookmarkVC)
         navVC.modalPresentationStyle = .fullScreen
-        writeBookmarkVC.saveCompletion = { [weak self] updatedBook in
-            self?.viewModel.book = updatedBook
+        writeBookmarkVC.saveCompletion = { [weak self] in
+            self?.tableView.reloadData()
         }
         present(navVC, animated: true)
     }
     
     func didTapChangeLibraryButton(_ book: LibraryBook) {
         let changeLibraryVC = ChangeLibraryViewController(book: book)
+        changeLibraryVC.dismissCompletion = { [weak self] in
+            self?.view.makeToast("서재함이 변경 되었어요!", duration: 1.0, position: .top, title: nil, image: nil, style: .init(), completion: nil)
+        }
         presentPanModal(changeLibraryVC)
     }
 }

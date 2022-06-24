@@ -11,10 +11,8 @@ import PanModal
 import Toast
 
 class ChangeLibraryViewController: UIViewController {
-    // MARK: - States
-    let viewModel: WriteReviewViewModel
-    
     // MARK: - Properties
+    let viewModel: ChangeLibraryViewModel
     var dismissCompletion: () -> Void = {}
     
     let mainLabel: UILabel = {
@@ -63,7 +61,7 @@ class ChangeLibraryViewController: UIViewController {
     }
     
     init(book: LibraryBook) {
-        self.viewModel = WriteReviewViewModel(book)
+        self.viewModel = ChangeLibraryViewModel(book)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -74,16 +72,19 @@ class ChangeLibraryViewController: UIViewController {
     // MARK: - Selectors
     @objc func didTapReadingButton() {
         viewModel.changeLibrary(.reading)
+        dismissCompletion()
         dismiss(animated: true)
     }
     
     @objc func didTapWillReadButton() {
         viewModel.changeLibrary(.willRead)
+        dismissCompletion()
         dismiss(animated: true)
     }
     
     @objc func didTapDoneReadButton() {
         viewModel.changeLibrary(.doneRead)
+        dismissCompletion()
         dismiss(animated: true)
     }
     

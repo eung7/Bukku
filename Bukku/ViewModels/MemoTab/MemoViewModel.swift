@@ -8,21 +8,23 @@
 import Foundation
 
 class MemoViewModel {
-    var booksIncludedBookmark: [LibraryBook] {
-        var booksIncludedBookmark: [LibraryBook] = []
-        for i in LibraryManager.allBooks {
+    let manager = LibraryManager.shared
+    
+    var bookmarkBooks: [LibraryBook] {
+        var bookmarkBooks: [LibraryBook] = []
+        for i in manager.allBooks {
             if i.bookmark.isEmpty == true {
                 continue
             } else {
-                booksIncludedBookmark.append(i)
+                bookmarkBooks.append(i)
             }
         }
-        return booksIncludedBookmark
+        return bookmarkBooks
     }
 }
 
 extension MemoViewModel {
     func numberOfSections() -> Int {
-        return booksIncludedBookmark.count
+        return bookmarkBooks.count
     }
 }

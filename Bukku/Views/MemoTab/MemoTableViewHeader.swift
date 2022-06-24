@@ -97,9 +97,9 @@ class MemoTableViewHeader: UIView {
     
     func configureData() {
         guard let book = book else { return }
-        guard let url = URL(string: book.thumbnail) else { return }
-        bookImageView.kf.setImage(with: url)
+        let image = UIImage(data: book.image) ?? UIImage()
+        bookImageView.image = image
         titleLabel.text = book.title
-        authorLabel.text = book.authors.first
+        authorLabel.text = book.author
     }
 }

@@ -53,6 +53,11 @@ class LibraryViewController: UIViewController {
         pushNavigationBinding()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(viewModel.manager.allBooks)
+    }
+    
     // MARK: - Selectors
     @objc func didTapAddButton() {
         let addBookVC = AddBookViewController()

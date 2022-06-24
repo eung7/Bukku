@@ -12,7 +12,7 @@ import Kingfisher
 class BookListCell: UICollectionViewCell {
     // MARK: - Properties
     static let identifier = "BookListCell"
-    var bookListVM: BookListViewModel?
+    var viewModel: SearchViewModel?
 
     let thumbnailImage: UIImageView = {
         let iv = UIImageView()
@@ -65,15 +65,15 @@ class BookListCell: UICollectionViewCell {
     
     // MARK: - Helpers
     func configureData() {
-        guard let bookListVM = bookListVM else { return }
-        if bookListVM.thumbnailURL == "" {
+        guard let viewModel = viewModel else { return }
+        if viewModel.thumbnailURL == "" {
             thumbnailImage.image = UIImage(systemName: "xmark.octagon")
             return
         }
-        thumbnailImage.kf.setImage(with: URL(string: bookListVM.thumbnailURL))
-        titleLabel.text = bookListVM.title
-        authorsLabel.text = bookListVM.author
-        publisherLabel.text = bookListVM.publisher
+        thumbnailImage.kf.setImage(with: URL(string: viewModel.thumbnailURL))
+        titleLabel.text = viewModel.title
+        authorsLabel.text = viewModel.author
+        publisherLabel.text = viewModel.publisher
     }
     
     func configureUI() {

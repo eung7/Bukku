@@ -6,19 +6,25 @@
 //
 
 import Foundation
+import UIKit
 
 class LibraryDetailViewModel {
-    var book: LibraryBook
+    let manager = LibraryManager.shared
+    let index: Int
+    
+    var book: LibraryBook {
+        manager.allBooks[index]
+    }
     
     init(_ book: LibraryBook) {
-        self.book = book
+        index = manager.indexBook(book)
     }
 }
 
 extension LibraryDetailViewModel {
     var title: String { book.title }
-    var author: String? { book.authors.first }
-    var thumbnail: String { book.thumbnail }
+    var author: String? { book.author }
+    var image: UIImage { UIImage(data: book.image) ?? UIImage() }
     var review: String { book.review }
     var bookmarks: [Bookmark] { book.bookmark }
 }
@@ -28,9 +34,13 @@ extension LibraryDetailViewModel {
         return bookmarks.count
     }
     
-    func removeBookmark(_ bookmark: Bookmark) {
-        guard let index = book.bookmark.firstIndex(where: { $0.id == bookmark.id }) else { return }
+    func removeBook(_ book: LibraryBook) {
+        manager.removeBook(book)
+    }
+    
+    func removeBookmark(_ book: LibraryBook, index: Int) {
+        var book = book
         book.bookmark.remove(at: index)
-        LibraryManager.updateBook(book)
+        manager.updateBook(book)
     }
 }

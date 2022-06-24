@@ -13,7 +13,7 @@ import MarqueeLabel
 
 class BookDetailViewController: UIViewController {
     // MARK: - States
-    var bookListVM: BookListViewModel
+    let viewModel: BookDetailViewModel
     
     // MARK: - Properties
     let bookImageView: UIImageView = {
@@ -91,8 +91,8 @@ class BookDetailViewController: UIViewController {
         configureData()
     }
     
-    init(bookListVM: BookListViewModel) {
-        self.bookListVM = bookListVM
+    init(_ book: Book) {
+        self.viewModel = BookDetailViewModel(book)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -106,9 +106,10 @@ class BookDetailViewController: UIViewController {
     }
     
     @objc func didTapConfirmButton() {
-        let selectLibraryVC = SelectLibraryViewController(book: bookListVM.book)
-        selectLibraryVC.dismissCompletion = { [weak self] in
-            self?.dismiss(animated: true)
+        let selectLibraryVC = SelectLibraryViewController()
+        selectLibraryVC.dismissCompletion = { [unowned self] type in
+            self.viewModel.insertMyLibrary(type, book: self.viewModel.book)
+            self.dismiss(animated: true)
         }
         presentPanModal(selectLibraryVC)
     }
@@ -155,10 +156,10 @@ class BookDetailViewController: UIViewController {
     }
     
     private func configureData() {
-        titleLabel.text = bookListVM.title
-        authorsLabel.text = bookListVM.author
-        publisherLabel.text = bookListVM.publisher
-        bookImageView.kf.setImage(with: URL(string: bookListVM.thumbnailURL))
+        titleLabel.text = viewModel.title
+        authorsLabel.text = viewModel.author
+        publisherLabel.text = viewModel.publisher
+        bookImageView.kf.setImage(with: viewModel.image)
     }
 }
 

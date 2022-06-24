@@ -11,7 +11,6 @@ import PanModal
 import Toast
 
 // TODO: [] 새로운 검색을 할 때 최상단으로 포커스 가기
-
 class SearchViewController: UIViewController {
     // MARK: - States
     var currentPage: Int = 1
@@ -20,7 +19,7 @@ class SearchViewController: UIViewController {
     var loadingFooterView: LoadingFooterView?
     
     // MARK: - Properties
-    let viewModel = SearchViewModel()
+    let viewModel = SearchListViewModel()
     
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(
@@ -143,7 +142,7 @@ extension SearchViewController: UISearchBarDelegate {
 // MARK: - BookListCollectionViewDataSource
 extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.books.count
+        return viewModel.numberOfItemsInSection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -152,7 +151,7 @@ extension SearchViewController: UICollectionViewDataSource {
             for: indexPath
         ) as? BookListCell else { return UICollectionViewCell() }
         let book = viewModel.books[indexPath.row]
-        cell.bookListVM = BookListViewModel(book: book)
+        cell.viewModel = SearchViewModel(book)
         cell.configureData()
 
         return cell
@@ -178,8 +177,8 @@ extension SearchViewController: UICollectionViewDataSource {
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     /// Cell Did Select
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let bookListVM = viewModel.getBookFromIndex(indexPath.row)
-        let bookDetailVC = BookDetailViewController(bookListVM: bookListVM)
+        let book = viewModel.books[indexPath.row]
+        let bookDetailVC = BookDetailViewController(book)
         presentPanModal(bookDetailVC)
     }
     

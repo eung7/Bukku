@@ -11,8 +11,8 @@ struct LibraryBook: Codable, Identifiable, Equatable {
     var id = UUID()
     let title: String
     var review: String
-    let authors: [String]
-    let thumbnail: String
+    let author: String
+    let image: Data
     var bookmark: [Bookmark]
     var type: LibraryType
     

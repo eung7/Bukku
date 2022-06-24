@@ -15,6 +15,8 @@ import PanModal
 
 class AddBookViewController: UIViewController {
     // MARK: - Properties
+    let viewModel = AddBookViewModel()
+    
     let bookImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .getWhite()
@@ -103,10 +105,9 @@ class AddBookViewController: UIViewController {
             view.makeToast("빈 곳을 채워주세요.", duration: 1.0, position: .top, title: nil, image: nil, style: .init(), completion: nil)
             return
         }
-        let book = Book(authors: [author], contents: "", datetime: "", publisher: "", thumbnail: "", title: title, url: "")
-        let selectLibraryVC = SelectLibraryViewController(book: book)
-        selectLibraryVC.imageBase64 = image.base64
-        selectLibraryVC.dismissCompletion = { [weak self] in
+        let selectLibraryVC = SelectLibraryViewController()
+        selectLibraryVC.dismissCompletion = { [weak self] type in
+            self?.viewModel.createBook(type: type, title: title, author: author, image: image)
             self?.dismiss(animated: true)
         }
         presentPanModal(selectLibraryVC)

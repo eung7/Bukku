@@ -8,9 +8,4 @@
 import Foundation
 
 class SelectLibraryViewModel {
-    var book: Book
-    
-    init(_ book: Book) {
-        self.book = book
-    }
 }

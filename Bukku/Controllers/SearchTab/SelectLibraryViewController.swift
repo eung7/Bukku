@@ -10,12 +10,10 @@ import SnapKit
 import PanModal
 
 class SelectLibraryViewController: UIViewController {
-    // MARK: - States
-    let viewModel: SelectLibraryViewModel
-    var imageBase64: String?
-
     // MARK: - Properties
-    var dismissCompletion: () -> Void = {}
+    let viewModel = SelectLibraryViewModel()
+    var dismissCompletion: ((LibraryType) -> Void)?
+//    var changeLibraryCompletion: ((LibraryType) -> Void)?
     
     let mainLabel: UILabel = {
         let label = UILabel()
@@ -62,32 +60,20 @@ class SelectLibraryViewController: UIViewController {
         configureUI()
     }
     
-    init(book: Book) {
-        self.viewModel = SelectLibraryViewModel(book)
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     // MARK: - Selectors
     @objc func didTapReadingButton() {
-        LibraryManager.createBook(.reading, book: viewModel.book)
         dismiss(animated: true)
-        dismissCompletion()
+        dismissCompletion?(.reading)
     }
     
     @objc func didTapWillReadButton() {
-        LibraryManager.createBook(.willRead, book: viewModel.book)
         dismiss(animated: true)
-        dismissCompletion()
+        dismissCompletion?(.willRead)
     }
 
     @objc func didTapDoneReadButton() {
-        LibraryManager.createBook(.doneRead, book: viewModel.book)
         dismiss(animated: true)
-        dismissCompletion()
+        dismissCompletion?(.doneRead)
     }
     
     // MARK: - Helpers

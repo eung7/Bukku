@@ -14,7 +14,9 @@ import Toast
 class WriteBookmarkViewController: UIViewController {
     // MARK: - Properties
     let viewModel: WriteBookmarkViewModel
-    var saveCompletion: ((LibraryBook) -> Void)?
+    var saveCompletion: (() -> Void)?
+    var state: State = .new
+    var bookmark: Bookmark?
     
     lazy var pageTextField: JVFloatLabeledTextField = {
         let tf = JVFloatLabeledTextField()
@@ -99,9 +101,18 @@ class WriteBookmarkViewController: UIViewController {
             view.makeToast("내용을 입력해주세요.", duration: 1, position: .top, title: nil, image: nil, style: .init(), completion: nil)
             return
         }
-        viewModel.createBookmark(pageTextField.text ?? "", contents: contents)
-        saveCompletion?(viewModel.book)
-        dismiss(animated: true)
+        
+        switch state {
+        case .new:
+            viewModel.createBookmark(pageTextField.text ?? "", contents: contents)
+            saveCompletion?()
+            dismiss(animated: true)
+        case .update:
+            guard let bookmark = bookmark else { return }
+            viewModel.updateBookmark(pageTextField.text ?? "", contents: contents, bookmark: bookmark)
+            dismiss(animated: true)
+        }
+        
     }
     
     // MARK: - Helpers
@@ -131,6 +142,13 @@ class WriteBookmarkViewController: UIViewController {
             make.centerY.equalTo(pageTextField)
             make.trailing.equalToSuperview().inset(20)
         }
+    }
+    
+    func configureData(_ bookmark: Bookmark) {
+        self.state = .update
+        self.bookmark = bookmark
+        contentsTextView.text = bookmark.contents
+        pageTextField.text = bookmark.page
     }
 }
 

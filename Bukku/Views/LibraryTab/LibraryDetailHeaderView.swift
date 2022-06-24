@@ -163,7 +163,6 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     @objc func didTapWriteBookmarkButton() {
         guard let book = book else { return }
         delegate?.didTapWriteBookmarkButton(book)
-
     }
     
     @objc func didTapChangeLibraryButton() {
@@ -240,12 +239,13 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     
     func configureData(_ book: LibraryBook) {
         self.book = book
-        
+
         titleLabel.text = book.title
-        authorLabel.text = book.authors.first
-        if let url = URL(string: book.thumbnail) {
-            bookImageView.kf.setImage(with: url)
-        }
+        authorLabel.text = book.author
+        
+        let image = UIImage(data: book.image) ?? UIImage()
+        bookImageView.image = image
+        
         if book.review != "" {
             reviewLabel.text = book.review
         }
