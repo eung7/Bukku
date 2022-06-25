@@ -43,4 +43,8 @@ extension LibraryDetailViewModel {
         book.bookmark.remove(at: index)
         manager.updateBook(book)
     }
+    
+    func saveBook() {
+        manager.saveBook()
+    }
 }

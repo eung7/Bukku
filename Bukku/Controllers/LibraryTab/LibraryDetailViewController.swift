@@ -61,6 +61,9 @@ class LibraryDetailViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.dropDelegate = self
+        tableView.dragDelegate = self
+        tableView.dragInteractionEnabled = true
         tableView.backgroundColor = .getWhite()
         tableView.separatorStyle = .none
         tableView.register(BookmarkTableViewCell.self, forCellReuseIdentifier: BookmarkTableViewCell.identifier)
@@ -154,6 +157,14 @@ extension LibraryDetailViewController: UITableViewDataSource {
         return 90
     }
     
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        if viewModel.bookmarks.isEmpty {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: LibraryDetailHeaderView.identifier) as? LibraryDetailHeaderView else { return UIView() }
         header.delegate = self
@@ -166,11 +177,34 @@ extension LibraryDetailViewController: UITableViewDataSource {
 // MARK: - TableView Delegate
 extension LibraryDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard viewModel.bookmarks.count > 0 else { return }
         let writeBookmarkVC = WriteBookmarkViewController(viewModel.book)
         writeBookmarkVC.configureData(viewModel.bookmarks[indexPath.row])
         let navVC = UINavigationController(rootViewController: writeBookmarkVC)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let item = viewModel.manager.allBooks[viewModel.index].bookmark[sourceIndexPath.row]
+        viewModel.manager.allBooks[viewModel.index].bookmark.remove(at: sourceIndexPath.row)
+        viewModel.manager.allBooks[viewModel.index].bookmark.insert(item, at: destinationIndexPath.row)
+        viewModel.saveBook()
+    }
+}
+    
+extension LibraryDetailViewController: UITableViewDragDelegate, UITableViewDropDelegate {
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return [UIDragItem(itemProvider: NSItemProvider())]
+    }
+    
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) { }
+    
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        if session.localDragSession != nil {
+            return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+        }
+        return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
     }
 }
 

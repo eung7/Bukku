@@ -31,6 +31,10 @@ class LibraryManager {
     var doneReadBooks: [LibraryBook] {
         return allBooks.filter { $0.type == .doneRead }
     }
+    
+    var memoBooks: [LibraryBook] {
+        return allBooks.filter { $0.review != "" || $0.bookmark.isEmpty == false }
+    }
 }
 
 extension LibraryManager {

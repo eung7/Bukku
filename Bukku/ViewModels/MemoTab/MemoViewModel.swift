@@ -10,21 +10,7 @@ import Foundation
 class MemoViewModel {
     let manager = LibraryManager.shared
     
-    var bookmarkBooks: [LibraryBook] {
-        var bookmarkBooks: [LibraryBook] = []
-        for i in manager.allBooks {
-            if i.bookmark.isEmpty == true {
-                continue
-            } else {
-                bookmarkBooks.append(i)
-            }
-        }
-        return bookmarkBooks
-    }
-}
-
-extension MemoViewModel {
-    func numberOfSections() -> Int {
-        return bookmarkBooks.count
+    var numberOfItemsInSection: Int {
+        return manager.memoBooks.count
     }
 }

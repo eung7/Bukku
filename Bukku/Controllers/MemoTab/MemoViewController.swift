@@ -5,27 +5,20 @@
 //  Created by 김응철 on 2022/05/27.
 //
 
-// TODO: [] 책갈피에 Default Cell 추가하기
-
 import UIKit
 import SnapKit
 
 class MemoViewController: UIViewController {
     // MARK: - Properties
+    let tabmanRootVC = MemoTabmanViewController()
     let viewModel = MemoViewModel()
 
-    lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .getWhite()
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100
-        tableView.register(MemoTableViewCell.self, forCellReuseIdentifier: MemoTableViewCell.identifier)
-        tableView.showsVerticalScrollIndicator = false
-        tableView.separatorStyle = .none
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        return tableView
+    lazy var containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .getOrange()
+        view.clipsToBounds = true
+    
+        return view
     }()
     
     lazy var searchButton: UIButton = {
@@ -43,11 +36,6 @@ class MemoViewController: UIViewController {
         configureUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-    }
-    
     // MARK: - Selectors
     @objc func didTapSearchButton() {
         
@@ -59,44 +47,18 @@ class MemoViewController: UIViewController {
         navigationItem.title = "메모"
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton)
         
-        view.addSubview(tableView)
+        view.addSubview(containerView)
         
-        tableView.snp.makeConstraints { make in
+        containerView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
-    }
-}
-
-// MARK: - tableView DataSource
-extension MemoViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as? MemoTableViewCell else { return UITableViewCell() }
-        cell.bookmark = viewModel.bookmarkBooks[indexPath.section].bookmark[indexPath.row]
-        cell.configureData()
         
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.bookmarkBooks[section].bookmark.count
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfSections()
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = MemoTableViewHeader()
-        header.book = viewModel.bookmarkBooks[section]
-        header.configureData()
+        tabmanRootVC.view.translatesAutoresizingMaskIntoConstraints = false
+        self.addChild(tabmanRootVC)
+        self.view.addSubview(tabmanRootVC.view)
         
-        return header
-    }
-}
-
-// MARK: - tableView Delegate
-extension MemoViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tabmanRootVC.view.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
     }
 }

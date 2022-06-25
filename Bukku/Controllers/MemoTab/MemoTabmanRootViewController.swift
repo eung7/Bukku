@@ -1,26 +1,24 @@
 //
-//  TabmanRootViewController.swift
+//  MemoTabmanRootViewController.swift
 //  Bukku
 //
-//  Created by 김응철 on 2022/06/20.
+//  Created by 김응철 on 2022/06/25.
 //
 
 import UIKit
 import Tabman
 import Pageboy
 
-class TabmanRootViewController: TabmanViewController {
+class MemoTabmanViewController: TabmanViewController {
     // MARK: - Properties
-    let allVC = AllViewController()
-    let readingVC = ReadingViewController()
-    let willVC = WillReadViewController()
-    let doneVC = DoneReadViewController()
+    let reviewVC = MemoReviewViewController()
+    let bookmarkVC = MemoBookmarkViewController()
     
     private var viewControllers: [UIViewController] = []
     
     lazy var tempView: UIView = {
         let view = UIView()
-    
+        
         return view
     }()
     
@@ -52,15 +50,14 @@ class TabmanRootViewController: TabmanViewController {
         view.backgroundColor = .getWhite()
         view.addSubview(tempView)
         
-        [ allVC, readingVC, willVC, doneVC ]
+        [ reviewVC, bookmarkVC ]
             .forEach { viewControllers.append($0) }
-        
         self.dataSource = self
         addBar(tabmanBar, dataSource: self, at: .top)
     }
 }
 
-extension TabmanRootViewController: PageboyViewControllerDataSource, TMBarDataSource {
+extension MemoTabmanViewController: PageboyViewControllerDataSource, TMBarDataSource {
     func numberOfViewControllers(in pageboyViewController: PageboyViewController) -> Int {
         return viewControllers.count
     }
@@ -76,13 +73,9 @@ extension TabmanRootViewController: PageboyViewControllerDataSource, TMBarDataSo
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
         switch index {
         case 0:
-            return TMBarItem(title: "전체 보기")
+            return TMBarItem(title: "서평")
         case 1:
-            return TMBarItem(title: "읽는 중")
-        case 2:
-            return TMBarItem(title: "읽을 예정")
-        case 3:
-            return TMBarItem(title: "읽기 완료")
+            return TMBarItem(title: "책갈피")
         default:
             return TMBarItem(title: "")
         }

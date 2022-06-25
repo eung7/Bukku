@@ -59,13 +59,22 @@ class SearchLibraryViewController: UIViewController {
         viewModel.result = []
     }
     
+    @objc private func didTapBackground() {
+        searchBar.searchTextField.resignFirstResponder()
+    }
+    
     // MARK: - Helpers
     private func configureUI() {
         view.backgroundColor = .getWhite()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
         navigationItem.title = "내 서재 검색"
         view.addSubview(collectionView)
-
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapBackground))
+        tapGesture.cancelsTouchesInView = false
+        
+        collectionView.addGestureRecognizer(tapGesture)
+        
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
