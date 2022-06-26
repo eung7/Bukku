@@ -49,7 +49,7 @@
 
 ### MVVM 
 > The Bukku app adopted the MVVM structure. DataBinding was conducted as a computed property. In order to create a full-fledged MVVM, I want to proceed with refactoring with functional programming (RxSwift) in the future. 
->> [Code](https://github.com/eung7/Bukku/blob/master/Bukku/ViewModels/LibraryTab/LibraryDetailViewModel.swift)
+>> [Example Code](https://github.com/eung7/Bukku/blob/master/Bukku/ViewModels/LibraryTab/LibraryDetailViewModel.swift)
 
 ## Open Source
 
