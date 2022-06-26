@@ -8,7 +8,7 @@
 ---
 ## Features
 
-- Search verious books through the network
+- Search various books through the network
 - Add books yourself with library pictures.
 - books can be classified into your library(reading, scheduled to read, read completed)
 - Leave reviews and bookmarks on each book. and you can pin a particular bookmark.
