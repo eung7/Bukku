@@ -17,7 +17,7 @@ struct SearchService {
             "query": query,
             "page": page
         ]
-        let headers: HTTPHeaders = [ "Authorization": "KakaoAK 1a60cb934a4cd40e13a8c21222ab5397" ]
+        let headers: HTTPHeaders = [ "Authorization": APIKEY ]
         
         AF
             .request(url, method: .get, parameters: parameters, headers: headers)
