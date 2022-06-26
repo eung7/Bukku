@@ -11,6 +11,7 @@ Pods/
 
 # file: .gitignore
 Info.plist
+Classified.swift
 
 ### Swift ###
 # Xcode
