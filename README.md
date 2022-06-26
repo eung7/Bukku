@@ -23,7 +23,36 @@
 ![11 001](https://user-images.githubusercontent.com/97531269/175806555-d90b2861-a167-4cd5-92d2-823aec099e03.jpeg)
 ![무제 001](https://user-images.githubusercontent.com/97531269/175806709-6ce4958e-5209-4b1e-bc4a-81f7ebffbfc0.jpeg)
 
----
+## Notes
+
+### FileManager
+
+> Filemanager was used to store user data. I wanted to implement local based App after getting books from the network. So the ```Struct type``` containing the user's info was changed to ```json``` and stored in the embedded directory of the iPhone. also Image transforming to Data structure
+>> ![image](https://user-images.githubusercontent.com/97531269/175807758-86bd555a-3f78-47d8-8d23-908193ba8922.png)
+
+### LongPressGesture Drag & Drop 
+> Drag cell is from sourceIndexPath and drop cell is to destinationIndexPath 
+>>![Simulator Screen Recording - iPhone 13 Pro Max - 2022-06-26 at 18 25 41](https://user-images.githubusercontent.com/97531269/175807875-2bf24f9e-fa79-42f0-9855-446b418ae41b.gif)
+
+### Pin Bookmark
+> If you pin a bookmark, keep it at the top even if another bookmark is added.
+>>![Simulator Screen Recording - iPhone 13 Pro Max - 2022-06-26 at 18 33 33](https://user-images.githubusercontent.com/97531269/175808190-5fdd9936-6067-4823-a148-0bb40c06e54f.gif)
+>>![Simulator Screen Recording - iPhone 13 Pro Max - 2022-06-26 at 18 37 26](https://user-images.githubusercontent.com/97531269/175808302-5e363c5e-95ec-4ec4-9068-bc9ebebd8874.gif)
+
+
+
+## Open Source
+
+- Alamofire v5.6.1 https://github.com/Alamofire/Alamofire
+- JVFloatLabeledTextField v1.2.5 https://github.com/jverdi/JVFloatLabeledTextField
+- Kingfisher v7.2.2 https://github.com/onevcat/Kingfisher
+- Pageboy v3.6.2 https://github.com/uias/Pageboy
+- PanModal v1.2.7 https://github.com/slackhq/PanModal
+- RSKPlaceholderTextView v6.1.0 https://github.com/ruslanskorb/RSKPlaceholderTextView
+- SnapKit v5.6.0 https://github.com/SnapKit/SnapKit
+- Tabman v2.9.1 https://github.com/uias/Tabman
+- Toast v5.0.1 https://github.com/scalessec/Toast-Swift
+- RxSwift v6.5.0 https://github.com/ReactiveX/RxSwift (will be refactoring)
 
 ## version history
 
