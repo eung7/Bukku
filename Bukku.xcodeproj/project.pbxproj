@@ -60,6 +60,7 @@
 		E5B8DE2828633B21007F22FC /* WriteBookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8DE2728633B21007F22FC /* WriteBookmarkViewModel.swift */; };
 		E5C75BAC285B2DCD00EF917E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E5C75BAB285B2DCD00EF917E /* RxCocoa */; };
 		E5C75BAE285B2DCD00EF917E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E5C75BAD285B2DCD00EF917E /* RxSwift */; };
+		E5CAC16E286832D0004445BA /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CAC16D286832D0004445BA /* SettingTableViewCell.swift */; };
 		E5CC841C286726BA00977077 /* MemoTabmanRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC841B286726BA00977077 /* MemoTabmanRootViewController.swift */; };
 		E5CC84202867270E00977077 /* MemoReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC841F2867270E00977077 /* MemoReviewViewController.swift */; };
 		E5CC84222867271800977077 /* MemoBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC84212867271800977077 /* MemoBookmarkViewController.swift */; };
@@ -124,6 +125,7 @@
 		E5B8DE222862D02B007F22FC /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		E5B8DE2428632B51007F22FC /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewModel.swift; sourceTree = "<group>"; };
 		E5B8DE2728633B21007F22FC /* WriteBookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteBookmarkViewModel.swift; sourceTree = "<group>"; };
+		E5CAC16D286832D0004445BA /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		E5CC841B286726BA00977077 /* MemoTabmanRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTabmanRootViewController.swift; sourceTree = "<group>"; };
 		E5CC841F2867270E00977077 /* MemoReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoReviewViewController.swift; sourceTree = "<group>"; };
 		E5CC84212867271800977077 /* MemoBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoBookmarkViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				E5A3624B285DCE600023BE49 /* MemoTab */,
 				E5A3624A285DCE510023BE49 /* LibraryTab */,
 				E5A36249285DCE400023BE49 /* SearchTab */,
+				E5CAC16D286832D0004445BA /* SettingTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				E5CC842E2867823600977077 /* SettingViewModel.swift in Sources */,
 				E5D2BC012864DA6F00D56AB2 /* AddBookViewModel.swift in Sources */,
 				E592B5D8285B91E000E60FAC /* CollectionViewFooter.swift in Sources */,
+				E5CAC16E286832D0004445BA /* SettingTableViewCell.swift in Sources */,
 				E59760CE285C171E00BA3DB0 /* LibraryViewController.swift in Sources */,
 				E531BE0828606B9800EC889E /* TabmanRootViewController.swift in Sources */,
 				E5A6916528463A7E009F6048 /* BookResponseModel.swift in Sources */,

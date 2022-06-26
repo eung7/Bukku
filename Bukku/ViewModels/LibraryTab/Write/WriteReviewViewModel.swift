@@ -27,3 +27,4 @@ class WriteReviewViewModel {
         manager.updateBook(book)
     }
 }
+

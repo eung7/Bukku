@@ -40,4 +40,3 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
         return 5
     }
 }
-
