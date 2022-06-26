@@ -15,7 +15,6 @@
 		E51A37912840F64D00DF074B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E51A378F2840F64D00DF074B /* LaunchScreen.storyboard */; };
 		E51A37992840FA3200DF074B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37982840FA3200DF074B /* TabBarController.swift */; };
 		E51A379C2840FA4E00DF074B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E51A379B2840FA4E00DF074B /* SnapKit */; };
-		E51A379F2840FA7B00DF074B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A379E2840FA7B00DF074B /* SettingsViewController.swift */; };
 		E51A37A42840FDC400DF074B /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51A37A32840FDC400DF074B /* UIColor+Extensions.swift */; };
 		E531BE0828606B9800EC889E /* TabmanRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E531BE0728606B9800EC889E /* TabmanRootViewController.swift */; };
 		E54B3F492864CF0800F568C8 /* Stroage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B3F482864CF0800F568C8 /* Stroage.swift */; };
@@ -59,7 +58,6 @@
 		E5B8DE232862D02B007F22FC /* LibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8DE222862D02B007F22FC /* LibraryViewModel.swift */; };
 		E5B8DE2528632B51007F22FC /* WriteReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8DE2428632B51007F22FC /* WriteReviewViewModel.swift */; };
 		E5B8DE2828633B21007F22FC /* WriteBookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8DE2728633B21007F22FC /* WriteBookmarkViewModel.swift */; };
-		E5B8DE2A28633E02007F22FC /* SelectLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B8DE2928633E02007F22FC /* SelectLibraryViewModel.swift */; };
 		E5C75BAC285B2DCD00EF917E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = E5C75BAB285B2DCD00EF917E /* RxCocoa */; };
 		E5C75BAE285B2DCD00EF917E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E5C75BAD285B2DCD00EF917E /* RxSwift */; };
 		E5CC841C286726BA00977077 /* MemoTabmanRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC841B286726BA00977077 /* MemoTabmanRootViewController.swift */; };
@@ -67,6 +65,10 @@
 		E5CC84222867271800977077 /* MemoBookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC84212867271800977077 /* MemoBookmarkViewController.swift */; };
 		E5CC842428672ACF00977077 /* MemoReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC842328672ACF00977077 /* MemoReviewTableViewCell.swift */; };
 		E5CC842628672D3200977077 /* MemoReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC842528672D3200977077 /* MemoReviewViewModel.swift */; };
+		E5CC842828674D5C00977077 /* MemoBookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC842728674D5C00977077 /* MemoBookmarkViewModel.swift */; };
+		E5CC842A2867551200977077 /* MemoBookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC84292867551200977077 /* MemoBookmarkTableViewCell.swift */; };
+		E5CC842C2867647F00977077 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC842B2867647F00977077 /* SettingViewController.swift */; };
+		E5CC842E2867823600977077 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CC842D2867823600977077 /* SettingViewModel.swift */; };
 		E5D2BC012864DA6F00D56AB2 /* AddBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2BC002864DA6F00D56AB2 /* AddBookViewModel.swift */; };
 		E5D2BC0728657FD700D56AB2 /* ChangeLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2BC0628657FD700D56AB2 /* ChangeLibraryViewModel.swift */; };
 		E5D2BC092865852C00D56AB2 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D2BC082865852B00D56AB2 /* BookDetailViewModel.swift */; };
@@ -88,7 +90,6 @@
 		E51A37902840F64D00DF074B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E51A37922840F64D00DF074B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E51A37982840FA3200DF074B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		E51A379E2840FA7B00DF074B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E51A37A32840FDC400DF074B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		E531BE0728606B9800EC889E /* TabmanRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabmanRootViewController.swift; sourceTree = "<group>"; };
 		E54B3F482864CF0800F568C8 /* Stroage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroage.swift; sourceTree = "<group>"; };
@@ -123,12 +124,15 @@
 		E5B8DE222862D02B007F22FC /* LibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewModel.swift; sourceTree = "<group>"; };
 		E5B8DE2428632B51007F22FC /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewModel.swift; sourceTree = "<group>"; };
 		E5B8DE2728633B21007F22FC /* WriteBookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteBookmarkViewModel.swift; sourceTree = "<group>"; };
-		E5B8DE2928633E02007F22FC /* SelectLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLibraryViewModel.swift; sourceTree = "<group>"; };
 		E5CC841B286726BA00977077 /* MemoTabmanRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTabmanRootViewController.swift; sourceTree = "<group>"; };
 		E5CC841F2867270E00977077 /* MemoReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoReviewViewController.swift; sourceTree = "<group>"; };
 		E5CC84212867271800977077 /* MemoBookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoBookmarkViewController.swift; sourceTree = "<group>"; };
 		E5CC842328672ACF00977077 /* MemoReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoReviewTableViewCell.swift; sourceTree = "<group>"; };
 		E5CC842528672D3200977077 /* MemoReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoReviewViewModel.swift; sourceTree = "<group>"; };
+		E5CC842728674D5C00977077 /* MemoBookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoBookmarkViewModel.swift; sourceTree = "<group>"; };
+		E5CC84292867551200977077 /* MemoBookmarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoBookmarkTableViewCell.swift; sourceTree = "<group>"; };
+		E5CC842B2867647F00977077 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		E5CC842D2867823600977077 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		E5D2BC002864DA6F00D56AB2 /* AddBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewModel.swift; sourceTree = "<group>"; };
 		E5D2BC0628657FD700D56AB2 /* ChangeLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLibraryViewModel.swift; sourceTree = "<group>"; };
 		E5D2BC082865852B00D56AB2 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
@@ -203,8 +207,9 @@
 		E51A379D2840FA6300DF074B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E51A379E2840FA7B00DF074B /* SettingsViewController.swift */,
 				E51A37982840FA3200DF074B /* TabBarController.swift */,
+				E5D2BC0A2865FF8700D56AB2 /* SearchLibraryViewController.swift */,
+				E5CC842B2867647F00977077 /* SettingViewController.swift */,
 				E5A36246285DCDEC0023BE49 /* MemoTab */,
 				E5A36244285DCDBF0023BE49 /* LibraryTab */,
 				E5A36245285DCDD00023BE49 /* SearchTab */,
@@ -251,7 +256,6 @@
 				E592A3B62860A2820037491E /* ChangeLibraryViewController.swift */,
 				E5F3A9B4285CE0DC000E0E7D /* LibraryDetailViewController.swift */,
 				E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */,
-				E5D2BC0A2865FF8700D56AB2 /* SearchLibraryViewController.swift */,
 				E592A3B52860A2580037491E /* LibraryViewControllerSubVC */,
 			);
 			path = LibraryTab;
@@ -319,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				E5CC842328672ACF00977077 /* MemoReviewTableViewCell.swift */,
+				E5CC84292867551200977077 /* MemoBookmarkTableViewCell.swift */,
 			);
 			path = MemoTab;
 			sourceTree = "<group>";
@@ -394,7 +399,6 @@
 			children = (
 				E5A6916C284659A7009F6048 /* SearchListViewModel.swift */,
 				E5D2BC082865852B00D56AB2 /* BookDetailViewModel.swift */,
-				E5B8DE2928633E02007F22FC /* SelectLibraryViewModel.swift */,
 			);
 			path = SearchTab;
 			sourceTree = "<group>";
@@ -404,6 +408,7 @@
 			children = (
 				E5F2F1DF2841B421007CF7C6 /* MemoViewModel.swift */,
 				E5CC842528672D3200977077 /* MemoReviewViewModel.swift */,
+				E5CC842728674D5C00977077 /* MemoBookmarkViewModel.swift */,
 			);
 			path = MemoTab;
 			sourceTree = "<group>";
@@ -421,6 +426,7 @@
 		E5F2F1DE2841B414007CF7C6 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E5CC842D2867823600977077 /* SettingViewModel.swift */,
 				E5B8DE212862CFD2007F22FC /* MemoTab */,
 				E5B8DE1F2862CFC2007F22FC /* LibraryTab */,
 				E5B8DE202862CFCA007F22FC /* SearchTab */,
@@ -527,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E51A37892840F64B00DF074B /* MemoViewController.swift in Sources */,
+				E5CC842E2867823600977077 /* SettingViewModel.swift in Sources */,
 				E5D2BC012864DA6F00D56AB2 /* AddBookViewModel.swift in Sources */,
 				E592B5D8285B91E000E60FAC /* CollectionViewFooter.swift in Sources */,
 				E59760CE285C171E00BA3DB0 /* LibraryViewController.swift in Sources */,
@@ -536,7 +543,6 @@
 				E51A37992840FA3200DF074B /* TabBarController.swift in Sources */,
 				E51A37852840F64B00DF074B /* AppDelegate.swift in Sources */,
 				E5B8DE232862D02B007F22FC /* LibraryViewModel.swift in Sources */,
-				E51A379F2840FA7B00DF074B /* SettingsViewController.swift in Sources */,
 				E59760EB285CABE200BA3DB0 /* LibraryCollectionViewCell.swift in Sources */,
 				E51A37872840F64B00DF074B /* SceneDelegate.swift in Sources */,
 				E5D2BC0D286607FA00D56AB2 /* SearchLibraryViewModel.swift in Sources */,
@@ -546,8 +552,8 @@
 				E592A3B72860A2820037491E /* ChangeLibraryViewController.swift in Sources */,
 				E5A6916B2846588E009F6048 /* BookListCell.swift in Sources */,
 				E5145C622848683300B9555F /* LoadingFooterView.swift in Sources */,
+				E5CC842A2867551200977077 /* MemoBookmarkTableViewCell.swift in Sources */,
 				E5B8DE2828633B21007F22FC /* WriteBookmarkViewModel.swift in Sources */,
-				E5B8DE2A28633E02007F22FC /* SelectLibraryViewModel.swift in Sources */,
 				E5D2BC0728657FD700D56AB2 /* ChangeLibraryViewModel.swift in Sources */,
 				E59760E1285C869100BA3DB0 /* AllViewController.swift in Sources */,
 				E5A6916728464372009F6048 /* SearchViewController.swift in Sources */,
@@ -561,9 +567,11 @@
 				E59760E7285C86C400BA3DB0 /* DoneReadViewController.swift in Sources */,
 				E5CC84222867271800977077 /* MemoBookmarkViewController.swift in Sources */,
 				E54B3F492864CF0800F568C8 /* Stroage.swift in Sources */,
+				E5CC842C2867647F00977077 /* SettingViewController.swift in Sources */,
 				E5CC841C286726BA00977077 /* MemoTabmanRootViewController.swift in Sources */,
 				E5A36241285D94E60023BE49 /* WriteReviewViewController.swift in Sources */,
 				E59760E3285C86B100BA3DB0 /* ReadingViewController.swift in Sources */,
+				E5CC842828674D5C00977077 /* MemoBookmarkViewModel.swift in Sources */,
 				E5DF2F6A2863590A0017F6EB /* MemoTableViewHeader.swift in Sources */,
 				E5A36243285DAFD50023BE49 /* BookmarkTableViewCell.swift in Sources */,
 				E566FAEC28645560006FC8D7 /* UITextField+Extensions.swift in Sources */,
@@ -722,6 +730,7 @@
 				DEVELOPMENT_TEAM = 95JTZ6AP78;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bukku/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -749,6 +758,7 @@
 				DEVELOPMENT_TEAM = 95JTZ6AP78;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Bukku/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

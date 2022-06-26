@@ -18,12 +18,12 @@ class ChangeLibraryViewModel {
     init(_ book: LibraryBook) {
         index = manager.indexBook(book)
     }
-}
 
-extension ChangeLibraryViewModel {
     func changeLibrary(_ type: LibraryType) {
         var book = manager.allBooks[index]
         book.type = type
         manager.updateBook(book)
     }
+    
+    
 }

@@ -14,9 +14,7 @@ class BookDetailViewModel {
     init(_ book: Book) {
         self.book = book
     }
-}
-
-extension BookDetailViewModel {
+    
     var title: String {
         return book.title
     }
@@ -32,9 +30,7 @@ extension BookDetailViewModel {
     var image: URL? {
         return URL(string: book.thumbnail)
     }
-}
-
-extension BookDetailViewModel {
+    
     func insertMyLibrary(_ type: LibraryType, book: Book) {
         manager.createBook(type, book: book)
     }

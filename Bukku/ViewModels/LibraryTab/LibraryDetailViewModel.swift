@@ -16,30 +16,40 @@ class LibraryDetailViewModel {
         manager.allBooks[index]
     }
     
+    var detailBookmarks: [Bookmark] {
+        if let pin = book.bookmark.first(where: { $0.pin == true }) {
+            var book = book
+            guard let index = book.bookmark.firstIndex(of: pin) else { return [] }
+            book.bookmark.remove(at: index)
+            book.bookmark.insert(pin, at: 0)
+            return book.bookmark
+        } else {
+            return book.bookmark
+        }
+    }
+    
     init(_ book: LibraryBook) {
         index = manager.indexBook(book)
     }
-}
-
-extension LibraryDetailViewModel {
+    
     var title: String { book.title }
     var author: String? { book.author }
     var image: UIImage { UIImage(data: book.image) ?? UIImage() }
     var review: String { book.review }
     var bookmarks: [Bookmark] { book.bookmark }
-}
 
-extension LibraryDetailViewModel {
     func numberOfRowsInSection() -> Int {
-        return bookmarks.count
+        return detailBookmarks.count
     }
     
     func removeBook(_ book: LibraryBook) {
         manager.removeBook(book)
     }
-    
+        
     func removeBookmark(_ book: LibraryBook, index: Int) {
         var book = book
+        let targetBookmark = detailBookmarks[index]
+        guard let index = book.bookmark.firstIndex(of: targetBookmark) else { return }
         book.bookmark.remove(at: index)
         manager.updateBook(book)
     }

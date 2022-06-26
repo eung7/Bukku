@@ -61,14 +61,10 @@ class LibraryDetailViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.dropDelegate = self
-        tableView.dragDelegate = self
-        tableView.dragInteractionEnabled = true
         tableView.backgroundColor = .getWhite()
         tableView.separatorStyle = .none
         tableView.register(BookmarkTableViewCell.self, forCellReuseIdentifier: BookmarkTableViewCell.identifier)
         tableView.register(BookmarkDefaultTableViewCell.self, forCellReuseIdentifier: BookmarkDefaultTableViewCell.identifier)
-        tableView.register(LibraryDetailHeaderView.self, forHeaderFooterViewReuseIdentifier: LibraryDetailHeaderView.identifier)
         
         return tableView
     }()
@@ -119,22 +115,40 @@ extension LibraryDetailViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarkTableViewCell.identifier,  for: indexPath) as? BookmarkTableViewCell,
               let defaultCell = tableView.dequeueReusableCell(withIdentifier: BookmarkDefaultTableViewCell.identifier) as? BookmarkDefaultTableViewCell else { return UITableViewCell() }
         
+        cell.pinImageView.isHidden = true
         cell.xmarkCompletion = { [weak self] bookmark in
             guard let self = self else { return }
             self.bookmarkIndex = indexPath.row
             self.present(self.bookmarkDeleteAlert, animated: true)
         }
         
-        if viewModel.bookmarks.isEmpty {
+        if viewModel.detailBookmarks.isEmpty {
+            defaultCell.configureUI()
+            
+            defaultCell.addButtonCompletion = { [weak self] in
+                guard let self = self else { return }
+                let writeBookmarkVC = WriteBookmarkViewController(self.viewModel.book)
+                let navVC = UINavigationController(rootViewController: writeBookmarkVC)
+                navVC.modalPresentationStyle = .fullScreen
+                writeBookmarkVC.saveCompletion = {
+                    self.tableView.reloadData()
+                }
+                self.present(navVC, animated: true)
+            }
+            
             return defaultCell
-        } else {
-            cell.configureData(viewModel.bookmarks[indexPath.row])
-            return cell
         }
+        if viewModel.detailBookmarks[indexPath.row].pin == true {
+            cell.pinImageView.isHidden = false
+        }
+        
+        cell.configureUI()
+        cell.configureData(viewModel.detailBookmarks[indexPath.row])
+        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if viewModel.bookmarks.isEmpty {
+        if viewModel.detailBookmarks.isEmpty {
             return 1
         } else {
             return viewModel.numberOfRowsInSection()
@@ -166,7 +180,8 @@ extension LibraryDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: LibraryDetailHeaderView.identifier) as? LibraryDetailHeaderView else { return UIView() }
+        let header = LibraryDetailHeaderView()
+        header.configureUI()
         header.delegate = self
         header.configureData(viewModel.book)
         
@@ -177,34 +192,12 @@ extension LibraryDetailViewController: UITableViewDataSource {
 // MARK: - TableView Delegate
 extension LibraryDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard viewModel.bookmarks.count > 0 else { return }
+        guard viewModel.detailBookmarks.count > 0 else { return }
         let writeBookmarkVC = WriteBookmarkViewController(viewModel.book)
-        writeBookmarkVC.configureData(viewModel.bookmarks[indexPath.row])
+        writeBookmarkVC.configureData(viewModel.detailBookmarks[indexPath.row])
         let navVC = UINavigationController(rootViewController: writeBookmarkVC)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let item = viewModel.manager.allBooks[viewModel.index].bookmark[sourceIndexPath.row]
-        viewModel.manager.allBooks[viewModel.index].bookmark.remove(at: sourceIndexPath.row)
-        viewModel.manager.allBooks[viewModel.index].bookmark.insert(item, at: destinationIndexPath.row)
-        viewModel.saveBook()
-    }
-}
-    
-extension LibraryDetailViewController: UITableViewDragDelegate, UITableViewDropDelegate {
-    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        return [UIDragItem(itemProvider: NSItemProvider())]
-    }
-    
-    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) { }
-    
-    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
-        if session.localDragSession != nil {
-            return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
-        }
-        return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
     }
 }
 

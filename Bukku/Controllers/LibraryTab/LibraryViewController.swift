@@ -47,6 +47,15 @@ class LibraryViewController: UIViewController {
         return button
     }()
     
+    lazy var gearButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .getDarkGreen()
+        button.setImage(UIImage(systemName: "gearshape"), for: .normal)
+        button.addTarget(self, action: #selector(didTapGearButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,13 +76,22 @@ class LibraryViewController: UIViewController {
         navigationController?.pushViewController(searchLibraryVC, animated: true)
     }
     
+    @objc private func didTapGearButton() {
+        let settingVC = SettingViewController()
+        navigationController?.pushViewController(settingVC, animated: true)
+    }
+    
     // MARK: - Helpers
     private func configureUI() {
         view.backgroundColor = .getWhite()
         view.addSubview(containerView)
         
+        let buttonStack = UIStackView(arrangedSubviews: [ gearButton, searchButton ])
+        buttonStack.axis = .horizontal
+        buttonStack.spacing = 12
+        
         navigationItem.title = "내 서재"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: buttonStack)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: addButton)
         
         containerView.snp.makeConstraints { make in

@@ -9,10 +9,7 @@ import Foundation
 
 class LibraryViewModel {
     let manager = LibraryManager.shared
-}
 
-// MARK: - SubVC
-extension LibraryViewModel {
     func getBookFromIndex(_ type: LibraryType?, index: Int) -> LibraryBook {
         switch type {
         case .reading:

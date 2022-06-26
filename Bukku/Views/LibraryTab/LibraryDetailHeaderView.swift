@@ -86,7 +86,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     
     let reviewSuperView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getOrange()
+        view.backgroundColor = .getWhite()
         view.layer.cornerRadius = 10
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.getDarkGreen().cgColor
@@ -99,7 +99,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     
     lazy var reviewLabel: BasePaddingLabel = {
         let label = BasePaddingLabel(padding: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
-        label.font = .systemFont(ofSize: 18.0, weight: .thin)
+        label.font = .systemFont(ofSize: 18.0, weight: .semibold)
         label.textColor = .getDarkGreen()
         label.numberOfLines = 0
         label.text = "서평을 입력해주세요!"
@@ -143,17 +143,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
         
         return button
     }()
-    
-    // MARK: - LifeCycle
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
-        configureUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+        
     // MARK: - Selectors
     @objc func didTapWriteReviewButton() {
         guard let book = book else { return }
@@ -171,7 +161,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     }
     
     // MARK: - Helpers
-    private func configureUI() {
+    func configureUI() {
         [ bookImageView, titleLabel, authorLabel, changeLibraryButton, lineView, reviewTitleLabel, writeReviewButton, reviewSuperView, bookmarkTitleLabel, writeBookmarkButton ]
             .forEach { self.addSubview($0) }
 
@@ -239,7 +229,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     
     func configureData(_ book: LibraryBook) {
         self.book = book
-
+        
         titleLabel.text = book.title
         authorLabel.text = book.author
         

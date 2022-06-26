@@ -38,7 +38,7 @@ class SearchLibraryViewController: UIViewController {
         collectionView.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
-    
+        
         return collectionView
     }()
     
@@ -51,6 +51,7 @@ class SearchLibraryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView.reloadData()
+        searchBar.searchTextField.text = ""
     }
     
     // MARK: - Selectors

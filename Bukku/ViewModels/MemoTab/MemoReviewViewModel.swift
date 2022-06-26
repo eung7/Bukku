@@ -18,3 +18,4 @@ class MemoReviewViewModel {
         return reviewBooks.count
     }
 }
+

@@ -14,7 +14,7 @@ class TabBarController: UITabBarController {
     let searchVC = SearchViewController()
     
     let libraryTabBarItem = UITabBarItem(
-        title: "서재",
+        title: "내 서재",
         image: UIImage(systemName: "books.vertical"),
         selectedImage: UIImage(systemName: "books.vertical.fill")
     )
@@ -26,7 +26,7 @@ class TabBarController: UITabBarController {
     )
     
     let searchTabBarItem = UITabBarItem(
-        title: "검색",
+        title: "책 검색",
         image: UIImage(systemName: "magnifyingglass"),
         selectedImage: UIImage(systemName: "magnifyingglass")
     )

@@ -19,7 +19,7 @@ class WriteReviewViewController: UIViewController {
         let textView = RSKPlaceholderTextView()
         textView.placeholder = "서평을 입력해주세요."
         textView.delegate = self
-        textView.font = .systemFont(ofSize: 18.0, weight: .thin)
+        textView.font = .systemFont(ofSize: 18.0, weight: .semibold)
         textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         textView.backgroundColor = .getWhite()
         textView.textColor = .getDarkGreen()
@@ -50,6 +50,27 @@ class WriteReviewViewController: UIViewController {
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
         
         return button
+    }()
+    
+    lazy var initButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .getGray()
+        button.setTitle("초기화", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18.0, weight: .thin)
+        button.addTarget(self, action: #selector(didTapInitButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    lazy var initAlert: UIAlertController = {
+        let alert = UIAlertController(title: .none, message: "정말 초기화 하시겠습니까?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "초기화", style: .destructive, handler: { [weak self] _ in
+            self?.viewModel.updateReview("")
+            self?.dismiss(animated: true)
+        }))
+        
+        return alert
     }()
     
     let contentsCountLabel: UILabel = {
@@ -88,13 +109,21 @@ class WriteReviewViewController: UIViewController {
         view.makeToast("빈 곳을 입력해주세요.", duration: 1.0, position: .top, title: nil, image: nil, style: .init(), completion: nil)
     }
     
+    @objc private func didTapInitButton() {
+        present(initAlert, animated: true)
+    }
+    
     // MARK: - Helpers
     private func configureUI() {
         view.backgroundColor = .getWhite()
         
+        let stack = UIStackView(arrangedSubviews: [initButton, saveButton])
+        stack.axis = .horizontal
+        stack.spacing = 12
+        
         navigationItem.title = "서평 남기기"
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backArrowButton)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: stack)
         
         view.addSubview(textView); view.addSubview(contentsCountLabel)
         

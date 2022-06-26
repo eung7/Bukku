@@ -22,15 +22,6 @@ class MemoReviewViewController: UIViewController {
         return tableView
     }()
     
-    lazy var searchButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = .getDarkGreen()
-        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        button.addTarget(self, action: #selector(didTapSearchButton), for: .touchUpInside)
-        
-        return button
-    }()
-    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +31,6 @@ class MemoReviewViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-    }
-    
-    // MARK: - Selectors
-    @objc func didTapSearchButton() {
-        
     }
     
     // MARK: - Helpers
@@ -81,7 +67,9 @@ extension MemoReviewViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let book = viewModel.reviewBooks[indexPath.row]
+        let libraryDetailVC = LibraryDetailViewController(book)
+        navigationController?.pushViewController(libraryDetailVC, animated: true)
     }
 }
 

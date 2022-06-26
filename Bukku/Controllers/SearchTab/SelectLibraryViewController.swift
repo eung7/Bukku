@@ -11,9 +11,7 @@ import PanModal
 
 class SelectLibraryViewController: UIViewController {
     // MARK: - Properties
-    let viewModel = SelectLibraryViewModel()
     var dismissCompletion: ((LibraryType) -> Void)?
-//    var changeLibraryCompletion: ((LibraryType) -> Void)?
     
     let mainLabel: UILabel = {
         let label = UILabel()

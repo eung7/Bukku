@@ -60,10 +60,6 @@ class SearchViewController: UIViewController {
         configureUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-    }
-
     // MARK: - Selectors
     @objc private func dismissKeyboard() {
         searchBar.searchTextField.resignFirstResponder()

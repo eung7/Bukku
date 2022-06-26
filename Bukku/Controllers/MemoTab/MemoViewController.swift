@@ -30,6 +30,15 @@ class MemoViewController: UIViewController {
         return button
     }()
     
+    lazy var gearButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .getDarkGreen()
+        button.setImage(UIImage(systemName: "gearshape"), for: .normal)
+        button.addTarget(self, action: #selector(didTapGearButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,15 +46,26 @@ class MemoViewController: UIViewController {
     }
     
     // MARK: - Selectors
-    @objc func didTapSearchButton() {
-        
+    @objc private func didTapSearchButton() {
+        let searchLibraryVC = SearchLibraryViewController()
+        navigationController?.pushViewController(searchLibraryVC, animated: true)
+    }
+    
+    @objc private func didTapGearButton() {
+        let settingVC = SettingViewController()
+        navigationController?.pushViewController(settingVC, animated: true)
     }
     
     // MARK: - Helpers
     private func configureUI() {
         view.backgroundColor = .getWhite()
         navigationItem.title = "메모"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchButton)
+        
+        let stack = UIStackView(arrangedSubviews: [ gearButton, searchButton ])
+        stack.axis = .horizontal
+        stack.spacing = 12
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: stack)
         
         view.addSubview(containerView)
         

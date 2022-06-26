@@ -37,7 +37,7 @@ class WriteBookmarkViewController: UIViewController {
         textView.delegate = self
         textView.backgroundColor = .getWhite()
         textView.textColor = .getDarkGreen()
-        textView.font = .systemFont(ofSize: 18.0, weight: .thin)
+        textView.font = .systemFont(ofSize: 18.0, weight: .semibold)
         textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         textView.layer.borderWidth = 1
         textView.layer.borderColor = UIColor.getDarkGreen().cgColor
@@ -64,6 +64,20 @@ class WriteBookmarkViewController: UIViewController {
         button.tintColor = .getDarkGreen()
         button.setTitle("저장", for: .normal)
         button.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    lazy var pinButton: UIButton = {
+        var config = UIButton.Configuration.plain()
+        config.imagePadding = 5
+        let button = UIButton(configuration: config)
+        button.setTitle("이 책갈피 고정", for: .normal)
+        button.setImage(UIImage(systemName: "square"), for: .normal)
+        button.setImage(UIImage(systemName: "checkmark.square"), for: .selected)
+        button.tintColor = .getDarkGreen()
+        button.backgroundColor = .getWhite()
+        button.addTarget(self, action: #selector(didTapPinButton), for: .touchUpInside)
         
         return button
     }()
@@ -104,15 +118,27 @@ class WriteBookmarkViewController: UIViewController {
         
         switch state {
         case .new:
-            viewModel.createBookmark(pageTextField.text ?? "", contents: contents)
-            saveCompletion?()
+            if pinButton.isSelected {
+                viewModel.createBookmark(pageTextField.text ?? "", contents: contents, pin: true)
+                saveCompletion?()
+            } else {
+                viewModel.createBookmark(pageTextField.text ?? "", contents: contents, pin: false)
+                saveCompletion?()
+            }
             dismiss(animated: true)
         case .update:
             guard let bookmark = bookmark else { return }
-            viewModel.updateBookmark(pageTextField.text ?? "", contents: contents, bookmark: bookmark)
+            if pinButton.isSelected {
+                viewModel.updateBookmark(pageTextField.text ?? "", contents: contents, bookmark: bookmark, pin: true)
+            } else {
+                viewModel.updateBookmark(pageTextField.text ?? "", contents: contents, bookmark: bookmark, pin: false)
+            }
             dismiss(animated: true)
         }
-        
+    }
+    
+    @objc private func didTapPinButton() {
+        pinButton.isSelected = !pinButton.isSelected
     }
     
     // MARK: - Helpers
@@ -124,7 +150,7 @@ class WriteBookmarkViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .getDarkGreen()
         navigationController?.navigationBar.tintColor = .getDarkGreen()
         
-        [ pageTextField, contentsTextView, contentsCountLabel ]
+        [ pageTextField, contentsTextView, contentsCountLabel, pinButton ]
             .forEach { view.addSubview($0) }
         
         pageTextField.snp.makeConstraints { make in
@@ -142,6 +168,11 @@ class WriteBookmarkViewController: UIViewController {
             make.centerY.equalTo(pageTextField)
             make.trailing.equalToSuperview().inset(20)
         }
+        
+        pinButton.snp.makeConstraints { make in
+            make.centerY.equalTo(pageTextField)
+            make.trailing.equalToSuperview().inset(16)
+        }
     }
     
     func configureData(_ bookmark: Bookmark) {
@@ -149,6 +180,7 @@ class WriteBookmarkViewController: UIViewController {
         self.bookmark = bookmark
         contentsTextView.text = bookmark.contents
         pageTextField.text = bookmark.page
+        pinButton.isSelected = bookmark.pin
     }
 }
 

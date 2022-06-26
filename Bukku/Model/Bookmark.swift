@@ -11,10 +11,12 @@ struct Bookmark: Codable, Equatable {
     var id = UUID()
     var page: String
     var contents: String
+    var pin: Bool
     
-    mutating func update(page: String, contents: String) {
+    mutating func update(page: String, contents: String, pin: Bool) {
         self.page = page
         self.contents = contents
+        self.pin = pin
     }
     
     static func == (lhs: Self, rhs: Self) -> Bool {

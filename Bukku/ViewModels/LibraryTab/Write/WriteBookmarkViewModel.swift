@@ -18,20 +18,42 @@ class WriteBookmarkViewModel {
     init(_ book: LibraryBook) {
         index = manager.indexBook(book)
     }
-}
-
-extension WriteBookmarkViewModel {
-    func createBookmark(_ page: String, contents: String) {
+    
+    func createBookmark(_ page: String, contents: String, pin: Bool) {
         var book = book
-        let bookmark = Bookmark(page: page, contents: contents)
-        book.bookmark.insert(bookmark, at: 0)
-        manager.updateBook(book)
+        let newBookmark = Bookmark(page: page, contents: contents, pin: pin)
+        
+        if pin == true {
+            let bookmarks = book.bookmark.map { bookmark -> Bookmark in
+                var bookmark = bookmark
+                bookmark.update(page: bookmark.page, contents: bookmark.contents, pin: false)
+                return bookmark
+            }
+            book.bookmark = bookmarks
+            book.bookmark.insert(newBookmark, at: 0)
+            manager.updateBook(book)
+        } else {
+            book.bookmark.insert(newBookmark, at: 0)
+            manager.updateBook(book)
+        }
     }
     
-    func updateBookmark(_ page: String, contents: String, bookmark: Bookmark) {
+    func updateBookmark(_ page: String, contents: String, bookmark: Bookmark, pin: Bool) {
         var book = book
         guard let index = book.bookmark.firstIndex(of: bookmark) else { return }
-        book.bookmark[index].update(page: page, contents: contents)
-        manager.updateBook(book)
+        
+        if pin == true {
+            let bookmarks = book.bookmark.map { bookmark -> Bookmark in
+                var bookmark = bookmark
+                bookmark.update(page: bookmark.page, contents: bookmark.contents, pin: false)
+                return bookmark
+            }
+            book.bookmark = bookmarks
+            book.bookmark[index].update(page: page, contents: contents, pin: pin)
+            manager.updateBook(book)
+        } else {
+            book.bookmark[index].update(page: page, contents: contents, pin: pin)
+            manager.updateBook(book)
+        }
     }
 }

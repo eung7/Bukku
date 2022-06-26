@@ -16,7 +16,7 @@ class BookmarkTableViewCell: UITableViewCell {
     
     let pageLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getDarkGreen()
+        label.textColor = .getWhite()
         label.font = .systemFont(ofSize: 16.0, weight: .medium)
         
         return label
@@ -25,7 +25,7 @@ class BookmarkTableViewCell: UITableViewCell {
     let bookmarkImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "bookmark.fill")
-        iv.tintColor = .getDarkGreen()
+        iv.tintColor = .getWhite()
         
         return iv
     }()
@@ -33,16 +33,16 @@ class BookmarkTableViewCell: UITableViewCell {
     let contentsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .getDarkGreen()
+        label.textColor = .getWhite()
         label.adjustsFontSizeToFitWidth = true
-        label.font = .systemFont(ofSize: 18.0, weight: .thin)
+        label.font = .systemFont(ofSize: 18.0, weight: .semibold)
     
         return label
     }()
     
     let ultraView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getWhite()
+        view.backgroundColor = .getDarkGreen()
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.getDarkGreen().cgColor
         view.layer.cornerRadius = 10
@@ -56,22 +56,21 @@ class BookmarkTableViewCell: UITableViewCell {
     lazy var trashButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.tintColor = .getDarkGreen()
+        button.tintColor = .getWhite()
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 16.0), forImageIn: .normal)
         button.addTarget(self, action: #selector(didTapXmarkButton), for: .touchUpInside)
         
         return button
     }()
     
-    // MARK: - LifeCycle
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    lazy var pinImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(systemName: "pin.fill")
+        iv.tintColor = .getWhite()
+        iv.isHidden = true
+        
+        return iv
+    }()
     
     // MARK: - Selectors
     @objc func didTapXmarkButton() {
@@ -80,7 +79,7 @@ class BookmarkTableViewCell: UITableViewCell {
     }
     
     // MARK: - Helpers
-    private func configureUI() {
+    func configureUI() {
         contentView.backgroundColor = .getWhite()
         contentView.addSubview(ultraView)
         
@@ -93,7 +92,7 @@ class BookmarkTableViewCell: UITableViewCell {
         stackView.axis = .horizontal
         stackView.spacing = 4.0
         
-        [ stackView, contentsLabel, trashButton ]
+        [ stackView, contentsLabel, trashButton, pinImageView ]
             .forEach { ultraView.addSubview($0) }
         
         stackView.snp.makeConstraints { make in
@@ -111,6 +110,11 @@ class BookmarkTableViewCell: UITableViewCell {
         trashButton.snp.makeConstraints { make in
             make.centerY.equalTo(stackView)
             make.trailing.equalToSuperview().inset(16)
+        }
+        
+        pinImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(stackView)
+            make.trailing.equalTo(trashButton.snp.leading).offset(-4)
         }
     }
     

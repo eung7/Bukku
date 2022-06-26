@@ -15,9 +15,7 @@ class SearchLibraryViewModel {
     }
     
     var result: [LibraryBook] = []
-}
 
-extension SearchLibraryViewModel {
     func searchTitle(_ text: String) {
         result = books.filter { $0.title.localizedStandardContains(text) }
     }

@@ -9,9 +9,7 @@ import Foundation
 
 class SearchListViewModel {
     var books: [Book] = []
-}
 
-extension SearchListViewModel {
     var numberOfItemsInSection: Int {
         return books.count
     }
@@ -23,9 +21,7 @@ class SearchViewModel {
     init(_ book: Book) {
         self.book = book
     }
-}
-
-extension SearchViewModel {
+    
     var thumbnailURL: String {
         return book.thumbnail
     }

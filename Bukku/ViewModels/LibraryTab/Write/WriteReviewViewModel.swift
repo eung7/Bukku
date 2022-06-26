@@ -18,9 +18,7 @@ class WriteReviewViewModel {
     init(_ book: LibraryBook) {
         index = manager.indexBook(book)
     }
-}
-
-extension WriteReviewViewModel {
+    
     var review: String? { book.review }
     
     func updateReview(_ review: String) {

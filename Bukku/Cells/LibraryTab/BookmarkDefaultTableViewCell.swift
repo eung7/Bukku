@@ -11,10 +11,11 @@ import SnapKit
 class BookmarkDefaultTableViewCell: UITableViewCell {
     // MARK: - Properties
     static let identifier = "BookmarkDefaultTableViewCell"
+    var addButtonCompletion: () -> Void = {}
     
     lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = .getDarkGreen()
+        button.tintColor = .getWhite()
         button.setImage(UIImage(systemName: "plus"), for: .normal)
         button.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
         
@@ -23,7 +24,7 @@ class BookmarkDefaultTableViewCell: UITableViewCell {
     
     let ultraView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getWhite()
+        view.backgroundColor = .getDarkGreen()
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.getDarkGreen().cgColor
         view.layer.cornerRadius = 10
@@ -34,23 +35,13 @@ class BookmarkDefaultTableViewCell: UITableViewCell {
         return view
     }()
     
-    // MARK: - LifeCycle
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     // MARK: - Selectors
     @objc func didTapAddButton() {
-        
+        addButtonCompletion()
     }
     
     // MARK: - Helpers
-    private func configureUI() {
+    func configureUI() {
         contentView.backgroundColor = .getWhite()
         
         contentView.addSubview(ultraView)
