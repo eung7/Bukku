@@ -31,7 +31,7 @@
 >> ![image](https://user-images.githubusercontent.com/97531269/175807758-86bd555a-3f78-47d8-8d23-908193ba8922.png)
 
 ### LongPressGesture Drag & Drop 
-> Drag cell is from sourceIndexPath and drop cell is to destinationIndexPath 
+> Drag cell is from sourceIndexPath and drop cell is to destinationIndexPath
 >>![Simulator Screen Recording - iPhone 13 Pro Max - 2022-06-26 at 18 25 41](https://user-images.githubusercontent.com/97531269/175807875-2bf24f9e-fa79-42f0-9855-446b418ae41b.gif)
 
 ### Pin Bookmark
@@ -39,7 +39,16 @@
 >>![Simulator Screen Recording - iPhone 13 Pro Max - 2022-06-26 at 18 33 33](https://user-images.githubusercontent.com/97531269/175808190-5fdd9936-6067-4823-a148-0bb40c06e54f.gif)
 >>![Simulator Screen Recording - iPhone 13 Pro Max - 2022-06-26 at 18 37 26](https://user-images.githubusercontent.com/97531269/175808302-5e363c5e-95ec-4ec4-9068-bc9ebebd8874.gif)
 
+### Search and Store Book
+> Search book and store book to your own library. if you have already the particular book, prevent the book from being added. 
+>>![Simulator Screen Recording - iPhone 13 Pro Max - 2022-06-26 at 18 44 39](https://user-images.githubusercontent.com/97531269/175808622-2a94add2-d7d8-4a0b-a674-09d9d44a8118.gif)
 
+### Write Review 
+> Write a review and view all the books that have written a review in memoTab at once.
+>>![Simulator Screen Recording - iPhone 13 Pro Max - 2022-06-26 at 18 49 53](https://user-images.githubusercontent.com/97531269/175808747-aa7fb3e0-ddd3-48fc-a70c-e966cc9549bd.gif)
+
+### MVVM 
+> The Bukku app adopted the MVVM structure. DataBinding was conducted as a computed property. In order to create a full-fledged MVVM, I want to proceed with refactoring with functional programming (RxSwift) in the future.
 
 ## Open Source
 
