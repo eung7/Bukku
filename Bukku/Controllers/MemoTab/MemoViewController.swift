@@ -48,18 +48,22 @@ class MemoViewController: UIViewController {
     // MARK: - Selectors
     @objc private func didTapSearchButton() {
         let searchLibraryVC = SearchLibraryViewController()
-        navigationController?.pushViewController(searchLibraryVC, animated: true)
+        let navVC = UINavigationController(rootViewController: searchLibraryVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
     }
     
     @objc private func didTapGearButton() {
         let settingVC = SettingViewController()
-        navigationController?.pushViewController(settingVC, animated: true)
+        let navVC = UINavigationController(rootViewController: settingVC)
+        present(navVC, animated: true)
     }
     
     // MARK: - Helpers
     private func configureUI() {
         view.backgroundColor = .getWhite()
         navigationItem.title = "메모"
+        tabBarController?.delegate = self
         
         let stack = UIStackView(arrangedSubviews: [ gearButton, searchButton ])
         stack.axis = .horizontal
@@ -79,6 +83,15 @@ class MemoViewController: UIViewController {
         
         tabmanRootVC.view.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+}
+
+extension MemoViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if tabBarController.selectedIndex == 1 {
+            tabmanRootVC.bookmarkVC.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            tabmanRootVC.reviewVC.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         }
     }
 }

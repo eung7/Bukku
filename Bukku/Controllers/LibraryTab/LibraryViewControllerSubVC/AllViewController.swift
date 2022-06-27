@@ -55,7 +55,7 @@ class AllViewController: UIViewController {
     // MARK: - Helpers
     private func configureUI() {
         view.addSubview(collectionView)
-
+        
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
@@ -108,4 +108,3 @@ extension AllViewController: UICollectionViewDelegateFlowLayout {
         viewModel.saveBooks()
     }
 }
-

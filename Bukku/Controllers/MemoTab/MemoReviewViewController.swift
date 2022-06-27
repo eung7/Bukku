@@ -69,7 +69,9 @@ extension MemoReviewViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let book = viewModel.reviewBooks[indexPath.row]
         let libraryDetailVC = LibraryDetailViewController(book)
-        navigationController?.pushViewController(libraryDetailVC, animated: true)
+        let navVC = UINavigationController(rootViewController: libraryDetailVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
     }
 }
 

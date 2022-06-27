@@ -35,7 +35,7 @@ class LibraryDetailViewController: UIViewController {
         let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: { [weak self] _ in
             guard let book = self?.viewModel.book else { return }
             self?.viewModel.removeBook(book)
-            self?.navigationController?.popViewController(animated: true)
+            self?.dismiss(animated: true)
         })
         let cancelAction = UIAlertAction(title: "취소", style: .cancel)
         [ deleteAction, cancelAction ].forEach { alert.addAction($0) }
@@ -55,6 +55,15 @@ class LibraryDetailViewController: UIViewController {
         [ deleteAction, cancelAction ].forEach { alert.addAction($0) }
         
         return alert
+    }()
+    
+    lazy var backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
+        button.tintColor = .getDarkGreen()
+        button.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
+        
+        return button
     }()
     
     lazy var tableView: UITableView = {
@@ -90,7 +99,11 @@ class LibraryDetailViewController: UIViewController {
     }
     
     // MARK: - Selectors
-    @objc func didTapTrashButton() {
+    @objc private func didTapBackButton() {
+        dismiss(animated: true)
+    }
+    
+    @objc private func didTapTrashButton() {
         present(deleteAlert, animated: true)
     }
     
@@ -98,6 +111,7 @@ class LibraryDetailViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .getWhite()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: trashButton)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         navigationController?.navigationBar.tintColor = .getDarkGreen()
         navigationItem.title = "도서"
         

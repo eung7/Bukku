@@ -68,6 +68,7 @@ class SearchLibraryViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .getWhite()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backArrowButton)
         navigationItem.title = "내 서재 검색"
         view.addSubview(collectionView)
         
@@ -107,7 +108,9 @@ extension SearchLibraryViewController: UICollectionViewDataSource {
 extension SearchLibraryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let libraryDetailVC = LibraryDetailViewController(viewModel.result[indexPath.row])
-        self.navigationController?.pushViewController(libraryDetailVC, animated: true)
+        let navVC = UINavigationController(rootViewController: libraryDetailVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
         viewModel.result = []
     }
     

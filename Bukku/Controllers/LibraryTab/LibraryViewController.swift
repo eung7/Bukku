@@ -73,7 +73,9 @@ class LibraryViewController: UIViewController {
     
     @objc private func didTapSearchButton() {
         let searchLibraryVC = SearchLibraryViewController()
-        navigationController?.pushViewController(searchLibraryVC, animated: true)
+        let navVC = UINavigationController(rootViewController: searchLibraryVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
     }
     
     @objc private func didTapGearButton() {
@@ -85,6 +87,7 @@ class LibraryViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = .getWhite()
         view.addSubview(containerView)
+        tabBarController?.delegate = self
         
         let buttonStack = UIStackView(arrangedSubviews: [ gearButton, searchButton ])
         buttonStack.axis = .horizontal
@@ -110,22 +113,41 @@ class LibraryViewController: UIViewController {
     private func pushNavigationBinding() {
         tabmanRootVC.allVC.pushCompletion = { [weak self] book in
             let libraryDetailVC = LibraryDetailViewController(book)
-            self?.navigationController?.pushViewController(libraryDetailVC, animated: true)
+            let navVC = UINavigationController(rootViewController: libraryDetailVC)
+            navVC.modalPresentationStyle = .fullScreen
+            self?.present(navVC, animated: true)
         }
         
         tabmanRootVC.readingVC.pushCompletion = { [unowned self] book in
             let libraryDetailVC = LibraryDetailViewController(book)
-            self.navigationController?.pushViewController(libraryDetailVC, animated: true)
+            let navVC = UINavigationController(rootViewController: libraryDetailVC)
+            navVC.modalPresentationStyle = .fullScreen
+            self.present(navVC, animated: true)
         }
         
         tabmanRootVC.willVC.pushCompletion = { [unowned self] book in
             let libraryDetailVC = LibraryDetailViewController(book)
-            self.navigationController?.pushViewController(libraryDetailVC, animated: true)
+            let navVC = UINavigationController(rootViewController: libraryDetailVC)
+            navVC.modalPresentationStyle = .fullScreen
+            self.present(navVC, animated: true)
         }
-
+        
         tabmanRootVC.doneVC.pushCompletion = { [unowned self] book in
             let libraryDetailVC = LibraryDetailViewController(book)
-            self.navigationController?.pushViewController(libraryDetailVC, animated: true)
+            let navVC = UINavigationController(rootViewController: libraryDetailVC)
+            navVC.modalPresentationStyle = .fullScreen
+            self.present(navVC, animated: true)
+        }
+    }
+}
+
+extension LibraryViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if tabBarController.selectedIndex == 0 {
+            tabmanRootVC.allVC.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            tabmanRootVC.readingVC.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            tabmanRootVC.willVC.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            tabmanRootVC.doneVC.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         }
     }
 }

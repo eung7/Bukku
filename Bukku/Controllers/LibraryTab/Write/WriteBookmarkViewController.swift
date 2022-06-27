@@ -165,7 +165,7 @@ class WriteBookmarkViewController: UIViewController {
         }
         
         contentsCountLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(pageTextField)
+            make.top.equalTo(contentsTextView.snp.bottom).offset(4)
             make.trailing.equalToSuperview().inset(20)
         }
         

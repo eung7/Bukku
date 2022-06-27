@@ -16,7 +16,7 @@ class SearchViewController: UIViewController {
     var currentQuery: String = ""
     var isLoading: Bool = true
     var loadingFooterView: LoadingFooterView?
-    
+
     // MARK: - Properties
     let viewModel = SearchListViewModel()
     lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap))
