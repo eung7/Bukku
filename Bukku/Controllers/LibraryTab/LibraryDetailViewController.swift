@@ -70,7 +70,7 @@ class LibraryDetailViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = .getWhite()
+        tableView.backgroundColor = .getDarkGreen()
         tableView.separatorStyle = .none
         tableView.register(BookmarkTableViewCell.self, forCellReuseIdentifier: BookmarkTableViewCell.identifier)
         tableView.register(BookmarkDefaultTableViewCell.self, forCellReuseIdentifier: BookmarkDefaultTableViewCell.identifier)
@@ -109,7 +109,7 @@ class LibraryDetailViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureUI() {
-        view.backgroundColor = .getWhite()
+        view.backgroundColor = .getDarkGreen()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: trashButton)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         navigationController?.navigationBar.tintColor = .getDarkGreen()

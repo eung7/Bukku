@@ -27,7 +27,7 @@ class SearchViewController: UIViewController {
             width: UIScreen.main.bounds.width,
             height: 0)
         )
-        searchBar.placeholder = "책 이름을 알려주세요!"
+        searchBar.placeholder = "수 많은 책을 검색해보세요 !"
         searchBar.returnKeyType = .search
         searchBar.searchTextField.leftView?.tintColor = .getDarkGreen()
         searchBar.searchTextField.enablesReturnKeyAutomatically = true
@@ -37,10 +37,19 @@ class SearchViewController: UIViewController {
         return searchBar
     }()
     
+    lazy var backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
+        button.tintColor = .getDarkGreen()
+        button.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
+        
+        return button
+    }()
+    
     lazy var bookListCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .getWhite()
+        collectionView.backgroundColor = .getDarkGreen()
         collectionView.register(BookListCell.self, forCellWithReuseIdentifier: BookListCell.identifier)
         collectionView.register(
             LoadingFooterView.self,
@@ -69,10 +78,15 @@ class SearchViewController: UIViewController {
         searchBar.searchTextField.resignFirstResponder()
     }
     
+    @objc private func didTapBackButton() {
+        dismiss(animated: true)
+    }
+    
     // MARK: - Helpers
     func configureUI() {
-        view.backgroundColor = .getWhite()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: searchBar)
+        view.backgroundColor = .getDarkGreen()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
         
         bookListCollectionView.isHidden = true
         

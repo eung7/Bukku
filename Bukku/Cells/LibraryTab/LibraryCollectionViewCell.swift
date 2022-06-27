@@ -16,6 +16,7 @@ class LibraryCollectionViewCell: UICollectionViewCell {
     lazy var bookImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .clear
+        iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         
         return iv
@@ -35,10 +36,10 @@ class LibraryCollectionViewCell: UICollectionViewCell {
     private func configureUI() {
         backgroundColor = .clear
         layer.borderWidth = 1
-        layer.borderColor = UIColor.getDarkGreen().cgColor
+        layer.borderColor = UIColor.getWhite().cgColor
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        layer.shadowColor = UIColor.getDarkGreen().cgColor
-        layer.shadowOpacity = 1.0
+        layer.shadowColor = UIColor.getWhite().cgColor
+        layer.shadowOpacity = 0.5
         
         contentView.addSubview(bookImageView)
         

@@ -25,6 +25,8 @@ class BookDetailViewController: UIViewController {
         iv.layer.shadowRadius = 10.0
         iv.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         iv.layer.borderWidth = 1
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
     
         return iv
     }()

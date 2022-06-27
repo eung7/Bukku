@@ -13,7 +13,7 @@ class MemoReviewViewController: UIViewController {
 
     lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .getWhite()
+        tableView.backgroundColor = .getDarkGreen()
         tableView.separatorStyle = .none
         tableView.register(MemoReviewTableViewCell.self, forCellReuseIdentifier: MemoReviewTableViewCell.identifier)
         tableView.dataSource = self
@@ -35,7 +35,7 @@ class MemoReviewViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureUI() {
-        view.backgroundColor = .getWhite()
+        view.backgroundColor = .getDarkGreen()
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in

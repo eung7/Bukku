@@ -15,7 +15,7 @@ class SearchLibraryViewController: UIViewController {
     
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0))
-        searchBar.placeholder = "책 이름을 입력해주세요."
+        searchBar.placeholder = "내 서재에서 책을 찾아요."
         searchBar.returnKeyType = .search
         searchBar.delegate = self
         
@@ -34,7 +34,7 @@ class SearchLibraryViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .getWhite()
+        collectionView.backgroundColor = .getDarkGreen()
         collectionView.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -66,7 +66,7 @@ class SearchLibraryViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureUI() {
-        view.backgroundColor = .getWhite()
+        view.backgroundColor = .getDarkGreen()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backArrowButton)
         navigationItem.title = "내 서재 검색"

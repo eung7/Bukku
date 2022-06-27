@@ -16,7 +16,7 @@ class DoneReadViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .getWhite()
+        collectionView.backgroundColor = .getDarkGreen()
         collectionView.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -37,7 +37,7 @@ class DoneReadViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureUI() {
-        view.backgroundColor = .getGray()
+        view.backgroundColor = .getDarkGreen()
         view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints { make in

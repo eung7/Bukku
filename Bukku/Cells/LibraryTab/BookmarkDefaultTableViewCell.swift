@@ -15,7 +15,7 @@ class BookmarkDefaultTableViewCell: UITableViewCell {
     
     lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = .getWhite()
+        button.tintColor = .getDarkGreen()
         button.setImage(UIImage(systemName: "plus"), for: .normal)
         button.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
         
@@ -24,13 +24,13 @@ class BookmarkDefaultTableViewCell: UITableViewCell {
     
     let ultraView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getDarkGreen()
+        view.backgroundColor = .getWhite()
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.getDarkGreen().cgColor
+        view.layer.borderColor = UIColor.getWhite().cgColor
         view.layer.cornerRadius = 10
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowOpacity = 1.0
-        view.layer.shadowColor = UIColor.getDarkGreen().cgColor
+        view.layer.shadowColor = UIColor.getWhite().cgColor
         
         return view
     }()
@@ -42,7 +42,7 @@ class BookmarkDefaultTableViewCell: UITableViewCell {
     
     // MARK: - Helpers
     func configureUI() {
-        contentView.backgroundColor = .getWhite()
+        contentView.backgroundColor = .getDarkGreen()
         
         contentView.addSubview(ultraView)
         

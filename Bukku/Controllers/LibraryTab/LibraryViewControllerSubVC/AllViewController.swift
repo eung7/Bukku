@@ -16,7 +16,7 @@ class AllViewController: UIViewController {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .getWhite()
+        collectionView.backgroundColor = .getDarkGreen()
         collectionView.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -55,6 +55,8 @@ class AllViewController: UIViewController {
     // MARK: - Helpers
     private func configureUI() {
         view.addSubview(collectionView)
+        view.backgroundColor = .getDarkGreen()
+        tabBarController?.delegate = self
         
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
@@ -106,5 +108,13 @@ extension AllViewController: UICollectionViewDelegateFlowLayout {
         let item = viewModel.manager.allBooks.remove(at: sourceIndexPath.row)
         viewModel.manager.allBooks.insert(item, at: destinationIndexPath.row)
         viewModel.saveBooks()
+    }
+}
+
+extension AllViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if tabBarController.selectedIndex == 0 {
+            print("TAB!")
+        }
     }
 }

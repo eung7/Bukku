@@ -27,14 +27,14 @@ class MemoTabmanViewController: TabmanViewController {
         bar.layout.separatorColor = .getDarkGreen()
         bar.layout.contentMode = .fit
         bar.backgroundView.style = .clear
-        bar.backgroundColor = .getWhite()
         bar.layout.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        bar.indicator.tintColor = .getDarkGreen()
+        bar.indicator.tintColor = .getWhite()
+        bar.backgroundColor = .getDarkGreen()
         bar.indicator.overscrollBehavior = .compress
         bar.buttons.customize { button in
-            button.tintColor = .getDarkGreen()
-            button.selectedTintColor = .getDarkGreen()
-            button.font = .systemFont(ofSize: 18.0, weight: .thin)
+            button.tintColor = .getWhite()
+            button.selectedTintColor = .getWhite()
+            button.font = .systemFont(ofSize: 18.0, weight: .medium)
         }
         
         return bar
@@ -47,7 +47,7 @@ class MemoTabmanViewController: TabmanViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = .getWhite()
+        view.backgroundColor = .getDarkGreen()
         view.addSubview(tempView)
         
         [ reviewVC, bookmarkVC ]

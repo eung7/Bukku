@@ -16,7 +16,7 @@ class BookListCell: UICollectionViewCell {
 
     let thumbnailImage: UIImageView = {
         let iv = UIImageView()
-        iv.tintColor = .getDarkGreen()
+        iv.tintColor = .getWhite()
         iv.layer.borderWidth = 1
         
         return iv
@@ -24,8 +24,8 @@ class BookListCell: UICollectionViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getDarkGreen()
-        label.font = .systemFont(ofSize: 18.0, weight: .semibold)
+        label.textColor = .getWhite()
+        label.font = .systemFont(ofSize: 24.0, weight: .semibold)
         label.numberOfLines = 3
         
         return label
@@ -33,16 +33,16 @@ class BookListCell: UICollectionViewCell {
     
     let authorsLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getDarkGreen()
-        label.font = .systemFont(ofSize: 16.0, weight: .light)
+        label.textColor = .getWhite()
+        label.font = .systemFont(ofSize: 16.0, weight: .medium)
         
         return label
     }()
     
     let publisherLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getDarkGreen()
-        label.font = .systemFont(ofSize: 14.0, weight: .ultraLight)
+        label.textColor = .getWhite()
+        label.font = .systemFont(ofSize: 14.0, weight: .medium)
         
         return label
     }()
@@ -77,12 +77,12 @@ class BookListCell: UICollectionViewCell {
     }
     
     func configureUI() {
-        contentView.backgroundColor = .getWhite()
-        contentView.layer.borderColor = UIColor.getDarkGreen().cgColor
+        contentView.backgroundColor = .getDarkGreen()
+        contentView.layer.borderColor = UIColor.getWhite().cgColor
         contentView.layer.cornerRadius = 10
         contentView.layer.borderWidth = 1
         contentView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        contentView.layer.shadowColor = UIColor.getDarkGreen().cgColor
+        contentView.layer.shadowColor = UIColor.getWhite().cgColor
         contentView.layer.shadowOpacity = 0.5
 
         let verticalStack = UIStackView(arrangedSubviews: [ titleLabel, authorsLabel, publisherLabel ])

@@ -14,6 +14,8 @@ class LoadingFooterView: UICollectionReusableView {
     
     let indicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        indicator.tintColor = .getWhite()
+        indicator.color = .getWhite()
         
         return indicator
     }()

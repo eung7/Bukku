@@ -20,14 +20,30 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     weak var delegate: LibraryDetailHeaderViewDelegate?
     var book: LibraryBook?
     
+    let topBackground: UIView = {
+        let view = UIView()
+        view.backgroundColor = .getGray()
+        
+        return view
+    }()
+    
+    let bottomBackground: UIView = {
+        let view = UIView()
+        view.backgroundColor = .getDarkGreen()
+        
+        return view
+    }()
+    
     let bookImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .getDarkGreen()
         iv.layer.borderWidth = 1
-        iv.layer.borderColor = UIColor.getDarkGreen().cgColor
+        iv.layer.borderColor = UIColor.getWhite().cgColor
         iv.layer.shadowOpacity = 0.5
         iv.layer.shadowOffset = CGSize(width: 0, height: 0)
-        iv.layer.shadowColor = UIColor.getDarkGreen().cgColor
+        iv.layer.shadowColor = UIColor.getWhite().cgColor
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
         
         return iv
     }()
@@ -40,18 +56,18 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getDarkGreen()
         label.numberOfLines = 3
+        label.textColor = .getWhite()
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 32.0, weight: .heavy)
+        label.font = .systemFont(ofSize: 32.0, weight: .bold)
         
         return label
     }()
     
     let authorLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getDarkGreen()
-        label.font = .systemFont(ofSize: 18.0, weight: .thin)
+        label.textColor = .getWhite()
+        label.font = .systemFont(ofSize: 18.0, weight: .medium)
         label.textAlignment = .center
         
         return label
@@ -59,7 +75,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     
     let lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getDarkGreen()
+        view.backgroundColor = .getWhite()
         
         return view
     }()
@@ -67,7 +83,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     let reviewTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 30.0, weight: .semibold)
-        label.textColor = .getDarkGreen()
+        label.textColor = .getWhite()
         label.textAlignment = .center
         label.text = "내 서평"
         
@@ -77,7 +93,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     let bookmarkTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 30.0, weight: .semibold)
-        label.textColor = .getDarkGreen()
+        label.textColor = .getWhite()
         label.textAlignment = .left
         label.text = "내 책갈피"
         
@@ -99,7 +115,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     
     lazy var reviewLabel: BasePaddingLabel = {
         let label = BasePaddingLabel(padding: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
-        label.font = .systemFont(ofSize: 18.0, weight: .semibold)
+        label.font = .systemFont(ofSize: 18.0, weight: .medium)
         label.textColor = .getDarkGreen()
         label.numberOfLines = 0
         label.text = "서평을 입력해주세요!"
@@ -116,7 +132,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
         button.addTarget(self, action: #selector(didTapWriteReviewButton), for: .touchUpInside)
         button.setImage(UIImage(systemName: "pencil"), for: .normal)
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 30.0), forImageIn: .normal)
-        button.tintColor = .getDarkGreen()
+        button.tintColor = .getWhite()
         
         return button
     }()
@@ -126,7 +142,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
         button.addTarget(self, action: #selector(didTapWriteBookmarkButton), for: .touchUpInside)
         button.setImage(UIImage(systemName: "pencil"), for: .normal)
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 30.0), forImageIn: .normal)
-        button.tintColor = .getDarkGreen()
+        button.tintColor = .getWhite()
         
         return button
     }()
@@ -162,25 +178,35 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Helpers
     func configureUI() {
-        [ bookImageView, titleLabel, authorLabel, changeLibraryButton, lineView, reviewTitleLabel, writeReviewButton, reviewSuperView, bookmarkTitleLabel, writeBookmarkButton ]
+        [ topBackground, bottomBackground, bookImageView, titleLabel, authorLabel, changeLibraryButton, lineView, reviewTitleLabel, writeReviewButton, reviewSuperView, bookmarkTitleLabel, writeBookmarkButton ]
             .forEach { self.addSubview($0) }
 
         reviewSuperView.addSubview(reviewLabel)
+        
+        topBackground.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(lineView.snp.top)
+        }
+        
+        bottomBackground.snp.makeConstraints { make in
+            make.top.equalTo(lineView.snp.bottom)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
 
         reviewLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
 
         bookImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(8)
+            make.top.equalToSuperview().inset(16)
             make.centerX.equalToSuperview()
             make.width.equalTo(120)
             make.height.equalTo(174)
         }
-
+        
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(8)
-            make.top.equalTo(bookImageView.snp.bottom).offset(8)
+            make.top.equalTo(bookImageView.snp.bottom).offset(16)
         }
 
         authorLabel.snp.makeConstraints { make in
@@ -197,14 +223,14 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
         lineView.snp.makeConstraints { make in
             make.top.equalTo(changeLibraryButton.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(0.5)
+            make.height.equalTo(1.0)
         }
-
+        
         reviewTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(lineView.snp.bottom).offset(16)
             make.leading.equalToSuperview().inset(16)
         }
-
+        
         writeReviewButton.snp.makeConstraints { make in
             make.centerY.equalTo(reviewTitleLabel)
             make.trailing.equalToSuperview().inset(16)
@@ -229,10 +255,8 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     
     func configureData(_ book: LibraryBook) {
         self.book = book
-        
         titleLabel.text = book.title
         authorLabel.text = book.author
-        
         let image = UIImage(data: book.image) ?? UIImage()
         bookImageView.image = image
         
@@ -241,3 +265,4 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
         }
     }
 }
+

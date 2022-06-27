@@ -56,6 +56,18 @@ class LibraryViewController: UIViewController {
         return button
     }()
     
+    lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar(frame: .zero)
+        searchBar.delegate = self
+        searchBar.placeholder = "수 많은 책을 검색해보세요 !"
+        searchBar.searchTextField.tintColor = .getDarkGreen()
+        searchBar.searchTextField.textColor = .getDarkGreen()
+        searchBar.barTintColor = .getDarkGreen()
+        searchBar.searchTextField.backgroundColor = .getWhite()
+        
+        return searchBar
+    }()
+    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,13 +92,15 @@ class LibraryViewController: UIViewController {
     
     @objc private func didTapGearButton() {
         let settingVC = SettingViewController()
-        navigationController?.pushViewController(settingVC, animated: true)
+        let navVC = UINavigationController(rootViewController: settingVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
     }
     
     // MARK: - Helpers
     private func configureUI() {
         view.backgroundColor = .getWhite()
-        view.addSubview(containerView)
+        view.addSubview(searchBar)
         tabBarController?.delegate = self
         
         let buttonStack = UIStackView(arrangedSubviews: [ gearButton, searchButton ])
@@ -97,8 +111,8 @@ class LibraryViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: buttonStack)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: addButton)
         
-        containerView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+        searchBar.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
         }
         
         tabmanRootVC.view.translatesAutoresizingMaskIntoConstraints = false
@@ -106,7 +120,8 @@ class LibraryViewController: UIViewController {
         self.view.addSubview(tabmanRootVC.view)
         
         tabmanRootVC.view.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(searchBar.snp.bottom)
+            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -148,6 +163,17 @@ extension LibraryViewController: UITabBarControllerDelegate {
             tabmanRootVC.readingVC.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             tabmanRootVC.willVC.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             tabmanRootVC.doneVC.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            viewWillAppear(true)
         }
+    }
+}
+
+extension LibraryViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        let searchVC = SearchViewController()
+        let searchNavVC = UINavigationController(rootViewController: searchVC)
+        searchNavVC.modalPresentationStyle = .fullScreen
+        present(searchNavVC, animated: true)
     }
 }

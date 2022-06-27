@@ -15,7 +15,7 @@ class MemoViewController: UIViewController {
 
     lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getOrange()
+        view.backgroundColor = .getDarkGreen()
         view.clipsToBounds = true
     
         return view
@@ -56,12 +56,13 @@ class MemoViewController: UIViewController {
     @objc private func didTapGearButton() {
         let settingVC = SettingViewController()
         let navVC = UINavigationController(rootViewController: settingVC)
+        navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
     }
     
     // MARK: - Helpers
     private func configureUI() {
-        view.backgroundColor = .getWhite()
+        view.backgroundColor = .getDarkGreen()
         navigationItem.title = "메모"
         tabBarController?.delegate = self
         
@@ -87,6 +88,7 @@ class MemoViewController: UIViewController {
     }
 }
 
+// MARK: - UITabBarControllerDelegate
 extension MemoViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if tabBarController.selectedIndex == 1 {

@@ -14,18 +14,24 @@ class SettingTableViewCell: UITableViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .getDarkGreen()
+        label.font = .systemFont(ofSize: 18.0, weight: .semibold)
         
         return label
     }()
     
     lazy var resultLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .getDarkGreen()
+        label.font = .systemFont(ofSize: 18.0, weight: .semibold)
         
         return label
     }()
     
     // MARK: - Helpers
     func configureUI() {
+        contentView.backgroundColor = .getWhite()
+        
         [ titleLabel, resultLabel ]
             .forEach { contentView.addSubview($0) }
         
@@ -40,7 +46,8 @@ class SettingTableViewCell: UITableViewCell {
         }
     }
     
-    func configureData(_ list: [String: String]) {
-        
+    func configureData(_ list: String, results: String?) {
+        titleLabel.text = list
+        resultLabel.text = results
     }
 }

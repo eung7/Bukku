@@ -14,13 +14,13 @@ class MemoBookmarkTableViewCell: UITableViewCell {
     
     lazy var ultraView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getWhite()
+        view.backgroundColor = .getGray()
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.getDarkGreen().cgColor
+        view.layer.borderColor = UIColor.getWhite().cgColor
         view.layer.cornerRadius = 5
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowOpacity = 0.5
-        view.layer.shadowColor = UIColor.getDarkGreen().cgColor
+        view.layer.shadowColor = UIColor.getWhite().cgColor
         
         return view
     }()
@@ -28,10 +28,12 @@ class MemoBookmarkTableViewCell: UITableViewCell {
     lazy var bookImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .clear
-        iv.layer.borderColor = UIColor.getDarkGreen().cgColor
+        iv.layer.borderColor = UIColor.getWhite().cgColor
         iv.layer.shadowOffset = CGSize(width: 0, height: 0)
-        iv.layer.shadowColor = UIColor.getDarkGreen().cgColor
+        iv.layer.shadowColor = UIColor.getWhite().cgColor
         iv.layer.shadowOpacity = 0.5
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
         
         return iv
     }()
@@ -39,7 +41,7 @@ class MemoBookmarkTableViewCell: UITableViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
-        label.textColor = .getDarkGreen()
+        label.textColor = .getWhite()
         label.font = .systemFont(ofSize: 24.0, weight: .semibold)
         
         return label
@@ -48,8 +50,8 @@ class MemoBookmarkTableViewCell: UITableViewCell {
     lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = .getDarkGreen()
-        label.font = .systemFont(ofSize: 16.0, weight: .thin)
+        label.textColor = .getWhite()
+        label.font = .systemFont(ofSize: 16.0, weight: .medium)
         
         return label
     }()
@@ -57,9 +59,9 @@ class MemoBookmarkTableViewCell: UITableViewCell {
     lazy var bookmarkLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 3
-        label.textColor = .getWhite()
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 18.0, weight: .semibold)
+        label.textColor = .getDarkGreen()
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 18.0, weight: .medium)
         
         return label
     }()
@@ -67,7 +69,7 @@ class MemoBookmarkTableViewCell: UITableViewCell {
     lazy var bookmarkImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "bookmark.fill")
-        iv.tintColor = .getWhite()
+        iv.tintColor = .getDarkGreen()
         
         return iv
     }()
@@ -75,14 +77,14 @@ class MemoBookmarkTableViewCell: UITableViewCell {
     lazy var bookmarkImage_Count: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "bookmark.fill")
-        iv.tintColor = .getWhite()
+        iv.tintColor = .getDarkGreen()
         
         return iv
     }()
     
     lazy var bookmarkCountLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getWhite()
+        label.textColor = .getDarkGreen()
         label.font = .systemFont(ofSize: 16.0, weight: .medium)
         
         return label
@@ -90,7 +92,7 @@ class MemoBookmarkTableViewCell: UITableViewCell {
     
     lazy var pageLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getWhite()
+        label.textColor = .getDarkGreen()
         label.font = .systemFont(ofSize: 16.0, weight: .medium)
         
         return label
@@ -98,7 +100,7 @@ class MemoBookmarkTableViewCell: UITableViewCell {
     
     lazy var bookmarkUltraView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getDarkGreen()
+        view.backgroundColor = .getWhite()
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.getDarkGreen().cgColor
         view.layer.cornerRadius = 5
@@ -111,7 +113,7 @@ class MemoBookmarkTableViewCell: UITableViewCell {
     
     lazy var pinImageView: UIImageView = {
         let iv = UIImageView()
-        iv.tintColor = .getWhite()
+        iv.tintColor = .getDarkGreen()
         iv.image = UIImage(systemName: "pin.fill")
         
         return iv
@@ -120,7 +122,7 @@ class MemoBookmarkTableViewCell: UITableViewCell {
     // MARK: - Helpers
     func configureUI() {
         contentView.addSubview(ultraView)
-        contentView.backgroundColor = .getWhite()
+        contentView.backgroundColor = .getDarkGreen()
         
         let stack = UIStackView(arrangedSubviews: [ titleLabel, authorLabel ])
         stack.axis = .vertical

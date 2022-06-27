@@ -25,7 +25,8 @@ class AddBookViewController: UIViewController {
         iv.layer.shadowOpacity = 0.5
         iv.layer.shadowOffset = CGSize(width: 0, height: 0)
         iv.layer.shadowColor = UIColor.getDarkGreen().cgColor
-        iv.contentMode = .scaleToFill
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
         
         return iv
     }()

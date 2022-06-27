@@ -14,7 +14,7 @@ class MemoBookmarkViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .getWhite()
+        tableView.backgroundColor = .getDarkGreen()
         tableView.separatorStyle = .none
         tableView.register(MemoBookmarkTableViewCell.self, forCellReuseIdentifier: MemoBookmarkTableViewCell.identifier)
         tableView.dataSource = self

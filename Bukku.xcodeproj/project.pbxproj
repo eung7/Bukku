@@ -299,10 +299,10 @@
 		E5A36248285DCE370023BE49 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				E5CAC16D286832D0004445BA /* SettingTableViewCell.swift */,
 				E5A3624B285DCE600023BE49 /* MemoTab */,
 				E5A3624A285DCE510023BE49 /* LibraryTab */,
 				E5A36249285DCE400023BE49 /* SearchTab */,
-				E5CAC16D286832D0004445BA /* SettingTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";

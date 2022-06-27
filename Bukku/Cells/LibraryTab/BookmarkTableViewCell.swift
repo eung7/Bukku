@@ -16,7 +16,7 @@ class BookmarkTableViewCell: UITableViewCell {
     
     let pageLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .getWhite()
+        label.textColor = .getDarkGreen()
         label.font = .systemFont(ofSize: 16.0, weight: .medium)
         
         return label
@@ -25,7 +25,7 @@ class BookmarkTableViewCell: UITableViewCell {
     let bookmarkImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "bookmark.fill")
-        iv.tintColor = .getWhite()
+        iv.tintColor = .getDarkGreen()
         
         return iv
     }()
@@ -33,22 +33,22 @@ class BookmarkTableViewCell: UITableViewCell {
     let contentsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .getWhite()
+        label.textColor = .getDarkGreen()
         label.adjustsFontSizeToFitWidth = true
-        label.font = .systemFont(ofSize: 18.0, weight: .semibold)
+        label.font = .systemFont(ofSize: 18.0, weight: .medium)
     
         return label
     }()
     
     let ultraView: UIView = {
         let view = UIView()
-        view.backgroundColor = .getDarkGreen()
+        view.backgroundColor = .getWhite()
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.getDarkGreen().cgColor
+        view.layer.borderColor = UIColor.getWhite().cgColor
         view.layer.cornerRadius = 10
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowOpacity = 1.0
-        view.layer.shadowColor = UIColor.getDarkGreen().cgColor
+        view.layer.shadowColor = UIColor.getWhite().cgColor
         
         return view
     }()
@@ -56,7 +56,7 @@ class BookmarkTableViewCell: UITableViewCell {
     lazy var trashButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.tintColor = .getWhite()
+        button.tintColor = .getDarkGreen()
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration.init(pointSize: 16.0), forImageIn: .normal)
         button.addTarget(self, action: #selector(didTapXmarkButton), for: .touchUpInside)
         
@@ -66,7 +66,7 @@ class BookmarkTableViewCell: UITableViewCell {
     lazy var pinImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "pin.fill")
-        iv.tintColor = .getWhite()
+        iv.tintColor = .getDarkGreen()
         iv.isHidden = true
         
         return iv
@@ -80,7 +80,7 @@ class BookmarkTableViewCell: UITableViewCell {
     
     // MARK: - Helpers
     func configureUI() {
-        contentView.backgroundColor = .getWhite()
+        contentView.backgroundColor = .getDarkGreen()
         contentView.addSubview(ultraView)
         
         ultraView.snp.makeConstraints { make in
