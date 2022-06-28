@@ -44,7 +44,7 @@ extension LibraryManager {
             switch result {
             case .success(let value):
                 guard let imageData = value.image.pngData() else { return }
-                let book = LibraryBook(id: book.isbn, title: book.title, review: "", author: book.authors.first!, image: imageData, bookmark: [], type: libraryType)
+                let book = LibraryBook(id: book.isbn, title: book.title, review: "", author: book.authors.first!, image: imageData, publisher: book.publisher, bookmark: [], type: libraryType)
                 self?.allBooks.insert(book, at: 0)
                 self?.saveBook()
             case .failure(let error):
@@ -55,7 +55,7 @@ extension LibraryManager {
     
     func createBook_WriteAddVC(_ libraryType: LibraryType, title: String, author: String, image: UIImage) {
         guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
-        let book = LibraryBook(id: UUID().uuidString, title: title, review: "", author: author, image: imageData, bookmark: [], type: libraryType)
+        let book = LibraryBook(id: UUID().uuidString, title: title, review: "", author: author, image: imageData, publisher: "", bookmark: [], type: libraryType)
         allBooks.insert(book, at: 0)
         saveBook()
     }

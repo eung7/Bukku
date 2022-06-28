@@ -1,0 +1,20 @@
+PODS:
+  - Cosmos (23.0.0)
+  - THLabel (1.4.10)
+
+DEPENDENCIES:
+  - Cosmos (~> 23.0)
+  - THLabel (~> 1.4.0)
+
+SPEC REPOS:
+  trunk:
+    - Cosmos
+    - THLabel
+
+SPEC CHECKSUMS:
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
+  THLabel: 3fc93a0f01f74e4eec7574df2819e576d57150b3
+
+PODFILE CHECKSUM: c3d6f6d0bb30d7cd8229603b36b0b7bce6758f83
+
+COCOAPODS: 1.11.2

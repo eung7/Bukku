@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Cosmos
 
 protocol LibraryDetailHeaderViewDelegate: AnyObject {
     func didTapWriteReviewButton(_ book: LibraryBook)
@@ -113,6 +114,23 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
         return view
     }()
     
+    lazy var cosmos: CosmosView = {
+        let cosmos = CosmosView()
+        cosmos.settings.updateOnTouch = true
+        cosmos.settings.fillMode = .half
+        cosmos.settings.starSize = 40
+        cosmos.settings.starMargin = 5
+        cosmos.settings.emptyBorderColor = .getWhite()
+        cosmos.settings.emptyBorderWidth = 1
+        cosmos.settings.filledBorderColor = .getWhite()
+        cosmos.settings.filledColor = .getOrange()
+        cosmos.didFinishTouchingCosmos = { rating in
+            print(rating)
+        }
+        
+        return cosmos
+    }()
+    
     lazy var reviewLabel: BasePaddingLabel = {
         let label = BasePaddingLabel(padding: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
         label.font = .systemFont(ofSize: 18.0, weight: .medium)
@@ -178,7 +196,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Helpers
     func configureUI() {
-        [ topBackground, bottomBackground, bookImageView, titleLabel, authorLabel, changeLibraryButton, lineView, reviewTitleLabel, writeReviewButton, reviewSuperView, bookmarkTitleLabel, writeBookmarkButton ]
+        [ topBackground, bottomBackground, bookImageView, titleLabel, authorLabel, changeLibraryButton, lineView, reviewTitleLabel, writeReviewButton, reviewSuperView, bookmarkTitleLabel, writeBookmarkButton, cosmos ]
             .forEach { self.addSubview($0) }
 
         reviewSuperView.addSubview(reviewLabel)
@@ -213,9 +231,14 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
             make.centerX.equalToSuperview()
             make.top.equalTo(titleLabel.snp.bottom).offset(4)
         }
+        
+        cosmos.snp.makeConstraints { make in
+            make.top.equalTo(authorLabel.snp.bottom).offset(4)
+            make.centerX.equalToSuperview()
+        }
 
         changeLibraryButton.snp.makeConstraints { make in
-            make.top.equalTo(authorLabel.snp.bottom).offset(8)
+            make.top.equalTo(cosmos.snp.bottom).offset(8)
             make.leading.trailing.equalToSuperview().inset(16)
             make.height.equalTo(40)
         }
@@ -259,6 +282,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
         authorLabel.text = book.author
         let image = UIImage(data: book.image) ?? UIImage()
         bookImageView.image = image
+        authorLabel.text = "\(book.author) / \(book.publisher)"
         
         if book.review != "" {
             reviewLabel.text = book.review

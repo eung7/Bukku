@@ -13,6 +13,8 @@ struct LibraryBook: Codable, Identifiable, Equatable {
     var review: String
     let author: String
     let image: Data
+    let publisher: String
+    var rating: Double = 3.5
     var bookmark: [Bookmark]
     var type: LibraryType
     
@@ -26,3 +28,4 @@ struct LibraryBook: Codable, Identifiable, Equatable {
         return lhs.id == rhs.id
     }
 }
+
