@@ -45,7 +45,7 @@ class LibraryDetailViewModel {
     func removeBook(_ book: LibraryBook) {
         manager.removeBook(book)
     }
-        
+    
     func removeBookmark(_ book: LibraryBook, index: Int) {
         var book = book
         let targetBookmark = detailBookmarks[index]

@@ -15,6 +15,10 @@ class SearchLibraryViewController: UIViewController {
     
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0))
+        searchBar.searchTextField.tintColor = .getDarkGreen()
+        searchBar.searchTextField.textColor = .getDarkGreen()
+        searchBar.tintColor = .getDarkGreen()
+        searchBar.searchTextField.leftView?.tintColor = .getDarkGreen()
         searchBar.placeholder = "내 서재에서 책을 찾아요."
         searchBar.returnKeyType = .search
         searchBar.delegate = self

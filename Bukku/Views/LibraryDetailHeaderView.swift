@@ -282,13 +282,18 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
         authorLabel.text = book.author
         let image = UIImage(data: book.image) ?? UIImage()
         bookImageView.image = image
-        authorLabel.text = "\(book.author) / \(book.publisher)"
         
-        cosmos.rating = book.rating
+        if book.publisher != "" {
+            authorLabel.text = "\(book.author) / \(book.publisher)"
+        } else {
+            authorLabel.text = book.author
+        }
         
         if book.review != "" {
             reviewLabel.text = book.review
         }
+
+        cosmos.rating = book.rating
     }
 }
 
