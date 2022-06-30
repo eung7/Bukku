@@ -69,8 +69,10 @@
 
 ## version history
 
-### v1.0.0
-> Release App (will be)
+### v1.0.5
+> Release App 
+### v1.1.1
+> UI 업데이트, 버그 수정
 
 ---
 
