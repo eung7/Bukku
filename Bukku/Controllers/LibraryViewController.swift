@@ -62,6 +62,8 @@ class LibraryViewController: UIViewController {
         searchBar.placeholder = "수 많은 책을 검색해보세요 !"
         searchBar.searchTextField.tintColor = .getDarkGreen()
         searchBar.searchTextField.textColor = .getDarkGreen()
+        searchBar.tintColor = .getDarkGreen()
+        searchBar.searchTextField.leftView?.tintColor = .getDarkGreen()
         searchBar.barTintColor = .getDarkGreen()
         searchBar.searchTextField.backgroundColor = .getWhite()
         

@@ -24,3 +24,4 @@ class SearchLibraryViewModel {
         return result.count
     }
 }
+

@@ -132,14 +132,13 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
         return cosmos
     }()
     
-    lazy var reviewLabel: BasePaddingLabel = {
-        let label = BasePaddingLabel(padding: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
+    lazy var reviewLabel: UILabel = {
+        let label = UILabel()
         label.font = .systemFont(ofSize: 18.0, weight: .medium)
         label.textColor = .getDarkGreen()
         label.numberOfLines = 0
         label.text = "서평을 입력해주세요!"
         label.textAlignment = .left
-        label.adjustsFontSizeToFitWidth = true
         label.backgroundColor = .clear
         label.clipsToBounds = true
         
@@ -213,7 +212,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
         }
 
         reviewLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(16)
         }
 
         bookImageView.snp.makeConstraints { make in

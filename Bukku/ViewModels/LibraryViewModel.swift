@@ -9,11 +9,27 @@ import Foundation
 
 class LibraryViewModel {
     let manager = LibraryManager.shared
+    
+    var allBooks: [LibraryBook] {
+        return manager.allBooks
+    }
+    
+    var readingBooks: [LibraryBook] {
+        return manager.readingBooks
+    }
+    
+    var willBooks: [LibraryBook] {
+        return manager.willReadBooks
+    }
 
+    var doneBooks: [LibraryBook] {
+        return manager.doneReadBooks
+    }
+    
     func getBookFromIndex(_ type: LibraryType?, index: Int) -> LibraryBook {
         switch type {
         case .reading:
-            return manager.readingBooks[index]
+            return readingBooks[index]
         case .willRead:
             return manager.willReadBooks[index]
         case .doneRead:

@@ -20,6 +20,7 @@
 		E531BE0828606B9800EC889E /* TabmanRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E531BE0728606B9800EC889E /* TabmanRootViewController.swift */; };
 		E54B3F492864CF0800F568C8 /* Stroage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B3F482864CF0800F568C8 /* Stroage.swift */; };
 		E5569B3F285E4D56007D927B /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5569B3E285E4D56007D927B /* Utilities.swift */; };
+		E55BD333286DCE2D00C11559 /* LibraryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55BD332286DCE2C00C11559 /* LibraryCollectionViewController.swift */; };
 		E566FAE62864330E006FC8D7 /* BookmarkDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E566FAE52864330E006FC8D7 /* BookmarkDefaultTableViewCell.swift */; };
 		E566FAE8286442E4006FC8D7 /* LibraryDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E566FAE7286442E4006FC8D7 /* LibraryDetailHeaderView.swift */; };
 		E566FAEA28644C08006FC8D7 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E566FAE928644C08006FC8D7 /* AddBookViewController.swift */; };
@@ -94,12 +95,13 @@
 		E51A37882840F64B00DF074B /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		E51A378D2840F64D00DF074B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E51A37902840F64D00DF074B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E51A37922840F64D00DF074B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E51A37982840FA3200DF074B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E51A37A32840FDC400DF074B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		E531BE0728606B9800EC889E /* TabmanRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabmanRootViewController.swift; sourceTree = "<group>"; };
 		E54B3F482864CF0800F568C8 /* Stroage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroage.swift; sourceTree = "<group>"; };
 		E5569B3E285E4D56007D927B /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		E55BD330286DCC0D00C11559 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E55BD332286DCE2C00C11559 /* LibraryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionViewController.swift; sourceTree = "<group>"; };
 		E566FAE52864330E006FC8D7 /* BookmarkDefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkDefaultTableViewCell.swift; sourceTree = "<group>"; };
 		E566FAE7286442E4006FC8D7 /* LibraryDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDetailHeaderView.swift; sourceTree = "<group>"; };
 		E566FAE928644C08006FC8D7 /* AddBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
@@ -228,7 +230,7 @@
 				E51A37A22840FDAE00DF074B /* Extensions */,
 				E51A378D2840F64D00DF074B /* Assets.xcassets */,
 				E51A378F2840F64D00DF074B /* LaunchScreen.storyboard */,
-				E51A37922840F64D00DF074B /* Info.plist */,
+				E55BD330286DCC0D00C11559 /* Info.plist */,
 			);
 			path = Bukku;
 			sourceTree = "<group>";
@@ -240,6 +242,7 @@
 				E5D2BC0A2865FF8700D56AB2 /* SearchLibraryViewController.swift */,
 				E5CC842B2867647F00977077 /* SettingViewController.swift */,
 				E531BE0728606B9800EC889E /* TabmanRootViewController.swift */,
+				E55BD332286DCE2C00C11559 /* LibraryCollectionViewController.swift */,
 				E59760E0285C869100BA3DB0 /* AllViewController.swift */,
 				E59760E2285C86B100BA3DB0 /* ReadingViewController.swift */,
 				E59760E4285C86BC00BA3DB0 /* WillReadViewController.swift */,
@@ -538,6 +541,7 @@
 				E5A69160284639EE009F6048 /* SearchService.swift in Sources */,
 				E5CC842428672ACF00977077 /* MemoReviewTableViewCell.swift in Sources */,
 				E5ABC58828647ADF00E6B519 /* UIImage+Extensions.swift in Sources */,
+				E55BD333286DCE2D00C11559 /* LibraryCollectionViewController.swift in Sources */,
 				E5D2BC092865852C00D56AB2 /* BookDetailViewModel.swift in Sources */,
 				E566FAE8286442E4006FC8D7 /* LibraryDetailHeaderView.swift in Sources */,
 				E51A37A42840FDC400DF074B /* UIColor+Extensions.swift in Sources */,

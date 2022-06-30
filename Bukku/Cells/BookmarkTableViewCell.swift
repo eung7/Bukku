@@ -103,8 +103,8 @@ class BookmarkTableViewCell: UITableViewCell {
         contentsLabel.snp.makeConstraints { make in
             make.top.equalTo(stackView.snp.bottom).offset(2)
             make.leading.trailing.equalToSuperview().inset(16)
-            make.height.greaterThanOrEqualTo(50)
-            make.bottom.equalToSuperview().inset(8)
+            make.height.greaterThanOrEqualTo(30)
+            make.bottom.equalToSuperview().inset(4)
         }
         
         trashButton.snp.makeConstraints { make in
