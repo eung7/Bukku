@@ -244,4 +244,11 @@ extension LibraryDetailViewController: LibraryDetailHeaderViewDelegate {
         }
         presentPanModal(changeLibraryVC)
     }
+    
+    func didFinishTouchingCosmos(_ rating: Double) {
+        var book = viewModel.book
+        book.rating = rating
+        viewModel.manager.updateBook(book)
+        tableView.reloadData()
+    }
 }

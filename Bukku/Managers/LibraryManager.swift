@@ -73,7 +73,7 @@ extension LibraryManager {
     
     func updateBook(_ book: LibraryBook) {
         guard let index = allBooks.firstIndex(of: book) else { return }
-        allBooks[index].update(review: book.review, bookmark: book.bookmark, type: book.type)
+        allBooks[index].update(review: book.review, bookmark: book.bookmark, rating: book.rating, type: book.type)
         saveBook()
     }
     

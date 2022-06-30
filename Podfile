@@ -6,7 +6,6 @@ target 'Bukku' do
   use_frameworks!
 
   pod 'Cosmos', '~> 23.0'
-  pod 'THLabel', '~> 1.4.0'
 
   # Pods for Bukku
 

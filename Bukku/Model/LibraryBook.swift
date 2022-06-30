@@ -10,18 +10,19 @@ import Foundation
 struct LibraryBook: Codable, Identifiable, Equatable {
     let id: String
     let title: String
-    var review: String
+    var review: String 
     let author: String
     let image: Data
     let publisher: String
-    var rating: Double = 3.5
+    var rating: Double = 2.5
     var bookmark: [Bookmark]
     var type: LibraryType
     
-    mutating func update(review: String, bookmark: [Bookmark], type: LibraryType) {
+    mutating func update(review: String, bookmark: [Bookmark], rating: Double, type: LibraryType) {
         self.review = review
         self.bookmark = bookmark
         self.type = type
+        self.rating = rating
     }
     
     static func == (lhs: Self, rhs: Self) -> Bool {

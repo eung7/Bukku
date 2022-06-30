@@ -13,6 +13,7 @@ protocol LibraryDetailHeaderViewDelegate: AnyObject {
     func didTapWriteReviewButton(_ book: LibraryBook)
     func didTapWriteBookmarkButton(_ book: LibraryBook)
     func didTapChangeLibraryButton(_ book: LibraryBook)
+    func didFinishTouchingCosmos(_ rating: Double)
 }
 
 class LibraryDetailHeaderView: UITableViewHeaderFooterView {
@@ -124,8 +125,8 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
         cosmos.settings.emptyBorderWidth = 1
         cosmos.settings.filledBorderColor = .getWhite()
         cosmos.settings.filledColor = .getOrange()
-        cosmos.didFinishTouchingCosmos = { rating in
-            print(rating)
+        cosmos.didFinishTouchingCosmos = { [weak self] rating in
+            self?.delegate?.didFinishTouchingCosmos(rating)
         }
         
         return cosmos
@@ -233,7 +234,7 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
         }
         
         cosmos.snp.makeConstraints { make in
-            make.top.equalTo(authorLabel.snp.bottom).offset(4)
+            make.top.equalTo(authorLabel.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
         }
 
@@ -283,6 +284,8 @@ class LibraryDetailHeaderView: UITableViewHeaderFooterView {
         let image = UIImage(data: book.image) ?? UIImage()
         bookImageView.image = image
         authorLabel.text = "\(book.author) / \(book.publisher)"
+        
+        cosmos.rating = book.rating
         
         if book.review != "" {
             reviewLabel.text = book.review

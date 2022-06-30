@@ -188,7 +188,7 @@ class MemoBookmarkTableViewCell: UITableViewCell {
         pinImageView.isHidden = true
         bookImageView.image = UIImage(data: book.image)
         titleLabel.text = book.title
-        authorLabel.text = book.author
+        authorLabel.text = "\(book.author) / \(book.publisher)"
         bookmarkLabel.text = bookmark.contents
         bookmarkCountLabel.text = "X \(book.bookmark.count)"
         

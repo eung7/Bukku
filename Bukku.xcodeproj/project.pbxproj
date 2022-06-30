@@ -190,7 +190,6 @@
 				68673C3A77C91E7508CFFE43 /* Pods-Bukku.debug.xcconfig */,
 				0EC4C820EFE73AB341EBC92C /* Pods-Bukku.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -240,9 +239,24 @@
 				E51A37982840FA3200DF074B /* TabBarController.swift */,
 				E5D2BC0A2865FF8700D56AB2 /* SearchLibraryViewController.swift */,
 				E5CC842B2867647F00977077 /* SettingViewController.swift */,
-				E5A36246285DCDEC0023BE49 /* MemoTab */,
-				E5A36244285DCDBF0023BE49 /* LibraryTab */,
-				E5A36245285DCDD00023BE49 /* SearchTab */,
+				E531BE0728606B9800EC889E /* TabmanRootViewController.swift */,
+				E59760E0285C869100BA3DB0 /* AllViewController.swift */,
+				E59760E2285C86B100BA3DB0 /* ReadingViewController.swift */,
+				E59760E4285C86BC00BA3DB0 /* WillReadViewController.swift */,
+				E59760E6285C86C400BA3DB0 /* DoneReadViewController.swift */,
+				E592A3B62860A2820037491E /* ChangeLibraryViewController.swift */,
+				E5F3A9B4285CE0DC000E0E7D /* LibraryDetailViewController.swift */,
+				E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */,
+				E51A37882840F64B00DF074B /* MemoViewController.swift */,
+				E5CC841B286726BA00977077 /* MemoTabmanRootViewController.swift */,
+				E5CC841F2867270E00977077 /* MemoReviewViewController.swift */,
+				E5CC84212867271800977077 /* MemoBookmarkViewController.swift */,
+				E5A36240285D94E60023BE49 /* WriteReviewViewController.swift */,
+				E58203F8285F3B9D007513D7 /* WriteBookmarkViewController.swift */,
+				E566FAE928644C08006FC8D7 /* AddBookViewController.swift */,
+				E5A6916628464372009F6048 /* SearchViewController.swift */,
+				E59760CF285C228A00BA3DB0 /* BookDetailViewController.swift */,
+				E59760DA285C774700BA3DB0 /* SelectLibraryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -255,61 +269,6 @@
 				E5ABC58728647ADF00E6B519 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		E592A3B42860A2490037491E /* Write */ = {
-			isa = PBXGroup;
-			children = (
-				E5A36240285D94E60023BE49 /* WriteReviewViewController.swift */,
-				E58203F8285F3B9D007513D7 /* WriteBookmarkViewController.swift */,
-				E566FAE928644C08006FC8D7 /* AddBookViewController.swift */,
-			);
-			path = Write;
-			sourceTree = "<group>";
-		};
-		E592A3B52860A2580037491E /* LibraryViewControllerSubVC */ = {
-			isa = PBXGroup;
-			children = (
-				E531BE0728606B9800EC889E /* TabmanRootViewController.swift */,
-				E59760E0285C869100BA3DB0 /* AllViewController.swift */,
-				E59760E2285C86B100BA3DB0 /* ReadingViewController.swift */,
-				E59760E4285C86BC00BA3DB0 /* WillReadViewController.swift */,
-				E59760E6285C86C400BA3DB0 /* DoneReadViewController.swift */,
-			);
-			path = LibraryViewControllerSubVC;
-			sourceTree = "<group>";
-		};
-		E5A36244285DCDBF0023BE49 /* LibraryTab */ = {
-			isa = PBXGroup;
-			children = (
-				E592A3B42860A2490037491E /* Write */,
-				E592A3B62860A2820037491E /* ChangeLibraryViewController.swift */,
-				E5F3A9B4285CE0DC000E0E7D /* LibraryDetailViewController.swift */,
-				E59760CD285C171E00BA3DB0 /* LibraryViewController.swift */,
-				E592A3B52860A2580037491E /* LibraryViewControllerSubVC */,
-			);
-			path = LibraryTab;
-			sourceTree = "<group>";
-		};
-		E5A36245285DCDD00023BE49 /* SearchTab */ = {
-			isa = PBXGroup;
-			children = (
-				E5A6916628464372009F6048 /* SearchViewController.swift */,
-				E59760CF285C228A00BA3DB0 /* BookDetailViewController.swift */,
-				E59760DA285C774700BA3DB0 /* SelectLibraryViewController.swift */,
-			);
-			path = SearchTab;
-			sourceTree = "<group>";
-		};
-		E5A36246285DCDEC0023BE49 /* MemoTab */ = {
-			isa = PBXGroup;
-			children = (
-				E51A37882840F64B00DF074B /* MemoViewController.swift */,
-				E5CC841B286726BA00977077 /* MemoTabmanRootViewController.swift */,
-				E5CC841F2867270E00977077 /* MemoReviewViewController.swift */,
-				E5CC84212867271800977077 /* MemoBookmarkViewController.swift */,
-			);
-			path = MemoTab;
 			sourceTree = "<group>";
 		};
 		E5A36247285DCE230023BE49 /* Managers */ = {
@@ -325,74 +284,26 @@
 			isa = PBXGroup;
 			children = (
 				E5CAC16D286832D0004445BA /* SettingTableViewCell.swift */,
-				E5A3624B285DCE600023BE49 /* MemoTab */,
-				E5A3624A285DCE510023BE49 /* LibraryTab */,
-				E5A36249285DCE400023BE49 /* SearchTab */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		E5A36249285DCE400023BE49 /* SearchTab */ = {
-			isa = PBXGroup;
-			children = (
-				E5A6916A2846588E009F6048 /* BookListCell.swift */,
-			);
-			path = SearchTab;
-			sourceTree = "<group>";
-		};
-		E5A3624A285DCE510023BE49 /* LibraryTab */ = {
-			isa = PBXGroup;
-			children = (
 				E59760EA285CABE200BA3DB0 /* LibraryCollectionViewCell.swift */,
 				E5A36242285DAFD50023BE49 /* BookmarkTableViewCell.swift */,
 				E566FAE52864330E006FC8D7 /* BookmarkDefaultTableViewCell.swift */,
-			);
-			path = LibraryTab;
-			sourceTree = "<group>";
-		};
-		E5A3624B285DCE600023BE49 /* MemoTab */ = {
-			isa = PBXGroup;
-			children = (
 				E5CC842328672ACF00977077 /* MemoReviewTableViewCell.swift */,
 				E5CC84292867551200977077 /* MemoBookmarkTableViewCell.swift */,
+				E5A6916A2846588E009F6048 /* BookListCell.swift */,
 			);
-			path = MemoTab;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		E5A3624C285DCE730023BE49 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E5A3624F285DCE960023BE49 /* LibraryTab */,
-				E5A3624E285DCE8F0023BE49 /* MemoTab */,
-				E5A3624D285DCE890023BE49 /* SearchTab */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		E5A3624D285DCE890023BE49 /* SearchTab */ = {
-			isa = PBXGroup;
-			children = (
-				E5145C612848683300B9555F /* LoadingFooterView.swift */,
-			);
-			path = SearchTab;
-			sourceTree = "<group>";
-		};
-		E5A3624E285DCE8F0023BE49 /* MemoTab */ = {
-			isa = PBXGroup;
-			children = (
+				E566FAE7286442E4006FC8D7 /* LibraryDetailHeaderView.swift */,
 				E5DF2F692863590A0017F6EB /* MemoTableViewHeader.swift */,
 				E5F2F1E52841C16E007CF7C6 /* CollectionViewHeader.swift */,
 				E592B5D7285B91E000E60FAC /* CollectionViewFooter.swift */,
+				E5145C612848683300B9555F /* LoadingFooterView.swift */,
 			);
-			path = MemoTab;
-			sourceTree = "<group>";
-		};
-		E5A3624F285DCE960023BE49 /* LibraryTab */ = {
-			isa = PBXGroup;
-			children = (
-				E566FAE7286442E4006FC8D7 /* LibraryDetailHeaderView.swift */,
-			);
-			path = LibraryTab;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E5A6915E284639DD009F6048 /* Service */ = {
@@ -413,54 +324,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		E5B8DE1F2862CFC2007F22FC /* LibraryTab */ = {
-			isa = PBXGroup;
-			children = (
-				E5D2BBFF2864DA6100D56AB2 /* Write */,
-				E5B8DE222862D02B007F22FC /* LibraryViewModel.swift */,
-				E5820403285F63C3007513D7 /* LibraryDetailViewModel.swift */,
-				E5D2BC0628657FD700D56AB2 /* ChangeLibraryViewModel.swift */,
-				E5D2BC0C286607FA00D56AB2 /* SearchLibraryViewModel.swift */,
-			);
-			path = LibraryTab;
-			sourceTree = "<group>";
-		};
-		E5B8DE202862CFCA007F22FC /* SearchTab */ = {
-			isa = PBXGroup;
-			children = (
-				E5A6916C284659A7009F6048 /* SearchListViewModel.swift */,
-				E5D2BC082865852B00D56AB2 /* BookDetailViewModel.swift */,
-			);
-			path = SearchTab;
-			sourceTree = "<group>";
-		};
-		E5B8DE212862CFD2007F22FC /* MemoTab */ = {
-			isa = PBXGroup;
-			children = (
-				E5F2F1DF2841B421007CF7C6 /* MemoViewModel.swift */,
-				E5CC842528672D3200977077 /* MemoReviewViewModel.swift */,
-				E5CC842728674D5C00977077 /* MemoBookmarkViewModel.swift */,
-			);
-			path = MemoTab;
-			sourceTree = "<group>";
-		};
-		E5D2BBFF2864DA6100D56AB2 /* Write */ = {
-			isa = PBXGroup;
-			children = (
-				E5B8DE2428632B51007F22FC /* WriteReviewViewModel.swift */,
-				E5B8DE2728633B21007F22FC /* WriteBookmarkViewModel.swift */,
-				E5D2BC002864DA6F00D56AB2 /* AddBookViewModel.swift */,
-			);
-			path = Write;
-			sourceTree = "<group>";
-		};
 		E5F2F1DE2841B414007CF7C6 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				E5CC842D2867823600977077 /* SettingViewModel.swift */,
-				E5B8DE212862CFD2007F22FC /* MemoTab */,
-				E5B8DE1F2862CFC2007F22FC /* LibraryTab */,
-				E5B8DE202862CFCA007F22FC /* SearchTab */,
+				E5B8DE222862D02B007F22FC /* LibraryViewModel.swift */,
+				E5820403285F63C3007513D7 /* LibraryDetailViewModel.swift */,
+				E5D2BC0628657FD700D56AB2 /* ChangeLibraryViewModel.swift */,
+				E5D2BC0C286607FA00D56AB2 /* SearchLibraryViewModel.swift */,
+				E5B8DE2428632B51007F22FC /* WriteReviewViewModel.swift */,
+				E5B8DE2728633B21007F22FC /* WriteBookmarkViewModel.swift */,
+				E5D2BC002864DA6F00D56AB2 /* AddBookViewModel.swift */,
+				E5F2F1DF2841B421007CF7C6 /* MemoViewModel.swift */,
+				E5CC842528672D3200977077 /* MemoReviewViewModel.swift */,
+				E5CC842728674D5C00977077 /* MemoBookmarkViewModel.swift */,
+				E5A6916C284659A7009F6048 /* SearchListViewModel.swift */,
+				E5D2BC082865852B00D56AB2 /* BookDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -526,18 +405,18 @@
 			);
 			mainGroup = E51A37782840F64A00DF074B;
 			packageReferences = (
-				E51A379A2840FA4E00DF074B /* XCRemoteSwiftPackageReference "SnapKit.git" */,
-				E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire.git" */,
+				E51A379A2840FA4E00DF074B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				E56B60BE284787F1003679CC /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				E5C75BAA285B2DCD00EF917E /* XCRemoteSwiftPackageReference "RxSwift.git" */,
-				E59760D1285C675A00BA3DB0 /* XCRemoteSwiftPackageReference "Toast-Swift.git" */,
-				E59760D7285C763600BA3DB0 /* XCRemoteSwiftPackageReference "PanModal.git" */,
-				E59760DC285C834200BA3DB0 /* XCRemoteSwiftPackageReference "Tabman.git" */,
-				E5A36250285DD22D0023BE49 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView.git" */,
-				E5A36253285DD3EF0023BE49 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField.git" */,
-				E58203FA285F3D5D007513D7 /* XCRemoteSwiftPackageReference "NextGrowingTextView.git" */,
-				E592A3B0286093DC0037491E /* XCRemoteSwiftPackageReference "MarqueeLabel.git" */,
-				E5DF93542861CE2000D3796C /* XCRemoteSwiftPackageReference "Toast-Swift.git" */,
+				E5C75BAA285B2DCD00EF917E /* XCRemoteSwiftPackageReference "RxSwift" */,
+				E59760D1285C675A00BA3DB0 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				E59760D7285C763600BA3DB0 /* XCRemoteSwiftPackageReference "PanModal" */,
+				E59760DC285C834200BA3DB0 /* XCRemoteSwiftPackageReference "Tabman" */,
+				E5A36250285DD22D0023BE49 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView" */,
+				E5A36253285DD3EF0023BE49 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField" */,
+				E58203FA285F3D5D007513D7 /* XCRemoteSwiftPackageReference "NextGrowingTextView" */,
+				E592A3B0286093DC0037491E /* XCRemoteSwiftPackageReference "MarqueeLabel" */,
+				E5DF93542861CE2000D3796C /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = E51A37822840F64B00DF074B /* Products */;
 			projectDirPath = "";
@@ -733,7 +612,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -787,7 +666,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -814,6 +693,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -823,7 +703,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -844,6 +724,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -853,7 +734,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -881,7 +762,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E51A379A2840FA4E00DF074B /* XCRemoteSwiftPackageReference "SnapKit.git" */ = {
+		E51A379A2840FA4E00DF074B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -897,7 +778,7 @@
 				minimumVersion = 7.2.0;
 			};
 		};
-		E58203FA285F3D5D007513D7 /* XCRemoteSwiftPackageReference "NextGrowingTextView.git" */ = {
+		E58203FA285F3D5D007513D7 /* XCRemoteSwiftPackageReference "NextGrowingTextView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/muukii/NextGrowingTextView.git";
 			requirement = {
@@ -905,7 +786,7 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		E592A3B0286093DC0037491E /* XCRemoteSwiftPackageReference "MarqueeLabel.git" */ = {
+		E592A3B0286093DC0037491E /* XCRemoteSwiftPackageReference "MarqueeLabel" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/cbpowell/MarqueeLabel.git";
 			requirement = {
@@ -913,7 +794,7 @@
 				minimumVersion = 4.3.0;
 			};
 		};
-		E59760D1285C675A00BA3DB0 /* XCRemoteSwiftPackageReference "Toast-Swift.git" */ = {
+		E59760D1285C675A00BA3DB0 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
 			requirement = {
@@ -921,7 +802,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		E59760D7285C763600BA3DB0 /* XCRemoteSwiftPackageReference "PanModal.git" */ = {
+		E59760D7285C763600BA3DB0 /* XCRemoteSwiftPackageReference "PanModal" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/slackhq/PanModal.git";
 			requirement = {
@@ -929,7 +810,7 @@
 				minimumVersion = 1.2.0;
 			};
 		};
-		E59760DC285C834200BA3DB0 /* XCRemoteSwiftPackageReference "Tabman.git" */ = {
+		E59760DC285C834200BA3DB0 /* XCRemoteSwiftPackageReference "Tabman" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/uias/Tabman.git";
 			requirement = {
@@ -937,7 +818,7 @@
 				minimumVersion = 2.9.0;
 			};
 		};
-		E5A36250285DD22D0023BE49 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView.git" */ = {
+		E5A36250285DD22D0023BE49 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ruslanskorb/RSKPlaceholderTextView.git";
 			requirement = {
@@ -945,7 +826,7 @@
 				minimumVersion = 6.0.0;
 			};
 		};
-		E5A36253285DD3EF0023BE49 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField.git" */ = {
+		E5A36253285DD3EF0023BE49 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jverdi/JVFloatLabeledTextField.git";
 			requirement = {
@@ -953,7 +834,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire.git" */ = {
+		E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -961,7 +842,7 @@
 				minimumVersion = 5.6.0;
 			};
 		};
-		E5C75BAA285B2DCD00EF917E /* XCRemoteSwiftPackageReference "RxSwift.git" */ = {
+		E5C75BAA285B2DCD00EF917E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -969,7 +850,7 @@
 				minimumVersion = 6.0.0;
 			};
 		};
-		E5DF93542861CE2000D3796C /* XCRemoteSwiftPackageReference "Toast-Swift.git" */ = {
+		E5DF93542861CE2000D3796C /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
 			requirement = {
@@ -982,7 +863,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		E51A379B2840FA4E00DF074B /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E51A379A2840FA4E00DF074B /* XCRemoteSwiftPackageReference "SnapKit.git" */;
+			package = E51A379A2840FA4E00DF074B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 		E56B60BF284787F1003679CC /* Kingfisher */ = {
@@ -992,52 +873,52 @@
 		};
 		E58203FB285F3D5D007513D7 /* NextGrowingTextView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E58203FA285F3D5D007513D7 /* XCRemoteSwiftPackageReference "NextGrowingTextView.git" */;
+			package = E58203FA285F3D5D007513D7 /* XCRemoteSwiftPackageReference "NextGrowingTextView" */;
 			productName = NextGrowingTextView;
 		};
 		E592A3B1286093DC0037491E /* MarqueeLabel */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E592A3B0286093DC0037491E /* XCRemoteSwiftPackageReference "MarqueeLabel.git" */;
+			package = E592A3B0286093DC0037491E /* XCRemoteSwiftPackageReference "MarqueeLabel" */;
 			productName = MarqueeLabel;
 		};
 		E59760D2285C675A00BA3DB0 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E59760D1285C675A00BA3DB0 /* XCRemoteSwiftPackageReference "Toast-Swift.git" */;
+			package = E59760D1285C675A00BA3DB0 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
 		};
 		E59760D8285C763600BA3DB0 /* PanModal */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E59760D7285C763600BA3DB0 /* XCRemoteSwiftPackageReference "PanModal.git" */;
+			package = E59760D7285C763600BA3DB0 /* XCRemoteSwiftPackageReference "PanModal" */;
 			productName = PanModal;
 		};
 		E59760DD285C834200BA3DB0 /* Tabman */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E59760DC285C834200BA3DB0 /* XCRemoteSwiftPackageReference "Tabman.git" */;
+			package = E59760DC285C834200BA3DB0 /* XCRemoteSwiftPackageReference "Tabman" */;
 			productName = Tabman;
 		};
 		E5A36251285DD22D0023BE49 /* RSKPlaceholderTextView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E5A36250285DD22D0023BE49 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView.git" */;
+			package = E5A36250285DD22D0023BE49 /* XCRemoteSwiftPackageReference "RSKPlaceholderTextView" */;
 			productName = RSKPlaceholderTextView;
 		};
 		E5A36254285DD3EF0023BE49 /* JVFloatLabeledTextField */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E5A36253285DD3EF0023BE49 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField.git" */;
+			package = E5A36253285DD3EF0023BE49 /* XCRemoteSwiftPackageReference "JVFloatLabeledTextField" */;
 			productName = JVFloatLabeledTextField;
 		};
 		E5A6915C284639CF009F6048 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire.git" */;
+			package = E5A6915B284639CF009F6048 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 		E5C75BAB285B2DCD00EF917E /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E5C75BAA285B2DCD00EF917E /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			package = E5C75BAA285B2DCD00EF917E /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
 		E5C75BAD285B2DCD00EF917E /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E5C75BAA285B2DCD00EF917E /* XCRemoteSwiftPackageReference "RxSwift.git" */;
+			package = E5C75BAA285B2DCD00EF917E /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

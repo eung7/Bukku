@@ -79,14 +79,6 @@ class MemoReviewTableViewCell: UITableViewCell {
         return view
     }()
     
-    lazy var memoImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(systemName: "note.text")
-        iv.tintColor = .getDarkGreen()
-        
-        return iv
-    }()
-    
     // MARK: - Helpers
     func configureUI() {
         contentView.addSubview(ultraView)
@@ -104,7 +96,7 @@ class MemoReviewTableViewCell: UITableViewCell {
         [ bookImageView, stack, reviewUltraView ]
             .forEach { ultraView.addSubview($0) }
         
-        [ reviewLabel, memoImageView ]
+        [ reviewLabel ]
             .forEach { reviewUltraView.addSubview($0) }
         
         bookImageView.snp.makeConstraints { make in
@@ -123,13 +115,9 @@ class MemoReviewTableViewCell: UITableViewCell {
             make.top.equalTo(bookImageView.snp.bottom).offset(8)
             make.bottom.leading.trailing.equalToSuperview().inset(8)
         }
-        
-        memoImageView.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(8)
-        }
-        
+
         reviewLabel.snp.makeConstraints { make in
-            make.top.equalTo(memoImageView.snp.bottom).offset(8)
+            make.top.equalToSuperview().inset(8)
             make.leading.trailing.bottom.equalToSuperview().inset(8)
         }
     }
@@ -137,7 +125,7 @@ class MemoReviewTableViewCell: UITableViewCell {
     func configureData(_ book: LibraryBook) {
         bookImageView.image = UIImage(data: book.image)
         titleLabel.text = book.title
-        authorLabel.text = book.author
+        authorLabel.text = "\(book.author) / \(book.publisher)"
         reviewLabel.text = book.review
     }
 }

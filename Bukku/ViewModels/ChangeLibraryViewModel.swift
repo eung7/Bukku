@@ -24,6 +24,4 @@ class ChangeLibraryViewModel {
         book.type = type
         manager.updateBook(book)
     }
-    
-    
 }

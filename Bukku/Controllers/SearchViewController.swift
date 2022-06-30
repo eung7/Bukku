@@ -107,6 +107,8 @@ class SearchViewController: UIViewController {
             if !isLoading {
                 isLoading = true
                 bookListCollectionView.reloadData()
+                
+                
                 SearchService.fetchBooks(currentQuery, page: currentPage) { [weak self] response, updatedPage in
                     if response.meta.is_end == false {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
