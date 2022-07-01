@@ -1,6 +1,5 @@
 ![header](https://capsule-render.vercel.app/api?type=soft&color=062C30&height=300&section=header&text=Bukku:%20부끄&fontSize=90&fontColor=FFFFFF)
 # BUKKU: 부끄 _나의 서재 앱
-
 > Bukku is the App you can organize books and leave notes. 
 > You can search for various books through the network and add books yourself. 
 > And can leave a book review and bookmark for each book. Build your own library with simple and clear functions!
@@ -70,7 +69,7 @@
 ## version history
 
 ### v1.0.5
-> Release App 
+> Release App [AppStore](https://apps.apple.com/kr/app/%EB%B6%80%EB%81%84/id1631953161)
 ### v1.1.1
 > UI 업데이트, 버그 수정
 
