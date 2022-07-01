@@ -31,24 +31,24 @@ class LibraryViewModel {
         case .reading:
             return readingBooks[index]
         case .willRead:
-            return manager.willReadBooks[index]
+            return willBooks[index]
         case .doneRead:
-            return manager.doneReadBooks[index]
+            return doneBooks[index]
         default:
-            return manager.allBooks[index]
+            return allBooks[index]
         }
     }
     
     func numberOfItemsInSection(_ type: LibraryType?) -> Int {
         switch type {
         case .reading:
-            return manager.readingBooks.count
+            return readingBooks.count
         case .willRead:
-            return manager.willReadBooks.count
+            return willBooks.count
         case .doneRead:
-            return manager.doneReadBooks.count
+            return doneBooks.count
         default:
-            return manager.allBooks.count
+            return allBooks.count
         }
     }
     
@@ -56,3 +56,4 @@ class LibraryViewModel {
         manager.saveBook()
     }
 }
+

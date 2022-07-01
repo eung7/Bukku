@@ -50,6 +50,7 @@ class LibraryCollectionViewController: UIViewController {
     
     // MARK: - Selectors
     @objc private func handleLongPressGesture(_ gesture: UILongPressGestureRecognizer) {
+        guard libraryType == .none else { return }
         switch gesture.state {
         case .began:
             guard let targetIndexPath = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else { return }
@@ -91,7 +92,16 @@ extension LibraryCollectionViewController: UICollectionViewDataSource {
 
 extension LibraryCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        pushCompletion?(viewModel.manager.allBooks[indexPath.row])
+        switch libraryType {
+        case .none:
+            pushCompletion?(viewModel.allBooks[indexPath.row])
+        case .reading:
+            pushCompletion?(viewModel.readingBooks[indexPath.row])
+        case .willRead:
+            pushCompletion?(viewModel.willBooks[indexPath.row])
+        case .doneRead:
+            pushCompletion?(viewModel.doneBooks[indexPath.row])
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -116,16 +126,18 @@ extension LibraryCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let item = viewModel.manager.allBooks.remove(at: sourceIndexPath.row)
-        viewModel.manager.allBooks.insert(item, at: destinationIndexPath.row)
-        viewModel.saveBooks()
+        if libraryType == .none {
+            let item = viewModel.manager.allBooks.remove(at: sourceIndexPath.row)
+            viewModel.manager.allBooks.insert(item, at: destinationIndexPath.row)
+            viewModel.saveBooks()
+        }
     }
 }
 
 extension LibraryCollectionViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if tabBarController.selectedIndex == 0 {
-            print("TAB!")
+            collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         }
     }
 }

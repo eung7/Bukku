@@ -101,9 +101,8 @@ class LibraryViewController: UIViewController {
     
     // MARK: - Helpers
     private func configureUI() {
-        view.backgroundColor = .getWhite()
+        view.backgroundColor = .getDarkGreen()
         view.addSubview(searchBar)
-        tabBarController?.delegate = self
         
         let buttonStack = UIStackView(arrangedSubviews: [ gearButton, searchButton ])
         buttonStack.axis = .horizontal
@@ -154,18 +153,6 @@ class LibraryViewController: UIViewController {
             let navVC = UINavigationController(rootViewController: libraryDetailVC)
             navVC.modalPresentationStyle = .fullScreen
             self.present(navVC, animated: true)
-        }
-    }
-}
-
-extension LibraryViewController: UITabBarControllerDelegate {
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if tabBarController.selectedIndex == 0 {
-            tabmanRootVC.allVC.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-            tabmanRootVC.readingVC.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-            tabmanRootVC.willVC.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-            tabmanRootVC.doneVC.collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-            viewWillAppear(true)
         }
     }
 }

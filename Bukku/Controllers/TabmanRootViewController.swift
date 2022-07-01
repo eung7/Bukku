@@ -11,10 +11,10 @@ import Pageboy
 
 class TabmanRootViewController: TabmanViewController {
     // MARK: - Properties
-    let allVC = AllViewController()
-    let readingVC = ReadingViewController()
-    let willVC = WillReadViewController()
-    let doneVC = DoneReadViewController()
+    let allVC = LibraryCollectionViewController(.none)
+    let readingVC = LibraryCollectionViewController(.reading)
+    let willVC = LibraryCollectionViewController(.willRead)
+    let doneVC = LibraryCollectionViewController(.doneRead)
     
     private var viewControllers: [UIViewController] = []
     
